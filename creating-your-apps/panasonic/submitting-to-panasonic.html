@@ -1,0 +1,475 @@
+---
+title: 'パナソニックストアへのアプリの送信'
+description: 'このトピックでは、デバイスアプリをパナソニックストアに送信する方法を学習します。'
+parent: 'Panasonic' 
+grandparent: アプリの作成
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+
+  <section class="bcls-section">
+    <h2 id="Introduction">はじめに</h2>
+    <p>
+      Brightcove Beacon を使用すると、Panasonic Store に追加できる生成されたデバイスアプリが届きます。
+    </p>
+    <ul>
+      <li>
+        店舗詳細: <a href="https://developer.vieraconnect.com/"> https://developer.vieraconnect.com/ </a>
+      </li>
+      <li>承認のための推奨リードタイム:三週間</li>
+    </ul>
+
+    <h3>パナソニックに必要な情報:</h3>
+    <ul>
+      <li>
+        アプリケーション
+        <ul>
+          <li>アプリケーション URL とアプリケーションのステージング URL</li>
+        </ul>
+      </li>
+      <li>
+        説明
+        <ul>
+          <li>最大1024文字</li>
+          <li>最大 26 行</li>
+          <li>
+            最大85文字（またはアジア文字44文字）で構成された各行
+          </li>
+          <li>適切な場所に改行を挿入してください</li>
+        </ul>
+      </li>
+      <li>
+        アイコン
+        <ul>
+          <li>
+            4 つのアイコンイメージが必要です。
+            <ul>
+              <li>160x112 (PNG)</li>
+              <li>バナースタイルのアイコン 256x60 (PNG)</li>
+              <li>360x252 (PNG)</li>
+              <li>円形のアイコンの直径 336x336 (PNG)</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        スクリーンショット
+        <ul>
+          <li>少なくとも1つ必要です</li>
+          <li>480w × 270H PNG</li>
+          <li>
+            これらは、マーケットのアプリケーション詳細ページに表示されます
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Getting_started">入門編</h2>
+    <p>Panasonic の開発者ページにアクセスするには、次の手順を実行します。</p>
+
+    <ol class="bcls-tasklist-restart">
+      <li>
+        <p>
+          ブラウザで、<a href="https://developer.vieraconnect.com/developers/login"> Panasonic 開発者ログインページに移動します</a>。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            src="/assets/images/creating-your-apps/panasonic/panasonic-login.png"
+            alt="Panasonic developer login"
+          />
+          <figcaption class="bcls-caption--image">
+            パナソニックの開発者ログイン
+          </figcaption>
+        </figure>
+      </li>
+      <li>
+        <p>
+          アカウントでサインインするか、新しいアカウントを作成します。
+        </p>
+      </li>
+      <li>
+        <p>
+          ログインすると、コントロールパネルが表示されます。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            src="/assets/images/creating-your-apps/panasonic/control-panel.png"
+            alt="Control panel"
+          />
+          <figcaption class="bcls-caption--image">コントロールパネル</figcaption>
+        </figure>
+      </li>
+      <li>
+        <p>
+          [ <strong>新しい申請を送信</strong> ] ボタンの右側にあるメモを読みます。<strong>ホームページのリンクを選択します</strong>。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            src="/assets/images/creating-your-apps/panasonic/home-link.png"
+            alt="Home page link"
+          />
+          <figcaption class="bcls-caption--image">ホームページのリンク</figcaption>
+        </figure>
+      </li>
+      <li>
+        <p>
+          アプリの要件を確認します。ご心配なく、Brightcoveは必要なテクノロジーでアプリを作成します。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            src="/assets/images/creating-your-apps/panasonic/html5.png"
+            alt="HTML5 requirements"
+          />
+          <figcaption class="bcls-caption--image">
+            HTML5の要件
+          </figcaption>
+        </figure>
+      </li>
+    </ol>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Application_Info">アプリケーション情報</h2>
+    <p>
+      [ <strong>アプリケーション情報</strong> ] セクションには、アプリの基本情報を入力します。
+    </p>
+
+    <ol class="bcls-tasklist-restart">
+      <li>
+        <p>
+          コントロールパネルから、[ <strong>新しいアプリケーションの送信</strong> ] ボタンを選択します。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            src="/assets/images/creating-your-apps/panasonic/new-app-button.png"
+            alt="New application button"
+          />
+          <figcaption class="bcls-caption--image">
+            新規アプリケーションボタン
+          </figcaption>
+        </figure>
+      </li>
+      <li>
+        <p>
+          次のような入力フォームが表示されます。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            src="/assets/images/creating-your-apps/panasonic/application-info.png"
+            alt="Application info"
+          />
+          <figcaption class="bcls-caption--image">アプリケーション情報</figcaption>
+        </figure>
+      </li>
+      <li>
+        <p>
+          「<strong>アプリケーション情報</strong>」ページで、次の必須フィールドに値を入力します。
+        </p>
+        <ul>
+          <li>
+            <strong>プロジェクトの種類</strong> -ドロップダウンメニューから、利用可能な最新の HTML バージョンを選択します。
+          </li>
+          <li>
+            <strong>アプリケーション URL </strong> -Brightcove からアプリビルドをホストする 2 つのリポジトリを作成します。1 つはプロダクション用、もう 1 つはステージング用です。アプリケーション URL は本番 URL です。
+          </li>
+          <li>
+            <strong>ステージング URL </strong> -アプリビルドのステージング URL を入力します。
+          </li>
+          <li>
+            <strong>バージョン番号</strong> -アプリのバージョンを入力します。
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          [ <strong>追加/削除</strong> ] ボタンを選択します。アプリで使用したい言語を選択します。[ <strong>確認</strong> ] ボタンを選択します。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            src="/assets/images/creating-your-apps/panasonic/languages.png"
+            alt="Languages"
+          />
+          <figcaption class="bcls-caption--image">言語</figcaption>
+        </figure>
+      </li>
+      <li>
+        <p>
+          選択した言語でフィールドの値を入力します。この例では、<strong>英語 (北米) </strong>が選択されています。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            src="/assets/images/creating-your-apps/panasonic/english-fields.png"
+            alt="English language fields"
+          />
+          <figcaption class="bcls-caption--image">
+            英語のフィールド
+          </figcaption>
+        </figure>
+        <ul>
+          <li>
+            <strong>デフォルトの言語</strong> -ドロップダウンメニューから、アプリの初期言語を選択します。アプリが英語をサポートしている場合、Panasonic では、英語（北米）または英語（英国モデル）を選択することをお勧めします。
+          </li>
+          <li>
+            <strong>アプリケーション名</strong> -アプリに使用する名前を入力します。
+          </li>
+          <li>
+            <strong>短縮名</strong> -アプリに使用する短縮名を入力します。これは、アプリケーション名と同じにすることができます。
+          </li>
+          <li>
+            <strong>キーワード</strong> -アプリを検索するためにマーケット検索機能で使用するキーワードを入力します。キーワードはコンマで区切ります (例:卓球、スポーツ)。最大 128 文字です。
+          </li>
+          <li>
+            <strong>説明</strong> -アプリの説明を入力します。これは、マーケットのアプリケーション詳細ページに表示されます。詳細については、入力ボックスの内側をクリックします。
+          </li>
+          <li>
+            <strong>エンドユーザー使用許諾契約</strong> -オプション。エンドユーザー使用許諾契約を入力します。
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          選択した言語のリストで次の言語を選択し、前の手順で説明したフィールドに値を入力します。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            src="/assets/images/creating-your-apps/panasonic/language-french.png"
+            alt="French language fields"
+          />
+          <figcaption class="bcls-caption--image">
+            フランス語フィールド
+          </figcaption>
+        </figure>
+      </li>
+      <li>
+        <p>[ <strong>次へ</strong> ] ボタンを選択します。</p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            src="/assets/images/creating-your-apps/panasonic/next-1.png"
+            alt="Next button"
+          />
+          <figcaption class="bcls-caption--image">[次へ] ボタン</figcaption>
+        </figure>
+      </li>
+    </ol>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Additional_Details">その他の詳細</h2>
+    <p>
+      [ <strong>追加の詳細</strong> ] セクションでは、サポートおよびコンテンツの詳細を追加できます。
+    </p>
+
+    <ol class="bcls-tasklist-restart">
+      <li>
+        <p>
+          前のセクションから [ <strong>次へ</strong> ] ボタンを選択すると、次のような入力フォームが表示されます。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            src="/assets/images/creating-your-apps/panasonic/additional-details.png"
+            alt="Additional details"
+          />
+          <figcaption class="bcls-caption--image">
+            その他の詳細
+          </figcaption>
+        </figure>
+      </li>
+      <li>
+        <p>
+          [ <strong>その他の詳細</strong> ] ページで、必須フィールドの値を入力します。
+        </p>
+        <ul>
+          <li>
+            <strong>サポートメール</strong> -アプリに問題が発生したときにユーザーが連絡する電子メールアドレスを指定します。
+          </li>
+          <li>
+            <strong>ペアレンタルレーティング</strong> -ドロップダウンメニューを展開して、各ペアレンタルレーティングの定義を確認します。アプリに適した評価を選択します。
+          </li>
+          <li>
+            <strong>ブラジルのコンテンツ評価</strong> -ブラジルでリリースを計画している場合は、必須です。ドロップダウンメニューを展開して、ブラジルの各レーティングの定義を確認します。適切な評価を選択します。
+          </li>
+          <li>
+            <strong>連絡先の電子メール</strong> -連絡先のメールアドレスを入力します。
+          </li>
+          <li>
+            <strong>Category </strong> : ドロップダウンメニューを展開して、カテゴリのリストを表示します。適切なカテゴリを選択します。
+          </li>
+          <li>
+            <strong>価格</strong> -通常、パナソニックのアプリは無料でダウンロードできます。
+          </li>
+          <li>
+            <strong>アプリ内購入</strong> -アプリ内購入をアプリにするかどうかを選択します。
+          </li>
+          <li>
+            <strong>マーケットプレイス</strong> -国のリストを表示するには、<strong> [マーケットプレイスの選択</strong> ] ボタンをクリックします。[ <strong>すべての国</strong> ] を選択するか、アプリを利用できるようにする国を選択します。<strong>完了したら、[完了] ボタンを選択します。</strong>
+          </li>
+          <li>
+            <strong>QAの手順</strong> -ボタンの追加、リンクの変更など、役立つ指示を記載してください。必要に応じて、アプリのテストアカウントを含めます。
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>[ <strong>次へ</strong> ] ボタンを選択します。</p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            src="/assets/images/creating-your-apps/panasonic/next-2.png"
+            alt="Next button"
+          />
+          <figcaption class="bcls-caption--image">[次へ] ボタン</figcaption>
+        </figure>
+      </li>
+    </ol>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Upload_Assets">アセットのアップロード</h2>
+    <p>
+      「<strong>アセットのアップロード</strong>」セクションでは、アイコンや画像を追加できます。
+    </p>
+
+    <ol class="bcls-tasklist-restart">
+      <li>
+        <p>
+          前のセクションから [ <strong>次へ</strong> ] ボタンを選択すると、次のような入力フォームが表示されます。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            src="/assets/images/creating-your-apps/panasonic/upload-assets.png"
+            alt="Upload Asset"
+          />
+          <figcaption class="bcls-caption--image">アセットのアップロード</figcaption>
+        </figure>
+      </li>
+      <li>
+        <p>
+          「<strong>アセットのアップロード</strong>」ページで、必須フィールドに値を入力します。
+        </p>
+        <ul>
+          <li>
+            <p>
+              <strong>アプリ説明ドキュメント</strong> -アプリの動作の詳細が記載されたドキュメントを作成します。これは、LG用に作成したドキュメントと同じにすることができます。[ <strong>参照</strong> ] ボタンを選択して、ファイルを検索します。次に、[ <strong>アップロード</strong> ] ボタンを選択します。
+            </p>
+            <p>
+              アップロードできるのは<code translate="No">doc</code>、<code translate="No">docx</code><code translate="No">pdf</code>またはファイルのみです。最大ファイルサイズは 8MB です。
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>アイコン1</strong>-マーケットアイコンをアップロードします。このアイコンは、マーケットの<strong>「リストページ」</strong>と<strong>「アプリケーション詳細ページ」</strong>に表示されます。
+            </p>
+            <p>
+              160W × 112H PNG
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>アイコン 2 (円形) </strong> -Firefox OS のアイコンをアップロードします。このアイコンは、マーケットの [ <strong>アプリドキュメント] ページに表示されます</strong>。
+            </p>
+            <p>
+              336 ピクセルの直径の円形 PNG
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>サンプル画像 1 </strong> -これはアプリのスクリーンショットで、<strong>マーケットのアプリケーション詳細ページに表示されます</strong>。サンプル画像を 5 つまで追加できます。
+            </p>
+            <p>
+              480w × 270H PNG
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>[ <strong>次へ</strong> ] ボタンを選択します。</p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            src="/assets/images/creating-your-apps/panasonic/next-3.png"
+            alt="Next button"
+          />
+          <figcaption class="bcls-caption--image">[次へ] ボタン</figcaption>
+        </figure>
+      </li>
+    </ol>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Agree_to_T&Cs">契約に同意する</h2>
+    <p>
+      [ <strong>同意する</strong> ] セクションでは、ストアに送信する前に、アプリに追加したすべての情報を確認できます。パナソニック利用規約のセクションもあります。
+    </p>
+
+    <ol class="bcls-tasklist-restart">
+      <li>
+        <p>
+          前のセクションから [ <strong>次へ</strong> ] ボタンを選択すると、次のような入力フォームが表示されます。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            src="/assets/images/creating-your-apps/panasonic/agree-tcs.png"
+            alt="Agree to T&Cs"
+          />
+          <figcaption class="bcls-caption--image">契約に同意する</figcaption>
+        </figure>
+      </li>
+      <li>
+        <p>
+          アプリに追加した情報と画像を確認します。
+        </p>
+      </li>
+      <li>
+        <p>
+          パナソニックテレビの利用規約をお読みください。読んだり同意した旨のボックスにチェックを入れます。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            src="/assets/images/creating-your-apps/panasonic/terms-and-conditions.png"
+            alt="Terms and conditions"
+          />
+          <figcaption class="bcls-caption--image">
+            利用規約
+          </figcaption>
+        </figure>
+      </li>
+      <li>
+        <p>「<strong>発行」</strong>ボタンを選択します。</p>
+      </li>
+      <li>
+        <p>
+          [ <strong>アプリケーションのリスト</strong> ] ページで、アプリが下書きとして保存されているはずです。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            src="/assets/images/creating-your-apps/panasonic/draft-saved.png"
+            alt="Saved as draft"
+          />
+          <figcaption class="bcls-caption--image">下書きとして保存</figcaption>
+        </figure>
+      </li>
+      <li>
+        <p>
+          アプリはライブになる前に QA ステータスになります。
+        </p>
+      </li>
+    </ol>
+  </section>
+</article>

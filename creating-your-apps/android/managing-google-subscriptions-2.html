@@ -1,0 +1,174 @@
+---
+title: 'Googleサブスクリプションの管理パート2'
+description: 「このトピックでは、Googleサブスクリプションを構成する方法を学習します' パブリッシャー/サブスクライバーのデータ交換。これは、Brightcove Beacon アプリとGoogleストア間の通信を確立するためのより大きなプロセスの2番目の部分です。」
+parent: "android"
+layout: "staging"
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+
+  <section class="bcls-section">
+    <aside class="bcls-aside bcls-aside--warning">このドキュメントの手順を完了するには、<a href="/creating-your-apps/android/managing-google-subscriptions-1.html"> Googleサブスクリプションの管理パート1</a>。</aside>
+    <h2 id="Introduction">はじめに</h2>
+    <p>このドキュメントでは、Google CloudPlatformを使用して<strong>Pub / Subトピック</strong>以前に作成したサービスアカウントをPub / Subトピックに追加します。</p>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Create_a_Pub/Sub_topic">Pub / Subトピックを作成する</h2>
+    <p>次の手順を実行して、Pub / Subトピックを作成します。</p>
+    <ol class="bcls-tasklist">
+      <li>Google Cloudプラットフォームのインデックスページを参照します（<a href="https://cloud.google.com/"> https://cloud.google.com</a>）。</li>
+      <li>クリック<strong>コンソール</strong>画面の右上にあるリンク。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gcp-pub-sub-subscription-notifications/first-page-click-console.png" alt="click console">
+        </figure>
+      </li>
+      <li>正しいプロジェクトを選択してください。あなたはおそらくあなたのアプリの周りにあなたのプロジェクトに<strong> Beacon </strong>。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gcp-pub-sub-subscription-notifications/choose-project.png" alt="choose project">
+        </figure>
+      </li>
+      <li>の中に<strong>検索</strong>、 入力 <samp>パブ</samp>、表示されたら、をクリックします<strong>Pub / Sub</strong>。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gcp-pub-sub-subscription-notifications/search-4-pub.png" alt="search for pub/sub">
+        </figure>
+      </li>
+      <li>から<strong>Pub / Sub</strong>ページをクリックします<strong>トピックを作成する</strong>。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gcp-pub-sub-subscription-notifications/click-create-topic.png" alt="click create topic">
+        </figure>
+      </li>
+      <li>の中に<strong>トピックを作成する</strong>ダイアログで、<strong>トピックID</strong>することが <samp>潜水艦</samp>、次にクリックします<strong>トピックを作成する</strong>。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gcp-pub-sub-subscription-notifications/create-topic-dialog.png" alt="sub for topic ID">
+        </figure>
+      </li>
+      <li>表示されたページで、←をクリックしてに戻ります。<strong>トピック</strong>ページ。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/back-to-topics-left-arrow.png" alt="back to topics">
+        </figure>
+      </li>
+    </ol>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Add_a_member_to_the_topic">トピックにメンバーを追加する</h2>
+    <p>次の手順を実行して、Pub / Subトピックのメンバーとしてサービスアカウントを追加します。</p>
+    <ol class="bcls-tasklist">
+      <li>から<strong>トピック</strong>ページ、<strong>潜水艦</strong>トピックをクリックします<strong>その他のアクション</strong>（3つの縦のドット）次に、ドロップダウンから選択します<strong>権限の表示</strong>。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/more-actions-permissions.png" alt="view permissions">
+        </figure>
+      </li>
+      <li>権限パネルから、をクリックします<strong>メンバーを追加</strong>。<figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/add-member.png" alt="click add member">
+        </figure>
+      </li>
+      <li>次のフォームが表示されていることを確認してください。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/empty-subs-member-form.png" alt="add member form">
+        </figure>
+      </li>
+      <li>必要なメールアドレスを取得するには、<a href="https://console.cloud.google.com/iam-admin/serviceaccounts?project=pc-api-8769861187782665707-545"> Google CloudConsole-サービスアカウント</a>ページ。作成したサービスアカウントは、<a href="/creating-your-apps/android/managing-google-subscriptions-1.html"> Googleサブスクリプションの管理パート1</a>資料。のメールアドレスをコピーします<strong>Androidサブスクリプション</strong>（または選択した名前）サービスアカウント。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/copy-email.png" alt="">
+        </figure>
+      </li>
+      <li>に戻る<strong>メンバーを追加する</strong>フォームで<strong>Google Cloud Platform</strong>。</li>
+      <li>取得したメールアドレスをに貼り付けます<strong>新メンバー</strong>テキストフィールド。</li>
+      <li>役割として、<strong> Pub / Sub→Pub / Subパブリッシャー</strong>。</li>
+      <li>クリック<strong>通知メールを送信する</strong>チェックボックスをオンにして、メッセージを追加します。</li>
+      <li>フォームが次のように入力されていることを確認します。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/new-member-completed-form.png" alt="filled in form">
+        </figure>
+      </li>
+      <li>[<strong>保存</strong>]をクリックします。</li>
+      <li>
+        <p>次に、別のメンバーのメールアドレスを追加します。これは、GooglePlayの通知を確実に受信するのに役立ちます</p>
+        権限パネルから、をクリックします<strong>メンバーを追加</strong>。<figure class="bcls-figure">
+        <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/add-member.png" alt="click add member">
+      </figure>
+    </li>
+    <li>次のフォームが表示されていることを確認してください。
+      <figure class="bcls-figure">
+        <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/empty-subs-member-form.png" alt="add member form">
+      </figure>
+    </li>
+    <li>次のメンバーの電子メールを追加します。
+      <pre>
+<code class="language-html" translate="No">google-play-developer-notifications@system.gserviceaccount.com</code></pre>
+    </li>
+    <li>
+      役割をに設定します<strong>Pub / Sub Editor</strong>。
+      <figure class="bcls-figure">
+        <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/member-email2.png" alt="add member2 form">
+      </figure>
+    </li>
+    <li>
+      次に、<strong>サブスクリプション</strong>。
+      <figure class="bcls-figure">
+        <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/select-subscriptions.png" alt="Select Subscriptions">
+      </figure>
+    </li>
+    <li>
+      選択する<strong>サブスクリプションの作成</strong>。
+      <figure class="bcls-figure">
+        <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/create-subscription.png" alt="Create Subscription">
+      </figure>
+    </li>
+    <li>
+      入力します<strong>サブスクリプションID</strong>の値 <samp>潜水艦</samp>。から<strong>Cloud Pub / Subトピックを選択します</strong>ドロップダウンで、トピックを選択します。
+      <figure class="bcls-figure">
+        <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/subscription-topic.png" alt="Subscription ID and topic">
+      </figure>
+    </li>
+    <li>[ <strong>作成</strong> ] をクリックします。</li>
+
+      <li>から<strong>トピック</strong>ページをクリックし、<strong>潜水艦</strong>トピック。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/click-on-subs.png" alt="click subs">
+        </figure>
+      </li>
+      <li>から<strong>トピックの詳細</strong>、コピー<strong>トピック名</strong>（赤で囲まれたコピーボタンが組み込まれていることに注意してください）。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/copy-topic-name.png" alt="copy topic name">
+        </figure>
+      </li>
+      <li>この名前をオンボーディングマネージャーに送信します。
+      </li>
+    </ol>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Verify_your_setup">設定を確認する</h2>
+    <aside class="bcls-aside bcls-aside--information">このセクションは通常、Brightcoveのオンボーディングチームまたはcmsチームによって完成されます。</aside>
+    <p>次の手順に従って、パブリッシャー/サブスクライバーデータ交換の通知を確認します。</p>
+    <ol class="bcls-tasklist-restart">
+      <li>ブラウザで、Google Play Consoleに移動します（<a href="https://play.google.com/console/"> https://play.google.com/console/</a>）。</li>
+      <li>検索する<strong>パブ</strong>。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/search-pubs.png" alt="Search for pubs">
+        </figure>
+      </li>
+      <li>選択する<strong>現金化</strong>。</li>
+      <li>アプリを選択してください。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/choose-app.png" alt="Choose your app">
+        </figure>
+      </li>
+      <li>トピックを入力します。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/monetization-topic.png" alt="Enter the topic">
+        </figure>
+      </li>
+      <li>選択する<strong>テスト通知を送信する</strong>。</li>
+      <li>設定が正しければ、次のように表示されます。Googleクラウドで設定を伝播するには時間がかかることに注意してください。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/test-notification-msg.png" alt="Test notification msg">
+        </figure>
+      </li>
+    </ol>
+
+  </section>
+</article>

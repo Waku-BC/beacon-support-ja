@@ -1,0 +1,101 @@
+---
+title: ' Beacon ウェブストアとの統合' 
+description: このトピックでは、OIDC（Open ID Connect）を介した Beacon Webストアの統合について説明します。
+parent: Beacon Web Store
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  
+  <section class="bcls-section">
+    <h2 id="Authentication_through_OIDC_and_entitlements">OIDCと資格による認証</h2>
+    <h3>認証</h3>
+    <p> Beacon は、認証に次のOAuth2.0フローを利用します。</p>
+    <ul>
+      <li>
+        PKCEの認証コード：iOS、Android、Web
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/beacon-web-store/oidc-1.png" alt="Authorization with PKCE">
+          <figcaption class="bcls-caption--image">PKCEによる承認（Auth0による図）</figcaption>
+        </figure>
+      </li>
+      <li>
+        <a href="https://tools.ietf.org/html/rfc8628">デバイスフロー</a>（Oauth 2.0拡張機能）：コネクテッドテレビとスマートテレビ
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/beacon-web-store/oidc-2.png" alt="Device Flow">
+          <figcaption class="bcls-caption--image">デバイスフロー（Auth0による図）</figcaption>
+        </figure>
+      </li>
+    </ul>
+    ,
+    <p> Beacon で利用可能になると予想されるトークンは3つあります。</p>
+    <ul>
+      <li>
+        アクセストークン：ユーザーが認証でき、 Beacon へのアクセスを許可する必要があることを検証します（<strong> JWT形式であり、issとsubを含める必要があります</strong>）
+      </li>
+      <li>
+        トークンの更新：ユーザーに代わって新しいアクセストークンを自動的に取得するメカニズムを提供することにより、アクセストークンの有効期限が切れた後も、ユーザーがログインしたままにできるようにします（ユーザーがアクセスを許可されている場合）- <strong>これはテレビで特に重要です</strong>
+      </li>
+      <li>IDトークン：ユーザーに関する情報を取得する方法を標準化します</li>
+    </ul>
+    <p>次の付与タイプをサポートする必要があります。</p>
+    <ul>
+      <li>
+        <code translate="No">authorization_code</code>
+      </li>
+      <li>
+        <code translate="No">refresh_token</code>
+      </li>
+      <li>
+        <code translate="No">urn:ietf:params:oauth:grant-type:device_code</code>
+      </li>
+    </ul>
+    <p>
+      次の認証プロバイダーのエンドポイントを Beacon で構成する必要があります（構成できるように、お客様はこれらを提供する必要があります-if <a href="https://swagger.io/docs/specification/authentication/openid-connect-discovery/"> OpenIDコネクトディスカバリー</a>これらを発見することができます）：
+    </p>
+    <ul>
+      <li>アクセストークン（JWT）</li>
+      <li>更新トークン（JWT）</li>
+      <li>ユーザー情報</li>
+      <li>トークンを取り消す（JWT）</li>
+      <li>承認する</li>
+      <li>ペアリングコード</li>
+      <li>
+        JWKS<a href="https://auth0.com/docs/tokens/json-web-tokens/json-web-key-sets"></a>
+      </li>
+      <li>ログアウト</li>
+      <li>
+        <a href="https://swagger.io/docs/specification/authentication/openid-connect-discovery/">OpenIDコネクトディスカバリー</a>（/.well-known/openid-configuration）-システムの構成に使用されます
+      </li>
+    </ul>
+    <h4> Beacon CMSで設定されたアイテムの例</h4>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/beacon-web-store/oidc-3.png" alt="Example Configuration">
+      <figcaption class="bcls-caption--image">設定例</figcaption>
+    </figure>
+    <h3>資格</h3>
+		<p>Beaconにユーザーの資格について伝えるという点で、Beaconは次のAPIを提供します。<code translate="no"> https://beacon.brightcove.com/ <span class="bcls-highlight">{instance}</span> / webhook / beacon</code>（Brightcoveが提供するAPIキー）</p>
+			<h4>ペイロードはJSONになります。</h4>
+<pre class="line-numbers"><code class="language-json" translate="No">[
+  {
+    "package_name": "string",			// Commerce package for SVOD or SKU for TVOD purchases - required
+    "external_user_id": "string",			// User identifier (username or email depending on configuration of users)- required
+    "transaction_id": "string",			// Unique transaction id for purchase - required for subscriptions (this will be used in renewal)
+    "start_date": "string",				// Start date for entitlements 
+    "end_date": "string",				// End date for entitlements (applicable if a rent or a subscription)
+    "trial_end_date": "string",			// End date for a trial if applicable
+    "effective_cancelation_date": "string",		// Date by when cancellation is effective (for example, end of current subscription period)
+    "notification_type": "new",			// One of: new, renew, cancellation, buy or rent - required
+    “payment_gateway”: “beaconstore”      // One of: “beaconstore”
+  }
+]
+</code></pre>
+		<p>外部認証システムを使用する場合、external_user_idはアクセストークンのサブジェクト値に対応します</p>
+		<aside class="bcls-aside bcls-aside--information">注意：APIキーは、認証トークンキーのヘッダーで送信する必要があります</aside>
+		<h4>エンタイトルメントWebhookへのPostman呼び出しのサンプル：</h4>
+		<figure class="bcls-figure">
+			<img class="bcls-image" src="/assets/images/beacon-web-store/oidc-4.png" alt="Sample Postman Call">
+			<figcaption class="bcls-caption--image">郵便配達員の電話の例</figcaption>
+		</figure>
+  </section>
+</article>

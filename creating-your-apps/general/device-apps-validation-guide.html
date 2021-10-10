@@ -1,0 +1,172 @@
+---
+title: 'デバイスアプリ検証ガイド'
+description: 'このトピックでは、対応するストアに送信できるように、動作またはデバイスアプリケーションを検証するための情報を学習します。'
+parent: '全般的'
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  <section class="bcls-section">
+    <h2 id="Overview">概要</h2>
+    <p>
+      Brightcove Beacon Experience からアプリを開発する時点で、アプリが希望どおりに動作していることを確認するためのテストビルドが与えられます。このドキュメントでは、次の各情報について説明します。
+    </p>
+    <ul>
+      <li><em>カテゴリのテスト</em>:テストのための広い領域を定義します。</li>
+      <li>
+        <em>ヒント</em>:テストを実行するときに従うべき提案と洞察。
+      </li>
+      <li>
+        <em>報告</em>:テストで問題が発生した場合の手順は次のとおりです。
+      </li>
+    </ul>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Before_you_start">始める前に</h2>
+    <p>適切なテストのためにセットアップされていることを確認してください。次のことを確認してください。</p>
+    <ul>
+      <li>テスターは、必要なすべてのテストデバイスを手元に持っています。</li>
+      <li>互換性のために、テストに使用するデバイスは3年以内のものにする必要があります。このドキュメント固有の後半で、プラットフォームごとに必要な最小バージョンが指定されます。</li>
+    </ul>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Testing_categories">カテゴリのテスト</h2>
+    <p>
+      Brightcoveでは、次の分野をテストし、質問に回答することを推奨します。
+    </p>
+    <ul>
+      <li>
+        デザインと特徴:
+        <ul>
+          <li>経験は合意されたモックアップと一致していますか？</li>
+          <li>要求された機能はすべて利用可能ですか？</li>
+        </ul>
+      </li>
+      <li>
+        ページレイアウトとコンテンツ:
+        <ul>
+          <li>ページの設定は期待どおりですか？</li>
+          <li>予想されるコンテンツは、各ページに表示されていますか？</li>
+        </ul>
+      </li>
+      <li>
+        収益化の設定:
+        <ul>
+          <li>広告は期待どおりに表示されていますか？</li>
+          <li>
+            通信者アセットの購読が表示されていますか？
+          </li>
+          <li>
+            ユーザーは期待どおりにコンテンツを購入して権利を取得できますか？
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Supported_platforms_and_versions">サポートされているプラットフォームとバージョン</h2>
+    <p>以下に、テストのガイドとして使用する必要があるサポートされているプラットフォームとバージョンを示します。</p>
+    <ul>
+      <li>Web
+        <ul>
+          <li>Chrome –現在のバージョンと現在の1バージョン</li>
+          <li>Safari-現在のバージョンと現在の1バージョン</li>
+          <li>Edge-現在のバージョンと現在の1バージョン</li>
+          <li>Firefox-現在のバージョンと現在の1バージョン</li>
+        </ul>
+      </li>
+      <li>Apple iOS（モバイル/タブレット）
+        <ul>
+          <li>Apple iOS13以降</li>
+          <li>追加情報については、を参照してください。<a href="/creating-your-apps/ios-tvos/installing-ios-test-build.html"> iOS / tvOSテストビルドのインストール</a>資料</li>
+        </ul>
+      </li>
+      <li>Apple tvOS
+        <ul>
+          <li>tvOS12以降</li>
+          <li>追加情報については、を参照してください。<a href="/creating-your-apps/ios-tvos/installing-ios-test-build.html"> iOS / tvOSテストビルドのインストール</a>資料</li>
+        </ul>
+      </li>
+      <li>Google Android
+        <ul>
+          <li>Android5以降</li>
+          <li>追加情報については、を参照してください。<a href="/creating-your-apps/android/installing-android-test-build.html"> Androidテストビルドのインストール</a>資料</li>
+        </ul>
+      </li>
+      <li>Google Android TV
+        <ul>
+          <li>Android5以降</li>
+          <li>追加情報については、を参照してください。<a href="/creating-your-apps/android/installing-android-test-build.html"> Androidテストビルドのインストール</a>資料</li>
+        </ul>
+      </li>
+      <li>Roku
+        <ul>
+          <li>Roku OS9.1以降</li>
+          <li>追加情報については、を参照してください。<a href="/creating-your-apps/roku/installing-roku-test-build.html"> Rokuテストビルドのインストール</a>資料</li>
+        </ul>
+      </li>
+      <li>Amazon Fire TV
+        <ul>
+          <li>Fire OS5.0以降</li>
+          <li>追加情報については、を参照してください。<a href="/creating-your-apps/fire-tv/installing-fire-tv-test-build.html"> Fire TVテストビルドのインストール</a>資料</li>
+        </ul>
+      </li>
+      <li>サムスンのスマートテレビ
+        <ul>
+          <li>Tizen 2018、2019、2020</li>
+        </ul>
+      </li>
+      <li>ソニーブラビアスマートテレビ
+        <ul>
+          <li>Android TV5.0以降</li>
+        </ul>
+      </li>
+      <li>東芝スマートテレビ
+        <ul>
+          <li>Android TV5.0以降および/またはFireOS5.0以降</li>
+          <li>追加情報については、を参照してください。<a href="/creating-your-apps/android/installing-android-test-build.html"> Androidテストビルドのインストール</a>資料</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Tips">ヒント</h2>
+    <p>検証を行う際には、次のヒントを考慮してください。</p>
+    <ul>
+      <li>
+        <strong>最初のパス</strong> :プラットフォームの 1 つを選択し、そのプラットフォームでのテストのさまざまな領域に進みます。皮切りに <em>デザインと機能</em>、次に移動します <em>ページレイアウトとコンテンツ</em> そして最後に <em>収益化の設定</em> テスト。
+      </li>
+      <li>
+        <strong>追加のテストラウンド</strong> :各エリアの最初のパスを終了したら、利用可能な他のプラットフォームに進みます。複数のプラットフォームに問題が該当する場合は、以前に報告されたチケットに注意してください。
+      </li>
+      <li>
+        <strong>修正のテスト</strong> :報告された問題の修正は、次の 3 つの領域のいずれかになります。
+        <ul>
+          <li>Brightcoveの Beacon エクスペリエンス（アプリのアップデートは不要）</li>
+          <li>アプリ内</li>
+          <li>Brightcoveの Beacon バックエンド</li>
+        </ul>
+        <p>
+          修正がアプリにある場合、修正された内容の詳細で新しいビルドが提供されます。その他のエリアについては、修正された内容に関するチケットの詳細をBrightcoveから提供します。修正と再テストをスピードアップするには、チケットに問題の詳細、および再テストに役立つ手順が記載されていることが非常に重要です。
+        </p>
+      </li>
+    </ul>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Reporting">報告</h2>
+    <p>
+      Brightcoveでは、発生した問題を報告し、フィードバックをBrightcoveに継続的に送信し、問題の修正と検証をできるだけ早く行うことをお勧めします。問題ごとに 1 つの問題/チケットを報告し、各問題/チケットに次の情報を提供してください。
+    </p>
+    <ul>
+      <li>プラットフォームテスト済み</li>
+      <li>問題が見つかったアプリのバージョン</li>
+      <li>再現する手順</li>
+      <li>
+        問題の識別と解決の提供を迅速化するために、スクリーンショットまたはスクリーンムービーを含めてください </li>
+    </ul>
+  </section>
+</article>

@@ -1,0 +1,141 @@
+---
+title: '概要： Beacon の高度な現金化' 
+description: このトピックでは、BrightcoveBeaconとEvergentの統合の概要を説明します。
+parent: Brightcove Beacon の使用
+layout: staging
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  <section class="bcls-section">
+    <h2 id="Introduction">はじめに</h2>
+		<p>Evergentは、これらの機能を提供するためにBeaconと統合された支払いおよび加入者管理システムです。Evergentは、堅牢な加入者管理と、ラテンアメリカ、中東、アフリカ、およびアジア太平洋地域で一般的に使用されているものを含む、世界中の多くの人気のある支払いゲートウェイへのアクセスを提供します。</p>
+  </section>
+	<section class="bcls-section">
+		<h2 id="glossary_of_terms">用語集</h2>
+		<dl>
+			<dt>事業単位</dt>
+			<dd>ビジネスユニット（BU）は、コンテンツを販売する国または地域を定義するEvergentのシステム内のエンティティです。国/地域ごとに異なる通貨または税金の徴収が必要な場合は、個別のビジネスユニットが必要になります。Evergentのシステムでは、各ビジネスユニットに通貨が割り当てられます。この通貨は、ユーザーがチェックアウトするときにユーザーに提示される通貨です。</dd>
+			<dt>ペイメントゲートウェイ</dt>
+			<dd>マーチャントが顧客からの支払いを受け入れることを可能にするサービス。支払いゲートウェイは、顧客の銀行口座から自分の銀行口座に安全で信頼できる方法でお金を移動することにより、仲介者として機能します。</dd>
+			<dt>記録の商人</dt>
+			<dd>消費者からの支払いを受け取ることを許可されている法人。使用する各ゲートウェイのMOR（Merchant of Record）になります。</dd>
+			<dt>マーチャントアカウント</dt>
+			<dd>オンライン販売からの収益が送られる仮想銀行口座。収益は、決済まで、つまり銀行口座に資金を送金するプロセスまで、マーチャントアカウントに残ります。通常、支払いゲートウェイはマーチャントアカウントを提供します。マーチャントアカウントを提供しないゲートウェイは、銀行口座に直接資金を送金します。</dd>
+			<dt>パッケージ</dt>
+			<dd>パッケージは、ユーザーが Beacon CMSのコンテンツへのアクセスを購入する方法を定義します。収益化計画のすべての詳細を定義します。価格、請求頻度、在庫状況、アプリストアの在庫状況、通貨、試用期間などの情報が含まれます。</dd>
+			<dt>製品</dt>
+			<dd>Evergentの製品は、収益化計画のすべての詳細を定義します。価格、請求頻度、在庫状況、アプリストアの在庫状況、通貨、試用期間などの情報が含まれます。</dd>
+		</dl>
+	</section>
+	<section class="bcls-section">
+		<h2 id="account_setup">アカウント設定</h2>
+		<h3>必要なもの：</h3>
+		<h4> Beacon </h4>
+		<ul>
+			<li>Beaconでは、Evergentがストアとして構成されたCMSが必要です。</li>
+			<li>あなたのサービスが利用できるすべての国。</li>
+			<li>各国には、視聴者からの支払いを受け取るために定義された通貨が必要です。 </li>
+		</ul>
+		<h4>エバージェント</h4>
+		<ul>
+			<li>支払いを受け取りたい通貨にマップする、Evergentで作成されたビジネスユニットが必要です。 </li>
+			<li>各ビジネスユニットには、ゲートウェイとアプリストアの課金（Apple Store、Roku、Amazon、Google Play）が構成されます。使用する各ゲートウェイとの関係とマーチャントアカウントが必要です。</li>
+		</ul>
+	</section>
+	<section class="bcls-section">
+		<h2 id="package_product_management">パッケージ/製品管理</h2>
+		<p>BeaconUIとEvergentUIの両方から収益化プランを設定および管理します。プランは、 Beacon とエバージェントの両方でSKUを使用して手動でリンクする必要があります。</p>
+		<ul>
+			<li> Beacon で構成されているパッケージは、情報がアプリの視聴者に提示される方法です。見る<a href="/using-brightcove-beacon/creating-subscription-package.html">サブスクリプションパッケージの作成</a>詳細については。</li>
+			<li>NS <strong>製品</strong>エバージェントでは、視聴者がコンテンツへのアクセスを許可される前に、正しい収益化プランの支払いを処理し、領収書を検証することができます。見る<a href="/monetization/beacon-evergent/evergent-account-management.html">エバージェントアカウント管理</a>詳細については。</li>
+			<li>
+				最初のリリースでは、 Beacon は次の現金化モデルをサポートします。
+				<ul>
+					<li>MixedVOD-広告が配信された認証済みユーザーのサブスクリプション</li>
+					<li>SVOD-認証されたユーザーのサブスクリプションで、広告は配信されません</li>
+				</ul>
+			</li>
+			<li>将来のリリースには、TVODとPPVが含まれます。</li>
+		</ul>
+	</section>
+	<section class="bcls-section">
+		<h2 id="website_sales">ウェブサイト販売</h2>
+		<p>パッケージと製品を構成すると、 Beacon Webアプリで支払いを受け入れることができるようになります。Beacon Webアプリでの購入は、Evergentプラットフォームを介して接続された支払いゲートウェイを介して処理されます。</p>
+		<h3>支払いゲートウェイと支払い方法</h3>
+		<p>Evergentを使用すると、お客様は複数の支払いゲートウェイを介して支払いを受け取ることができます。支払いゲートウェイの構成は、ビジネスユニットレベルです。顧客は、ビジネスユニットに複数の支払いゲートウェイを構成できます。複数のゲートウェイが構成されている場合、ビューアーにはチェックアウト時のさまざまな支払い方法オプションがあります。顧客は、支払いゲートウェイと直接関係を持っている必要があります。</p>
+	</section>
+	<section class="bcls-section">
+		<h2 id="In_app_purchases">アプリ内購入</h2>
+		<p> Beacon の顧客は、Apple、Google、Amazon、およびRokuストアを通じてコンテンツを販売することもできます。各ストアは、BeaconCMSおよびEvergentのシステムでオプションとして構成されています。</p>
+		<ul>
+			<li>いつ<a href="/using-brightcove-beacon/creating-subscription-package.html"> Beacon でSVODパッケージを作成する</a>、顧客は、パッケージを販売するアプリストアを選択するオプションがあります。は、アプリストア、可用性、場所、価格、通貨、およびアプリストア製品のSKUを設定できます。</li>
+			<li>さらに、アプリストア（Apple、Google、Amazon、Roku）、アプリストアの製品ID、および製品名をSVOD製品で構成できます。</li>
+		</ul>
+	</section>
+	<section class="bcls-section">
+		<h2 id="Subscriber_viewer_management">サブスクライバー/ビューアー管理</h2>
+		<p>Beacon Advanced Monetizationは、両方のアプリを介した登録と購入のワークフローをサポートしています。</p>
+		<ul>
+			<li>ビューアが Beacon アプリに登録すると、シャドウビューアがEvergentのビューアデータベースに自動的に作成されます。 </li>
+			<li>ビューアは、Evergentのビューアデータベースでセグメント化されます。顧客が複数のビジネスユニットを持っている場合、ビューアはその場所に対応するビジネスユニットに作成されます。</li>
+			<li>視聴者は、Evergentのシステムでは、無料の視聴者でも有料の視聴者でもかまいません。</li>
+		</ul>
+		<h3>ビューアの問題のトラブルシューティング</h3>
+		<p>ビューアのトラブルシューティングを行うには、 Beacon のビューア管理とエバージェントのサブスクライバ管理の両方を使用する必要があります' 問題の種類に応じて、問題。以下の情報は、特定の場合にどのシステムにアクセスする必要があるかをガイドするのに役立ちます。</p>
+		<h4> Beacon のビューア管理に含まれるビューア情報：</h4>
+		<ul>
+			<li>名前</li>
+			<li>Eメールアドレス</li>
+			<li>パスワード</li>
+			<li>購入履歴</li>
+			<li>プロファイル情報</li>
+			<li>ブックマークとお気に入り</li>
+			<li>アカウントに関連付けられているデバイス</li>
+		</ul>
+		<h4>Evergentのサブスクライバー管理に含まれる視聴者情報：</h4>
+		<ul>
+			<li>名前</li>
+			<li>Eメールアドレス</li>
+			<li>支払いクレデンシャル</li>
+			<li>購入履歴</li>
+		</ul>
+		<h4> Beacon で完了する必要のあるタスク：</h4>
+		<ul>
+			<li>ビューアのパスワードを更新する</li>
+			<li>プロファイルを編集または削除する</li>
+			<li> Beacon アカウントからデバイスを削除します</li>
+		</ul>
+		<h4>Evergentで完了する必要のあるタスク：</h4>
+		<ul>
+			<li>登録されている視聴者の支払い方法に払い戻しを行う</li>
+			<li>視聴者のサブスクリプションをキャンセルする</li>
+			<li>視聴者の支払いが成功したことを確認します</li>
+			<li>視聴者のサブスクリプションの更新日を確認してください</li>
+			<li>視聴者の支払いをすべて表示</li>
+		</ul>
+	</section>
+	<section class="bcls-section">
+		<h2 id="coupons_and_voucher_codes">クーポンとバウチャーコード</h2>
+		<p>Evergent UIでは、割引用のクーポンとバウチャーを生成できます。これらのコードを生成したら、それらを視聴者に配布し、視聴者はチェックアウトプロセス中にそれらを引き換えることができます。クーポンとバウチャーは特定のSVODパッケージ/製品に関連付けられているため、視聴者は対応するSVODパッケージ/製品でのみそれらを利用できます。</p>
+	</section>
+	<section class="bcls-section">
+		<h2 id="Viewer_communication">視聴者のコミュニケーション</h2>
+		<p>Evergentのシステムで視聴者に送信する電子メールの内容とスタイルを構成できます。送信される電子メールをトリガーするイベントを構成することもできます。たとえば、視聴者がサービスにサインアップしたとき、またはあるサブスクリプションから別のサブスクリプションにアップグレードしたときです。</p>
+	</section>
+	<section class="bcls-section">
+		<h2 id="analytics_and_reporting">分析とレポート</h2>
+		<h3>財務報告</h3>
+		<p>ビジネスパフォーマンスレポートは、Evergentのレポートダッシュボードで利用できるようになり、 Beacon アプリがビジネス目標に関連してどのように実行されているかを理解するのに役立ちます。</p>
+	</section>
+	<section class="bcls-section">
+		<h2 id="Related_topics">関連トピック</h2>
+		<ul>
+			<li><a href="/monetization/beacon-evergent/configuring-beacon-evergent.html">Evergentを使用した Beacon の構成</a></li>
+			<li><a href="/monetization/beacon-evergent/evergent-finding-accounts.html">EvergentCRMでのアカウントの検索</a></li>
+			<li><a href="/monetization/beacon-evergent/evergent-managing-account-details.html">エバージェント：アカウント詳細の管理</a></li>
+			<li><a href="/monetization/beacon-evergent/evergent-billing-finance.html">エバージェント：請求と財務</a></li>
+			<li><a href="/monetization/beacon-evergent/emailer-coupons.html">エバージェント：メール送信者とクーポン</a></li>
+		</ul>
+	</section>
+</article>

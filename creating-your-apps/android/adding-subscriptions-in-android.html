@@ -1,0 +1,236 @@
+---
+title: 'Androidへのサブスクリプションの追加'
+description: 'このトピックでは、サブスクリプションと、それらのサブスクリプションのテストに使用されるGooglePlayサービスアカウントを作成する方法を学習します。'
+parent: 'Android' 
+grandparent: アプリの作成
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+    <summary>{{ page.description }}</summary>
+
+    <section class="bcls-section">
+        <h2 id="Introduction">はじめに</h2>
+        <p>このドキュメントでは、次の 2 つのトピックに焦点を当てています。</p>
+        <ul>
+            <li>サブスクリプションの作成</li>
+            <li>サービスアカウントの作成</li>
+        </ul>
+        <p>
+            サブスクリプションは、Brightcove Beaconで作成してから、 <em>グーグルプレイコンソール</em>。Brightcove Beacon でサブスクリプションを作成する手順については、「<a href="/using-brightcove-beacon/creating-subscription-package.html">サブスクリプションパッケージの作成</a>」ドキュメントを参照してください。このドキュメントでは、Android用の対応するサブスクリプションを作成する方法について説明します。
+        </p>
+        <p>
+            サービスアカウントを使用すると、Google Play ストアで Brightcove  Beacon アプリを更新できます。これは、サブスクリプションをテストする場合に特に役立ちます。この文書の後半では、サービスアカウントを作成し、Google Play サーバーからサーバーへのサブスクリプションに必要なファイルを生成する手順について説明します。
+        </p>
+    </section>
+
+    <section class="bcls-section">
+        <h2 id="Adding a subscription">サブスクリプションの追加</h2>
+        <p>
+            Android でサブスクリプションを作成するには、Brightcove Beacon で作成したサブスクリプションに関する情報が必要です。サブスクリプションを作成するには、次の手順に従います。
+        </p>
+        <ol class="bcls-tasklist">
+            <li>
+                <a href="https://play.google.com/apps/publish/">Google Play コンソールにログインし</a>、アプリをクリックします。
+            </li>
+            <li>
+                <strong>Google Playコンソールの</strong> [ <strong>サブスクリプション</strong> ] セクションに移動する必要があります。このプロセスは、サブスクリプションを以前に作成したかどうかによって若干異なります。選ぶ
+                <em>一</em> 以前のサブスクリプションの作成に応じて、このステップのサブセクションの
+                <h3>以前のサブスクリプションはありません</h3>
+                <ol>
+                    <li>
+                        左側のナビゲーションから [ <strong> &gt; アプリ内製品のサブスクリプション</strong> ] を選択すると、次のページが表示されます。
+                        <figure class="bcls-figure">
+                            <img class="bcls-image" src="/assets/images/creating-your-apps/android-subscriptions/intro-no-previous.png" alt="subscriptions index no previous" />
+                        </figure>
+                    </li>
+                    <li><strong>出品者アカウントの設定ボタンをクリックします</strong>。</li>
+                    <li>
+                        <strong>出品者アカウントの設定リンクをクリックします</strong>。
+                        <figure class="bcls-figure">
+                            <img class="bcls-image" src="/assets/images/creating-your-apps/android-subscriptions/setup-link.png" alt="setup link" />
+                        </figure>
+                    </li>
+                    <li>
+                        フォームに入力して [ <strong>送信</strong> ] をクリックすると、新しいサブスクリプションを追加できるサブスクリプションページが表示されます。
+                    </li>
+                </ol>
+                <h3>サブスクリプションが存在します</h3>
+                <ol>
+                    <li>
+                        左側のナビゲーションから [ <strong> &gt; アプリ内製品のサブスクリプション</strong> ] を選択すると、次のページが表示されます。
+                        <figure class="bcls-figure">
+                            <img class="bcls-image" src="/assets/images/creating-your-apps/android-subscriptions/subscriptions-landing.png" alt="subscriptions landing page" />
+                        </figure>
+                    </li>
+                    <li>
+                        以前に作成したサブスクリプションが表示されることに注意してください。
+                    </li>
+                </ol>
+            </li>
+            <li>
+                [ <strong>サブスクリプションの作成</strong> ] ボタンをクリックします。
+                <figure class="bcls-figure">
+                    <img class="bcls-image" src="/assets/images/creating-your-apps/android-subscriptions/click-create.png" alt="click create" />
+                </figure>
+            </li>
+            <li>
+                フォームで、<strong>まず製品 ID </strong>を入力します。この値は、Brightcove Beacon <strong>でサブスクリプションを作成するときに指定した名前と一致する必要があります</strong>。
+                <figure class="bcls-figure">
+                    <img class="bcls-image" src="/assets/images/creating-your-apps/android-subscriptions/subscription-id.png" alt="enter subscriptions id" />
+                </figure>
+            </li>
+            <li>デフォルトの言語を入力します。</li>
+            <li>
+                サブスクリプションの詳細を入力します。必須ではありませんが、[ <strong>名前] </strong>と [ <strong>説明</strong> ] を Brightcove Beacon のサブスクリプション定義と一致させることがベストプラクティスです。
+                <figure class="bcls-figure">
+                    <img class="bcls-image" src="/assets/images/creating-your-apps/android-subscriptions/subscription-details.png" alt="enter subscriptions details" />
+                </figure>
+            </li>
+            <li>
+                <strong>請求期間</strong>と<strong>デフォルト価格</strong>を入力します。これらの値は、Brightcove Beacon で作成されたサブスクリプションと一致する必要があります。値が一致しない場合は、Brightcove Beacon アプリでは 1 つの価格が表示されますが、Google Play ストアでは異なる料金が課金されます。
+                <figure class="bcls-figure">
+                    <img class="bcls-image" src="/assets/images/creating-your-apps/android-subscriptions/subscription-price.png" alt="enter subscriptions price" />
+                </figure>
+            </li>
+            <li>
+                サブスクリプションオプションの値を入力します。必須ではありませんが、Brightcove Beacon のサブスクリプション定義に対応する値を一致させることがベストプラクティスです。
+                <figure class="bcls-figure">
+                    <img class="bcls-image" src="/assets/images/creating-your-apps/android-subscriptions/subscription-options.png" alt="enter subscriptions options" />
+                </figure>
+            </li>
+            <li>
+                [ <strong>保存</strong> ] ボタンをクリックして、サブスクリプションを作成します。
+            </li>
+        </ol>
+    </section>
+
+    <section class="bcls-section">
+        <h2 id="Creating_a_service_account">サービスアカウントの作成</h2>
+        <p>Google Play サーバーアカウントを作成するには、次の手順に従います。</p>
+        <ol class="bcls-tasklist-restart">
+            <li>
+                <p>
+                    <a href="https://play.google.com/apps/publish/">Google Play コンソールにログインします</a>。
+                </p>
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" src="/assets/images/creating-your-apps/google-play/play-console.png" alt="Google Play Console" />
+                    <figcaption class="bcls-caption--image">
+                        グーグルプレイコンソール
+                    </figcaption>
+                </figure>
+            </li>
+            <li>
+                <p>左側のナビゲーションで、[ <strong>設定</strong> ] を選択します。</p>
+            </li>
+            <li>
+                <p>
+                    左側のナビゲーションの [ <strong>開発者アカウント</strong> ] で、[ <strong> API アクセス</strong> ] を選択します。
+                </p>
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" src="/assets/images/creating-your-apps/google-play/api-access.png" alt="Create a service account" />
+                    <figcaption class="bcls-caption--image">
+                        サービスアカウントを作成する
+                    </figcaption>
+                </figure>
+            </li>
+            <li>[ <strong> +サービスアカウントの作成</strong> ] ボタンを選択します。</li>
+            <li>
+                <p>
+                    [ <strong>サービスアカウントの作成</strong> ] ダイアログで、手順 1 の [ <strong> Google API コンソール</strong> ] リンクを選択します。
+                </p>
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" src="/assets/images/creating-your-apps/google-play/account-dialog.png" alt="Account dialog" />
+                    <figcaption class="bcls-caption--image">アカウントダイアログ</figcaption>
+                </figure>
+            </li>
+            <li>
+                Google APIコンソールが表示されます。
+            </li>
+            <li>
+                <p>
+                    左側のナビゲーションでは、<strong>サービスアカウントがすでに選択されています</strong>。青いヘッダーバーの下にある [ <strong>サービスアカウントの作成</strong> ] ボタンを選択します。
+                </p>
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" src="/assets/images/creating-your-apps/google-play/api-console.png" alt="Google API Console" />
+                    <figcaption class="bcls-caption--image">
+                        グーグルAPIコンソール
+                    </figcaption>
+                </figure>
+            </li>
+            <li>
+                サービスアカウントの名前を入力します。<strong>サービスアカウント ID </strong>が自動的に入力されます。説明を追加します。[ <strong>作成</strong> ] ボタンを選択します。
+            </li>
+            <li>
+                <p>
+                    [ <strong>サービスアカウントの権限</strong> ] 画面で、[ <strong>ロールの選択] ドロップダウンメニューを展開し、</strong> [ <strong>所有者</strong> ] を選択します。
+                </p>
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" src="/assets/images/creating-your-apps/google-play/owner-role.png" alt="Owner role" />
+                    <figcaption class="bcls-caption--image">所有者の役割</figcaption>
+                </figure>
+            </li>
+            <li>[ <strong>続行</strong> ] を選択します。</li>
+            <li>
+                <p>
+                    次に、Brightcoveで使用できるキーを作成します。[ <strong> +キーを作成</strong> ] ボタンを選択します。
+                </p>
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" src="/assets/images/creating-your-apps/google-play/create-key.png" alt="Create key" />
+                    <figcaption class="bcls-caption--image">キーを作成</figcaption>
+                </figure>
+            </li>
+            <li>
+                <p>
+                    サイドパネルで、<strong>デフォルトのキータイプを</strong><strong> JSON </strong>のままにします。[ <strong>作成</strong> ] ボタンを選択します。
+                </p>
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" src="/assets/images/creating-your-apps/google-play/key-format.png" alt="Key format" />
+                    <figcaption class="bcls-caption--image">キー形式</figcaption>
+                </figure>
+            </li>
+            <li>
+                <p>
+                    秘密鍵ファイルをコンピュータにダウンロードし、[ <strong>閉じる</strong> ] ボタンを選択します。
+                </p>
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" src="/assets/images/creating-your-apps/google-play/download-key.png" alt="Download key" />
+                    <figcaption class="bcls-caption--image">ダウンロードキー</figcaption>
+                </figure>
+            </li>
+            <li>
+                ダウンロードした秘密キーファイルをBrightcoveに送信します。
+            </li>
+            <li>[ <strong>完了</strong> ] を選択します。</li>
+            <li>
+                <p>
+                    独自の値で次の画面が表示されるはずです。このブラウザタブを閉じて、Google Playコンソールに戻ります。
+                </p>
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" src="/assets/images/creating-your-apps/google-play/service-account-final.png" alt="Service account created" />
+                    <figcaption class="bcls-caption--image">
+                        サービスアカウントが作成されました
+                    </figcaption>
+                </figure>
+            </li>
+            <li>
+                <p>
+                    Google Play コンソールで、[ <strong>アクセスを許可</strong> ] ボタンを選択します。
+                </p>
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" src="/assets/images/creating-your-apps/google-play/grant-access.png" alt="Grant access" />
+                    <figcaption class="bcls-caption--image">アクセスを許可する</figcaption>
+                </figure>
+            </li>
+            <li>
+                <p>
+                    [ <strong>新しいユーザーの追加</strong> ] ダイアログで、[ <strong>財務データ</strong> ] ボタンがオンになっていることを確認します。[ <strong>ユーザーの追加</strong> ] ボタンを選択します。
+                </p>
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" src="/assets/images/creating-your-apps/google-play/add-user.png" alt="Add new user" />
+                    <figcaption class="bcls-caption--image">新しいユーザーの追加</figcaption>
+                </figure>
+            </li>
+        </ol>
+        <p>Google Play サービスアカウントが正常に作成されました。</p>
+    </section>
+</article>

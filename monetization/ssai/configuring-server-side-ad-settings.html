@@ -1,0 +1,146 @@
+---
+title: サーバー側の広告設定の構成
+description: 'このトピックでは、ライブおよびVODサーバー側の広告構成を管理および作成する方法を学習します。'
+parent: SSAI 
+grandparent: 収益化
+---
+
+
+<!-- 
+  This content appears on:
+  
+  https://beacon.support.brightcove.com/using-brightcove-beacon/configuring-server-side-ad-settings.html
+
+  https://studio.support.brightcove.com/admin/configuring-server-side-ad-settings.html
+
+  If you update in one place, you MUST update it in all!
+ -->
+
+<h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  <section class="bcls-section">
+    <p>
+      広告設定は、広告呼び出し、タイミング、 Beacon 、その他の広告設定オプションなど、広告の再生に関するさまざまな側面を定義します。サーバー側広告設定では、動画オンデマンド（VOD）動画やライブイベント中にリクエストできる広告を定義します。サーバーサイド広告は、ブライトコーブのサーバーサイド広告挿入（SSAI）テクノロジーを活用し、次の主な機能を提供します。 </p>
+    <ul>
+      <li>
+        広告はサーバー側のオンデマンド動画ストリームまたはライブ動画ストリームに縫い付けられるため、広告ブロッカーの影響を受けません </li>
+      <li>
+        ライブイベントの場合、エンコーダから送信されたキューポイントに広告が挿入されます。または<a href="https://live.support.brightcove.com/live-module/creating-and-managing-live-events-using-live-module.html#ad"> Live モジュール Control Room </a>を使用してインスタントキューポイントを作成できます。
+      </li>
+      <li>未使用の広告時間を埋めるように塗りつぶしスレートを構成できます</li>
+    </ul>
+    <p>
+      サーバーサイド広告の詳細については、「<a href="https://player.support.brightcove.com/plugins/implementing-server-side-ads-brightcove-player.html"> Brightcove Player でのサーバーサイド広告の実装</a>」を参照してください。
+    </p>
+    <aside class="bcls-aside bcls-aside--information">ノート：
+      <ul>
+        <li>
+          SSAI を使用するには、Video Cloud アカウントをダイナミック配信に設定し、SSAI を有効にする必要があります。詳細はアカウントマネージャーにお問い合わせください。 </li>
+        <li>ブライトコーブ Live SSAI の VMAP は現在サポートされていません。</li>
+        <li>SSAI 広告にはプリフェッチ機能はありませんが、広告ポジションロジックは広告プロバイダーに委任されます。動的配信では、すべての追加コールが前もってきます。広告プロバイダから広告を取得し、それが私たちのシステムでトランスコードされている場合は、ストリームに挿入します。</li> 
+      </ul>
+    </aside>
+    <p>
+      [サーバー側広告設定] ページは、ライブ広告と VOD 広告の設定を管理するために使用します。[サーバー側広告設定] ページにアクセスするには、管理者ロールを持つユーザーである必要があります。 </p>
+    <p>[サーバーサイド広告設定] ページにアクセスするには:</p>
+    <ol class="bcls-tasklist-restart">
+      <li>Studioにログインします。</li>
+      <li>
+        ナビゲーションヘッダーで、[ <strong>管理者</strong> ] をクリックし、[ <strong>サーバーサイド広告設定</strong> ] をクリックします。すべての広告設定の一覧が表示されます。
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            alt=""
+            src="https://general.support.brightcove.com/assets/images/admin/node18748-list-of-ad-configs.png"
+          />
+        </figure>
+      </li>
+    </ol>
+    <p>
+      新しい広告設定を作成するには、[ <strong>広告設定の作成</strong> ] をクリックし、作成する広告の種類をクリックします。 </p>
+    <ul>
+      <li><a href="#vod">ビデオオンデマンド (VOD) </a></li>
+      <li><a href="#live">ライブ</a></li>
+    </ul>
+    <figure class="bcls-figure">
+      <img
+        class="bcls-image--no-border"
+        alt=""
+        src="https://general.support.brightcove.com/assets/images/admin/node18748-create-ad.png"
+      />
+    </figure>
+  </section>
+  <section class="bcls-section">
+    <h2 id="vod">動画オンデマンド広告の設定を作成する</h2>
+    <aside class="bcls-aside bcls-aside--information">ノート：サーバーサイド広告の設定は、サーバーサイド広告挿入 API を使用して管理することもできます。詳細については、を参照してください。<a href="https://ssai.support.brightcove.com/vod/guides/video-cloud-ssai-ad-config-api.html"> Video Cloud SSAI Ad Config API</a>トピック。</aside>
+    <p>動画オンデマンド（VOD）広告の設定を追加するには、次の手順に従います。</p>
+    <ol class="bcls-tasklist-restart">
+      <li>
+        [サーバー側広告設定] ページで、[ <strong>広告設定の作成] [&gt; VOD </strong> ] をクリックします。
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            alt=""
+            src="https://general.support.brightcove.com/assets/images/admin/node18748-create-vod-ad.png"
+          />
+        </figure>
+      </li>
+      <li>「<strong>名前</strong>」を入力します。</li>
+      <li>
+        <strong>広告サーバーの応答を選択します</strong>。
+        <ul>
+          <li>DFP 広告ルール</li>
+          <li>DFP VMAP</li>
+          <li>スマートXML</li>
+          <li>広大3.0</li>
+        </ul>
+      </li>
+      <li><strong>広告タグを入力します</strong>。</li>
+      <li>
+        <strong>サーバー側 Beacon を無効にするには</strong>、[サーバー側 Beacon を無効にする] をオンにします。無効にすると、SSAI は Beacon をサーバー側で起動せず、すべての Beacon を VMAP 出力に含めます。
+      </li>
+      <li>[<strong>保存</strong>]をクリックします。</li>
+    </ol>
+    <p>
+      広告設定を編集するには、広告名をクリックして変更し、[ <strong>保存</strong> ] をクリックします。広告設定を削除するには、広告の横にあるチェックボックスをオンにし、[ <strong>削除</strong> ] をクリックします。広告設定を複製するには、広告の横にあるチェックボックスをオンにし、[ <strong>複製</strong> ] をクリックします。
+    </p>
+    <p>
+      VOD 広告設定を作成したら、Players モジュールを開き、プレーヤーをクリックしてプロパティを表示します。<strong>サーバー側（SSAI）広告を有効にするプロパティが有効な場合は</strong>、広告構成を選択できます。プレーヤー広告の設定については、「<a href="https://studio.support.brightcove.com/players/configuring-player-advertising-using-players-module.html"> Players モジュールを使用したプレーヤー広告の設定 (外部リンク) </a>」を参照してください。
+    </p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="live">ライブ広告の設定を作成する</h2>
+    <aside class="bcls-aside bcls-aside--information">ノート：サーバー側のライブ広告の設定は、ライブ API を使用して管理することもできます。詳細については、「<a href="https://live.support.brightcove.com/live-api/ssai/live-api-server-side-ad-insertion-ssai.html#Create_an_ad_configuration">ブライトコーブ Live API」を参照してください。サーバーサイド広告挿入（SSAI）</a>。</aside>
+    <p>ライブ広告の設定を追加するには、次の手順に従います。</p>
+    <ol class="bcls-tasklist-restart">
+      <li>
+        [サーバーサイド広告設定] ページで、[ <strong> &gt; ライブ広告設定の作成</strong> ] をクリックします。
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            alt=""
+            src="https://general.support.brightcove.com/assets/images/admin/node18748-create-live-ad.png"
+          />
+        </figure>
+      </li>
+      <li>「<strong>名前</strong>」を入力します。</li>
+      <li>
+        <strong>広告サーバーの応答を選択します</strong>。
+        <ul>
+          <li>広大</li>
+          <li>DFP (広告ルール)</li>
+          <li>スマートXML</li>
+        </ul>
+      </li>
+      <li><strong>広告タグを入力します</strong>。</li>
+      <li>[<strong>保存</strong>]をクリックします。</li>
+    </ol>
+    <p>
+      広告設定を編集するには、広告名をクリックして変更し、[ <strong>保存</strong> ] をクリックします。広告設定を削除するには、広告の横にあるチェックボックスをオンにし、[ <strong>削除</strong> ] をクリックします。広告設定を複製するには、広告の横にあるチェックボックスをオンにし、[ <strong>複製</strong> ] をクリックします。
+    </p>
+    <p>
+      ライブ広告構成を作成した後、<strong>サーバーサイド広告挿入を有効にする (SSAI) </strong>プロパティを有効にしてイベントを作成すると、コントロールルームで広告構成を選択できます。ライブイベントの作成については、「<a href="https://live.support.brightcove.com/live-module/creating-and-managing-live-events-using-live-module.html">ライブモジュールを使用したライブイベントの作成と管理</a>」を参照してください。
+    </p>
+  </section>
+</article>

@@ -1,0 +1,229 @@
+---
+title: チャネルへのVODのストリーミング
+description: 'このトピックでは、一連のビデオオンデマンドアセット（VOD）をライブストリームとしてBrightcoveBeaconのチャンネルにストリーミングする方法を学習します。'
+parent: Brightcove Beacon の使用
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+    <summary>{{ page.description }}</summary>
+
+    <section class="bcls-section">
+        <h2 id="overview">概要</h2>
+        <p>一連の VOD をライブストリームとして Brightcove Beacon のチャンネルにストリーミングするには、一連の手順に従って動画フィードを作成し、サードパーティのクラウドストリーミングパートナーに送信する必要があります。</p>
+        <aside class="bcls-aside bcls-aside--information">現時点では、Brightcoveはこの機能をサポートしていないため、VODのセットからライブストリームを生成するプロセスを完了するには、Frequency、Veset、Amagiなどの外部サードパーティ企業のサービスを使用する必要があります。</aside>
+        <p>プロセスの概要は次のとおりです。</p>
+
+        <ol>
+            <li>ストリームで使用したい動画にタグを付けます。</li>
+            <li>ソーシャルシンジケーション API を使用して、目的の動画の XML ビデオフィードを作成します。 </li>
+            <li>XML ビデオフィード URL をサードパーティのクラウドストリーミングパートナーに送信します。</li>
+            <li>クラウドストリーミングパートナーが提供した URL を使用して、Media モジュールでリモートビデオを作成します。</li>
+            <li>動画 ID を使用して、リモート動画を Brightcove Beacon に接続します。</li>
+            <li>クラウドストリーミングプロバイダーから提供された XML ファイルを Amazon S3 バケットにアップロードし、電子プログラミングガイド (EPG) を生成します</li>
+        </ol>
+        <p>このドキュメントの残りの部分では、上記の各手順について詳しく説明します。</p>
+    </section>
+
+    <section>
+        <h2 id="creating-video-feed">ストリームに入ることになる動画にタグを付けて</h2>
+        <p>タグ（メタデータ）を使用して、ストリームにしたい動画をマークします。</p>
+        <ol class="bcls-tasklist">
+            <li>ビデオクラウドスタジオで、<strong>メディアモジュールを開きます</strong>。（スクリーンショットの数字は、後の手順を参照してください）。
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/vod-to-channels/media-module.png" />
+                </figure>
+            </li>
+            <li>ストリームで使用したい動画の前にあるすべてのチェックボックスにチェックを入れます。</li>
+            <li>
+                動画のリストの上にある [ <strong>クイック編集</strong> ] ボタンをクリックします。
+            </li>
+            <li>
+                <strong>動画タイトルの右側に表示されるクイック編集パネルの</strong> [ <strong>追加するタグ</strong> ] ボックスに、ストリーム内のすべての動画をグループ化するために使用するタグを入力します。この例では、<strong> Aug_Stream </strong>というタグが使用されています。
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/vod-to-channels/quick-edit-panel.png" />
+                </figure>
+                <aside class="bcls-aside bcls-aside--information">タグは、XMLテンプレート情報を入力するために必要になります。</aside>
+            </li>
+        </ol>
+    </section>
+    <section class="bcls-section">
+        <h2 id="creating-video-feed">ソーシャルシンジケーション API を使用した XML ビデオフィードの作成</h2>
+        <p>マークした一連の VOD をライブストリームとしてストリーミングするには、ビデオフィード XML ファイルを作成する必要があります。このファイルには、ストリーミングしたい動画のすべての情報が含まれています。このファイルは、Frequency、Veset、Amagi などのサードパーティのクラウドストリーミングパートナーの要件です。このプロセスの詳細を次に示します。</p>
+        <ul>
+            <li><a href="https://www.postman.com/" target="_blank">Postman</a>または<a href="https://insomnia.rest/" target="_blank">Insomnia</a>などのAPI開発ツールが必要になります。この例では、<strong>Postmanが使用されます</strong>。</li>
+            <li>動画フィード XML ファイルを作成するには、Brightcoveのソーシャルシンジケーション API を使用する必要があります。API を使用して XML URL を取得する方法については、<a href="https://apis.support.brightcove.com/social-syndication/getting-started/public-syndication-api-overview.html" target="_blank">ソーシャルシンジケーション API ドキュメントを参照してください</a>。
+            </li>
+            <li>ほとんどのプラットフォーム API の認証は、一時的な OAuth2 アクセストークンを介して行われます。代わりに、永続的な API キーまたはポリシーキーを使用する API もあります。詳細については、個々の API <a href="https://apis.support.brightcove.com/social-syndication/getting-started/public-syndication-api-overview.html" target="_blank">のドキュメントを参照してください</a>。</li>
+        </ul>
+        <ol class="bcls-tasklist-restart">
+            <li>この例では、APIクライアントツールを開きます <em>Postman人</em> 使用されている。</li>
+            <li>[API 呼び出しタイプ] ドロップダウンメニューから [ <strong> POST </strong> ] を選択します。
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/vod-to-channels/5.5-post-call.png" />
+                </figure>
+            </li>
+            <li>ソーシャルシンジケーション API 呼び出しをコピーします。
+                <pre class="line-numbers"><code class="language-http" translate="No">https://social.api.brightcove.com/v1/accounts/your-account-id/mrss/syndications</code></pre>
+            </li>
+            <li>ソーシャルシンジケーション API 呼び出しを URL フィールドに貼り付け、独自のアカウント ID 情報を使用して URL データを変更します。</li>
+            <li>API クライアントで [ <strong> Body </strong> ] タブを選択します。
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/vod-to-channels/6.5-body-call.png" />
+                </figure>
+            </li>
+            <li>次のソーシャル・シンジケーション・リソース・テンプレートをコピーします。
+                <pre class="line-numbers"><code class="language-json" translate="No">
+{
+  "name": "Your Channel Syndication Videos",
+  "type": "universal",
+  "include_all_content": false,
+  "include_filter": "tags:yourtag",
+  "title": "80s Music Videos",
+  "description": "Amateur Tokyo drift!",
+  "destination_url": "http://mywebsite.com",
+  "keywords": "80s, rock",
+  "author": "Rick Astley",
+  "category": "Music",
+  "album_art_url": "http://my_album_art.jpg",
+  "explicit": "no",
+  "owner_name": "http://my_album_art.jpg",
+  "owner_email": "rick@astley.com",
+  "language": "en-us",
+  "fetch_sources": true,
+  "fetch_digital_master": false,
+  "fetch_dynamic_renditions": true,
+  "sort": "-created_at"
+ } </code></pre>
+            </li>
+            <li>ソーシャル同時配信リソーステンプレートを「<strong>本文</strong>」テキストフィールドに貼り付けます。 </li>
+            <li>ソーシャル同時配信リソーステンプレートデータを独自の情報で編集します。 </li>
+            <li>Video Cloud で作成したタグを<strong>「include_filter」:「タグ:yourTag」</strong>フィールド。
+            </li>
+            <li>API クライアントの [ <strong>送信</strong> ] ボタンをクリックして、<strong> POST </strong>呼び出しを実行します。
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/vod-to-channels/6-first-api-call.png" />
+                </figure>
+            </li>
+            <li>ソーシャルシンジケーション API レスポンスでは、読み取り専用フィールドがいくつか追加されることに注意してください。
+                <pre class="line-numbers"><code class="language-json" translate="No">
+ {
+    "id": "7f594cd3-4853-4174-aff3-203c3e99e9c2",
+    "name": "Your Channel Syndication Videos",
+    "type": "universal",
+    "include_all_content": false,
+    "include_filter": "tags:yourtag",
+    "title": "80s Music Videos",
+    "description": "Amateur Tokyo drift!",
+    "syndication_url": "https://social.feeds.brightcove.com/v1/accounts/9999999999999/mrss/accounts/{account_id}/mrss/syndications/7f594cd3-4853-4174-aff3-203c3e99e9c2/feed",
+    "destination_url": "http://mywebsite.com",
+    "keywords": "80s, rock",
+    "author": "Rick Astley",
+    "category": "Music",
+    "album_art_url": "http://my_album_art.jpg",
+    "explicit": "no",
+    "owner_name": "http://my_album_art.jpg",
+    "owner_email": "rick@astley.com",
+    "language": "en-us",
+    "fetch_sources": true,
+    "fetch_digital_master": false,
+    "fetch_dynamic_renditions": true,
+    "sort": "-created_at"
+ }</code></pre>
+            </li>
+
+            <li>ビデオフィードの作成後、API レスポンスに<strong> ID </strong>と<strong> syndication_url </strong>が含まれることに注意してください。<strong>syndication_url </strong>は、クラウドストリーミングパートナーに提供する必要があるものですが、ビデオフィードの準備ができる前に行うべき手順はいくつかあります。
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/vod-to-channels/7-api-response-id.png" />
+                </figure>
+            </li>
+            <li>API レスポンス<strong> ID </strong>をコピーします。</li>
+            <li>次のステップは、データのテンプレートを追加することです。ドロップダウンメニューから [ <strong> PUT </strong> ] を選択します。
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/vod-to-channels/8-api-template.png" />
+                </figure>
+            </li>
+            <li>URL ペティションに最後の API 呼び出しからの<strong> ID </strong>応答を追加します。 </li>
+            <li>[ <strong>ボディ</strong> ] タブをクリックします。
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/vod-to-channels/9-body-template.png" />
+                </figure>
+            </li>
+            <li><strong>raw </strong>オプションを選択します。</li>
+            <li><a href="https://apis.support.brightcove.com/social-syndication/getting-started/sample-templates-universal-syndication.html" target="_blank">ユニバーサルシンジケーション用に提供されている XML テンプレートの</a> 1 つをコピーして、テキストセクションに貼り付けます。 </li>
+            <li>[ <strong>送信</strong> ] をクリックして<strong> PUT </strong> API 呼び出しを行います。<aside class="bcls-aside bcls-aside--information">有効なトークンが必要になることを忘れないでください<strong>承認&gt;アクセストークンの管理</strong> API呼び出しのセクションは正しく機能します。OAuth 2.0トークンの作成方法の詳細については、<a href="https://apis.support.brightcove.com/oauth/index.html" target="_blank"> OAuthAPIドキュメント</a>。</aside>
+
+            </li>
+            <li>作った後<strong>置く</strong>呼び出し、API応答には、動画を含むテンプレートが含まれます' 情報と<strong>syndication_url</strong>更新され、クラウドストリーミングパートナーに配信する準備が整います。 </li>
+    </section>
+
+
+    <section class="bcls-section">
+        <h2 id="delivering-xml">クラウドストリーミングパートナーへの XML フィードの配信</h2>
+
+        <p>動画フィードで<strong> syndication_url を更新したら、その URL </strong>に XML ファイルが含まれているため、クラウドストリーミングパートナー（頻度、Veset、Amagi）に配信する必要があります。</p>
+        <p>クラウドストリーミングパートナーは、受信後、ストリーミング URL と Brightcove Beacon の電子プログラミングガイドを含む新しい XML ファイルを提供する必要があります。 </p>
+    </section>
+
+    <section class="bcls-section">
+        <h2 id="remote-video-studio">Studioでのリモートビデオの追加</h2>
+        <p>チャンネルのストリーミング URL を受け取ったら、ライブストリームを Video Cloud のリモート動画として Brightcove Beacon に送信する必要があります。</p>
+        <ol class="bcls-tasklist-restart">
+            <li>Video Cloud アカウントで<strong> Media </strong>モジュールを開きます。
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/vod-to-channels/10-media-module.png" />
+                </figure>
+            </li>
+            <li>左側のパネルで [ <strong> + リモートビデオを追加</strong> ] ボタンをクリックします。
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/vod-to-channels/11-remote-video.png" />
+                </figure>
+            </li>
+            <li>[ <strong>動画名</strong> ] フィールドで、ストリーム動画の名前を指定します。
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/vod-to-channels/12-create-remote.png" />
+                </figure>
+            </li>
+            <li><strong>ビデオの種類メニューで</strong>、<strong>ライブオプションを選択します</strong>。 </li>
+            <li> [ <strong>形式</strong> ] フィールドで、[ <strong> HLS </strong> ] オプションを選択します。</li>
+            <li>[ <strong> URL </strong> ] フィールドに、クラウドストリーミングパートナーから提供されたストリーム URL を貼り付けます。 </li>
+            <li>[ <strong>保存</strong> ] ボタンをクリックします。</li>
+            <li>リモートビデオが作成されたら、<strong> Mediaモジュールでそれをクリックします</strong>。
+            </li>
+            <li><strong>ビデオ情報セクションを開き</strong>、<strong> IDをコピーします</strong>。
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/vod-to-channels/13-studio-id.png" />
+                </figure>
+            </li>
+        </ol>
+    </section>
+
+    <section class="bcls-section">
+        <h2 id="connect-video-beacon">Brightcove Beacon へのリモートビデオの接続</h2>
+
+        <p>最後の手順では、Video Cloud で作成したリモート動画ストリームを Brightcove  Beacon チャンネルに接続します。</p>
+
+        <ol class="bcls-tasklist-restart">
+            <li>Brightcoveの Beacon を開きます。</li>
+            <li>上部のメニューで、[ <strong>チャンネル</strong> ] タブをクリックします。
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/vod-to-channels/14-channels-tab.png" />
+                </figure>
+            </li>
+            <li>目的のチャンネルをクリックします。チャンネルの作成方法について詳しくは、<a href="https://beacon.support.brightcove.com/using-brightcove-beacon/creating-a-channel.html" target="_blank">チャンネルのドキュメントをご覧ください</a>。</li>
+            <li>[チャンネル設定] で、[ <strong>ストリーム</strong> ] タブをクリックします。
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/vod-to-channels/15-channel-streams.png" />
+                </figure>
+            </li>
+            <li>[ <strong>ストリームビデオ ID </strong> ] フィールドに、Video Cloud リモートビデオのビデオ<strong> ID </strong>を貼り付けます。</li>
+            <li>[ <strong>チャンネルを更新</strong> ] をクリックします。
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" alt="" width="400" height="700" src="/assets/images/using-bcb/vod-to-channels/16-update-button.png" />
+                </figure>
+            </li>
+            <li>テスト用に Brightcove Beacon ウェブアプリを開くと、目的のチャンネルに VOD ストリームが表示されます。</li>
+            <li>最後のステップでは、サードパーティのクラウドストリーミングパートナーから提供された XML ファイルを Amazon S3 バケットにアップロードします。これにより、チャネルの EPG が作成されます。XML ファイルのアップロードと取得方法の詳細については、<a href="/using-brightcove-beacon/electronic-program-guides.html#fetching-xml" target="_blank"> EPG のドキュメントを参照してください</a>。</li>
+        </ol>
+
+    </section>
+</article>

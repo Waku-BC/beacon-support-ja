@@ -1,0 +1,124 @@
+---
+title: 'Open ID Connect（OIDC）の実装'
+description: 'このトピックでは、Open IDConnectをBrightcoveBeaconと統合する方法を学習します。'
+parent: 'Using Brightcove Beacon' 
+published: false 
+---
+
+
+<!-- don't remove published:false from the front matter without consulting Jim or Jose. This page is not to be published without their approval -->
+
+<h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+
+  <section class="bcls-section">
+    <h2 id="section-name">はじめに</h2>
+    <p>
+      顧客ユーザー管理システム（UMS）と Beacon 間の統合を提供するために、Brightcoveは認証を提供する最も信頼できる方法としてOpen ID Connect（OIDC）を実装しました。
+    </p>
+    <p>
+      Open ID Connect（OIDC）は、Auth0などのサービスの外部認証用のOAuth 2.0プロトコルの上にあるレイヤーであり、クライアントは、承認サーバーによって実行される認証に基づいてエンドユーザーのIDを確認できます。
+    </p>
+		<p>OIDC統合の主な機能は次のとおりです。</p>
+		<ul>
+			<li>既存のサードパーティデータベースを使用して、 Beacon ユーザーを認証できます。</li>  
+			<li> Beacon ユーザーは、 Beacon アプリを介してパスワードを登録、認証、および変更します。</li>
+			<li> Beacon アプリはアプリ購入をサポートします。</li> 
+			<li>既存のアプリケーションと Beacon アプリは同じ認証データベースを共有します。</li>
+			<li>新しい視聴者はサードパーティシステムに登録できます。</li>
+			<li>デバイスペアリングワークフロー（2番目のデバイス、TVアプリを認証するためのコードを画面に入力します）。</li>
+			<li>OIDCプロバイダーによってサポートされている場合のソーシャルログイン。</li>
+			<li> Beacon ストリームの同時実行制限がサポートされています。</li>
+			<li>OIDCプロバイダーは、ユーザー名とpsw以外の追加の認証方法（多要素、パスワードなし、デバイスペアリング、Googleアカウントペアリング）を提供する場合があります。</li>
+		</ul>
+		<h3>制約事項</h3>
+		
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="section-name">OIDCAuth0プロバイダーの実装</h2>
+    <p>
+      OIDCAuth0プロバイダーを実装するためにBrightcoveBeaconで実行する詳細な手順は次のとおりです。
+    </p>
+    <ol class="bcls-tasklist">
+      <li>Brightcove Beacon アカウントに入力します。</li>
+      <li>
+        右上の歯車ボタンをクリックします。
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image"
+            src="/assets/images/using-bcb/implementing-oidc-auth/1clickgear.png"
+          />
+        </figure>
+      </li>
+      <li>
+        クリック<strong>認証プロバイダー</strong>左側のメニューのボタン。
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image"
+            src="/assets/images/using-bcb/implementing-oidc-auth/2AuthProviders.png"
+          />
+        </figure>
+      </li>
+      <li>
+        追加します<strong>認証エンドポイント：</strong><strong> / account / social_login</strong>。
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image"
+            src="/assets/images/using-bcb/implementing-oidc-auth/3AuthMenu.png"
+          />
+        </figure>
+      </li>
+      <li>
+        のために<strong>認証タイプ</strong>フィールドで、<strong> openid_connect。</strong>
+      </li>
+      <li>
+        各OpenIDConnect設定のフィールドに入力します。<aside class="bcls-aside bcls-aside--tip">このフォームのフィールドに入力する情報のほとんどは、<a href="https://manage.auth0.com/dashboard"> Auth0アカウント</a>。</aside>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image"
+            src="/assets/images/using-bcb/implementing-oidc-auth/4OpenId_Settings1.png"
+          />
+        </figure>
+
+        <ul>
+          <li>
+            A）<strong>ベースURL：</strong>このフィールドの値は、Brightcoveの担当者に確認してください。
+          </li>
+          <li>
+            B）<strong>更新URLを取り消す：</strong>として設定され<strong>oauth / revoke</strong>
+          </li>
+          <li>
+            C）<strong>ペアリングコードのURL：</strong>として設定され<strong>oauth / device / code</strong>
+          </li>
+          <li>
+            D）<strong>対象者：</strong>このフィールドの値は、Brightcoveの担当者に確認してください。
+          </li>
+          <li>
+            E）<strong>ユーザー情報URL：</strong>として設定され<strong>ユーザー情報</strong>
+          </li>
+          <li>
+            F）<strong>アクセストークンURL：</strong><strong>認証/トークンとして設定</strong>
+          </li>
+          <li>
+            G）<strong>ログアウトURL：</strong>として設定され<strong>v2 /ログアウト</strong>
+          </li>
+          <li>
+            H）<strong> Jwksの場所：</strong>それは<strong>JSONWebキーセット</strong>にあります<strong>詳細設定&gt;エンドポイント</strong>アプリケーションのタブ<a href="https://manage.auth0.com/dashboard">Auth0アカウント</a>。
+          </li>
+          <li>
+            私）<strong>トークンURLの更新：</strong><strong>認証/トークンとして設定</strong>
+          </li>
+          <li>
+            J）<strong>承認URL：</strong>として設定され<strong>承認する</strong>
+          </li>
+          <li>
+            K）<strong>スコープ：</strong>Brightcoveの担当者にこのフィールドを確認してください。
+          </li>
+        </ul>
+      </li>
+      <li>クリック<strong>設定を保存する</strong>ボタン。</li>
+    </ol>
+  </section>
+</article>

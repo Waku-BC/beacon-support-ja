@@ -1,0 +1,104 @@
+---
+title: 'ビデオクラウドで実行されるBrightcove Beacon タスク'
+description: 「このトピックでは、BrightcoveBeaconの顧客としてVideoCloudStudioで実行する必要がある/実行する必要があるタスクについて学習します。」
+parent: "references"
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+    <summary>{{ page.description }}</summary>
+
+    <section class="bcls-section">
+        <h2 id="Task_summary">タスクの概要</h2>
+        <p>以下は、BrightcoveBeaconの顧客としてVideoCloudStudioで実行する必要がある/実行する必要があるタスクのリストです。</p>
+        <ul>
+            <li><a href="#Add_video_assets">ビデオアセットを追加する</a></li>
+            <li><a href="#Create_custom_fields">カスタムフィールドを作成する</a></li>
+            <li><a href="#Add_images">ビデオアセットに関連付けられた画像を追加する</a></li>
+            <li><a href="#Add_rights_management_information">権利管理情報を追加する</a></li>
+            <li><a href="#Add_episode_data">シリーズ/シーズンのエピソードデータをビデオアセットに追加する</a></li>
+            <li><a href="#Create_video_playlists">ビデオプレイリストを作成する</a></li>
+            <li><a href="#Create_Brightcove_Live_events">Brightcoveライブイベントを作成する</a></li>
+            <li><a href="#Create_an_SSAI_ad_configuration">SSAI広告構成を作成する</a></li>
+        </ul>
+        <p>各タスクについては、このドキュメントの後半で、その特定のタスクを実行する方法についての説明が記載されているドキュメントへのリンクを使用してさらに説明します。</p>
+        <p>このドキュメントは、各タスクの「ハウツー」マニュアルではありませんが、各セクションでは、タスクを完了する方法の手順を含む適切なドキュメントにリンクしています。</p>
+    </section>
+    <section class="bcls-section">
+        <h2 id="Add_video_assets">ビデオアセットを追加する</h2>
+        <p>Video Cloudは、BrightcoveBeaconで使用するビデオをアップロードするために使用されるツールです。このドキュメント全体を通して、Video CloudStudioはBrightcove Beacon アプリを操作するときに一般的に使用されるツールであることがわかります。</p>
+        <p>以下は、ビデオをVideoCloudに取り込むためのリソースです。</p>
+        <ul>
+            <li><a href="https://studio.support.brightcove.com/basics/video-cloud-basics-uploading-videos.html">ビデオクラウドの基本：動画のアップロード</a> -VideoCloudへのコンテンツのアップロードをすばやく開始するための1分30秒のビデオと4つのステップ。</li>
+            <li><a href="https://studio.support.brightcove.com/media/uploading-videos-using-upload-module.html">アップロードモジュールを使用した動画のアップロード</a> -VideoCloudを使用したビデオのアップロードに関する完全なドキュメント。</li>
+            <li><a href="https://studio.support.brightcove.com/media/index.html">ビデオの管理</a> -動画のアップロード、再生リスト、フォルダを使用した動画の整理などに関するドキュメントを含む、動画管理ワークフロー全体を網羅するランディングページ。</li>
+        </ul>
+    </section>
+    <section class="bcls-section">
+        <h2 id="Create_custom_fields">カスタムフィールドを作成する</h2>
+        <p>Video Cloudでは、カスタムフィールドを使用してビデオにメタデータを追加できます。ビデオを作成したら、BrightcoveBeaconで使用するビデオを準備する際にカスタムフィールドが大きな役割を果たします。BrightcoveBeaconで動作するVideoCloudビデオに追加するカスタムフィールドは、3つのカテゴリに分類されます。これらのカテゴリとそれぞれの簡単な説明は次のとおりです。</p>
+        <ul>
+            <li><strong>一般</strong> -以下を含むビデオコンテンツに関する情報：
+                <ul>
+                    <li>ジャンル</li>
+                    <li>短い説明と長い説明</li>
+                    <li>製造年</li>
+                    <li>キャスト</li>
+                    <li>作家</li>
+                    <li>等</li>
+                </ul>
+            </li>
+            <li><strong>権利管理</strong> -現金化とアクセス制限をサポートします。たとえば、広告の種類や動画の利用可能日などです。</li>
+            <li><strong>エピソードデータ</strong> -動画がシリーズのエピソードである場合は、シリーズ、シーズン、エピソード番号を定義します。</li>
+        </ul>
+        <p>NS <a href="/syncing-with-video-cloud/vc-custom-fields.html">ビデオクラウドカスタムフィールドの作成</a>ドキュメントは、必要なカスタムフィールドの作成を支援することのみを目的としています。</p>
+        <p>Video CloudStudioのこれらのカスタムフィールドに値が割り当てられます。</p>
+    </section>
+    <section class="bcls-section">
+        <h2 id="Add_images">画像を追加する</h2>
+        <p>Video Cloudに追加した画像は、Brightcove Beacon アプリに表示されます。たとえば、Video Cloudのポスター画像は、アプリに次のように表示されます。</p>
+        <figure class="bcls-figure">
+            <img class="bcls-image" src="/assets/images/references/bcb-tasks-performed-in-vc/thumbnail-images.png" alt="">
+        </figure>
+        <p>NS <a href="/references/image-requirements.html">画像とその仕様</a>ドキュメントには、画像の要件と、Video CloudStudioで画像をアップロードする方法が指定されています。</p>
+    </section>
+    <section class="bcls-section">
+        <h2 id="Add_rights_management_information">権利管理情報を追加する</h2>
+        <p>前述のように、カスタムフィールドは、収益化とアクセス制限を制御する権利管理情報を追加するために使用されます。たとえば、フィールド</p>
+        <ul>
+            <li> Beacon 。権利。<em>索引</em>。開始日</li>
+            <li> Beacon 。権利。<em>索引</em>。終了日</li>
+        </ul>
+        <p>特定のビデオアセットにいつアクセスできるかを定義します。</p>
+        <p>また、次のドキュメントは、広告とサブスクリプションを介して現金化を実装する方法を示しています。</p>
+        <ul>
+            <li><a href="/using-brightcove-beacon/vod-ssai.html">VODSSAIの実装</a> ;を参照してください<a href="/using-brightcove-beacon/vod-ssai.html#Setting_custom_field_values">カスタムフィールド値の設定</a>適切なカスタムフィールドに値を提供するためのドキュメントのセクション。</li>
+            <li><a href="/using-brightcove-beacon/using-subscription-package.html">サブスクリプションパッケージの使用</a></li>
+        </ul>
+        <p>権限管理のカスタムフィールドには、Video CloudStudioで値が割り当てられます。 </p>
+    </section>
+    <section class="bcls-section">
+        <h2 id="Add_episode_data">エピソードデータを追加する</h2>
+        <p>特定のビデオがシリーズのエピソードである場合、カスタムフィールドを使用して、ビデオを正しいシリーズ、シーズン、およびエピソード番号に関連付けるエピソードデータを割り当てます。この例は、使用されるカスタムフィールドと、各フィールドの特定の値を示しています。</p>
+        <figure class="bcls-figure"> <img class="bcls-image" src="/assets/images/syncing-with-vc/vc-custom-fields/episode-example.png" alt=""> </figure>
+        <p>NS <a href="/using-brightcove-beacon/series-seasons-episodes.html#Ingesting_episodes">エピソードの摂取</a>のセクション<strong>シリーズ/シーズン/エピソードの作成</strong>ドキュメントには具体的な手順が記載されています。</p>
+    </section>
+    <section class="bcls-section">
+        <h2 id="Create_video_playlists">ビデオプレイリストを作成する</h2>
+        <p>Brightcove Beaconでは、アプリページに表示する動画コンテンツを決定する際に、プレイリストが大いに活用されています。Video CloudStudioでプレイリストを作成します。</p>
+        <p>以下は、ビデオをVideoCloudに取り込むためのリソースです。</p>
+        <ul>
+            <li><a href="https://studio.support.brightcove.com/basics/video-cloud-basics-creating-manual-playlist.html">ビデオクラウドの基本：手動プレイリストの作成</a></li>
+            <li><a href="https://studio.support.brightcove.com/basics/video-cloud-basics-creating-smart-playlist.html">ビデオクラウドの基本：スマートプレイリストの作成</a></li>
+            <li><a href="https://studio.support.brightcove.com/media/creating-and-managing-playlists.html">プレイリストの作成と管理</a></li>
+        </ul>
+        <aside class="bcls-aside bcls-aside--warning">Video Cloud Studioで作成されたプレイリストには、ビデオのみが含まれる場合があります。シリーズやライブイベントなどを含むプレイリストを作成する場合は、BrightcoveBeaconで作成する必要があります。</aside>
+    </section>
+    <section class="bcls-section">
+        <h2 id="Create_Brightcove_Live_events">Brightcoveライブイベントを作成する</h2>
+        <p>Brightcove Beaconアプリでライブストリーミングイベントを再生する場合は、プロセスの一部をVideo CloudStudioで実行する必要があります。NS <a href="/using-brightcove-beacon/streaming-live-event.html">ライブイベントのストリーミング</a>ドキュメントは、プロセス全体を順を追って説明します。</p>
+    </section>
+    <section class="bcls-section">
+        <h2 id="Create_an_SSAI_ad_configuration">SSAI広告構成を作成する</h2>
+        <p>サーバーサイド広告挿入（SSAI）は、Brightcove Beacon で使用できます。これを実装するには、Video CloudStudioで広告構成を作成する必要があります。NS <a href="/using-brightcove-beacon/vod-ssai.html"> VODSSAIの実装</a>ドキュメントには、その広告構成を作成する方法と、Brightcove Beacon 用にVODSSAIを設定するエンドツーエンドのプロセスが含まれています。</p>
+    </section>
+</article>

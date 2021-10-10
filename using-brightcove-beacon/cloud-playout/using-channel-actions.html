@@ -1,0 +1,56 @@
+---
+title: チャネルアクションの説明の
+description: このトピックでは、チャネルアクションを使用して、クラウドプレイアウトチャネルをアクティブ化、再生、または停止する方法を学習します。
+parent: Cloud Playout
+layout: staging
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  <section class="bcls-section">
+    <h2 id="actions">チャネルアクションの使用</h2>
+    <p>チャネルのステータスに応じて、チャネル設定ページでさまざまなチャネルアクションボタンを使用できます。チャネル名をクリックしてチャネルアクションボタンにアクセスし、チャネルの詳細を表示します。次のチャネルアクションボタンを使用できます。</p>
+    <ul>
+      <li><img src="/assets/images/cloud-playout/cloudplayout-activate-button.png" alt="activate" class="ui-image"> -チャンネルをアクティブにすると、ストリーミングで利用できるようになります。動画やライブイベントをチャンネルに追加して、クリックする必要があります <img src="/assets/images/cloud-playout/cloudplayout-save-button.png" alt="save" class="ui-image"> [アクティブ化]ボタンが表示される前。</li>
+      <li><img src="/assets/images/cloud-playout/cloudplayout-play-now-button.png" alt="play now" class="ui-image"> - クリック<strong>今すぐプレイ</strong>チャネルのストリーミングを開始します。このオプションは、開始時刻が近づいているチャンネルでのみ使用できます。チャネルは、スケジュールされた開始時間に自動的に開始されます。</li>
+      <li><img src="/assets/images/cloud-playout/playout-stop-now.png" alt="stop now" class="ui-image"> - クリック<strong>今すぐ停止</strong>実行中のチャネルを停止します。これにより、チャンネルが停止し、ライブストリームが終了します。チャネルがループしていて、終了日時がある場合、チャネルはその時間に自動的に停止します。このオプションは、それを早期に停止する方法を提供します。</li>
+    </ul>
+  </section>
+	<section class="bcls-section">
+		<h2 id="Resource_deallocation_on_channel_stop">チャネル停止時のリソースの割り当て解除</h2>
+		<p>チャネルを停止すると、次のことが発生します。</p>
+		<ol>
+			<li>クラウドプレイアウトチャネルが停止すると、<strong>下書き</strong>ユーザーがチャネル設定を再度変更できるようにする状態。</li>
+			<li>これにより、連鎖したBCライブイベントがあればそれもクリアされます。</li>
+			<li>チャネルはする必要があります<strong>有効化</strong>リソースが割り当てられ、チャネルが<strong>スケジュール</strong>州。</li>
+			<li>クラウドプレイアウトチャンネルがライブストリームに対して有効になっている場合は、<strong> RTMP取り込みの静的エントリポイント</strong>これは、チャネルが停止および再開された回数に関係なく、チャネルの存続期間を通じて静的なままになります。
+				<figure class="bcls-figure">
+					<img class="bcls-image" src="/assets/images/cloud-playout/static-entry-point-for-rtmp-ingest.png" alt="Static Entry Point for RTMP Ingest">
+					<figcaption class="bcls-caption--image">RTMP取り込みの静的エントリポイント</figcaption>
+				</figure>
+				<p>このエントリポイントは、チャネルが起動して実行されると、入力の受け入れを開始できるようになります。</p>
+			</li>
+			<li>内部の問題が原因でCloudPlayoutが静的RTMP取り込みポイントを提供できない場合は、IPアドレスベースの取り込みポイントを表示しようとします。これが発生した場合は、チャネルのRTMP取り込みポイントの変更を定期的に確認することをお勧めします。</li>
+			<li>
+				<aside class="bcls-aside bcls-aside--information">注:チャネルをアクティブ化した後、Cloud Playoutが静的取り込みポイントの新しいIPアドレスを公開するのに平均1〜2分かかります。そのため、チャンネルがアクティブ化された直後に1〜2分以内に開始され、ライブイベントがチャンネルの再生リストの最初のアセットである場合、取り込みポイントが解決できない可能性があります。静的取り込みポイントのIPアドレスが公開されるとすぐに解決可能になります。</aside>
+			</li>
+			<li>
+				<aside class="bcls-aside bcls-aside--information">注:チャネルが最初の実行でライブ入力で実行されて停止した後、チャネルのライブ入力をオフにした場合、既存のプログラムにはまだ失敗するライブイベントがある可能性があります。チャンネルを停止した後にライブストリームを無効にする場合は、チャンネルコンテンツからライブイベントを削除してから再開する必要があります。</aside>
+			</li>
+		</ol>
+	</section>
+  <section class="bcls-section">
+    <h2 id="Related_topics">関連トピック</h2>
+    <ul>
+      <li><a href="/cloud-playout/cloud-playout-overview.html">概要:クラウドプレイアウト</a></li>
+      <li><a href="/cloud-playout/cloud-playout-stream-vod.html">クラウドプレイアウトチャネルの作成</a></li>
+      <li><a href="/cloud-playout/viewing-channel-output-and-analytics.html">チャネル出力と分析の表示</a></li>
+      <li><a href="/cloud-playout/enabling-server-side-ads.html">クラウドプレイアウトの収益化</a></li>
+			<li><a href="/cloud-playout/mid-roll-ad-insertion.html">ミッドロール広告をチャネルに追加する</a></li>
+      <li><a href="/cloud-playout/generating-channel-embed-code.html">チャネル埋め込みコードの生成</a></li>
+      <li><a href="https://apis.support.brightcove.com/cloud-playout-apis/getting-started/overview-epg-api.html">概要:EPG API</a></li>
+      <li><a href="https://apis.support.brightcove.com/cloud-playout-apis/references/reference-epg.html">EPGAPIリファレンス</a></li>
+      <li><a href="https://apis.support.brightcove.com/cloud-playout-apis/references/reference-channels.html">チャネルAPIリファレンス</a></li>
+    </ul>
+  </section>
+</article>

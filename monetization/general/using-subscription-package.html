@@ -1,0 +1,212 @@
+---
+title: サブスクリプションパッケージの使用
+parent: 収益化
+---
+
+
+<article class="bcls-article">
+  <h1>サブスクリプションパッケージの使用</h1>
+  <summary>このトピックでは、Brightcove Beacon の [ <strong>コマース</strong> ] タブを使用して作成された動画サブスクリプションパッケージの使用方法について説明します。サブスクリプションパッケージは、SVOD (サブスクリプションビデオオンデマンド) の収益化を実装します。サブスクリプションの作成の詳細については、「<a href="/monetization/creating-subscription-package.html">サブスクリプションパッケージの作成</a>」ドキュメントを参照してください。
+  </summary>
+  <section class="bcls-section">
+    <h2 id="Overview">概要</h2>
+    <p>
+      サブスクリプションパッケージは、特定のビデオセットをアプリで購入する方法を定義します' 顧客。サブスクリプションパッケージは Brightcove Beacon で作成する必要があります。詳細については、「<a href="/monetization/creating-subscription-package.html">サブスクリプションパッケージの作成</a>」を参照してください。また、サブスクリプションパッケージの使用において重要なのは、Video Cloud アカウントのビデオ用に作成される Video Cloud カスタムフィールドです。詳細については、「<a href="/syncing-with-video-cloud/vc-custom-fields.html"> Video Cloud カスタムフィールドの作成</a>」ドキュメントを参照してください。具体的には、[ <a href="/syncing-with-video-cloud/vc-custom-fields.html#Rights_Management_fields">権利管理] フィールドが使用されます</a>。
+    </p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Understanding_the_rights_management_custom_fields"> アクセス権管理のカスタムフィールドについて </h2>
+    <p>アクセス権管理のカスタムフィールドは、次の項目で構成されます。</p>
+    <ul>
+      <li>beacon.rights.&lt; &gt;カウンタ.type</li>
+      <li>beacon.rights.&lt; &gt;カウンター.startDate</li>
+      <li>beacon.rights.&lt; &gt;カウンター.endDate</li>
+      <li>beacon.rights.&lt; &gt;カウンター.devices</li>
+      <li>beacon.rights.&lt;カウンター &gt;。locationSperMIT</li>
+      <li>beacon.rights.&lt; &gt;カウンター.locationsDeny</li>
+      <li>beacon.rights.&lt; &gt;counter .packageName</li>
+      <li>beacon.rights.&lt; &gt;カウンター.adConfiguration</li>
+    </ul>
+    <p>
+      まず、<strong> &lt; &gt; 各名前のカウンター部分を考えてみましょう</strong>。これは、複数のアクセス権管理フィールドのセットを作成する場合にも含まれます。また、<strong> &lt; &gt; カウンタが使用されるため</strong>、配列型の構文を使用して、関連するフィールドをグループ化できます。
+    </p>
+    <p>
+      たとえば、祝日の周りにサブスクリプションパッケージを作成し、次のパッケージを作成したいとします。
+    </p>
+    <ul>
+      <li>地球の日</li>
+      <li>アーバー・デイ</li>
+      <li>新年</li>
+    </ul>
+    <p>
+      Video Cloud に移動して、次のように 0 ～ 2（または 1 ～ 3）のカウンタ値を使用して、3 つのアクセス権管理フィールドを作成する必要があります。
+    </p>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/using-bcb/using-subscription-package/index-of-rights-fields.png" alt="index of rights fields" />
+    </figure>
+    <p>
+      要約すると、使用するパッケージごとに、アクセス権管理フィールドの「カウンタ」セットを作成する必要があります。
+    </p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Package_and_custom_field_similar_rights"> パッケージとカスタムフィールドの同様の権限 </h2>
+    <p>
+      データを割り当てて、取り込んだときに動画に適用したカスタムフィールドは、Brightcove Beacon でパッケージを作成するときのフォームフィールドと同じように見えます。たとえば、カスタムフィールド <em>beacon.rights.&lt; &gt;カウンター.locationsDeny</em> とパッケージの<strong>拒否された場所</strong>フォームフィールドは競合しているように見える場合があります。これらの「競合」を考えるとき、2つの異なる質問があります。 </p>
+    <ul>
+      <li>動画の権利で再生が許可されていますか？</li>
+      <li>ユーザーはパッケージの購読を許可されていますか？</li>
+    </ul>
+    <p>
+      次のシナリオについて考えてみましょう。
+    </p>
+    <ul>
+      <li>
+        の終了日 <em>beacon.rights.&lt; &gt;カウンター.endDate</em> カスタムフィールドは、パッケージ自体の終了日より後です。つまり、動画の権利により、カスタムフィールドの終了日まで視聴できますが、ユーザーがパッケージにサブスクライブできなかったため、たとえば動画の視聴コストが下がりました。
+      </li>
+      <li>
+        米国、カナダ、メキシコの許可された場所を含むパッケージが作成され、そのパッケージがカスタムフィールドのビデオに割り当てられます <em>beacon.rights.&lt; &gt;counter .packageName</em>。また、ビデオのカスタムフィールドでは、英国は
+        <em>beacon.rights.&lt;カウンター &gt;。locationSperMIT</em> カスタムフィールド。パッケージはビデオに割り当てられていますが、英国では購入できません。このビデオは英国で再生できますが、英国のカスタマー向けのパッケージの一部にはできません。
+      </li>
+      <li>
+        米国、カナダ、メキシコの許可された場所を持つパッケージが作成されます。カスタムフィールドでは、米国とカナダがビデオに追加されます <em>beacon.rights.&lt; &gt;カウンター.locationsDeny</em> カスタムフィールド。ここでは、米国、カナダ、メキシコのお客様はパッケージを購読できますが、米国とカナダが拒否されている特定の動画は、ビデオがパッケージに含まれていても、それらの場所のお客様がビデオを表示できなかったことを意味します。
+      </li>
+    </ul>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Subscription_interval_support"> サブスクリプション間隔のサポート
+    </h2>
+    <p>
+      次の表は、各ストアの定期的なサブスクリプションでサポートされている時間間隔を示しています。 </p>
+    <table class="bcls-table">
+      <!-- <caption class="bcls-caption--table">Table Caption (optional <strong><caption class="bcls-caption--table"></strong>)</caption> -->
+      <thead class="bcls-table__head">
+        <tr>
+          <th>時間間隔</th>
+          <th>Appleストア</th>
+          <th>Google Playストア</th>
+          <th>Rokuストア</th>
+          <th>アマゾンストア</th>
+          <th>ストライプ</th>
+        </tr>
+      </thead>
+      <tbody class="bcls-table__body">
+        <tr>
+          <td>1週間</td>
+          <td>はい</td>
+          <td>はい</td>
+          <td></td>
+          <td>はい</td>
+          <td>はい</td>
+        </tr>
+        <tr>
+          <td>1ヶ月</td>
+          <td>はい</td>
+          <td>はい</td>
+          <td>はい</td>
+          <td>はい</td>
+          <td>はい</td>
+        </tr>
+        <tr>
+          <td>3ヶ月</td>
+          <td>はい</td>
+          <td>はい</td>
+          <td></td>
+          <td>はい</td>
+          <td>はい</td>
+        </tr>
+        <tr>
+          <td>6ヵ月</td>
+          <td>はい</td>
+          <td>はい</td>
+          <td></td>
+          <td>はい</td>
+          <td>はい</td>
+        </tr>
+        <tr>
+          <td>1年</td>
+          <td>はい</td>
+          <td>はい</td>
+          <td>はい</td>
+          <td>はい</td>
+          <td>はい</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Assigning_a_single_video_to_a_package"> パッケージへの単一のビデオの割り当て
+    </h2>
+    <p>
+      1 つのビデオをパッケージに割り当てるには、Video Cloud Studio を使用する必要があります。以下の手順を実行します。
+    </p>
+    <ol class="bcls-tasklist">
+      <li>Studioで、<strong> Mediaモジュールに移動します</strong>。</li>
+      <li>
+        パッケージに追加している動画のタイトルをクリックすると、その動画のプロパティが表示されます。
+      </li>
+      <li>
+        右側に [ <strong>カスタムフィールド</strong> ] セクションが表示されるまで下にスクロールし、[ <strong>編集</strong> ] ボタンをクリックします。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/using-bcb/using-subscription-package/single-video-edit-fields.png" alt="index of rights fields" />
+        </figure>
+      </li>
+      <li>
+        Brightcove Beacon <code translate="No">beacon.rights.&lt;counter&gt;.packageName</code>で作成されたサブスクリプションパッケージの名前をフィールドに入力します。
+      </li>
+      <li>
+        パッケージを使用しているため、を設定する必要があります<code translate="No">beacon.rights.&lt;counter&gt;.type</code>に<strong>SVOD</strong>。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/using-bcb/using-subscription-package/custom-fields.png" alt="index of rights fields" />
+        </figure>
+      </li>
+      <li>
+        カスタムフィールドのリストの一番下までスクロールし、[ <strong>保存</strong> ] ボタンをクリックします。
+      </li>
+    </ol>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Assigning_a_single_video_to_a_package"> 複数のビデオをパッケージに割り当てる </h2>
+    <p>
+      複数のビデオをパッケージに割り当てるには、Video Cloud Studio を使用する必要があります。次のスクリーンショットは、手順を実行するときに役立ちます。
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/using-bcb/using-subscription-package/multiple-video-edit.png" alt="index of rights fields" />
+    </figure>
+    </p>
+    <ol class="bcls-tasklist-restart">
+      <li>
+        Studioで、<strong> Mediaモジュールに移動し</strong>、パッケージに追加する各ビデオの前にあるチェックボックスをオンにします。
+      </li>
+      <li>[ <strong>クイック編集] </strong>ボタンをクリックします。</li>
+      <li>
+        画面の右側に [ <strong>クイック編集] </strong>セクションが表示され、Brightcove Beacon <code translate="No">beacon.rights.&lt;counter&gt;.packageName</code>で作成したサブスクリプションパッケージの名前をフィールドに配置できます。
+      </li>
+      <li>
+        パッケージを使用しているため、を設定する必要があります<code translate="No">beacon.rights.&lt;counter&gt;.type</code>に<strong>SVOD</strong>。
+      </li>
+      <li>
+        [ <strong>クイック編集</strong> ] セクションの下部にある [ <strong>保存</strong> ] ボタンをクリックします。
+      </li>
+    </ol>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Ingesting_the_videos_into_Brightcove_Beacon"> Brightcove Beacon への動画の取り込み </h2>
+    <p>
+      これで、サブスクリプションパッケージに 1 つまたは複数のビデオが関連付けられます。これで、これらのアソシエーションを Brightcove Beacon に取り込む必要があります。これを行うには、次の手順を実行します。
+    </p>
+    <ol class="bcls-tasklist-restart">
+      <li>Brightcove Beacon にログインします。</li>
+      <li>レンチアイコン (ツール) をクリックします。</li>
+      <li>左側のナビゲーションから [ <strong>取り込み</strong> ] をクリックします。</li>
+      <li>[ <strong>Brightcoveの動画を更新</strong> ] ボタンをクリックします。</li>
+      <li>
+        エラーが報告された場合は、それらのエラーをチェックして、サブスクリプションパッケージに関連するものがないことを確認します。
+      </li>
+      <li>
+        新しい関連付けを Brightcove Beacon ですぐにアクティブにするには、現在のキャッシュをクリアする必要があります。これを行うには、左側のナビゲーションから<strong>[キャッシュ]</strong>をクリックしてから、<strong>[キャッシュの削除]</strong>をクリックします。
+      </li>
+    </ol>
+    <p>
+      このセクションで実行される操作の詳細については、「<a href="/using-brightcove-beacon/tools.html">ツールの使用</a>」ドキュメントを参照してください。
+    </p>
+  </section>
+</article>

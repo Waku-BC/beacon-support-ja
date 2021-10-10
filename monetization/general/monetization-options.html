@@ -1,0 +1,155 @@
+---
+title: 収益化オプションを理解する
+description: このトピックでは、BrightcoveBeaconで利用できるさまざまな現金化パッケージについて学習します。
+parent: Monetization
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+
+
+  <section class="bcls-section">
+    <h2 id="Overview">概要</h2>
+    <p>
+      収益化パッケージは、アプリから収益を生成する方法を定義します（そうすることを選択した場合）。
+    </p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Terms">
+      利用規約
+    </h2>
+    <p>用語と頭字語の定義のリストは次のとおりです。</p>
+    <table class="bcls-table">
+      <thead class="bcls-table__head">
+        <tr>
+          <th>用語</th>
+          <th>定義</th>
+        </tr>
+      </thead>
+      <tbody class="bcls-table__body">
+        <tr>
+          <td> AVOD</td>
+          <td>オンデマンドで広告ベースのビデオ
+          </td>
+        </tr>
+        <tr>
+          <td>AuthVOD</td>
+          <td>オンデマンドで認証されたビデオ<br>
+            <em>* AuthVODは広告の有無にかかわらず実装できることに注意してください</em>
+          </td>
+        </tr>
+        <tr>
+          <td> SVOD</td>
+          <td>サブスクリプション動画オンデマンド<br>
+            <em>* SVODは広告の有無にかかわらず実装できることに注意してください</em>
+          </td>
+        </tr>
+        <!-- <tr>
+          <td>TVOD</td>
+          <td>Transactional video on demand</td>
+        </tr> -->
+        <tr>
+          <td>VOD</td>
+          <td>ビデオオンデマンドとは、一般に、ケーブルネットワークを介したビデオオンデマンドサービスを指します。</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Monetization_packages">
+      収益化パッケージ
+    </h2>
+    <p>Brightcove Beacon で提供されるパッケージは次のとおりです。お客様のニーズに最適なものをお選びください。</p>
+    <table class="bcls-table">
+      <thead class="bcls-table__head">
+        <tr>
+          <th style="width: 15%;">プラン</th>
+          <th>説明</th>
+        </tr>
+      </thead>
+      <tbody class="bcls-table__body">
+        <tr>
+          <td>無料</td>
+          <td>
+            <ul>
+              <li>このプランでは、訪問者は認証なしで広告なしのコンテンツを表示できます。</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td> AVOD</td>
+          <td>
+            <ul>
+              <li>訪問者は、認証なしでこのプランの広告を含むコンテンツを表示できます。</li>
+              <li>広告が表示されるため、一般的に消費者に無料です。</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>広告無しでAuthVOD</td>
+          <td>
+            <ul>
+              <li>認証されたユーザーは、サインインすることで、このプランの広告なしのコンテンツを表示できます。</li>
+              <li> このモデルでは、コンテンツにアクセスするために、ユーザーは多くの場合、別のプラットフォーム、サービス、ケーブル (TVE)、またはセルラーサブスクリプションの資格情報を使用してログインする必要があります。</li>
+              <li>パートナーシップと調整したり、複数のプロパティやブランドサービスを管理したりする場合に価値があります。</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>広告付きAuthVOD</td>
+          <td>
+            <ul>
+              <li>認証されたユーザーは、サインインすることで、このプランの広告を含むコンテンツを表示します。</li>
+              <li>視聴者は認証済みなので、たとえば、コンテンツの「ウォッチリスト」を作成したり、デバイス間で「一時停止して再開」したりできます。</li>
+              <li>サービスプロバイダーは、マーケティングおよび広告の目的でエンドビューアーについて詳しく知ることができます。</li>
+              <li>AuthVOD / AVODの組み合わせと考えることができます。</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>広告なしのSVOD</td>
+          <td>
+            <ul>
+              <li>このプランでは、購読者は広告なしのコンテンツを表示できます。</li>
+              <li>これにより、ユーザーは広告なしで月額定額で必要なだけのコンテンツを消費できます。</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>広告付きのSVOD</td>
+          <td>
+            <ul>
+              <li>加入者は、このプランの広告付きのコンテンツを表示できます。</li>
+              <li>加入者はより低い月額料金を支払うかもしれませんが、より低い料金で広告を見る必要があります。</li>
+              <li>SVOD / AVODの組み合わせと考えることができます。</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>混合</td>
+          <td>
+            <ul>
+              <li>購読者は、AVOD と SVOD オプションを組み合わせてコンテンツを表示できます。</li>
+            </ul>
+          </td>
+        </tr>
+        <!-- <tr>
+          <td>TVOD purchase</td>
+          <td>Authenticated users can buy content in this plan.<br/>
+              Transactional video on demand, is the opposite of subscription video, where consumers purchase content on a pay-per-view basis.
+          </td>
+        </tr>
+        <tr>
+          <td>TVOD rental</td>
+          <td>Authenticated users can rent content in this plan for a limited time.<br/>
+              Transactional video on demand, is the opposite of subscription video, where consumers rent content on a pay-per-view basis.
+          </td> 
+        </tr>-->
+
+      </tbody>
+    </table>
+  </section>
+
+</article>

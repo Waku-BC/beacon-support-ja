@@ -1,0 +1,114 @@
+---
+title: 'Rokuでのチャネル内製品の構成'
+description: 'このトピックでは、Roku Developers Dashboardでチャネル内製品を構成し、BrightcoveBeaconでそれらを関連付ける方法を学習します。'
+parent: 'Roku' 
+grandparent: アプリの作成
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+    <summary>{{ page.description }}</summary>
+
+    <section class="bcls-section">
+        <h2 id="introduction">はじめに</h2>
+        <p>チャネル内商品とは、月間サブスクリプションや年間サブスクリプションなど、チャンネル内で提供できる収益化ソリューションです。このドキュメントでは、Roku アプリケーションチャネルを収益化するチャネル内製品の作成方法について説明します。</p>
+    </section>
+
+    <section class="bcls-section">
+        <h2 id="adding-product">Rokuでのチャネル内製品の作成</h2>
+        <p>以下の手順に従って、Roku Developers ページでチャネル内製品を追加する方法について説明します。</p>
+        <ol class="bcls-tasklist-restart">
+            <li>上部のナビゲーションで、プロファイルアイコンをクリックします。</li>
+            <li>
+                <p>ドロップダウンメニューで、<strong>開発者オプションをクリックします</strong>。 </p>
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" src="/assets/images/creating-your-apps/roku/profile-developer-option.png" alt="Developer options" width="400" height="600" />
+                    <figcaption class="bcls-caption--image">開発者オプション</figcaption>
+                </figure>
+            </li>
+            <li>
+                <p>
+                    上部のナビゲーションから、[ <strong>ダッシュボード</strong> ] リンクを選択します。
+                </p>
+            </li>
+            <li>
+                <p>
+                    [ <strong>チャネル内製品の管理] を選択します。</strong>
+                </p>
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" src="/assets/images/creating-your-apps/roku/setting-in-channel-products/developer-dashboard.png" alt="" width="" height="" />
+                </figure>
+            <li><strong>新しい商品登録ボタンをクリックします</strong>。
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" src="/assets/images/creating-your-apps/roku/setting-in-channel-products/add-a-product.png" alt="" width="" height="" />
+                </figure>
+            </li>
+            <li>[ <strong> Channels </strong> ] フィールドで、製品を販売できるチャネルを選択します。
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" src="/assets/images/creating-your-apps/roku/setting-in-channel-products/2add-channel.png" alt="" width="" height="" />
+                </figure>
+            </li>
+            <li>フォームに必要事項を記入します（手順のリストの下にある参照スクリーンショット）。
+                <ol type="a">
+                    <li>[ <strong>製品カテゴリ] で</strong> [ <strong>ビデオ</strong> ] を選択します。</li>
+                    <li>[ <strong>製品名</strong> ] に、顧客に表示される名前を入力します。別の言語で商品名を登録するには、[ <strong>別の言語で商品名を追加</strong> ] ボタンをクリックします。</li>
+                    <li>のために<strong>製品識別子</strong>、内部参照IDを入力します。<aside class="bcls-aside bcls-aside--information">内部参照IDは一意である必要があり、後でIn-Channel製品をBrightcove BeaconCMS構成に追加するために必要になることに注意してください。</aside>
+
+                    </li>
+                    <li><p>[ <strong>購入タイプ</strong> ] で、チャネル内製品の購入者に請求される方法に基づいて、サブスクリプションの種類を選択します。この例では、<strong>毎月のサブスクリプション</strong>。</p>
+                    <aside class="bcls-aside bcls-aside--information">Rokuのサブスクリプション間隔は他のストアとは異なることに注意してください。詳細については、<a href="https://beacon.support.brightcove.com/using-brightcove-beacon/using-subscription-package.html#Subscription_interval_support">サブスクリプション間隔のサポート</a>サブスクリプションパッケージの使用ドキュメントのセクション</aside>
+                    </li>
+                    <li>[ <strong>価格範囲</strong> ] オプションでは、チャネル内製品の価格に基づいて価格帯を選択します。</li>
+                </ol>
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" src="/assets/images/creating-your-apps/roku/setting-in-channel-products/9product-name.png" alt="" width="" height="" />
+                </figure>
+            </li>
+
+            <li>の中に<strong>トライアルとオファー</strong>セクションでは、チャネル内の製品戦略に応じて、選択できます<strong>無料トライアル</strong>に数値の期間を入力します<strong>試用期間</strong>フィールドを選択して選択します<strong>日々</strong>また<strong>月</strong>提出された時から。
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" src="/assets/images/creating-your-apps/roku/setting-in-channel-products/free-trial.png" alt="" width="" height="" />
+                </figure>
+            </li>
+
+            <li>ページの下部に移動し、[ <strong> Cleared for sale </strong> ] チェックボックスをオンにし、[ <strong>保存</strong> ] ボタンをクリックします。
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" src="/assets/images/creating-your-apps/roku/setting-in-channel-products/create-button.png" alt="" width="400" height="400" />
+                </figure>
+            </li>
+            <li>作成後、[ <strong>マイチャネル内製品の管理] ページに製品が表示されていることを確認します</strong>。
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" src="/assets/images/creating-your-apps/roku/setting-in-channel-products/inchannel-product.png" alt="" width="" height="" />
+                </figure>
+                <aside class="bcls-aside bcls-aside--information">提供するサブスクリプションのタイプに基づいて、追加のチャネル内製品をいくつでも作成できます。例：毎年または毎月。</aside>
+            </li>
+    </section>
+    <section>
+        <h2 id="associate-product">チャネル内製品を Brightcove Beacon のチャンネルに関連付ける</h2>
+
+        <p>チャネル内製品が作成されたら、Brightcove Beacon プラットフォームにアクセスして、新しいチャネル内製品をチャネルに関連付けます。</p>
+        <ol class="bcls-tasklist-restart">
+            <li>トップメニューで [ <strong>コマース</strong> ] タブをクリックします。
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" src="/assets/images/creating-your-apps/roku/setting-in-channel-products/beacon-commerce-tab.png" alt="" width="" height="" />
+                </figure>
+            </li>
+            <li>左側のメニューから、[ <strong>パッケージ</strong> ] オプションを選択します。</li>
+            <li>パッケージをクリックします。</li>
+            <li>[ <strong>パッケージ</strong> ] タブで、[ <strong>価格の詳細</strong> ] セクションに移動します。
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" src="/assets/images/creating-your-apps/roku/setting-in-channel-products/price-details.png" alt="" width="" height="" />
+                </figure>
+            </li>
+            <li>[ <strong>価格</strong> ] フィールドに、チャネル内製品の価格を入力します。</li>
+            <li>[ <strong>通貨</strong> ] フィールドで、通貨の種類を選択します。</li>
+            <li><strong>Roku ストア ID </strong>に、Roku 開発者プラットフォームで作成したチャネル内製品の識別子 ID を入力します。 </li>
+            <li>ページの下部に移動し、[ <strong>パッケージの編集</strong> ] ボタンをクリックして、変更を保存します。
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" src="/assets/images/creating-your-apps/roku/setting-in-channel-products/edit-button.png" alt="" width="300" height="300" />
+                </figure>
+            </li>
+        </ol>
+
+
+    </section>
+</article>

@@ -1,0 +1,265 @@
+---
+title:  Beacon チャネルの作成
+description: 'このトピックでは、BrightcoveBeaconの[チャネル]タブを使用してチャネルを作成する方法を学習します。'
+parent: Brightcove Beacon の使用
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+    <summary>{{ page.description }}</summary>
+
+    <section class="bcls-section">
+        <h2 id="overview">説明</h2>
+        <p>チャンネルは、通常のTVチャンネルと同じように、24時間年中無休のライブイベントをストリーミングするために作成されます。チャンネルのコンテンツは、チャンネルが利用可能である限りブロードキャストされる一連のVODを介して、またはライブイベントを直接送信することによって生成できます。ライブイベントの作成方法の詳細については、次のWebサイトをご覧ください。<a href="https://beacon.support.brightcove.com/using-brightcove-beacon/streaming-live-event.html#Live" target="_blank"> Brightcove Beacon Live Documentation</a>。</p>
+				<p>従来の Beacon チャネルに加えて、<a href="/using-brightcove-beacon/cloud-playout/cloud-playout-overview.html">クラウドプレイアウトチャネル</a>チャンネルにコンテンツを提供します。Cloud Playoutチャネルの主な利点は、BrightcoveがEPGを生成することです。そのためにサードパーティのサービスは必要ありません。</p>
+
+    </section>
+
+    <section class="bcls-section">
+        <h2 id="basic-data">基礎データセクション</h2>
+        <p>Brightcove Beaconでチャネルを作成するには、次の手順に従います。</p>
+        <ol class="bcls-tasklist">
+            <li>Brightcove Beacon にログインします。</li>
+            <li>上部のナビゲーションで、<strong>チャンネル</strong>。</li>
+            <li>クリック<strong>新しいチャンネルを追加する</strong>ボタン。
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" src="/assets/images/using-bcb/creating-channels/1-add-new-channel.png" alt="" width="" height="" />
+                </figure>
+            </li>
+            <li>の中に<strong>基本データ</strong>タブ、定義<strong>名前</strong>あなたのチャンネルのために。
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" src="/assets/images/using-bcb/creating-channels/2-basic-data.png" alt="" width="" height="" />
+                </figure>
+            </li>
+						<li>
+							 Beacon チャネルのソースとしてCloudPlayoutチャネルを使用している場合は、CloudPlayoutチャネルIDを入力します。
+							<figure class="bcls-figure">
+								<img class="bcls-image" src="/assets/images/cloud-playout/enter-cloud-playout-channel-id.png" alt="Enter Cloud Playout Channel ID">
+								<figcaption class="bcls-caption--image">クラウドプレイアウトチャネルIDを入力します</figcaption>
+							</figure>
+							<p>Cloud PlayoutチャネルIDを見つけるには、を参照してください。<a href="/using-brightcove-beacon/cloud-playout/cloud-playout-stream-vod.html#Get_information_for_the_Beacon_Channel"> Beacon チャネルの情報を取得する</a>。</p>
+						</li>
+            <li>の中に<strong>コンテンツのレーティング</strong>ドロップダウンメニューで、チャンネルがストリーミングされる国のコンテンツレーティングシステムに基づいて、チャンネルのコンテンツレーティングを選択します。例の画像では、米国向けです<strong>TV-Y</strong>。
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" src="/assets/images/using-bcb/creating-channels/2.2-basic-data-options.png" alt="" width="" height="" />
+                </figure>
+            </li>
+            <li>の中に<strong>ジャンル詳細</strong>セクションをクリックし、<strong>ジャンル</strong>チャンネルのジャンルを選択するためのドロップダウンメニュー。(例:ホラー、ドラマなど）</li>
+            <li>チャンネルに適したジャンルが見つからない場合は、[]をクリックして追加のジャンルを作成できます。<strong>ジャンルを作成する</strong>ボタン。</li>
+            <aside class="bcls-aside bcls-aside--information">NS <strong>サブジャンル</strong>ドロップダウンメニューは、現時点では機能していません。</aside>
+        </ol>
+
+    </section>
+
+    <section class="bcls-section">
+        <h2 id="textual-data">テキストデータ</h2>
+        <p>ザ・<strong>テキストデータ</strong>セクションでは、チャンネルに表示可能なテキストを追加できます。</p>
+        <ol class="bcls-tasklist-restart">
+            <li>[ <strong>テキストデータ</strong> ] タブを選択します。
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" src="/assets/images/using-bcb/creating-channels/3-textual-data.png" alt="" width="" height="" />
+                </figure>
+            </li>
+            <li>の中に<strong>題名</strong>フィールドで、チャンネルのタイトルを定義します。</li>
+            <li>の中に<strong>説明</strong>フィールドに、チャンネルの説明を定義します。</li>
+            <li>の中に<strong>あらすじ</strong>フィールドに、チャンネルの概要を定義します。
+            </li>
+            <aside class="bcls-aside bcls-aside--information">あなたは追加することができます<strong>テキストデータ</strong>チャンネルで使用するすべての異なる言語のセクション。</aside>
+        </ol>
+
+
+    </section>
+
+    <section class="bcls-section">
+        <h2 id="non-textual-data">テキスト以外のデータ</h2>
+        <p>ザ・<strong>非テキストデータ</strong>セクションでは、チャンネルのポートレート画像とランドスケープ画像を追加できます。ポートレートとランドスケープの画像を提供します。画像が次の要件を満たしていることを確認してください。
+            <table class="bcls-table">
+                <thead class="bcls-table__head">
+                    <tr>
+                        <th>イメージ</th>
+                        <th>要件</th>
+                    </tr>
+                </thead>
+                <tbody class="bcls-table__body">
+                    <tr>
+                        <td>ポートレートポスター</td>
+                        <td>
+                            ポスター画像 (2:3)
+                            <table>
+                                <tr>
+                                    <td>最小構成</td>
+                                    <td>幅:1000px</td>
+                                    <td>高さ:563px</td>
+                                </tr>
+                                <tr>
+                                    <td>[最大]</td>
+                                    <td>幅:4000px</td>
+                                    <td>高さ:2250px</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>風景ポスター</td>
+                        <td>
+                            風景画像 (16:9):
+                            <table>
+                                <tr>
+                                    <td>最小構成</td>
+                                    <td>幅:1000px</td>
+                                    <td>高さ:563px</td>
+                                </tr>
+                                <tr>
+                                    <td>[最大]</td>
+                                    <td>幅:4000px</td>
+                                    <td>高さ:2250px</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </p>
+        <ol class="bcls-tasklist-restart">
+            <li>を選択<strong>非テキストデータ</strong>タブ。</li>
+            <li>追加する<strong>肖像画のポスター</strong>ボックスセクションに画像をドラッグアンドドロップして、チャンネルの画像を表示します。
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" src="/assets/images/using-bcb/creating-channels/4-non-textual-data.png" alt="" width="" height="" />
+                </figure>
+            </li>
+            <li>追加する<strong>風景ポスター</strong>ボックスセクションに画像をドラッグアンドドロップして、チャンネルの画像を表示します。</li>
+        </ol>
+        <aside class="bcls-aside bcls-aside--information">目的の言語タブを選択するだけで、チャンネルで使用する言語ごとに異なるポートレートとランドスケープの画像セットを追加できます。
+    </section>
+    <section class="bcls-section">
+        <h2 id="tags">タグ</h2>
+        <p>現時点では、[ <strong>タグ</strong> ] タブは機能しません。</p>
+
+    </section>
+
+    <section class="bcls-section">
+        <h2 id="Metadata">メタデータ</h2>
+        <p>ザ・<strong>メタデータ</strong>現在、タブは機能していません。</p>
+
+    </section>
+
+    <section class="bcls-section">
+        <h2 id="Streams">ストリーム</h2>
+        <p>ザ・<strong>ストリーム</strong>セクションでは、再生URLのオプションと権限を設定できます。</p>
+        <ol class="bcls-tasklist-restart">
+            <li>を選択<strong>ストリーム</strong>タブ。
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" src="/assets/images/using-bcb/creating-channels/5-streams.png" alt="" width="" height="" />
+                </figure>
+            </li>
+            <li><strong>プロバイダを選択します</strong>。ほとんどの場合、Brightcove Video Cloud アカウントを参照するプロバイダーは 1 つだけです。</li>
+            <li>[ <strong>新しいストリームを追加</strong> ] ボタンをクリックします。</li>
+            <li>の中に<strong>ストリーミングビデオID</strong>フィールドに、VideoCloudライブイベントからビデオIDを貼り付けます。 Beacon チャネルのソースとしてクラウドプレイアウトチャネルを使用している場合は、を参照してください。<a href="/using-brightcove-beacon/cloud-playout/cloud-playout-stream-vod.html#Get_information_for_the_Beacon_Channel"> Beacon チャネルの情報を取得します。</a>
+            </li>
+            <li>の中に<strong>公開するデバイス</strong>セクションで、公開するデバイスを追加します。[ <strong> Select/Unselect All Devices </strong> ] を選択して、使用可能なデバイスのリストを表示します。 </li>
+            <li>の中に<strong>ストリームタイプ</strong>選択する<strong>住む</strong>。</li>
+            <li>[ <strong> DRM タイプ] と [</strong><strong>ストリーム形式</strong> ] の値を変更する必要はありません。</li>
+
+        </ol>
+
+    </section>
+
+    <section class="bcls-section">
+        <h2 id="Rights_and_Scheduling">権利とスケジュール</h2>
+        <p>
+            [ <strong>権利とスケジュール</strong> ] セクションでは、公開ステータスと可用性を設定します。
+        </p>
+        <ol class="bcls-tasklist-restart">
+            <li>
+                <p>[ <strong>権限とスケジュール</strong> ] タブを選択します。</p>
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" src="/assets/images/using-bcb/creating-channels/6-rights-schedualing.png" alt="" width="" height="" />
+                </figure>
+            </li>
+            <li>
+                必ず<strong>状態</strong>に設定されています<strong>公開</strong>あなたのチャンネルのために。
+            </li>
+            <li>
+                「<strong>可用性の詳細</strong>」については、次のガイドを使用して情報を入力します。
+                <table class="bcls-table">
+                    <thead class="bcls-table__head">
+                        <tr>
+                            <th>フィールド</th>
+                            <th>必須</th>
+                            <th>注</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bcls-table__body">
+                        <tr>
+                            <td>権利タイプ</td>
+                            <td>はい</td>
+                            <td>収益化モデルに応じて選択します。
+                                <ul>
+                                    <li><strong>自由</strong></li>
+                                    <li><strong>広告-AVOD</strong>：広告で収益化されたチャンネルの場合。</li>
+                                    <li><strong>サブスクリプション-SVOD</strong>：サブスクリプションで収益化されたチャンネルの場合。</li>
+
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>開始時刻</td>
+                            <td>はい</td>
+                            <td>チャンネルの開始時間をスケジュールします。</td>
+                        </tr>
+                        <tr>
+                            <td>終了時刻</td>
+                            <td>はい</td>
+                            <td>チャンネルの終了時間をスケジュールします。</td>
+                        </tr>
+                        <tr>
+                            <td>最大ストリーム数</td>
+                            <td>該当なし</td>
+                            <td>現時点では機能しません。</td>
+                        </tr>
+                        <tr>
+                            <td>公開するデバイス</td>
+                            <td>はい</td>
+                            <td>
+                                公開するデバイスを追加します。[ <strong> Select/Select All Devices] を選択して</strong>、使用可能なデバイスのリストを表示します。
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>許可された場所</td>
+                            <td>はい</td>
+                            <td>
+                                コンテンツをストリーミングする場所を選択します。
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>拒否された場所</td>
+                            <td>いいえ</td>
+                            <td>
+                                コンテンツをストリーミングしない場所を選択します。
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br />
+                <aside class="bcls-aside bcls-aside--tip">地理的な場所を追加または編集するには、に移動します<strong>設定</strong>その後<strong>場所</strong>。</aside>
+            </li>
+            <li>
+                必ずクリックしてください<strong>新しいチャネルを作成する</strong>作業を保存するためのボタン。
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" src="/assets/images/using-bcb/creating-channels/7-create-button.png" alt="" width="" height="" />
+                </figure>
+            </li>
+        </ol>
+    </section>
+
+    <section class="bcls-section">
+        <h2 id="Add-Channel-to-EPG">チャンネルを電子番組ガイド（EPG）に追加する</h2>
+
+        <p>チャンネルが作成されたら、最後のステップはそれをBrightcove BeaconEPGスケジュールに追加することです。これを行う方法については、次のWebサイトをご覧ください。<a href="https://beacon.support.brightcove.com/using-brightcove-beacon/electronic-program-guides.html" target="_blank">電子番組ガイド（EPG）の作成</a>ドキュメンテーション。 </p>
+
+				<aside class="bcls-aside bcls-aside--information"> Beacon チャネルのソースとしてクラウドプレイアウトチャネルを使用している場合、BrightcoveがEPGを作成するため、これ以上のアクションは必要ありません。</aside>
+
+
+
+    </section>
+
+</article>

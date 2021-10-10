@@ -1,0 +1,79 @@
+---
+title: Brightcoveシステムステータスページの表示
+description: 'このトピックでは、Brightcoveサービスおよびアプリケーションの更新について、Brightcoveシステムステータスページを表示します。'
+parent: Support 
+---
+
+<!-- 
+  This content appears on all sites!
+  
+  If you update in one place, you MUST update it in all!
+ -->
+
+ <h1>{{ page.title }}</h1>
+ <article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  <section class="bcls-section">
+    <p>Brightcoveは、すべての Brightcove サービスとアプリケーションのステータスを継続的に監視します。サービスに何らかの中断があると、システムステータスページに表示されます。本ページには、予定されているメンテナンス通知もすべて掲載されます。</p>
+    <p>システムステータスページにアクセスするには、次のWebサイトにアクセスしてください。<a href="https://status.brightcove.com"> https://status.brightcove.com</a>または、ナビゲーションヘッダーから、サポートアイコンをクリックします（<img class="bcls-image--no-border" alt="" src="https://general.support.brightcove.com/assets/images/support/question-icon.png" />） その後&nbsp;<strong>システムステータス</strong>。</p>
+    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="https://general.support.brightcove.com/assets/images/support/system-status.png" /></figure>
+    <p>投稿されたすべての通知には、以下の情報が含まれます。</p>
+    <ul>
+      <li>インシデントステータス
+        <ul>
+          <li>運用可能 (緑)</li>
+          <li>通知 (青-システムは現在動作中ですが、遅延または断続的な停止の影響を受ける)</li>
+          <li>部分的なサービス中断 (黄色)</li>
+          <li>フルサービスの中断 (赤)</li>
+        </ul>
+      </li>
+      <li>コンポーネント － 影響を受けるサービスまたは領域</li>
+      <li>場所
+        <ul>
+          <li>アジア・太平洋</li>
+          <li>アメリカ</li>
+          <li>エメア</li>
+          <li>日本</li>
+        </ul>
+      </li>
+      <li>現在の状態とステータス。状態には以下があります。
+        <ul>
+          <li>調査中-エンジニアが問題を調査中</li>
+          <li>特定-エンジニアが問題を特定し、修正を検討している</li>
+          <li>モニタリング-問題の解決とエンジニアリング監視により、すべてが正常であることを確認する</li>
+          <li>解決済み-問題が解決しました</li>
+        </ul>
+      </li>
+    </ul>
+    <p>投稿されたメッセージはすべて英語で、使用時間は東部標準時 (GMT-5) です。</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="history">システム状態の履歴を表示する</h2>
+    <p>システムステータスの履歴を表示するには、ページ上部の[<strong>履歴</strong>]リンクをクリックします。</p>
+    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="https://general.support.brightcove.com/assets/images/support/system-status-history.png" /></figure>
+  </section>
+  <section class="bcls-section">
+    <h2 id="subscribe">システム状態の変更を購読する</h2>
+    <p>サインアップして、システムステータスが変更されたときに通知を受け取ることができます。このセクションの構成は次のとおりです。</p>
+    <ul>
+      <li><a href="#email">メールを購読中</a></li>
+      <li><a href="#webhook">webhookを購読中</a></li>
+      <li><a href="#manage">サブスクリプションの管理</a></li>
+    </ul>
+    <h3 id="email">メールを購読中</h3>
+    <p>メールで通知を受信するには、[ <strong>購読</strong> ] ボタンをクリックし、メールアドレスを入力して [ <strong>購読</strong> ] をクリックします。</p>
+    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="https://general.support.brightcove.com/assets/images/support/system-status-subscribe.png" /></figure>
+    <h3 id="webhook">webhookを購読中</h3>
+    <p>ウェブフックは、HTTP POSTで作成された定義されたコールバックです。ステータスの更新がある場合に、コールバックが JSON オブジェクトをポストする URL を指定します。</p>
+    <p>システムステータスが変更されたときに通知を受けるようにサインアップするには、[ <strong>購読</strong> ] ボタンを選択します。次に、電子メールアドレスとともに JSON ペイロードを受信する URL を入力します。</p>
+    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="webhook subscribe" src="https://general.support.brightcove.com/assets/images/support/system-status-webhook-subscribe.png" /></figure>
+    <p>システムステータスの変更が送信されると、Webhook アドレスは次のような JSON オブジェクトを受け取ります。</p>
+    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="webhook json" src="https://general.support.brightcove.com/assets/images/support/system-status-webhook-json.png" /></figure>
+    <h3 id="manage">サブスクリプションの管理</h3>
+    <p>登録すると、「購読の管理」ページへのリンクを記載した電子メールが送られてきます。このページで、お客様の購読について管理できます。通知の受信を希望するコンポーネント/製品/リージョンを選択できます。項目を選択し、[<strong>購読の保存</strong>]をクリックします。</p>
+    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="https://general.support.brightcove.com/assets/images/support/system-status-manage-sub.png" /></figure>
+    <p>購読を解除するには、[サブスクリプションの管理] ページの下部にある [ <strong>登録解除</strong> ] リンクをクリックします。</p>
+		<h3>Slackで通知を受け取る</h3>
+		<p>Slackには、ステータスの更新を接続するために使用できる独自のWebhookシステムがあります。を参照してください<a href="https://api.slack.com/messaging/webhooks">詳細については、Slackのドキュメントをご覧ください。</a></p>
+  </section>
+</article>

@@ -1,0 +1,183 @@
+---
+title: サブスクリプションパッケージの作成
+parent: 収益化
+---
+
+
+<article class="bcls-article">
+  <h1>サブスクリプションパッケージの作成</h1>
+  <summary>このトピックでは、を使用してビデオサブスクリプションパッケージを構成する方法を学習します。<strong>コマース</strong>Brightcove Beacon のタブ。サブスクリプションパッケージは、SVOD (サブスクリプションビデオオンデマンド) の収益化を実装します。サブスクリプションパッケージをビデオに適用する方法については、<a href="/monetization/using-subscription-package.html">サブスクリプションパッケージの使用</a>資料。
+  </summary>
+  <section class="bcls-section">
+    <h2 id="Overview">概要</h2>
+    <p>
+      サブスクリプションパッケージは、特定のビデオセットをアプリで購入する方法を定義します' 顧客。パッケージを作成するときに、たとえば、次のように構成できます。
+    </p>
+    <ul>
+      <li>請求頻度</li>
+      <li>広告がサポートされているかどうか、および使用する広告構成を設定します</li>
+      <li>お支払い方法</li>
+      <li>パッケージを使用してユーザーが同時に再生できるストリームの最大数</li>
+      <li>パッケージを購入できる開始日と終了日</li>
+      <li>パッケージ内のビデオを表示するために許可されたデバイスと地理的位置</li>
+    </ul>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Steps to create a package">パッケージを作成する手順</h2>
+    <p>次の手順を実行して、新しいパッケージを作成します。</p>
+    <ol class="bcls-tasklist">
+      <li>
+        Brightcove Beaconで、<strong>コマース</strong>タブ、必ず<strong>パッケージ</strong>左側のナビゲーションでが選択されている場合は、<strong>新しいパッケージを追加する</strong>。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/using-bcb/creating-subscription-package/initial-menu-selections.png" alt="initial menu selections" />
+        </figure>
+      </li>
+      <li>
+        に<strong>パッケージ</strong>タブ（下のスクリーンショット）で、以下を完了します。
+        <ul>
+          <li>
+            <strong>名前</strong> :ビデオのVideoCloudカスタムフィールドで使用されるパッケージの名前。
+          </li>
+          <li>
+            <strong>請求頻度</strong>：このパッケージの請求頻度を選択してください。
+          </li>
+          <li>
+            <strong>試用期間</strong>：このパッケージの試用期間。入る<strong>0</strong>試用期間なし。
+          </li>
+          <li>
+            <strong>状態</strong>：パッケージを公開して使用できるようにするかどうかを選択します。少なくとも1つの支払い方法が選択されるまで、パッケージを公開できないことに注意してください。
+          </li>
+          <li>
+            <strong>広告</strong>：このパッケージで広告を使用するかどうかを選択します。
+          </li>
+          <li>
+            <strong>広告プロバイダー</strong>：前の手順で広告を使用することを選択した場合は、広告プロバイダーを選択してください。このドロップダウンには、にリストされているアドバタイズメント構成が表示されます。<strong>広告</strong>Brightcove Beacon のセクション。
+            <!-- See the <a href="/using-brightcove-beacon/advertisement.html"> Advertisement </a> document for details on advertisement configurations. -->
+          </li>
+          <li>
+            <strong>使用するお支払い方法</strong>：このパッケージで使用する支払い方法を選択します。選択した各方法について、支払い方法のリストの下にセクションが開きます。これは、選択した方法ごとに完了する必要があります。以下のスクリーンショットは<strong>ストライプ（黄色）</strong>そして<strong>アップルストア（赤）</strong>が選択されています。
+            <figure class="bcls-figure">
+              <img class="bcls-image" src="/assets/images/using-bcb/creating-subscription-package/payment-method-details.png" alt="payment method details" />
+            </figure>
+          </li>
+        </ul>
+      </li>
+      <li>
+        [ <strong> Create Package </strong> ] ボタンをクリックして、現在のパッケージ設定を保存します。
+      </li>
+      <li>
+        に<strong>テキストデータ</strong>タブで、以下を完了します。 <ul>
+          <li><strong>パック名</strong>：ユーザーに表示される名前。</li>
+          <li>
+            <strong>見出し</strong>：たとえば、ユーザーに表示される見出し <em>ホリデースペシャル！</em> 。
+          </li>
+        </ul>
+      </li>
+      <li>
+        [ <strong> Create Package </strong> ] ボタンをクリックして、現在のパッケージ設定を保存します。
+      </li>
+      <li>
+        に<strong>非テキストデータ</strong>タブで、パッケージ名の横に使用する画像を入力します。
+        <!-- The size of the image should be !!!!!!!!!!!!!!!!. -->
+      </li>
+      <li>
+        [ <strong> Create Package </strong> ] ボタンをクリックして、現在のパッケージ設定を保存します。
+      </li>
+      <li>
+        ザ・<strong>コンテンツ</strong>現在、タブは使用できません。
+      </li>
+      <li>
+        に<strong>ストリーム</strong>タブで、以下を完了します。 <ul>
+          <li>
+            <strong>最大ストリーム</strong>：同時にストリーミングできる接続デバイスの最大数。
+          </li>
+          <li>
+            <strong>最大デバイス</strong>：アクティブな接続を持つことができる接続済みデバイスの最大数。<aside class="bcls-aside bcls-aside--information">上記の2つの設定もグローバルに設定されているため、このパッケージのグローバル設定を上書きする場合にのみ、これらの設定を使用してください。</aside>
+          </li>
+          <li>
+            <strong>高度なストリーム</strong>：これをに設定します<strong>はい</strong>このパッケージが設定する権利をカスタマイズしたい場合。利用可能な変更を次のスクリーンショットに示します。
+            <figure class="bcls-figure">
+              <img class="bcls-image" src="/assets/images/using-bcb/creating-subscription-package/advanced-stream-rights.png" alt="advanced stream rights" />
+            </figure>
+          </li>
+        </ul>
+      </li>
+      <li>
+        クリック<strong>新しい権利を追加する</strong>新しく構成され、カスタマイズされた権限を保存するためのボタン。
+      </li>
+      <li>
+        [ <strong> Create Package </strong> ] ボタンをクリックして、現在のパッケージ設定を保存します。
+      </li>
+    </ol>
+    <p>パッケージの作成は以上です。</p>
+  </section>
+  <!-- <section class="bcls-section"> <h2 id="Using_the_package_in_Video_Cloud"> Using the package in Video Cloud </h2> <p> Although the package is created in Brightcove Beacon, it is not applied to content in there. To use the package, and apply it to video content you use Video Cloud custom fields. </p> </section> -->
+  <section class="bcls-section">
+    <h2 id="Creating_a_Stripe_Coupon">ストライプクーポンの作成</h2>
+    <p>
+      クーポンを作成して、パッケージの購入時に適用できる固定金銭割引またはパーセンテージ割引のいずれかの割引を提供できます。
+    </p>
+    <ol class="bcls-tasklist-restart">
+      <li>
+        Brightcove Beaconで、<strong>コマース</strong>タブをクリックし、をクリックします<strong>Stripeによるクーポン</strong>最後にクリックします<strong>新しいバウチャーを追加する</strong>。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/using-bcb/creating-subscription-package/coupon-menu-selection.png" alt="coupon menu selections" />
+        </figure>
+      </li>
+      <li>
+        に<strong>新しいクーポンを作成する</strong>フォーム（下のスクリーンショット）で、以下に記入します。
+        <ul>
+          <li>
+            <strong>Id</strong>：視聴者がクーポンを使用するためにBrightcove Beacon アプリに入力するコード
+          </li>
+          <li><strong>名前</strong> :請求書に表示できるクーポンのわかりやすい名前</li>
+          <li>
+            <strong>デュレーション</strong>：から選ぶ<strong>一度</strong>、<strong>永遠に</strong>また<strong>繰り返し</strong> ;<br /> もしも<strong>繰り返し</strong>を選択し、繰り返し使用できる月数を設定します。
+          </li>
+          <li>
+            にとって<strong>割引タイプ</strong>次のいずれかを選択します。
+            <ul>
+              <li>
+                <strong>金額</strong>：クーポンの値と通貨を入力します
+              </li>
+              <li>
+                <strong>パーセンテージ</strong>：クーポンの割引率を入力してください
+              </li>
+            </ul>
+            <p>
+              例：割引が3か月無料の場合は、<strong>デュレーション</strong>に<strong>繰り返し</strong> 3ヶ月で設定します<strong>割引タイプ</strong>と<strong>パーセンテージ</strong> 100％の </p>
+          </li>
+          <li>
+            <strong>制限日（UTC）</strong>：クーポンを使用できる最後の日付を選択します
+          </li>
+          <li>
+            <strong>最大償還</strong>：クーポンの最大償還数を入力します。たとえば、50人の顧客だけがクーポンを引き換えることができます
+          </li>
+          <li>
+            <strong>パッケージを選択</strong>：クーポンを適用できるパッケージを選択します。パッケージを選択しない場合、クーポンはすべてのパッケージに適用できます<br />
+            例：クーポンは、年間サブスクリプションを購入した場合にのみ有効です
+          </li>
+        </ul>
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/using-bcb/creating-subscription-package/new-coupon-form.png" alt="coupon form" />
+        </figure>
+      </li>
+      <li>
+        <p>
+          必ずクリックしてください<strong>保存する</strong>新しいクーポンを保存するボタン。
+        </p>
+      </li>
+    </ol>
+    <p>
+      Brightcove Beaconアプリでは、パッケージの購入が行われると、視聴者はクーポンを入力できるようになります<strong>Id</strong>： </p>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/using-bcb/creating-subscription-package/use-coupon.png" alt="use coupon form" />
+    </figure>
+    <p>
+      または、Stripeアカウントで直接クーポンを作成し、BrightcoveBeaconで使用することもできます。
+    </p>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/using-bcb/creating-subscription-package/stripe-coupon-form.png" alt="use coupon form" />
+    </figure>
+  </section>
+</article>

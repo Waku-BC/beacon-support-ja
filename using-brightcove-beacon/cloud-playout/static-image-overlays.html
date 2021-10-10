@@ -1,0 +1,189 @@
+---
+title: 静止画像オーバーレイ
+description: 'このトピックでは、静的画像オーバーレイをクラウドプレイアウトチャネルに追加する方法について説明します。'
+parent: Cloud Playout
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  <section class="bcls-section">
+    <h2 id="Introduction">はじめに</h2>
+    <p>静止画像オーバーレイ機能を使用して、CloudPlayoutチャネルのビデオに静止画像をスーパーインポーズできます。静止画とは、動きのない静止画です。画像を準備してCloudPlayoutの外部に保存し、一般にアクセス可能な認証されていないhttp / httpsURLとして提供します。</p>
+    <h3> 例</h3>
+    <ul>
+      <li>チャネルの実行中の特定の時間に静止画像オーバーレイを挿入し、それを10秒間実行するとします。ビデオフレームの右下隅に画像オーバーレイを表示する必要があります。画像オーバーレイの不透明度を50％にする必要があります。</li>
+      <li>2つの静止画像オーバーレイを挿入して、両方が同時にまたはオーバーラップしてビデオフレームに表示されるようにします。画像オーバーレイの表示をわずかに重ねて、ある画像オーバーレイが1つの場所に表示され、その画像オーバーレイがまだ表示されている間に、別の画像オーバーレイが別の場所に表示されるようにします。</li>
+    </ul>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Implementation">実装</h2>
+    <ul>
+      <li>動画にオーバーレイする画像は、<a href="https://en.wikipedia.org/wiki/Truevision_TGA"> .tga</a>または.pngファイル。</li>
+      <li>
+        新しいサイドメニュー項目を使用して、アカウントの静的オーバーレイ画像を作成および管理します。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/cloud-playout/overlays-menu-item.png" alt="Overlays">
+          <figcaption class="bcls-caption--image">オーバーレイ</figcaption>
+        </figure>
+      </li>
+      <li>
+        次に、オーバーレイ画像をチャネルに関連付けることができます。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/cloud-playout/overlay-associate-with-channel.png" alt="Associate Overlay with Channel">
+          <figcaption class="bcls-caption--image">オーバーレイをチャネルに関連付ける</figcaption>
+        </figure>
+        <br>
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/cloud-playout/overlays-draft-channel.png" alt="Overlays in Draft Channel">
+          <figcaption class="bcls-caption--image">ドラフトチャネルのオーバーレイ</figcaption>
+        </figure>
+        <br>
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/cloud-playout/overlays-for-running-channel.png" alt="Overlays in Running Channel">
+          <figcaption class="bcls-caption--image">実行中のチャネルのオーバーレイ</figcaption>
+        </figure>
+      </li>
+      <li>
+        最大2つまで挿入できます<strong>レイヤー</strong>一度に。各画像は<strong>別のレイヤー</strong>。異なるイメージが同じレイヤーで同じ時間にスケジュールされている場合、またはそれらが任意の時間枠でオーバーラップしている場合、後でプロビジョニングされるイメージは、同じレイヤー上の既存のイメージを削除します。
+          <ul>
+            <li>レイヤーはZ順です。つまり、<strong>レイヤーの値が高いオーバーレイは、レイヤーの値が低いオーバーレイの上に挿入されます</strong>。</li>
+          </ul>
+      </li>
+      <li>オーバーレイを設定して、基になるビデオにすべて同時に表示されるようにする（または表示しない）ことができます。また、オーバーレイを物理的に互いにオーバーラップするように設定することもできます。</li>
+      <li>
+        開始時間と期間を使用して、各画像オーバーレイを構成できます。
+        <ul>
+          <li>期間が設定されている場合、最大期間は24時間です。</li>
+          <li>期間が設定されていない場合、オーバーレイは非アクティブ化されるまで表示され続けます</li>
+          <li>開始時間は未来の時間でなければなりません</li>
+        </ul>
+      </li>
+      <li>不透明度0〜100で構成できます。<strong> 0</strong>透明で<strong>100</strong>完全に不透明です。</li>
+      <li>x / y座標で指定されているように、ビデオフレームに画像オーバーレイを配置できます。デフォルトでは、X、Y座標は0、0（ビデオフレームの左上端）と見なされます。</li>
+      <li>
+        x / y座標で指定されているように、ビデオフレームに画像オーバーレイを配置できます。デフォルトでは、X、Y座標は0、0（<strong>ビデオフレームの左上隅</strong>）：
+        <ul>
+          <li><strong>位置X</strong>：ビデオフレームの左端に対するオーバーレイの左端の位置（ピクセル単位）。配置によってオーバーレイが下にあるビデオの右端を超えて拡張される場合、オーバーレイは右側でトリミングされます。</li>
+          <li><strong>位置Y</strong>：ビデオフレームの上端に対するオーバーレイの上端の位置（ピクセル単位）。配置によってオーバーレイが下にあるビデオの下端を超えて拡張される場合、オーバーレイは下部でトリミングされます。</li>
+        </ul>
+      </li>
+      <li>
+        <strong>サイジング：</strong> NS <strong>オリジナルを使用</strong>オプションを解像度に使用して、提供された画像の元の解像度を使用できます。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/cloud-playout/overlay-use-original-size.png" alt="Use Original Image Size">
+          <figcaption class="bcls-caption--image">元の画像サイズを使用する</figcaption>
+        </figure>
+        <ul>
+          <li>
+            あなたはカスタムを提供することができます<strong>幅</strong>と<strong>身長</strong>ソースビデオに適用する前にシステムが画像を拡大縮小できるようにする解像度の場合：
+            <figure class="bcls-figure">
+              <img class="bcls-image" src="/assets/images/cloud-playout/overlay-custom-width-height.png" alt="Set Width and Height">
+              <figcaption class="bcls-caption--image">幅と高さを設定する</figcaption>
+            </figure>
+          </li>
+          <li>離れる<strong>幅</strong>と<strong>身長</strong>空と<strong>オリジナルを使用</strong>チェックを外すと、システムはチャネルの出力解像度を使用します。例は次のとおりです。モバイルおよびWeb出力はオーバーレイ解像度を720pに設定し、スマートTVプロファイルはオーバーレイ解像度を1080pに設定します。<strong>このオプションの使用はお勧めしません</strong> MP4ソースの解像度と常に一致するとは限らないためです。</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+  <section class="bcls-section">
+    <h2 id="State_transitions">状態遷移</h2>
+    <p>オーバーレイスケジュールの状態遷移</p>
+    <ul>
+      <li>
+        <strong>非活性</strong>
+        <ul>
+          <li>新しく作成されたスケジュール（または）</li> 
+          <li>実行がすでに完了しているスケジュール（または）</li>
+          <li>すでに非アクティブ化されているスケジュール。</li> 
+          <li>開始時刻を変更して、同じまたは更新されたオーバーレイ構成でSCHEDULED状態に戻すことができます。</li>
+          <li>削除-この構成を使用しない場合。</li>
+          <li>構成を変更する場合は変更します。</li>
+        </ul>
+      </li>
+      <li>
+        <strong>スケジュール</strong>
+        <ul>
+          <li>指定された開始時間に開始するようにスケジュールされています。</li> 
+          <li>このスケジュールが不要になった場合は削除してください。</li>
+          <li>構成を変更する場合は変更します。</li> 
+        </ul>
+      </li>
+      <li>
+        <strong>アクティブ</strong>
+        <ul>
+          <li>現在進行中のスケジュール。</li> 
+          <li>オーバーレイを停止する必要がある場合は非アクティブ化します。</li>
+          <li>layerとstart_time以外の構成を変更します。</li> 
+          <li>削除は許可されていません。最初に非アクティブ化する必要があります。</li>
+        </ul>
+      </li>
+    </ul>
+    <aside class="bcls-aside bcls-aside--information language-editable">オーバーレイはいつでも編集できます。しかし<strong>層</strong>と<strong>始まる時間</strong>のために変更することはできません<strong>アクティブ</strong>かぶせる。アクティブなオーバーレイスケジュールで、解像度、x / y座標、不透明度、さらには画像自体を変更することもできます。</aside>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Contextual_Overlay_Launch">コンテキストオーバーレイの起動</h2>
+    <p>アクセスしやすくするために、再生リスト内の特定の動画にオーバーレイを表示する場合は、再生リスト内の動画にマウスを合わせてクリックします。<strong>オーバーレイアイコンを追加</strong>（（ <img src="/assets/images/cloud-playout/overlay-icon.svg" alt="overlay icon"> ）、UIは、選択したビデオの開始時間と継続時間とともに、[オーバーレイの追加]モーダルを起動します。</p>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/cloud-playout/overlay-add-particular-video.png" alt="Contextual Overlay Launch">
+      <figcaption class="bcls-caption--image">コンテキストオーバーレイの起動</figcaption>
+    </figure>
+    <h3>注</h3>
+    <ol>
+      <li>これにより、選択したビデオの開始時間のスケジュールが作成され、ビデオ自体には添付されません。つまり、EPGスケジュールのさまざまな変更により、ビデオが再注文（または）削除（または）開始時刻が変更された場合でも、オーバーレイスケジュールは最初にスケジュールされた開始時刻のままになります。</li>
+      <li>ビデオに関連するこのAddOverlayは、DRAFTまたはSCHEDULED状態のチャネルではなく、実行中のチャネルで使用することをお勧めします。実行中のチャネルは、他の状態のチャネルよりも時間精度が高い（EPGを使用）ためです。</li>
+      <li>実行中のチャンネルでは、このオプションは現在再生中の動画に続くすべての動画で利用できます。</li>
+      <li>このオプションは、SSAIチャネルの広告プレースホルダー動画では使用できません。</li>
+    </ol>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Image_handling">画像処理</h2>
+    <p>画像は、ピクセルごとに基になるソースビデオピクセルにオーバーレイされます。</p>
+    <aside class="bcls-aside bcls-aside--warning language-editable">オーバーレイが下にあるビデオよりも大きい場合、または下にあるビデオのエッジをオーバーランする場合、オーバーレイはソースビデオに完全には適用されません（トリミングされます）。これは、VoDアセットとライブセグメントに適用されます。</aside>
+    <p>以下は、オーバーレイがビデオよりも大きい場合のいくつかの可能な修正/回避策です。</p>
+    <h3>問題のあるケース</h3>
+    <p>次の図は、オーバーレイが大きすぎることを示しています。右下隅に会社のロゴがあるため、非表示になっています。</p>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/cloud-playout/overlay-problem-case.png" alt="Problem Case">
+      <figcaption class="bcls-caption--image">問題のケース</figcaption>
+    </figure>
+    <h4>解決策1</h4>
+    <p>幅と高さのフィールドを使用して、ビデオ画面のサイズに合わせて画像のサイズを変更できます。これの欠点は、画像のサイズを変更すると画質が低下し、ロゴ自体が小さくなることです。</p>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/cloud-playout/overlay-solution-1.png" alt="Solution 1">
+      <figcaption class="bcls-caption--image">解決策1</figcaption>
+    </figure>
+    <h4>解決策2</h4>
+    <p>ロゴを左上隅に移動すると、少なくとも視認性は保証されますが、望ましい配置にならない場合があります。</p>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/cloud-playout/overlay-solution-2.png" alt="Solution 2">
+      <figcaption class="bcls-caption--image">解決策2</figcaption>
+    </figure>
+    <h4>解決策3</h4>
+    <p>NS <strong>理想的なソリューション</strong>ビデオの解像度に正確に一致するようにオーバーレイのサイズを設定することです（そしてチェックします<strong>オリジナルを使用</strong>サイジング用）：</p>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/cloud-playout/overlay-solution-3.png" alt="Solution 3">
+      <figcaption class="bcls-caption--image">解決策3</figcaption>
+    </figure>
+    <h5>注</h5>
+    <ol>
+      <li>個々の出力エンコードを作成する前に、画像がオーバーレイされます（解像度とビデオ品質が異なります）。これは、基になるビデオが特定の出力エンコード用にスケーリングされている場合、画像も同様にスケーリングされることを意味します。</li>
+      <li>オーバーレイ画像はすべての出力に挿入されます。つまり、オーバーレイはCloud PlayoutUIに表示されるプレビュー画像にも表示されます。 </li>
+    </ol>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Related_topics">関連トピック</h2>
+    <ul>
+      <li><a href="/using-brightcove-beacon/cloud-playout/cloud-playout-overview.html">概要:クラウドプレイアウト</a></li>
+      <li><a href="/using-brightcove-beacon/cloud-playout/cloud-playout-stream-vod.html">クラウドプレイアウトチャネルの作成</a></li>
+      <li><a href="/using-brightcove-beacon/cloud-playout/adding-bumpers-to-vod.html">クラウドプレイアウトへのバンパーの追加</a></li>
+      <li><a href="/using-brightcove-beacon/cloud-playout/enabling-server-side-ads.html">クラウドプレイアウトの収益化</a></li>
+      <li><a href="/using-brightcove-beacon/cloud-playout/using-channel-actions.html">チャネルアクションの使用</a></li>
+      <li><a href="/using-brightcove-beacon/cloud-playout/viewing-channel-output-and-analytics.html">チャネル出力と分析の表示</a></li>
+      <li><a href="/using-brightcove-beacon/cloud-playout/generating-channel-embed-code.html">チャネル埋め込みコードの生成</a></li>
+      <li><a href="https://apis.support.brightcove.com/cloud-playout-apis/getting-started/overview-epg-api.html">概要:EPG API</a></li>
+      <li><a href="https://apis.support.brightcove.com/cloud-playout-apis/references/reference-epg.html">EPGAPIリファレンス</a></li>
+      <li><a href="https://apis.support.brightcove.com/cloud-playout-apis/references/reference-channels.html">チャネルAPIリファレンス</a></li>
+    </ul>
+  </section>
+</article>

@@ -1,0 +1,320 @@
+---
+title: '画像とその仕様' 
+description: このトピックでは、Brightcove  Beacon エクスペリエンスに必要な画像について説明します。また、必要な画像サイズ、アスペクト比なども詳細に記載されています。Video Cloudに取り込まれるビデオに必要な画像もあれば、BrightcoveBeaconで使用される画像もあります。
+parent: References
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  <section class="bcls-section">
+    <h2 id="Video_Cloud_images">ビデオクラウド画像</h2>
+    <p>
+      ビデオを Video Cloud に取り込むと、2 つの画像が自動的に作成され、ビデオのプロパティに表示されます。作成された2つの画像は <em>ポスター</em> と <em>サムネイル</em>。イメージは、Studio の [ <strong>イメージ</strong> ] セクションに表示されます。これらのアップロード画像は Brightcove Beacon で使用しますが、適切に機能するためには、デフォルトの取り込みプロファイルを変更する必要があります。次の警告ボックスに表示される手順は、変更を行う方法を示しています。変更を行わないと、アップロードしている縦長の画像はサムネイルのサイズが維持され、Brightcove Beacon アプリでは非常に貧弱に見えます。
+    </p>
+    <aside class="bcls-aside bcls-aside--warning">デフォルトの取り込みプロファイルを変更する必要があります。以下の手順に従います。
+      <ol class="bcls-tasklist">
+        <li>Studioで「<strong>管理者」→「プロファイルの取り込み</strong>」に移動します。</li>
+        <li><strong>デフォルトのアップロードラベルが付いた現在のデフォルトプロファイルのタイトルをクリックします</strong>。
+          <figure class="bcls-figure">
+            <img class="bcls-image" src="/assets/images/references/image-requirements/uploading-default.png" alt="">
+          </figure>
+        </li>
+        <li>[<strong>複製</strong>]ボタンをクリックします。</li>
+        <li><strong>イメージが定義されている場所を特定します</strong>。正確な JSON は、複製したプロファイルによっては、以下に示すものとわずかに異なる場合があります。</li>
+        <li>に示すように、ポスター画像とサムネイル画像の両方の幅と高さを変更します。
+          <h4>古い設定</h4>
+          <pre class="line-numbers"><code class="language-json" translate="No">{
+  "media_type": "image",
+  "format": "jpg",
+  "label": "poster",
+  <span class="bcls-highlight">"width": 1280,
+  "height": 720,</span>
+  "id": "559a8b0ee4b07cbb40be7d22"
+},
+{
+  "media_type": "image",
+  "format": "jpg",
+  "label": "thumbnail",
+  <span class="bcls-highlight">"width": 160,
+  "height": 90,</span>
+  "id": "559a8b0ee4b07cbb40be7d23"
+}</code></pre>
+          <h4>新しい設定</h4>
+          <pre class="line-numbers"><code class="language-json" translate="No">{
+  "media_type": "image",
+  "format": "jpg",
+  "label": "poster",
+  <span class="bcls-highlight">"width": 4000,
+  "height": 2250,</span>
+  "id": "559a8b0ee4b07cbb40be7d22"
+},
+{
+    "media_type": "image",
+    "format": "jpg",
+    "label": "thumbnail",
+    <span class="bcls-highlight">"width": 3000,
+    "height": 2000,</span>
+    "id": "559a8b0ee4b07cbb40be7d23"
+}</code></pre>
+        </li>
+        <li>[<strong>保存</strong>]をクリックします。</li>
+        <li>次に、[ <strong>これを既定のプロファイルにする</strong> ] リンクをクリックします。
+          <figure class="bcls-figure">
+            <img class="bcls-image" src="/assets/images/references/image-requirements/make-my-default.png" alt="">
+          </figure>
+        </li>
+        <li>プロフィールがアップロードのデフォルトとしてラベル付けされていることを確認します。</li>
+      </ol>
+      これで、Video CloudStudioを使用してBrightcove Beacon の画像をアップロードする準備が整いました。</aside>
+    <p>Studio インターフェイスを使用して 2 つのイメージをアップロードします。あなたのビデオを表す画像を決定し、上記の要件を満たす適切なスクリーンショットを撮ります。次に、2 つの画像を Video Cloud にアップロードします。</p>
+    </p>
+    <figure class="bcls-figure"> <img class="bcls-image" src="/assets/images/references/image-requirements/studio-images.png" alt="studio images UI" />
+    </figure>
+    <p>
+      NS <em>ポスター</em> と <em>サムネイル</em> BrightcoveBeaconで使用される画像のプレースホルダーです。
+      <em>Video Cloud Studioに表示される画像の推奨事項に従わないでください！</em> 代わりに、次のガイドラインを使用してください。
+    </p>
+    <table class="bcls-table">
+      <thead class="bcls-table__head">
+        <tr>
+          <th>ポスター</th>
+          <th>サムネイル</th>
+        </tr>
+      </thead>
+      <tbody class="bcls-table__body">
+        <tr>
+          <td>
+            風景画像 (16:9): <table>
+              <tr>
+                <td>最小構成</td>
+                <td>幅:1000px</td>
+                <td>高さ:563px</td>
+              </tr>
+              <tr>
+                <td>[最大]</td>
+                <td>幅:4000px</td>
+                <td>高さ:2250px</td>
+              </tr>
+            </table>
+          </td>
+          <td>
+            ポスター画像 (2:3) <table>
+              <tr>
+                <td>最小構成</td>
+                <td>幅:1000px</td>
+                <td>高さ:1500px</td>
+              </tr>
+              <tr>
+                <td>[最大]</td>
+                <td>幅:2000px</td>
+                <td>高さ:3000px</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <p>スクリーンショットの左側の画像は、ポートレート画像の使用例です。非常にピクセル化された画像がある場合は、デフォルトの取り込みプロファイルを更新する必要があることがわかります。</p>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/references/image-requirements/portrait-used.png" alt="">
+    </figure>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Corporate_logo">コーポレートロゴ</h2>
+    <p>
+      Brightcove Beacon エクスペリエンスで使用するには、企業ロゴを提供する必要があります。画像については、次のガイドラインに従ってください。 </p>
+    <table class="bcls-table">
+      <thead class="bcls-table__head">
+        <tr>
+          <th>仕様</th>
+          <th>値</th>
+        </tr>
+      </thead>
+      <tbody class="bcls-table__body">
+        <tr>
+          <td>[ 形式] </td>
+          <td>png</td>
+        </tr>
+        <tr>
+          <td>アスペクト比</td>
+          <td>1:1</td>
+        </tr>
+        <tr>
+          <td>サイズ</td>
+          <td>1500px 1500px</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Working_in_Brightcove_Beacon">Brightcove Beacon で働く</h2>
+    <p>
+      Brightcove Beacon に情報を入力する際には、<strong>非テキストデータの入力を求められます</strong>。これは、現在作成しているアセットの画像を意味します。これらのイメージは、次の 3 つのグループに分けることができます。
+    </p>
+    <ul>
+      <li>シリーズ/季節</li>
+      <li>ライブイベント</li>
+      <li>チャンネルロゴ</li>
+    </ul>
+    <p>グループの画像の詳細は以下のようになります。</p>
+    <h3>シリーズ/季節</h3>
+    <p>
+      シリーズ/シーズンの場合、ページは次のように表示されます（画像を入力する必要がない<strong>「サムネイル」</strong>の上に赤い<strong>「オプション」</strong>のテキストはありません）。 </p>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/references/image-requirements/four-images-required.png" alt="studio images UI" />
+    </figure>
+    <p>
+      この画面が表示されたら、以下の要件に一致する<strong>ポートレートポスター</strong>、<strong>ランドスケープポスター</strong>、および<strong>ワイドバナー</strong>の<strong>JPEG</strong>画像を提供します。<strong>サムネイルに画像を指定する必要はありません</strong>。指定しない場合、サムネイル画像はポートレートポスターから生成されます。
+    </p>
+    <table class="bcls-table">
+      <thead class="bcls-table__head">
+        <tr>
+          <th>イメージ</th>
+          <th>要件</th>
+        </tr>
+      </thead>
+      <tbody class="bcls-table__body">
+        <tr>
+          <td>ポートレートポスター</td>
+          <td>
+            ポスター画像 (2:3) <table>
+              <tr>
+                <td>最小構成</td>
+                <td>幅:1000px</td>
+                <td>高さ:1500px</td>
+              </tr>
+              <tr>
+                <td>[最大]</td>
+                <td>幅:2000px</td>
+                <td>高さ:3000px</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td>風景ポスター</td>
+          <td>
+            風景画像 (16:9): <table>
+              <tr>
+                <td>最小構成</td>
+                <td>幅:1000px</td>
+                <td>高さ:563px</td>
+              </tr>
+              <tr>
+                <td>[最大]</td>
+                <td>幅:4000px</td>
+                <td>高さ:2250px</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td>ワイドバナー</td>
+          <td>
+            風景画像 (21:9): <table>
+              <tr>
+                <td>最小構成</td>
+                <td>幅:1000px</td>
+                <td>高さ:428px</td>
+              </tr>
+              <tr>
+                <td>[最大]</td>
+                <td>幅:4000px</td>
+                <td>高さ:1714px</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>ライブイベント</h3>
+    <p>
+      ライブイベントの場合、次のようなページが表示されます（画像を提供する必要がない<strong>「サムネイル」</strong>と<strong>「ワイドバナー」</strong>の上に赤い<strong>「オプション」</strong>のテキストが表示されません）。 </p>
+    <figure class="bcls-figure"> <img class="bcls-image" src="/assets/images/references/image-requirements/live-event-images.png" alt="studio images UI" />
+    </figure>
+    <p>
+      この画面が表示されたら、以下の要件に一致する<strong>ポートレートポスター</strong>と<strong>ランドスケープポスター</strong>の<strong>JPEG</strong>画像を提供します。<strong>サムネイル</strong>および<strong>ワイドバナー</strong>DOの画像を提供する必要はありません。指定しない場合、サムネイル画像はポートレートポスター、ワイドバナーはランドスケープポスターから生成されます。
+    </p>
+    <table class="bcls-table">
+      <thead class="bcls-table__head">
+        <tr>
+          <th>イメージ</th>
+          <th>要件</th>
+        </tr>
+      </thead>
+      <tbody class="bcls-table__body">
+        <tr>
+          <td>ポートレートポスター</td>
+          <td>
+            ポスター画像 (2:3) <table>
+              <tr>
+                <td>最小構成</td>
+                <td>幅:1000px</td>
+                <td>高さ:1500px</td>
+              </tr>
+              <tr>
+                <td>[最大]</td>
+                <td>幅:2000px</td>
+                <td>高さ:3000px</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td>風景ポスター</td>
+          <td>
+            風景画像 (16:9): <table>
+              <tr>
+                <td>最小構成</td>
+                <td>幅:1000px</td>
+                <td>高さ:563px</td>
+              </tr>
+              <tr>
+                <td>[最大]</td>
+                <td>幅:4000px</td>
+                <td>高さ:2250px</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>チャンネルロゴ</h3>
+    <p>
+      チャンネルロゴ画像は、サムネールの背景とイメージ（透明の有無にかかわらず）で構成され、どちらもアスペクト比 16:9 です。次の図は、チャネルロゴの作成方法を示しています。 </p>
+    <figure class="bcls-figure"> <img class="bcls-image" src="/assets/images/references/image-requirements/channel-logo.png" alt="channel logo creation" />
+    </figure>
+    <p>
+      これは、<strong>新しいチャンネルを作成するときに表示される非テキストデータフォームです</strong>。
+    </p>
+    <figure class="bcls-figure"> <img class="bcls-image" src="/assets/images/references/image-requirements/channel-logo-form.png" alt="channel logo creation" />
+    </figure>
+    <p>
+      サイズ要件は表に記載されています。
+    </p>
+    <table class="bcls-table">
+      <thead class="bcls-table__head">
+        <tr>
+          <th>イメージ</th>
+          <th>要件</th>
+        </tr>
+      </thead>
+      <tbody class="bcls-table__body">
+        <tr>
+          <td>チャンネルロゴ画像</td>
+          <td>
+            風景画像 (16:9): <table>
+              <tr>
+                <td>必要なサイズ</td>
+                <td>幅:1000px</td>
+                <td>高さ:563px</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</article>

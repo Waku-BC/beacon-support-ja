@@ -1,0 +1,41 @@
+---
+title: 'Brightcove Beacon がデータを取得する方法'
+description: 「このトピックでは、BrightcoveBeaconがアプリの構築に使用されるさまざまなタイプのデータを取得する方法を学習します。認証の詳細をカバーする情報も含まれています。」
+parent: "references"
+layout: "staging"
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+    <summary>{{ page.description }}</summary>
+
+    <section class="bcls-section">
+        <h2 id="Introduction">はじめに</h2>
+        <p>このドキュメントの最初の部分では、Brightcove Beaconがビデオ、プレイリスト、ライブイベントなどの一般的なデータを取得する方法について説明します。最後のセクションでは、Open ID Connect（OIDC）と資格を使用して、BrightcoveBeaconがデータを取得することを承認する方法について詳しく説明します。</p>
+    </section>
+
+    <section class="bcls-section">
+        <h2 id="Ingestion_and_custom_fields">ビデオの取り込みとカスタムフィールド</h2>
+        <p>Brightcove Beaconが使用する前に、ビデオアセットを最初にVideoCloudに取り込む必要があります。ビデオがどのように使用されるかに応じて、たとえばシリーズで、または広告が必要な場合、Video Cloud <strong>カスタムフィールド</strong>ビデオをそれらの特別な要件に関連付けるために使用できます。NS <a href="/syncing-with-video-cloud/vc-custom-fields.html">ビデオクラウドカスタムフィールドの作成</a>ドキュメントでは、必要なカスタムフィールドを作成する方法と、それらのフィールド値を割り当てる方法について詳しく説明しています。</p>
+        <p>ビデオがVideoCloudに入ると、Brightcove Beaconは、メタデータ、画像、場所など、ビデオに関連する情報をVideoCloudカタログから取得できます。ビデオは実際にはVideoCloudに残り、VideoCloud再生配信インフラストラクチャによって提供されます。Brightcove Beacon UIでは、VideoCloudビデオを手動で取り込むことができます' 情報を提供するか、バックグラウンドプロセスがそうするのを待ちます。</p>
+    </section>
+
+    <section class="bcls-section">
+        <h2 id="Playlists">プレイリスト</h2>
+        <p>Video Cloudで作成されるビデオアセットに加えて、VideoCloudでビデオプレイリストを作成することもお勧めします。VideoCloudでは2種類のプレイリストを作成できます。<strong>マニュアル</strong>そして<strong>頭いい</strong>。Video Cloudでのプレイリストの実装の詳細については、<a href="https://studio.support.brightcove.com/media/creating-and-managing-playlists.html">プレイリストの作成と管理</a>資料。</p>
+        <p>シリーズやライブイベントなど、動画以外のアセットを含む再生リストを作成する場合は、それらの再生リストをBrightcoveBeaconで作成する必要があります。</p>
+    </section>
+
+    <section class="bcls-section">
+        <h2 id="Channels_and_live_events">チャンネルとライブイベント</h2>
+        <p>チャネルとライブイベントの場合、ライブジョブはビデオクラウドで作成してから、Brightcove Beacon で手動で構成する必要があります。詳細については、<a href="/using-brightcove-beacon/streaming-live-event.html">ライブイベントのストリーミング</a>そして<a href="/using-brightcove-beacon/creating-a-channel.html">チャネルの作成</a>ドキュメント。</p>
+    </section>
+
+    <section class="bcls-section">
+        <h2 id="Series, seasons and episodes">シリーズ、シーズン、エピソード</h2>
+        <p>一時的なデータの場合、BrightcoveBeaconとVideoCloudの両方を利用する必要があります。まず、BrightcoveBeaconでシリーズと対応するシーズンを作成する必要があります。実際のビデオエピソードはVideoCloudに取り込まれ、カスタムフィールドを使用してビデオを正しいシリーズ/シーズンに割り当てます。</p>
+        <p>詳細については、<a href="/using-brightcove-beacon/series-seasons-episodes.html">シリーズ/シーズン/エピソードの作成</a>資料。</p>
+    </section>
+
+
+
+</article>

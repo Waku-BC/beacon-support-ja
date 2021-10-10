@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="このトピックでは、静的画像オーバーレイをクラウドプレイアウトチャネルに追加する方法について説明します。" />
+
+    <title>静止画像オーバーレイ</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+  <link rel="preconnect" href="https://fonts.gstatic.com"> 
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+      <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://support.brightcove.com/site-assets/css/site/prism.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://support.brightcove.com/site-assets/css/site/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://support.brightcove.com/site-assets/css/site/landing-page.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://support.brightcove.com/site-assets/css/site/tabs.css"
+    />
+    <link rel="stylesheet" href="/assets/css/local.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/381443caa8.js"
+      crossorigin="anonymous"
+    ></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-2728311-17"></script>
+<script translate="no">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-2728311-17');
+</script>
+    <script src="/assets/js/sajari-head.js"></script>
+		<script src="https://unpkg.com/feather-icons"></script>
+  </head>
+
+  <body class="body"></body>
+</html>
+ <header>
+  <div class="div-header">
+    <a href="/"><img class="product-logo" src="https://support.brightcove.com/site-assets/images/site/product-logos/SVG/COVE004_Brightcove_Beacon_Logo_RGB_K.svg" alt="Brightcove"></a>
+<!-- GTranslate: https://gtranslate.io/ -->
+<select onchange="doGTranslate(this);"><option value="">Select Language</option><option value="en|en" translate="No">English</option><option value="en|zh-TW" translate="No">繁體中文</option><option value="en|fr" translate="No">Français</option><option value="en|de" translate="No">Deutsche</option><option value="en|ja" translate="No">日本語</option><option value="en|ko" translate="No">한국어</option><option value="en|es" translate="No">Español</option></select>
+
+<script translate="no">
+/* <![CDATA[ */
+function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang.toLowerCase() != 'zh-cn' && plang.toLowerCase() != 'zh-tw')plang='en';location.href=location.protocol+'//'+(lang == 'en' ? '' : lang+'.')+location.hostname.replace('www.', '').replace(RegExp('^' + plang + '\\.'), '')+location.pathname+location.search;}
+/* ]]> */
+</script>
+
+
+
+    <span class="secondary-nav"><a href="https://supportportal.brightcove.com/s/login/?"><i data-feather="help-circle"></i> サポート問い合わせ先</a><span style="vertical-align: middle;margin-left:1em;margin-right:1em;">|</span><a href="https://status.brightcove.com/"><i data-feather="cloud"></i> システムステータス</a></span>
+    <br>
+    
+  </div>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb arr-right">
+      
+      <li class="breadcrumb-item first-item"><a href="/">ホーム</a></li>
+        
+      <li class="breadcrumb-item"><a href="/using-brightcove-beacon/cloud-playout/">Cloud Playout</a></li>
+      
+      <li class="breadcrumb-item active" aria-current="page">静止画像オーバーレイ</li>
+    </ol>
+  </nav>
+</header> <div class="container">
+    <div class="row">
+      <div class="col-sm-3 left-side-bar">
+				<select id="site_select" class="bcls-select" style="margin-left: 1rem;">
+					<option value="">Brightcoveのその他のドキュメント</option>
+					 
+							<option value="https://support.brightcove.com">ドキュメンテーションホーム</option>
+						  
+							<option value="">-ビデオクラウド-</option>
+						  
+							<option value="https://studio.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp; Video Cloud Studio</option>
+						  
+							<option value="https://player.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp; Brightcoveプレーヤーの開発</option>
+						  
+							<option value="https://apis.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ビデオクラウドプラットフォームAPI</option>
+						  
+							<option value="https://sdks.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ビデオクラウドデバイスSDK</option>
+						  
+							<option value="https://integrations.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;統合とCMSコネクタ</option>
+						  
+							<option value="https://general.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ビデオクラウドの一般情報</option>
+						  
+							<option value="">-ビデオエッセンシャル-</option>
+						  
+							<option value="https://beacon.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブ Beacon </option>
+						  
+							<option value="https://live.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブライブ</option>
+						  
+							<option value="https://zencoder.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp; Zencoder</option>
+						  
+							<option value="">-ビデオクラウドアドオン-</option>
+						  
+							<option value="https://campaign.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブキャンペーン</option>
+						  
+							<option value="https://engage.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブエンゲージ</option>
+						  
+							<option value="https://gallery.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブギャラリー</option>
+						  
+							<option value="https://studio.support.brightcove.com/social/index.html">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブソーシャル</option>
+						  
+							<option value="https://ssai.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブSSAI</option>
+						 
+				</select>
+        <nav class="sidenav" id="side_nav">
+           
+            <h5><a href="/index.html">ホーム</a></h5>
+              
+              <h5 class="submenu-header"><a href="/getting-started/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;入門編</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/getting-started/learning-guide-bc-beacon.html">学習ガイド</a></li>
+                    
+                    <li><a href="/getting-started/implementation-phases.html">実装フェーズ</a></li>
+                    
+                    <li><a href="/getting-started/app-design-considerations.html">アプリケーション設計の考慮事項</a></li>
+                    
+                    <li><a href="/getting-started/creating-your-app-design-info-architecture.html">アプリの設計-情報アーキテクチャ</a></li>
+                    
+                    <li><a href="/getting-started/creating-your-app-design-layout-options.html">アプリのデザイン-レイアウトオプション</a></li>
+                    
+                    <li><a href="/getting-started/design-best-practices.html">設計のベストプラクティス</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/syncing-with-video-cloud/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;Video Cloud との同期</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/syncing-with-video-cloud/vc-custom-fields.html">Video Cloud カスタム項目の作成</a></li>
+                    
+                    <li><a href="/syncing-with-video-cloud/syncing-video-cloud-catalog.html">同期を強制する</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/using-brightcove-beacon/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;Brightcove Beacon の使用</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/using-brightcove-beacon/adding-trailer-movie.html">映画への予告編の追加</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/adding-to-page.html">ページへのカルーセルの追加</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/cloud-playout/cloud-playout-overview.html">概要:クラウドプレイアウトチャネル</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/cloud-playout/cloud-playout-stream-vod.html">クラウドプレイアウトチャネルの作成</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/cloud-playout/cloud-playout-add-content.html">クラウドプレイアウトチャネルへのコンテンツの追加</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/cloud-playout/static-image-overlays.html">静止画像オーバーレイ</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/cloud-playout/using-channel-actions.html">チャネルアクションの使用</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/cloud-playout/adding-bumpers-to-vod.html">クラウドプレイアウトへのバンパーの追加</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/cloud-playout/enabling-server-side-ads.html">クラウドプレイアウトの収益化</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/cloud-playout/mid-roll-ad-insertion.html">ミッドロール広告をチャネルに追加する</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/cloud-playout/publish-channel-beacon.html">クラウドプレイアウトチャネルの公開</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/cloud-playout/viewing-channel-output-and-analytics.html">チャネル出力と分析の表示</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/creating-a-channel.html">Beacon チャネルの作成</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/electronic-program-guides.html">電子番組ガイド（EPG）の作成</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/creating-a-page.html">新しいページの作成</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/creating-a-playlist.html">プレイリストを作成する</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/series-seasons-episodes.html">シリーズ/シーズン/エピソードの作成</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/ga-self-configuration.html">GoogleAnalyticsの自己構成</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/including-non-configurable-pages.html">設定できないページを含める</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/introducing-pages.html">ページの紹介</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/streaming-live-event.html">ライブイベントのストリーミング</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/streaming-vods-to-a-channel.html">チャネルへのVODのストリーミング</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/tools.html">ツールの使用</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/viewing-analytics-data.html">分析データの表示</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/monetization/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;収益化</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li class="submenu-header">
+                      <a href="/monetization/general/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;全般的</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/monetization/general/creating-stripe-account.html">ストライプアカウントの作成</a></li>
+                            
+                            <li><a href="/monetization/general/creating-subscription-package.html">サブスクリプションパッケージの作成</a></li>
+                            
+                            <li><a href="/monetization/general/promo-codes.html">プロモーションコードの作成</a></li>
+                            
+                            <li><a href="/monetization/general/vc-custom-fields.html">現金化のためのカスタムフィールド</a></li>
+                            
+                            <li><a href="/monetization/general/implementing-authvod.html">AuthVODの実装</a></li>
+                            
+                            <li><a href="/monetization/general/monetization-options.html">現金化オプションを理解する</a></li>
+                            
+                            <li><a href="/monetization/general/using-subscription-package.html">サブスクリプションパッケージの使用</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/monetization/ssai/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;SSAI</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/monetization/ssai/advertisement.html">広告の作成</a></li>
+                            
+                            <li><a href="/monetization/ssai/configuring-server-side-ad-settings.html">サーバーサイド広告設定の構成</a></li>
+                            
+                            <li><a href="/monetization/ssai/live-ssai.html">ライブSSAIの実装</a></li>
+                            
+                            <li><a href="/monetization/ssai/vod-ssai.html">VOD SSAIの実装</a></li>
+                            
+                            <li><a href="/monetization/ssai/beacon-apps-ad-targeting.html"> Beacon アプリの広告ターゲティング</a></li>
+                           
+                      </ul>
+                    </li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/beacon-web-store/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp; Beacon ウェブストア</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/beacon-web-store/beacon-webstore-overview.html">概要:ブライトコーブ Beacon ウェブストア</a></li>
+                    
+                    <li><a href="/beacon-web-store/integration-details.html"> Beacon ウェブストアとの統合</a></li>
+                    
+                    <li><a href="/beacon-web-store/beacon-store-webhook-reference.html"> Beacon ストアWebhookリファレンス</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/creating-your-apps/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;アプリの作成</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li class="submenu-header">
+                      <a href="/creating-your-apps/general/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;全般的</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/creating-your-apps/general/common-required-info.html">共通の必要な情報</a></li>
+                            
+                            <li><a href="/creating-your-apps/general/device-apps-validation-guide.html">デバイスアプリ検証ガイド</a></li>
+                            
+                            <li><a href="/creating-your-apps/general/in-app-subscription-resources.html">アプリ内サブスクリプションリソース</a></li>
+                            
+                            <li><a href="/creating-your-apps/general/links-subscriptions.html">AppStoreサブスクリプションへのリンク</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/creating-your-apps/android/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;Android</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/creating-your-apps/android/submitting-to-android.html">Androidストアへの新しいアプリの送信</a></li>
+                            
+                            <li><a href="/creating-your-apps/android/updating-android-apps-to-bcb.html">AndroidアプリをBrightcove Beacon に更新する</a></li>
+                            
+                            <li><a href="/creating-your-apps/android/adding-subscriptions-in-android.html">Androidへのサブスクリプションの追加</a></li>
+                            
+                            <li><a href="/creating-your-apps/android/improving-relevance-android.html">AndroidPlayストアでの検索の関連性の向上</a></li>
+                            
+                            <li><a href="/creating-your-apps/android/installing-android-test-build.html">Androidテストビルドのインストール</a></li>
+                            
+                            <li><a href="/creating-your-apps/android/managing-google-subscriptions-1.html">Googleサブスクリプションの管理パート1</a></li>
+                            
+                            <li><a href="/creating-your-apps/android/managing-google-subscriptions-2.html">Googleサブスクリプションの管理パート2</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/creating-your-apps/fire-tv/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;Fire TV</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/creating-your-apps/fire-tv/installing-fire-tv-test-build.html">Fire TVテストビルドのインストール</a></li>
+                            
+                            <li><a href="/creating-your-apps/fire-tv/submitting-to-amazon.html">Amazonストアへの送信</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/creating-your-apps/ios-tvos/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;iOS / tvOS</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/creating-your-apps/ios-tvos/installing-ios-test-build.html">iOS / tvOSテストビルドのインストール</a></li>
+                            
+                            <li><a href="/creating-your-apps/ios-tvos/submitting-to-apple.html">AppleStoreへの送信</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/creating-your-apps/roku/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;Roku</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/creating-your-apps/roku/configuring-inchannel-products.html">Rokuでのチャネル内製品の構成</a></li>
+                            
+                            <li><a href="/creating-your-apps/roku/installing-roku-test-build.html">Rokuテストビルドのインストール</a></li>
+                            
+                            <li><a href="/creating-your-apps/roku/submitting-to-roku.html">Rokuストアへの送信</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/creating-your-apps/samsung/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;Samsung</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/creating-your-apps/samsung/samsung-partner.html">サムスンのパートナーになる</a></li>
+                            
+                            <li><a href="/creating-your-apps/samsung/submitting-to-samsung.html">サムスンストアへの送信</a></li>
+                           
+                      </ul>
+                    </li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/references/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;参考文献</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/references/branding-beacon-apps.html">ブライトコーブ Beacon アプリのブランディング</a></li>
+                    
+                    <li><a href="/references/common-configuration-settings.html">一般的な構成設定</a></li>
+                    
+                    <li><a href="/references/glossary.html">用語集</a></li>
+                    
+                    <li><a href="/references/how-beacon-gets-data.html">Brightcove Beacon がデータを取得する方法</a></li>
+                    
+                    <li><a href="/references/image-requirements.html">画像とその仕様</a></li>
+                    
+                    <li><a href="/references/known-issues.html">既知の問題</a></li>
+                    
+                    <li><a href="/references/product-updates.html">製品の更新</a></li>
+                    
+                    <li><a href="/references/remote-asset-limitations.html">リモート資産の制限</a></li>
+                    
+                    <li><a href="/references/beacon-tasks-in-vc.html">ビデオクラウドで実行されるタスク</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/training/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;トレーニング</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/training/training-demand-custom-fields.html">Video Cloud ビデオ/カスタムフィールドの使用</a></li>
+                    
+                    <li><a href="/training/training-demand-design-layout.html">アプリケーションレイアウトの設計</a></li>
+                    
+                    <li><a href="/training/training-demand-playlists.html">プレイリストの作成と使用</a></li>
+                    
+                    <li><a href="/training/training-demand-series-seasons-episodes.html">シリーズ、季節、エピソードの作成</a></li>
+                    
+                    <li><a href="/training/training-demand-vod-ssai.html">VOD サーバーサイド広告の実装</a></li>
+                    
+                    <li><a href="/training/training-demand-publish-android-app.html">PlayストアでAndroidアプリを公開する</a></li>
+                    
+                    <li><a href="/training/training-demand-viewing-analytics.html">分析データの表示</a></li>
+                    
+                    <li><a href="/training/training-demand-streaming-live-bc-beacon.html">ブライトコーブ Beacon へのライブイベントのストリーミング</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/support/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;サポート</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/support/viewing-brightcove-system-status-page.html">Brightcoveのシステムステータスページの表示</a></li>
+                    
+                    <li><a href="/support/contact-sales.html">営業へのお問い合わせ</a></li>
+                    
+                    <li><a href="/support/opening-case-with-brightcove-support.html">サポートケースを開く</a></li>
+                    
+                    <li><a href="/support/reset-support-portal-password.html">サポートポータルのパスワードをリセットする</a></li>
+                   
+              </ul>
+             
+      </nav>
+    </div>
+    <div class="col-lg-7" style="background-color: white;color: #333333;margin-top: -1em;margin-bottom: -1em;padding-bottom:1em;">
+  <!-- bootstrap layout -->
+ <p id="bc_veggie_burger_wrapper" style="display: none;"><img id="bc_veggie_burger" src="/assets/images/feather/menu.svg" alt="Navigation Menu"></p>
+
+<!-- search bar -->
+<div id="nav-search-box" style="margin-top: 1rem;"></div>
+<!-- in-page navigation for narrow screens -->
+<details class="centered-inpage-nav" id="centered_inpage_nav">
+  <summary><h6 class="toc">ページコンテンツ</h6></summary>
+  <nav id="centered_toc"></nav>
+  <ul id="centered_in_page_toc" class="list-none"></ul>
+</details>
+<!-- open in new tab/window -->
+<a id="open_new_tab" href="#" target="_blank" style="display: none;"><img src="/assets/images/feather/external-link.svg" alt="open in new tab" style="margin-top:4em;width: 1.5em;"></a>   <h1>静止画像オーバーレイ</h1>
+<article class="bcls-article">
+  <summary>このトピックでは、静的画像オーバーレイをクラウドプレイアウトチャネルに追加する方法について説明します。</summary>
+  <section class="bcls-section">
+    <h2 id="Introduction">はじめに</h2>
+    <p>静止画像オーバーレイ機能を使用して、CloudPlayoutチャネルのビデオに静止画像をスーパーインポーズできます。静止画とは、動きのない静止画です。画像を準備してCloudPlayoutの外部に保存し、一般にアクセス可能な認証されていないhttp / httpsURLとして提供します。</p>
+    <h3> 例</h3>
+    <ul>
+      <li>チャネルの実行中の特定の時間に静止画像オーバーレイを挿入し、それを10秒間実行するとします。ビデオフレームの右下隅に画像オーバーレイを表示する必要があります。画像オーバーレイの不透明度を50％にする必要があります。</li>
+      <li>2つの静止画像オーバーレイを挿入して、両方が同時にまたはオーバーラップしてビデオフレームに表示されるようにします。画像オーバーレイの表示をわずかに重ねて、ある画像オーバーレイが1つの場所に表示され、その画像オーバーレイがまだ表示されている間に、別の画像オーバーレイが別の場所に表示されるようにします。</li>
+    </ul>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Implementation">実装</h2>
+    <ul>
+      <li>動画にオーバーレイする画像は、<a href="https://en.wikipedia.org/wiki/Truevision_TGA"> .tga</a>または.pngファイル。</li>
+      <li>
+        新しいサイドメニュー項目を使用して、アカウントの静的オーバーレイ画像を作成および管理します。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/cloud-playout/overlays-menu-item.png" alt="Overlays">
+          <figcaption class="bcls-caption--image">オーバーレイ</figcaption>
+        </figure>
+      </li>
+      <li>
+        次に、オーバーレイ画像をチャネルに関連付けることができます。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/cloud-playout/overlay-associate-with-channel.png" alt="Associate Overlay with Channel">
+          <figcaption class="bcls-caption--image">オーバーレイをチャネルに関連付ける</figcaption>
+        </figure>
+        <br>
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/cloud-playout/overlays-draft-channel.png" alt="Overlays in Draft Channel">
+          <figcaption class="bcls-caption--image">ドラフトチャネルのオーバーレイ</figcaption>
+        </figure>
+        <br>
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/cloud-playout/overlays-for-running-channel.png" alt="Overlays in Running Channel">
+          <figcaption class="bcls-caption--image">実行中のチャネルのオーバーレイ</figcaption>
+        </figure>
+      </li>
+      <li>
+        最大2つまで挿入できます<strong>レイヤー</strong>一度に。各画像は<strong>別のレイヤー</strong>。異なるイメージが同じレイヤーで同じ時間にスケジュールされている場合、またはそれらが任意の時間枠でオーバーラップしている場合、後でプロビジョニングされるイメージは、同じレイヤー上の既存のイメージを削除します。
+          <ul>
+            <li>レイヤーはZ順です。つまり、<strong>レイヤーの値が高いオーバーレイは、レイヤーの値が低いオーバーレイの上に挿入されます</strong>。</li>
+          </ul>
+      </li>
+      <li>オーバーレイを設定して、基になるビデオにすべて同時に表示されるようにする（または表示しない）ことができます。また、オーバーレイを物理的に互いにオーバーラップするように設定することもできます。</li>
+      <li>
+        開始時間と期間を使用して、各画像オーバーレイを構成できます。
+        <ul>
+          <li>期間が設定されている場合、最大期間は24時間です。</li>
+          <li>期間が設定されていない場合、オーバーレイは非アクティブ化されるまで表示され続けます</li>
+          <li>開始時間は未来の時間でなければなりません</li>
+        </ul>
+      </li>
+      <li>不透明度0〜100で構成できます。<strong> 0</strong>透明で<strong>100</strong>完全に不透明です。</li>
+      <li>x / y座標で指定されているように、ビデオフレームに画像オーバーレイを配置できます。デフォルトでは、X、Y座標は0、0（ビデオフレームの左上端）と見なされます。</li>
+      <li>
+        x / y座標で指定されているように、ビデオフレームに画像オーバーレイを配置できます。デフォルトでは、X、Y座標は0、0（<strong>ビデオフレームの左上隅</strong>）：
+        <ul>
+          <li><strong>位置X</strong>：ビデオフレームの左端に対するオーバーレイの左端の位置（ピクセル単位）。配置によってオーバーレイが下にあるビデオの右端を超えて拡張される場合、オーバーレイは右側でトリミングされます。</li>
+          <li><strong>位置Y</strong>：ビデオフレームの上端に対するオーバーレイの上端の位置（ピクセル単位）。配置によってオーバーレイが下にあるビデオの下端を超えて拡張される場合、オーバーレイは下部でトリミングされます。</li>
+        </ul>
+      </li>
+      <li>
+        <strong>サイジング：</strong> NS <strong>オリジナルを使用</strong>オプションを解像度に使用して、提供された画像の元の解像度を使用できます。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/cloud-playout/overlay-use-original-size.png" alt="Use Original Image Size">
+          <figcaption class="bcls-caption--image">元の画像サイズを使用する</figcaption>
+        </figure>
+        <ul>
+          <li>
+            あなたはカスタムを提供することができます<strong>幅</strong>と<strong>身長</strong>ソースビデオに適用する前にシステムが画像を拡大縮小できるようにする解像度の場合：
+            <figure class="bcls-figure">
+              <img class="bcls-image" src="/assets/images/cloud-playout/overlay-custom-width-height.png" alt="Set Width and Height">
+              <figcaption class="bcls-caption--image">幅と高さを設定する</figcaption>
+            </figure>
+          </li>
+          <li>離れる<strong>幅</strong>と<strong>身長</strong>空と<strong>オリジナルを使用</strong>チェックを外すと、システムはチャネルの出力解像度を使用します。例は次のとおりです。モバイルおよびWeb出力はオーバーレイ解像度を720pに設定し、スマートTVプロファイルはオーバーレイ解像度を1080pに設定します。<strong>このオプションの使用はお勧めしません</strong> MP4ソースの解像度と常に一致するとは限らないためです。</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+  <section class="bcls-section">
+    <h2 id="State_transitions">状態遷移</h2>
+    <p>オーバーレイスケジュールの状態遷移</p>
+    <ul>
+      <li>
+        <strong>非活性</strong>
+        <ul>
+          <li>新しく作成されたスケジュール（または）</li> 
+          <li>実行がすでに完了しているスケジュール（または）</li>
+          <li>すでに非アクティブ化されているスケジュール。</li> 
+          <li>開始時刻を変更して、同じまたは更新されたオーバーレイ構成でSCHEDULED状態に戻すことができます。</li>
+          <li>削除-この構成を使用しない場合。</li>
+          <li>構成を変更する場合は変更します。</li>
+        </ul>
+      </li>
+      <li>
+        <strong>スケジュール</strong>
+        <ul>
+          <li>指定された開始時間に開始するようにスケジュールされています。</li> 
+          <li>このスケジュールが不要になった場合は削除してください。</li>
+          <li>構成を変更する場合は変更します。</li> 
+        </ul>
+      </li>
+      <li>
+        <strong>アクティブ</strong>
+        <ul>
+          <li>現在進行中のスケジュール。</li> 
+          <li>オーバーレイを停止する必要がある場合は非アクティブ化します。</li>
+          <li>layerとstart_time以外の構成を変更します。</li> 
+          <li>削除は許可されていません。最初に非アクティブ化する必要があります。</li>
+        </ul>
+      </li>
+    </ul>
+    <aside class="bcls-aside bcls-aside--information language-editable">オーバーレイはいつでも編集できます。しかし<strong>層</strong>と<strong>始まる時間</strong>のために変更することはできません<strong>アクティブ</strong>かぶせる。アクティブなオーバーレイスケジュールで、解像度、x / y座標、不透明度、さらには画像自体を変更することもできます。</aside>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Contextual_Overlay_Launch">コンテキストオーバーレイの起動</h2>
+    <p>アクセスしやすくするために、再生リスト内の特定の動画にオーバーレイを表示する場合は、再生リスト内の動画にマウスを合わせてクリックします。<strong>オーバーレイアイコンを追加</strong>（（ <img src="/assets/images/cloud-playout/overlay-icon.svg" alt="overlay icon"> ）、UIは、選択したビデオの開始時間と継続時間とともに、[オーバーレイの追加]モーダルを起動します。</p>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/cloud-playout/overlay-add-particular-video.png" alt="Contextual Overlay Launch">
+      <figcaption class="bcls-caption--image">コンテキストオーバーレイの起動</figcaption>
+    </figure>
+    <h3>注</h3>
+    <ol>
+      <li>これにより、選択したビデオの開始時間のスケジュールが作成され、ビデオ自体には添付されません。つまり、EPGスケジュールのさまざまな変更により、ビデオが再注文（または）削除（または）開始時刻が変更された場合でも、オーバーレイスケジュールは最初にスケジュールされた開始時刻のままになります。</li>
+      <li>ビデオに関連するこのAddOverlayは、DRAFTまたはSCHEDULED状態のチャネルではなく、実行中のチャネルで使用することをお勧めします。実行中のチャネルは、他の状態のチャネルよりも時間精度が高い（EPGを使用）ためです。</li>
+      <li>実行中のチャンネルでは、このオプションは現在再生中の動画に続くすべての動画で利用できます。</li>
+      <li>このオプションは、SSAIチャネルの広告プレースホルダー動画では使用できません。</li>
+    </ol>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Image_handling">画像処理</h2>
+    <p>画像は、ピクセルごとに基になるソースビデオピクセルにオーバーレイされます。</p>
+    <aside class="bcls-aside bcls-aside--warning language-editable">オーバーレイが下にあるビデオよりも大きい場合、または下にあるビデオのエッジをオーバーランする場合、オーバーレイはソースビデオに完全には適用されません（トリミングされます）。これは、VoDアセットとライブセグメントに適用されます。</aside>
+    <p>以下は、オーバーレイがビデオよりも大きい場合のいくつかの可能な修正/回避策です。</p>
+    <h3>問題のあるケース</h3>
+    <p>次の図は、オーバーレイが大きすぎることを示しています。右下隅に会社のロゴがあるため、非表示になっています。</p>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/cloud-playout/overlay-problem-case.png" alt="Problem Case">
+      <figcaption class="bcls-caption--image">問題のケース</figcaption>
+    </figure>
+    <h4>解決策1</h4>
+    <p>幅と高さのフィールドを使用して、ビデオ画面のサイズに合わせて画像のサイズを変更できます。これの欠点は、画像のサイズを変更すると画質が低下し、ロゴ自体が小さくなることです。</p>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/cloud-playout/overlay-solution-1.png" alt="Solution 1">
+      <figcaption class="bcls-caption--image">解決策1</figcaption>
+    </figure>
+    <h4>解決策2</h4>
+    <p>ロゴを左上隅に移動すると、少なくとも視認性は保証されますが、望ましい配置にならない場合があります。</p>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/cloud-playout/overlay-solution-2.png" alt="Solution 2">
+      <figcaption class="bcls-caption--image">解決策2</figcaption>
+    </figure>
+    <h4>解決策3</h4>
+    <p>NS <strong>理想的なソリューション</strong>ビデオの解像度に正確に一致するようにオーバーレイのサイズを設定することです（そしてチェックします<strong>オリジナルを使用</strong>サイジング用）：</p>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/cloud-playout/overlay-solution-3.png" alt="Solution 3">
+      <figcaption class="bcls-caption--image">解決策3</figcaption>
+    </figure>
+    <h5>注</h5>
+    <ol>
+      <li>個々の出力エンコードを作成する前に、画像がオーバーレイされます（解像度とビデオ品質が異なります）。これは、基になるビデオが特定の出力エンコード用にスケーリングされている場合、画像も同様にスケーリングされることを意味します。</li>
+      <li>オーバーレイ画像はすべての出力に挿入されます。つまり、オーバーレイはCloud PlayoutUIに表示されるプレビュー画像にも表示されます。 </li>
+    </ol>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Related_topics">関連トピック</h2>
+    <ul>
+      <li><a href="/using-brightcove-beacon/cloud-playout/cloud-playout-overview.html">概要:クラウドプレイアウト</a></li>
+      <li><a href="/using-brightcove-beacon/cloud-playout/cloud-playout-stream-vod.html">クラウドプレイアウトチャネルの作成</a></li>
+      <li><a href="/using-brightcove-beacon/cloud-playout/adding-bumpers-to-vod.html">クラウドプレイアウトへのバンパーの追加</a></li>
+      <li><a href="/using-brightcove-beacon/cloud-playout/enabling-server-side-ads.html">クラウドプレイアウトの収益化</a></li>
+      <li><a href="/using-brightcove-beacon/cloud-playout/using-channel-actions.html">チャネルアクションの使用</a></li>
+      <li><a href="/using-brightcove-beacon/cloud-playout/viewing-channel-output-and-analytics.html">チャネル出力と分析の表示</a></li>
+      <li><a href="/using-brightcove-beacon/cloud-playout/generating-channel-embed-code.html">チャネル埋め込みコードの生成</a></li>
+      <li><a href="https://apis.support.brightcove.com/cloud-playout-apis/getting-started/overview-epg-api.html">概要:EPG API</a></li>
+      <li><a href="https://apis.support.brightcove.com/cloud-playout-apis/references/reference-epg.html">EPGAPIリファレンス</a></li>
+      <li><a href="https://apis.support.brightcove.com/cloud-playout-apis/references/reference-channels.html">チャネルAPIリファレンス</a></li>
+    </ul>
+  </section>
+</article> <!-- complete bootstrap layout -->
+    </div>
+    <div class="col-sm-2 right-side-bar">
+      
+      <nav class="right-side-nav" id="right_side_nav">
+        <h6 class="toc">ページコンテンツ</h6>
+        <ul id="in_page_nav" class="list-none"></ul>
+      </nav>
+      
+    </div>
+  </div>
+</div>
+
+<hr>
+<div class="last-updated">
+  ページの最終更新日08 Oct 2021
+</div>
+
+
+ <footer class="bcls-footer" role="contentinfo">
+  <div class="row">
+    <div class="region region-footer-top-center col-md-12">
+      <nav role="navigation" aria-labelledby="block-brightcovesupport-menu" id="block-brightcovesupport" class="footer-menu">
+        <img src="https://support.brightcove.com/site-assets/images/site/SVG/COVE004_Brightcove_Logo_093020_RGB_KO.svg" class="bc-footer-logo" alt="Brightcove">
+
+        <h2>Brightcoveサポート</h2>
+
+        <ul class="menu">
+          <li>
+            <a href="https://status.brightcove.com">システムステータス</a>
+          </li>
+          <li>
+            <a href="https://supportportal.brightcove.com/s/login/?">サポートへのお問い合わせ</a>
+          </li>
+          <li>
+            <a href="https://support.brightcove.com/">ドキュメンテーション</a>
+          </li>
+        </ul>
+
+      </nav>
+      <nav role="navigation" aria-labelledby="block-training-menu" id="block-training" class="footer-menu">
+
+        <h2>トレーニング</h2>
+
+        <ul class="menu">
+          <li>
+            <a href="https://studio.support.brightcove.com/training/online-training-courses.html">オンラインコース</a>
+          </li>
+          <li>
+            <a href="https://studio.support.brightcove.com/training/register-training.html">コースに登録する</a>
+          </li>
+          <li>
+            <a href="https://university.brightcove.com/">Brightcove University</a>
+          </li>
+        </ul>
+
+      </nav>
+      <nav role="navigation" aria-labelledby="block-brightcove-menu" class="footer-menu">
+
+        <h2>Brightcove</h2>
+
+        <ul class="menu">
+          <li>
+            <a href="https://www.brightcove.com">Brightcove.com</a>
+          </li>
+          <li>
+            <a href="https://supportportal.brightcove.com/s/login/?">お問合せ</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="row">
+    <div class="region region-footer-bottom-center col-md-12">
+      <div class="bcls-copyright footer-menu">
+        <table>
+          <tr>
+            <td>
+              <div id="bc_copyright" class="field field--name-field-copyright-year field--type-string field--label-hidden field--item" style="float: left;"> Brightcove Inc. All rights reserved.</div>
+            </td>
+            <td><a href="https://www.brightcove.com/en/legal/privacy">プライバシー</a> | <a href="https://www.brightcove.com/en/terms-and-conditions">利用規約</a></td>
+            <td>
+              <div class="gf-links-cols footer-menu">
+                <div class="gf-social"><a href="https://www.linkedin.com/company/16439" title="LinkedIn" newtab="newtab" class="gf-social-linkedin" style="margin-right: 1rem;"><i data-feather="linkedin" style="color:#8E9093;height: 1.25rem;"></i></a><a href="https://twitter.com/brightcove" title="Twitter" newtab="newtab" class="gf-social-twitter" style="margin-right: 1rem;"><i data-feather="twitter" style="color:#8E9093;height: 1.25rem;"></i></a><a href="https://www.facebook.com/Brightcove" title="Facebook" newtab="newtab" class="gf-social-facebook"><i data-feather="facebook" style="color:#8E9093;height: 1.25rem;"></i></a>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script translate="no">
+      
+  var searchBox = sajari.init({
+    mode: "search-box",
+    project: "1588255093746585379", // Set this to your project.
+    collection: "brightcove-documenation", // Set this to your collection.
+    instantPipeline: "autocomplete", // Pipeline used as you type
+    inputPlaceholder: "Search", // Input element placeholder
+    maxSuggestions: 5, // Maximum number of suggestions to show
+    attachSearchBox: document.getElementById("nav-search-box") // DOM element to attach to
+  });
+  
+    searchBox("sub", "pipeline.search-sent", function (_, query) {
+      window.location = "/search.html?q=" + encodeURIComponent(query.q);
+    });
+  
+
+</script>   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/https-fix.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/setDate.js"></script>
+  
+  <script src="https://support.brightcove.com/site-assets/js/site/prism.js"></script>
+  
+  <script src="https://support.brightcove.com/site-assets/js/site/site.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/learning-paths/learning-paths.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/tabs.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/toc.js"></script>
+  <script src="/assets/js/sites_nav.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/bcls-utils.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/local-link-fix.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/sajari-reindex.js"></script>
+  <script src="/assets/js/feedback.js"></script>
+  
+  <script src="/assets/js/sajari-search-foot.js"></script>
+  
+	<script translate="no">
+		feather.replace()
+	</script>
+  <!-- <script src="/assets/js/sajari-index.js"></script> -->
+  <style translate="no">
+    a.sj-paginator__page-number.sj-paginator__page-number--current.css-so0ov7 {
+      background-color: lightblue;
+    }
+    div.sj-tabs__tab {
+      margin-top: 3rem;
+      margin-left: .3rem;
+      border-top-left-radius: .4rem;
+      border-top-right-radius: .4rem;
+      background-color:#e8e8e8;
+    }
+
+    div.sj-tabs__tab.sj-tabs__tab--selected {
+      border-bottom-color: crimson;
+      background-color: #f8f8f8;
+    }
+
+    p.sj-results__result__description.css-p9jvyt {
+      font-size: 1rem;
+    }
+
+    .sj-result__text.css-31l7gp h3 {
+      color: navy;
+      font-size: 1.4rem;
+    }
+    </style>
+
+</body>
+
+</html> 

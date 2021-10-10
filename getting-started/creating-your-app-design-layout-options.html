@@ -1,0 +1,356 @@
+---
+title: 'アプリケーションデザインの作成-レイアウトオプション'
+description: 「このトピックでは、一連の質問に回答し、回答をスプレッドシートに記録します。これにより、Brightcove BeaconExperienceアプリケーションの設計の外観がわかります。」
+parent: "getting-started" 
+---
+
+
+<style media="screen">
+  .small_image p { color: red; }
+</style>
+<link href="/assets/css/splide.min.css" rel="stylesheet" />
+<style media="screen">
+  .splide { background-color: #dcf3fb; padding: 1em; }
+</style>
+
+<h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+
+  <section class="bcls-section">
+    <h2 id="Introduction">はじめに</h2>
+    <p>
+      このドキュメントでは、Brightcove  Beacon エクスペリエンスのレイアウトをどのように表示するかについて、一連の質問について説明します。これらの質問に答えた結果は、Brightcoveの Beacon エクスペリエンスのアプリケーション設計を構築するのに役立ちます。あなたのアプリのために定義したいものの非常に簡単な例をここに写真に示します： </p>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/getting-started/creating-app-design/top-level-example.png" alt="" />
+    </figure>
+    <p>
+      OTT アプリ用の UX の設計経験がない可能性があります。このドキュメントの最後のセクションでは、<a href="#Is_guidance_available">ガイダンスはありますか？</a>、ベンダーのリスト' アドバイスが表示されます。UIを設計する前に、そのガイダンスを読み、検討することをお勧めします。
+    </p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Recording_your_categories/selections"> カテゴリ/選択内容の記録 </h2>
+    <p>
+      このドキュメントで作業する決定は、スプレッドシートに記録します。スプレッドシートを準備するには、次の手順に従います。 </p>
+    <ol class="bcls-tasklist">
+      <li>
+        このリンクをクリックしてテンプレートをダウンロードしてください: <a href="https://solutions.brightcove.com/bcls/bcbeacon/app-design-layout-options.xlsx"> app-design-layout-options.xlsx </a> .それが保存される場所を覚えておいてください。
+      </li>
+      <li>Google スプレッドシートアプリから空白のスプレッドシートを開きます。</li>
+      <li>
+        Google スプレッドシートのメニューから [ <strong>ファイル] [&gt; インポート</strong> ] を選択します。
+      </li>
+      <li>
+        表示されるダイアログから、次に示すように、まず [ <strong>アップロード</strong> ] <strong>を選択し、[デバイスからファイルを選択</strong> ] ボタンをクリックします。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/getting-started/creating-app-design/import-upload.png" alt="" />
+        </figure>
+      </li>
+      <li>
+        ダウンロードした Excel ファイルを見つけて選択し、[ <strong>開く</strong> ] をクリックします。
+      </li>
+      <li>
+        表示される [ <strong>ファイルのインポート</strong> ] ダイアログで、[ <strong>スプレッドシートの置換] を選択し、</strong> [ <strong>データのインポート</strong> ] ボタンをクリックします。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/getting-started/creating-app-design/import-file-dialog.png" alt="" />
+        </figure>
+      </li>
+      <li>
+        スプレッドシートをインポートすると、次のような内容が表示されます。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/getting-started/creating-app-design/imported-layout-options.png" alt="" />
+        </figure>
+      </li>
+    </ol>
+    <p>
+      スプレッドシートには、このドキュメントの質問に対する回答を記録します。あなたは、画面のレイアウトの選択を示すドロップダウンリストから選択します。
+    </p>
+    <p>
+      このプロセスの最後に、完成したGoogleシートをBrightcoveの担当者と共有し、エクスペリエンスの設定を支援します。
+    </p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Choosing_site_layout_options">サイトレイアウトオプションの選択</h2>
+    <p>
+      以下に、アプリのさまざまな部分のレイアウトオプションを示します。表示される画像と、好みを選択する画像は、モバイルアプリのものです。もちろん、テレビやウェブの画面は少し違って見えます。たとえば、最初にモバイルアプリの映画詳細画面が表示され、次にApple TVアプリの同じ映画詳細画面が表示されます。
+    </p>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/getting-started/creating-app-design/movie-details-a-mobile.png" alt="movie details a mobile" />
+    </figure>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/getting-started/creating-app-design/movie-details-a-appletv.png" alt="movie details a apple tv" />
+    </figure>
+    <p>
+      今度は、オプションの選択を開始する時間です。以下に、アプリのさまざまな部分のレイアウトオプションを示します。特定のレイアウトのオプションを確認し、選択した内容をスプレッドシートに記録します。
+    </p>
+    <h3>ランディングページ</h3>
+    <p>
+      ランディングページはオプションです。ランディングページを希望する場合はレイアウトを選択し、そうでない場合は選択します<strong>無し</strong>。注、Web アプリにはランディングページはありません。選択できるオプションは<strong> 2 つあります</strong>。
+    </p>
+    <div class="splide7">
+      <div class="splide__track">
+        <ul class="splide__list">
+          <li class="splide__slide">
+            <div class="small_image">
+              <p>ランディングA</p>
+              <img src="/assets/images/getting-started/creating-app-design/landing_A.png" alt="landing_A" />
+            </div>
+          </li>
+          <li class="splide__slide">
+            <div class="small_image">
+              <p>ランディングカルーセル</p>
+              <img src="/assets/images/getting-started/creating-app-design/landing_carousel.png" alt="landing_carousel" />
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <h3>映画の詳細ページ</h3>
+    <p>
+      ムービーの詳細ページには、特定のムービーの詳細と、関連するムービーのリストが表示されます。<strong>選択できるオプションは4つあります</strong>。
+    </p>
+    <div class="splide">
+      <div class="splide__track">
+        <ul class="splide__list">
+          <li class="splide__slide">
+            <div class="small_image">
+              <p>映画の詳細 A</p>
+              <img src="/assets/images/getting-started/creating-app-design/movies_details_A.png" alt="movies_details_A" />
+            </div>
+          </li>
+          <li class="splide__slide">
+            <div class="small_image">
+              <p>映画の詳細 F</p>
+              <img src="/assets/images/getting-started/creating-app-design/movies_details_F.png" alt="movies_details_F" />
+            </div>
+          </li>
+          <li class="splide__slide">
+            <div class="small_image">
+              <p>映画の詳細 G</p>
+              <img src="/assets/images/getting-started/creating-app-design/movie_details_G.png" alt="movie_details_G" />
+            </div>
+          </li>
+          <li class="splide__slide">
+            <div class="small_image">
+              <p>映画の詳細 H</p>
+              <img src="/assets/images/getting-started/creating-app-design/movie_details_H.png" alt="movie_details_H" />
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <h3>シリーズ詳細ページ</h3>
+    <p>
+      シリーズの詳細ページには、特定のシリーズの詳細、および関連する映画のリストが表示されます。選択できるオプションは<strong> 2 つあります</strong>。
+    </p>
+    <div class="splide2">
+      <div class="splide__track">
+        <ul class="splide__list">
+          <li class="splide__slide">
+            <div class="small_image">
+              <p>シリーズ詳細 A</p>
+              <img src="/assets/images/getting-started/creating-app-design/series_details_A.png" alt="series_details_A" />
+            </div>
+          </li>
+          <!--           <li class="splide__slide">
+            <div class="small_image">
+              <p>Series Details F</p>
+              <img src="/assets/images/getting-started/creating-app-design/series_details_F.png" alt="series_details_F" />
+            </div>
+          </li> -->
+          <li class="splide__slide">
+            <div class="small_image">
+              <p>シリーズ詳細 G</p>
+              <img src="/assets/images/getting-started/creating-app-design/series_details_G.png" alt="series_details_G" />
+            </div>
+          </li>
+          <!--           <li class="splide__slide">
+            <div class="small_image">
+              <p>Series Details H</p>
+              <img src="/assets/images/getting-started/creating-app-design/series_details_H.png" alt="series_details_H" />
+            </div>
+          </li> -->
+        </ul>
+      </div>
+    </div>
+    <h3>ライブテレビ</h3>
+    <p>
+      お客様は、選択したチャンネルで現在プレイしているものと、次に何が再生されるかを確認できます。有る<strong>一</strong>オプション、そしてそれはここに示されています。
+    </p>
+    <div class="splide3">
+      <div class="splide__track">
+        <ul class="splide__list">
+          <li class="splide__slide">
+            <div class="small_image">
+              <p>ライブテレビ D</p>
+              <img src="/assets/images/getting-started/creating-app-design/live_tv_D.png" alt="live_tv_D" />
+            </div>
+          </li>
+          <!--           <li class="splide__slide">
+            <div class="small_image">
+              <p>Live TV E</p>
+              <img src="/assets/images/getting-started/creating-app-design/live_tv_E.png" alt="live_tv_E" />
+            </div>
+          </li> -->
+        </ul>
+      </div>
+    </div>
+    <h3>プレイヤー</h3>
+    <p>
+      プレーヤーコントロールは、シリーズ内の他のビデオと同様に、異なって表示されます。<strong>選択できる3つのオプションがあります</strong>。
+    </p>
+    <div class="splide4">
+      <div class="splide__track">
+        <ul class="splide__list">
+          <li class="splide__slide">
+            <div class="small_image">
+              <p>プレイヤーA</p>
+              <img src="/assets/images/getting-started/creating-app-design/player_A.png" alt="player_A" />
+            </div>
+          </li>
+          <li class="splide__slide">
+            <div class="small_image">
+              <p>プレイヤーB</p>
+              <img src="/assets/images/getting-started/creating-app-design/player_B.png" alt="player_B" />
+            </div>
+          </li>
+          <!--           <li class="splide__slide">
+            <div class="small_image">
+              <p>Player C</p>
+              <img src="/assets/images/getting-started/creating-app-design/player_C.png" alt="player_C" />
+            </div>
+          </li> -->
+          <li class="splide__slide">
+            <div class="small_image">
+              <p>プレイヤーD</p>
+              <img src="/assets/images/getting-started/creating-app-design/player_D.png" alt="player_D" />
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <h3>ライブテレビプレーヤー</h3>
+    <p>
+      ライブテレビが再生されているときに使用されるプレーヤー。<strong>選択できる3つのオプションがあります</strong>。
+    </p>
+    <div class="splide5">
+      <div class="splide__track">
+        <ul class="splide__list">
+          <li class="splide__slide">
+            <div class="small_image">
+              <p>ライブプレイヤー A</p>
+              <img src="/assets/images/getting-started/creating-app-design/live_player_A.png" alt="live_player_A" />
+            </div>
+          </li>
+          <li class="splide__slide">
+            <div class="small_image">
+              <p>ライブプレイヤーB</p>
+              <img src="/assets/images/getting-started/creating-app-design/live_player_B.png" alt="live_player_B" />
+            </div>
+          </li>
+          <li class="splide__slide">
+            <div class="small_image">
+              <p>ライブプレイヤーD</p>
+              <img src="/assets/images/getting-started/creating-app-design/live_player_D.png" alt="live_player_D" />
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <h3>顧客設定</h3>
+    <p>
+      顧客を表示します' 設定オプション。<strong>選択できる3つのオプションがあります</strong>。
+    </p>
+    <div class="splide6">
+      <div class="splide__track">
+        <ul class="splide__list">
+          <li class="splide__slide">
+            <div class="small_image">
+              <p>設定 A</p>
+              <img src="/assets/images/getting-started/creating-app-design/settings_A.png" alt="settings_A" />
+            </div>
+          </li>
+          <li class="splide__slide">
+            <div class="small_image">
+              <p>設定カルーセル</p>
+              <img src="/assets/images/getting-started/creating-app-design/settings_carousel.png" alt="settings_carousel" />
+            </div>
+          </li>
+          <li class="splide__slide">
+            <div class="small_image">
+              <p>設定グリッド</p>
+              <img src="/assets/images/getting-started/creating-app-design/settings_grid.png" alt="settings_grid" />
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Optional_items">オプションアイテム</h2>
+    <p>
+      このセクションでは、いくつかのオプション項目を含めるかどうかを決定します。スプレッドシートでは、<strong>はい/いいえで答えます</strong>。
+    </p>
+    <h3>評価ポップアップ</h3>
+    <p>評価ポップアップを使用するかどうかを決定します。</p>
+    <div class="small_image">
+      <img src="/assets/images/getting-started/creating-app-design/rating_popup.png" alt="rating_popup" />
+    </div>
+    <h3>詳細情報ポップアップ</h3>
+    <p>[詳細情報] ポップアップを使用するかどうかを決定します。</p>
+    <div class="small_image">
+      <img src="/assets/images/getting-started/creating-app-design/more_info_popup.png" alt="more_info_popup" />
+    </div>
+    <h3>画面について</h3>
+    <p>[バージョン情報] 画面を使用するかどうかを決定します。</p>
+    <div class="small_image">
+      <img src="/assets/images/getting-started/creating-app-design/about.png" alt="about" />
+    </div>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Moving_forward">前進する</h2>
+    <p>
+      このタスクは完了しました。Brightcove Beacon Experience の構築時には、後でBrightcoveの担当者に提出するために作業しているスプレッドシートを保存してください。
+    </p>
+    <p>
+      まだ実行していない場合は、「<a href="/getting-started/creating-your-app-design-info-architecture.html">アプリケーション設計の作成-情報アーキテクチャ</a>」を使用してアプリケーション設計を定義する他の部分を完了し、表示するビデオとそのグループ化方法と順序を決定する必要があります。
+    </p>
+    <h3>ページデザイン</h3>
+    <p>また、個々のページをどのように表示するかについても考え始める必要があります。たとえば、次のホームページの例を次に示します。</p>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/using-bcb/introducing-pages/home-page-example.png" alt="home page example">
+    </figure>
+    <p>ページレイアウトオプションの詳細については、<a href="/using-brightcove-beacon/introducing-pages.html">ページの紹介</a>資料。ここでは、使用できるさまざまなページタイプと、それらのページのビデオコンテンツのレイアウトについて詳しく説明します。</p>
+  </section>
+  <!-- TEMPLATE
+ <h3>Title</h3>
+ <p></p>
+ <div class="image_display">
+ <p>img</p>
+ <img src="//learning-services-media.brightcove.com/doc-assets/beacon/site-map/.png" alt=""> </div>
+ END TEMPLATE -->
+  <section class="bcls-section">
+    <h2 id="Is_guidance_available">ガイダンスは利用可能ですか？</h2>
+    <p>
+      UXデザインは複雑な問題であり、デザインを構築する際に他の人が考慮しているものを確認したい場合があります。以下は、主要なOTT選手のデザインとベストプラクティスに関するアドバイスの一部へのリンクです。
+    </p>
+    <ul>
+      <li>
+        ロク:<a href="https://developer.roku.com/docs/developer-program/design/best-practices.md">設計のベストプラクティス</a>
+      </li>
+      <li>
+        アップルテレビ:<a href="https://developer.apple.com/design/human-interface-guidelines/tvos/overview/themes/">ヒューマンインタフェースのガイドライン</a>
+      </li>
+      <li>
+        ファイヤーテレビ:<a href="https://developer.amazon.com/docs/fire-tv/design-and-user-experience-guidelines.html">設計およびユーザーエクスペリエンスのガイドライン</a>
+      </li>
+      <li>
+        アンドロイドテレビ:<a href="https://developer.android.com/design/tv">アンドロイドのテレビのためのデザイン</a>
+      </li>
+    </ul>
+  </section>
+</article>
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@1.2.5/dist/js/splide.min.js"></script>
+<script>
+  var mySplide = new Splide（ '。splide'、{ width: '60%', perPage: 2, perMove: 1, }）mySplide.mount（）var mySplide2 = new Splide（ '。splide2'、{ width: '60%', perPage: 2, perMove: 1, }）mySplide2.mount（）var mySplide3 = new Splide（ '。splide3'、{ width: '90%', perPage: 2, perMove: 1, arrows: false, }）mySplide3.mount（）var mySplide4 = new Splide（ '。splide4'、{ width: '90%', perPage: 2, perMove: 1, }）mySplide4.mount（）var mySplide5 = new Splide（ '。splide5'、{ width: '90%', perPage: 2, perMove: 1, }）mySplide5.mount（）var mySplide6 = new Splide（ '。splide6'、{ width: '60%', perPage: 2, perMove: 1, }）mySplide6.mount（）var mySplide7 = new Splide（ '。splide7'、{ width: '60%', perPage: 2, perMove: 1, arrows: false, }）mySplide7.mount（）
+</script>

@@ -1,0 +1,77 @@
+---
+title: ツールの使用
+parent: Brightcove Beacon の使用 
+---
+
+
+<article class="bcls-article">
+    <h1>ツールの使用</h1>
+    <summary>このトピックでは、Brightcove Beacon の [ <strong>ツール] </strong>セクションにあるオプションの機能を学習します。</summary>
+
+    <section class="bcls-section">
+        <h2 id="Tools">ツールのご紹介</h2>
+        <p>
+            Brightcove Beacon では、<strong>レンチアイコン</strong> (1) はツールのセットを表します。ツールのオプションは、<strong>取り込み</strong>と<strong>キャッシュ</strong>です（2）。このドキュメントでは、2 つのオプションについて説明します。
+        </p>
+        <figure class="bcls-figure">
+            <img class="bcls-image" src="/assets/images/using-bcb/tools/icon-and-options.png" alt="icon-and-options" />
+        </figure>
+    </section>
+
+    <section class="bcls-section">
+        <h2 id="Ingestion">取り込み</h2>
+        <p>取り込みグループには、次の 3 つのツールがあります。</p>
+        <ul>
+            <li>
+                <strong>Brightcoveの動画を更新する</strong> :Video Cloud カタログに動画を追加した場合、または既存の動画を変更した場合、このボタンをクリックすると、新しく追加または更新された動画が Brightcove Beacon に同期されます。
+            </li>
+            <li>
+                <strong>Brightcoveのプレイリストの更新</strong> :Video Cloud カタログにプレイリストを追加した場合、または既存のプレイリストを変更した場合、このボタンにより、新しく追加または更新されたプレイリストが Brightcove Beacon に同期されます。
+            </li>
+            <li>
+                <strong>XML EPG-フォルダから XML をフェッチする</strong> :EPG (電子プログラムガイド) を更新する必要がある場合、このボタンをクリックすると、更新された XML ファイルが取得されます。ファイルをドロップする S3 アカウントが提供されます。
+            </li>
+        </ul>
+        <aside class="bcls-aside bcls-aside--tip">また、Brightcoveのサポート担当者と協力して、取り込みを自動的に実行するスケジュールを作成することもできます。</aside>
+
+        <figure class="bcls-figure">
+            <img class="bcls-image" src="/assets/images/using-bcb/tools/ingestion.png" alt="ingestion" />
+        </figure>
+        <h3>摂取に関する注意事項</h3>
+        <p>
+            Studio の特定の動画について入力されたすべてのデータが、自動的にBrightcove Beacon に取り込まれるわけではありません。たとえば、次のものは Video Cloud から Brightcove  Beacon に取り込まれません。
+        </p>
+        <ul>
+            <li>
+                <strong>利用可能時間</strong> :で設定されたスケジュール時間
+                <em>可用性</em> ビデオのプロパティのセクションは、Brightcove Beacon に取り込まれません。日付はになりますが、時刻ではありません。
+            </li>
+            <li>
+                <strong>地理的フィルタリング</strong> :で設定された地理フィルタリング情報
+                <em>可用性</em> ビデオのプロパティのセクションは、Brightcove Beacon に取り込まれません。
+            </li>
+        </ul>
+        <aside class="bcls-aside bcls-aside--tip">上記の問題は、を作成することで解決できます。<strong>パッケージ</strong> Brightcove Beaconでは、カスタムフィールドを介して取り込み時にそのパッケージにビデオを割り当てます。を参照してください<a href="/using-brightcove-beacon/creating-subscription-package.html">サブスクリプションパッケージの作成</a>と<a href="/using-brightcove-beacon/using-subscription-package.html">サブスクリプションパッケージの使用</a>詳細については、ドキュメントを参照してください。</aside>
+        <p>
+            また、Brightcove Beacon に記載されているすべての項目にカスタム項目が関連付けられているわけではありません。例えば
+            <em>製作国</em> かつ <em>サブジャンル</em> 対応するカスタムフィールドが関連付けられていません。
+        </p>
+    </section>
+
+    <section class="bcls-section">
+        <h2 id="Cache">[キャッシュ]</h2>
+        <p>[キャッシュ] (Cache) グループには 2 つのツールがあります。</p>
+        <ul>
+            <li>
+                <strong>キャッシュパージ</strong> :Brightcove Beacon で変更を行った場合、このボタンをクリックして、変更を現在の設定にロールします。このオプションは、イメージ以外のすべての変更を現在の設定に引き出します。
+            </li>
+            <li>
+                <strong>イメージキャッシュ</strong> :Brightcove Beacon の画像を更新する場合は、このボタンをクリックして、イメージの変更を現在の設定にロールします。
+            </li>
+        </ul>
+        <figure class="bcls-figure">
+            <img class="bcls-image" src="/assets/images/using-bcb/tools/cache.png" alt="cache" />
+        </figure>
+        <p>このプロセスは、本番環境で頻繁に行うことがスケーラビリティとパフォーマンスに悪影響を及ぼすため、無差別に実行すべきではありません。</p>
+    </section>
+</article>

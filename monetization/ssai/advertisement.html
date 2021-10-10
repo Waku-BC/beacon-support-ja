@@ -1,0 +1,73 @@
+---
+title: 「広告の作成」の
+description: 「このトピックでは、ビデオコンテンツを追加できる広告構成を作成する方法を学習します。」
+parent: 収益化
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+
+  <section class="bcls-section">
+    <h2 id="Overview">概要</h2>
+    <p>アドバタイズメント構成を作成するには、次のことを行う必要があります。</p>
+    <ul>
+      <li>広告サービスプロバイダーから広告タグサーバーのURLを取得します。これは、Video CloudStudioでSSAI広告構成を作成するために使用されます。</li>
+      <li>Video Cloud Studioで、SSAI広告構成を作成します。タスクの完了時に、広告サーバーIDをコピーして、Brightcove BeaconClassicで広告構成を作成します。</li>
+      <li>Brightcove Beacon Classicで広告設定を作成し、それをビデオコンテンツに適用できるようにします。</li>
+    </ul>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="section-name">SSAI広告構成IDを作成します</h2>
+    <p>次の手順に従って、SSAI広告構成を作成します。</p>
+    <ol class="bcls-tasklist-restart">
+      <li>Video Cloud Studioで、に移動します<strong>管理者→サーバー側の広告設定</strong>。</li>
+      <li>
+        から<span class="blue-button">広告構成を作成する</span>ドロップダウン、選択<strong>VOD</strong>
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/using-bcb/ad-targeting/create-vod-ad-config.png" alt="Create VOD Ad Config">
+          <figcaption class="bcls-caption--image">VOD広告設定を作成する</figcaption>
+        </figure>
+      </li>
+      <li>広告設定の名前を追加します。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/using-bcb/advertisement/ssai-config-vod.png" alt="SSAI Configuration VOD">
+          <figcaption class="bcls-caption--image">SSAI構成VOD</figcaption>
+        </figure>
+      </li>
+      <li>広告レスポンスを選択してください-VMAPまたはVASTをお勧めします。VASTを使用する場合は、動画にキューポイントを追加して、広告区切りを表示する場所を指定する必要があります。</li>
+      <li>広告タグを貼り付けます。</li>
+      <li>[<strong>保存</strong>]をクリックします。</li>
+      <li>表で新しい広告設定を見つけて、広告設定IDをコピーします。 Beacon アドバタイズメント構成には、この値が必要になります。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/using-bcb/ad-targeting/copy-ad-config-id.png" alt="copy ad config ID">
+          <figcaption class="bcls-caption--image">広告設定IDをコピーする</figcaption>
+        </figure>
+      </li>
+    </ol>
+  </section>
+
+
+  <section class="bcls-section">
+    <h2 id="Advertisement">アドバタイズメント構成を作成する</h2>
+    <p>アドバタイズメント構成を作成するには、次の手順に従います。</p>
+    <ol class="bcls-tasklist">
+      <li>Brightcove Beacon Classicでは、上部のナビゲーションで[ <strong>広告</strong>。
+        <figure class="bcls-figure"> <img class="bcls-image" src="/assets/images/using-bcb/advertisement/new-advertisement.png" alt="New advertisement" />
+          <figcaption class="bcls-caption--image">新しい広告</figcaption>
+        </figure>
+      </li>
+      <li>
+        クリック<span class="button-teal">新しい構成の追加</span>。
+      </li>
+      <li>広告構成に名前を付けます。</li>
+      <figure class="bcls-figure">
+        <img class="bcls-image" src="/assets/images/using-bcb/advertisement/advertising-configuration.png" alt="Beacon Ad Configuration Live">
+        <figcaption class="bcls-caption--image"> Beacon 広告構成ライブ</figcaption>
+      </figure>
+      <li>のために<strong>プロバイダー</strong>選択する<strong>ブライトコーブSSAI</strong></li>
+      <li>に貼り付けます<strong>SSAI広告設定ID</strong>上記の手順でにコピー<strong>VOD広告構成ID</strong>。</li>
+      <li>クリック<span class="button-teal">新しい広告を作成する</span>。</li>
+    </ol>
+  </section>
+</article>

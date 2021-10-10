@@ -1,0 +1,258 @@
+---
+title: 現金化のためのカスタムフィールド
+description: このトピックでは、収益化戦略を実装するために必要なカスタムフィールドを作成する方法を学習します。
+parent: 収益化
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <section class="bcls-section">
+    <h2 id="Introduction">はじめに</h2>
+    <p>AuthOVDやSVODなどの収益化戦略に組み込む動画には、豊富なメタデータのセットを定義する必要があります。このドキュメントでは、現金化の実装に使用される新しいカスタムフィールドを作成する方法を説明します。</p>
+    <p>このドキュメントのセクションは次のとおりです。</p>
+    <ol>
+      <li><strong>権利管理フィールド</strong> -収益化の実装に必要となる可能性のあるカスタムフィールドの名前と機能を指定します。</li>
+      <li><strong>カスタムフィールドの作成</strong> -カスタムフィールドの作成方法を段階的に説明します。これらの手順では、一般的に使用される権利管理フィールドの1つを作成します。</li>
+      <li><strong>カスタムフィールドの実装の詳細</strong> -次のトピックに関するカスタムフィールドの管理の詳細を提供します。
+        <ul>
+          <li>カスタムフィールド名</li>
+          <li>Brightcoveの Beacon メタデータのリスト値の使用</li>
+          <li>リスト値の編集</li>
+          <li>リスト値の削除</li>
+          <li>アカウントからのカスタムフィールドの削除</li>
+        </ul>
+      </li>
+    </ol>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Rights_Management_fields">アクセス権管理のフィールド</h2>
+    <p>
+      アセットの収益化とアクセス制限をサポートするには、カスタムフィールドのセットを使用する必要があります。アクセス権管理構成のインスタンスを複数持つことができるため、推奨される方法は、複数のカスタムフィールドのセットを作成することです。各インスタンスの名前では、カウンタを使用してそれらを区別します。最初のインスタンスは 0 へのカウンタを使用する必要があります。以下は、実際にカウンタ値を使用しているこれらのグループ化されたフィールドの例です。</p>
+    <figure class="bcls-figure"> <img class="bcls-image" src="/assets/images/monetization/vc-custom-fields/rights-management.png" alt=""> </figure>
+    <p>たとえば、動画で使用する広告を定義するセットと、新年のように休日のスペシャルを定義するためのセットが必要な場合があります。</p>
+    <p>具体的な例は、これらのフィールドの使用を明確にするのに役立ちます。次のスクリーンショットは、動画で使用されるサーバー側広告挿入（SSAI）の設定を示しています。</p>
+    <figure class="bcls-figure"> <img class="bcls-image" src="/assets/images/monetization/vc-custom-fields/rights-mamagement-example-avod.png" alt=""> </figure>
+    <p>この例では、次のことを学べます。</p>
+    <ul>
+      <li>グループ内のすべてのアクセス権管理フィールドに値を割り当てる必要がありません。この場合、 <em>beacon.rights.&lt; &gt;カウンター.adConfiguration</em> かつ <em>beacon.rights.&lt; &gt;カウンタ.type</em> 使用されています。</li>
+      <li>Studio で作成された SSAI設定 ID は、Brightcove Beacon のカスタムフィールドで使用できます。</li>
+      <li>アクセス権管理フィールドのセットに対するカウンタ値は 0 (黄色で強調表示) から開始できます。</li>
+    </ul>
+    <p>作成するフィールドは、[ <strong>このフィールドを必須にする] チェックボックスをオンにする必要がないことに注意してください</strong>。</p>
+    <p>
+      次の表は、実装に基づいて作成する必要があるカスタムフィールドを示しています。
+    </p>
+    <table class="bcls-table">
+      <thead class="bcls-table__head">
+        <tr>
+          <th>表示名</th>
+          <th>内部名</th>
+          <th>タイプ</th>
+          <th>注意/例</th>
+        </tr>
+      </thead>
+      <tbody class="bcls-table__body">
+        <tr>
+          <td>beacon.rights.&lt; &gt;カウンタ.type</td>
+          <td> Beacon 権利_ <br />&lt;counter&gt; _type</td>
+          <td>テキスト</td>
+          <td>
+            *資産の現金化のタイプかどうかを識別します<br> *値には、次のいずれかを使用します。 <ul>
+              <li>自由</li>
+              <li> AVOD</li>
+              <li> SVOD</li>
+              <li>継承</li>
+            </ul>
+            * デフォルト値:<strong>自由</strong><br> * NS <strong>継承</strong>値はにのみ適用されます <em>エピソード</em> 資産 </td>
+        </tr>
+        <tr>
+          <td>
+             Beacon 。権利。<br />
+            &lt;カウンター&gt;。<br />
+            開始日
+          </td>
+          <td>
+             Beacon 権利_ <br />
+            &lt;カウンター&gt; _<br />
+            開始日
+          </td>
+          <td>テキスト</td>
+          <td>
+            *この特定のセットのアクセス制限と現金化オプションの下で資産を公開する必要がある日付<br> * フォーマット：日付yyyy-mm-ddhh：mm：ss<br> * デフォルト値:設定されていない場合、デフォルトでビデオの可用性開始日 </td>
+        </tr>
+        <tr>
+          <td>beacon.rights.&lt; &gt;カウンター.endDate</td>
+          <td>
+             Beacon 権利_ <br />
+            &lt;counter&gt; _enddate
+          </td>
+          <td>テキスト</td>
+          <td>
+            *この特定のセットのアクセス制限および現金化オプションの下で資産が公開されなくなる日付<br> * フォーマット：日付yyyy-mm-ddhh：mm：ss<br> * デフォルト値:設定されていない場合、デフォルトでビデオの可用性の終了日が設定されます </td>
+        </tr>
+        <tr>
+          <td>beacon.rights.&lt; &gt;カウンター.devices</td>
+          <td>
+             Beacon 権利_ <br />
+            &lt;counter&gt; _devices
+          </td>
+          <td>テキスト</td>
+          <td>
+            *この特定のセットのアクセス制限と現金化オプションの下でアセットが公開される必要があるBrightcove Beacon でサポートされているデバイスのコンマ区切りリスト<br> *カンマ区切りのリスト： <ul>
+              <li>iOS</li>
+              <li>Android</li>
+              <li>Web</li>
+              <li>Roku</li>
+              <li>STV</li>
+              <li>Fire TV</li>
+              <!-- <li>LGTV</li> -->
+              <li>Samsung</li>
+              <li>アップルトV</li>
+              <li>androidtv</li>
+              <!-- li>panasonic</li> -->
+            </ul>
+            * デフォルト値:設定されていない場合、デフォルトでBrightcove Beacon でサポートされているすべてのデバイスになります </td>
+        </tr>
+        <tr>
+          <td>
+             Beacon 。権利。<br />
+            &lt;カウンター&gt;。<br />
+            locationPermit
+          </td>
+          <td>
+             Beacon 権利_ <br />
+            &lt;カウンター&gt; _<br />
+            場所許可
+          </td>
+          <td>テキスト</td>
+          <td>
+            *この特定のセットのアクセス制限と現金化オプションの下でアセットが公開される必要があるBrightcove Beacon で定義された場所のコンマ区切りリスト<br> * デフォルト値:設定されていない場合、デフォルトでBrightcove Beacon でサポートされているすべての場所になります </td>
+        </tr>
+        <tr>
+          <td>
+             Beacon .rights。&lt;カウンター&gt;。<br /> 場所拒否 </td>
+          <td>
+             Beacon 権利_ <br />
+            &lt;カウンター&gt; _<br />
+            locationdeny
+          </td>
+          <td>テキスト</td>
+          <td>
+            *この特定のセットのアクセス制限と現金化オプションの下でアセットが公開されるべきではないBrightcove Beacon で定義された場所のコンマ区切りリスト<br> *デフォルト値なし </td>
+        </tr>
+        <tr>
+          <td>
+             Beacon 。権利。<br />
+            &lt;カウンター&gt;。<br />
+            パッケージ名
+          </td>
+          <td>
+             Beacon 権利_ <br />
+            &lt;カウンター&gt; _<br />
+            パッケージ名
+          </td>
+          <td>テキスト</td>
+          <td>
+            *このフィールドの値は、<strong> Beacon .rights。&lt;counter&gt; .type</strong>フィールド値はに設定されます<strong>SVOD</strong><br> * Brightcove Beaconで定義されている、パッケージ名のコンマ区切りリスト<br> *例： <em>プレミアムスポーツ、アクション映画、アースデイ映画</em><br> *デフォルト値なし </td>
+        </tr>
+        <tr>
+          <td>
+             Beacon 。権利。<br />
+            &lt;カウンター&gt;。<br />
+            adConfiguration
+          </td>
+          <td>
+             Beacon 権利_ <br />
+            &lt;カウンター&gt; _<br />
+            adconfiguration
+          </td>
+          <td>テキスト</td>
+          <td>
+            *このフィールドの値は、<strong> Beacon .rights。&lt;counter&gt; .type</strong>フィールド値はに設定されます<strong>AVOD</strong><br> * BrightcoveBeaconの広告構成の識別子<br> *デフォルト値なし </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Creating_custom_fields">カスタムフィールドを作成する</h2>
+    <p>カスタムフィールドを作成するには、次の手順に従います。</p>
+    <ol class="bcls-tasklist">
+      <li>BeaconStudioにログインします。</li>
+      <li>
+        プライマリナビゲーションで、をクリックします<strong>管理者</strong>その後<strong>ビデオフィールド</strong>。管理者メニューにアクセスするには、アカウント管理者である必要があります。
+      </li>
+      <li>
+        次のスクリーンショットに示すように、[ビデオフィールド]ページには、カスタムフィールドとすべての標準ビデオメタデータフィールドが表示されます（この場合、カスタムフィールドはまだ作成されていません）。 <figure class="bcls-figure"> <img class="bcls-image" src="/assets/images/monetization/vc-custom-fields/custom-fields-overview1.png" alt="" /> </figure>
+      </li>
+      <li>
+        [ <strong>ユーザー設定フィールドの追加</strong> ] をクリックします。
+        <figure class="bcls-figure"> <img class="bcls-image" src="/assets/images/monetization/vc-custom-fields/new-custom-field1.png" alt="" /> </figure>
+      </li>
+      <li>
+        のために<strong>表示名</strong>、 入力 <samp> Beacon .rights.0.adConfiguration</samp>。これは、カスタムフィールドを必要とする最初のモネタイズ実装で一般的に必要なカスタムフィールドです。この値は、メディアモジュールのフィールドのラベルとして表示されることに注意してください。<strong>表示名に基づいて、フィールドの内部名が自動的に作成されます</strong>。
+      </li>
+      <li>
+        のために<strong>タイプ</strong>選択する<strong>文章</strong>。可能なタイプの値については、次の点に注意してください。
+        <ul>
+          <li>
+            <strong>テキスト</strong> -ユーザーは、1024文字までのシングルバイト文字（または全角512文字）までフィールドに入力できます。
+          </li>
+          <li>
+            <strong>リスト</strong> -ユーザーは値のリストから選択します。リストには最大150個の値を格納でき、リストの各値の長さは最大100文字です。
+          </li>
+        </ul>
+      </li>
+      <li>
+        「<strong>摘要</strong>」を入力します。このフィールドの適切な説明は次のとおりです。 <samp>このフィールドの値は、beacon.rights。&lt;counter&gt; .typeフィールドの値がAVODに設定されている場合に入力する必要があります。</samp> 説明フィールドは、Studioのインターフェイスにヒントとして表示されます。
+      </li>
+      <li>
+        このフィールドを必須にしないでください。
+      </li>
+      <li>フォームが次のように表示されることを確認してください。
+        <figure class="bcls-figure"> <img class="bcls-image" src="/assets/images/monetization/vc-custom-fields/new-custom-field-added.png" alt="" /> </figure>
+      </li>
+      <li>
+        [ <strong>フィールドの保存</strong> ] をクリックして、変更を保存します。[ <strong>保存して別の項目を追加</strong> ] をクリックしてフィールドを保存し、別のフィールドの作成を開始します。
+      </li>
+    </ol>
+    <p>
+      作成したカスタムフィールドはすぐに利用可能になり、メディアモジュールに表示されます。
+    </p>
+    <p>
+      最大 10 個のカスタムフィールドを作成できます。10 個を超えるフィールドが必要な場合は、[ <strong>さらにフィールドが必要ですか？] をクリックします。</strong>リンクをクリックして、ブライトコーブのカスタマーサポートにお問い合わせください。パブリッシャーのカスタムフィールドは 50 個に制限されています。
+    </p>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Custom_field_implementation_details">カスタムフィールド実装の詳細</h2>
+    <h3>カスタムフィールド名</h3>
+    <p>
+      このドキュメントの次の 3 つのセクションでは、特定の実装ユースケースに基づいて作成する必要があるカスタムフィールドについて説明します。各カスタムフィールドには、[ <strong>表示名] </strong>と [ <strong>内部名</strong> ] の両方があります。あなたがあなたがより意味のある名前を持っていると感じるなら<strong>表示名</strong>オプションでそれを使用できますが、<strong>内部名</strong>正確に一致する必要があります。
+    </p>
+
+    <h3>Brightcoveの Beacon メタデータのリスト値の使用 </h3>
+    <p>
+      上記の権利管理カスタムフィールドの値の表では、次のことを検討することをお勧めします。<strong> Beacon .rights。&lt;counter&gt; .type</strong>タイプになる<strong>リスト</strong>。すべての<strong>タイプ</strong>は<strong>テキスト</strong>であることに注意してください。テキストを入力するのではなく、リストから選択できる場合は、現金化の実装者の負担が軽減される可能性があります。また、値を入力するのではなく、リストから選択できる場合は、データ入力の一貫性を保つことが常に役立ちます。したがって、ビジネスケースによっては<strong> List </strong>が機能することが分かった、リストを使用できます。
+    </p>
+
+    <h3 id="edit">リスト値の編集</h3>
+    <p>
+      リスト型のユーザー設定フィールドには、追加の値を追加できます。カスタムフィールド名のリンクをクリックし、値を追加して、[ <strong>リストに追加] </strong>をクリックします。完了したら、[ <strong>フィールドの保存</strong> ] をクリックします。
+    </p>
+
+    <h3 id="delete">リスト値の削除</h3>
+    <p>
+      リストタイプのカスタムフィールドから既存の値を削除できます。カスタムフィールド名のリンクをクリックし、値に関連付けられている削除アイコンをクリックしてから、<strong>フィールドを保存</strong>。
+    </p>
+    <p>
+      リスト値を削除すると、その値が以前に割り当てられていた動画はすべてその値を保持します。ただし、削除された値を持つビデオを編集すると、値はクリアされ、新しい値を選択する必要があります。
+    </p>
+
+    <h3 id="remove">アカウントからのカスタムフィールドの削除</h3>
+    <p>
+      アカウントからカスタム項目を削除するには、<a href="https://supportportal.brightcove.com/s/login/"> Brightcove サポートにお問い合わせください</a>。Brightcove サポートでカスタム項目を削除した場合、値が存在していた動画では変更日が変更されます。
+    </p>
+  </section>
+
+</article>

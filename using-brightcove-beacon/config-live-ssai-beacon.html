@@ -1,0 +1,88 @@
+---
+title: Brightcove Beacon チャネルを使用したライブSSAIのアドバタイズメントの構成
+description: 'このトピックでは、ライブSSAI広告をBrightcove Beacon チャネルに設定する方法を学習します。'
+parent: Brightcove Beacon の使用
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+    <summary>{{ page.description }}</summary>
+
+    <section class="bcls-section">
+        <aside class="bcls-aside bcls-aside--information">このライブ広告の構成プロセスは、ライブチャネルがSSAIで有効になっている場合にのみ必要です。そうでない場合、これらの手順は必要ありません。</aside>
+        <h2 id="Prerequisites">前提条件</h2>
+
+        <ul>
+            <li><a href="https://live.support.brightcove.com/live-module/implementing-server-side-ads-live-module.html" target="_blank">VideoCloudでSSAIを有効にしたライブチャンネルを作成します。</a></li>
+            <li><a href="https://studio.support.brightcove.com/admin/configuring-server-side-ad-settings.html#live" target="_blank">VideoCloudで広告タグを作成して設定します。</a></li>
+            <li><a href="https://beacon.support.brightcove.com/using-brightcove-beacon/creating-a-channel.html" target="_blank">Brightcove Beacon でチャネルを作成します。</a></li>
+            <li>Brightcove Beacon でアドバタイズメント構成を作成します。</li>
+            <li>チャネルで権利とスケジュールを設定します。</li>
+        </ul>
+
+    </section>
+
+    <section class="bcls-section">
+        <h2 id="Prerequisites">Brightcove Beacon を使用したビデオクラウド広告の構成 </h2>
+
+        <ol class="bcls-tasklist-restart">
+            <li>Video Cloud Studioで、<strong>住む</strong>モジュール。</li>
+            <li>BrightcoveBeaconで使用するライブSSAIチャネルを作成または開きます。 </li>
+            <li>の中に<strong>制御室</strong>、 クリック<strong>公開して埋め込む</strong>左パネルから。
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" src="/assets/images/using-bcb/ssai-beacon/live-player-options.png" alt="" width="" height="" />
+                </figure>
+            </li>
+            <li>の中に<strong>ライブプレーヤーオプション</strong>セクションで、ドロップダウンからを選択します<strong>広告構成</strong>設定したい。</li>
+            <li>新しいものを選択したら<strong>標準の埋め込みコード</strong>現れる。 </li>
+            <li>を抽出します<strong>adConfigId</strong>画像に示すように、adConfigIdに割り当てられているURLの一部をコピーします。
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" src="/assets/images/using-bcb/ssai-beacon/configid.png" alt="" width="" height="" />
+                </figure>
+            </li>
+            
+        </ol>
+
+    </section>
+
+    <section class="bcls-section">
+        <h2 id="Prerequisites">Brightcove Beacon で広告を作成する</h2>
+
+        <ol class="bcls-tasklist-restart">
+            <li>BrightcoveBeaconプラットフォームに戻ります。</li>
+            <li>クリック<strong>広告</strong>。
+                <figure class="bcls-figure">
+                    <img class="bcls-image--no-border" src="/assets/images/using-bcb/ssai-beacon/paste-configid.png" alt="" width="" height="" />
+                </figure>
+            </li>
+            <li>設定する広告構成を作成または選択します。 </li>
+            <li>新しい広告の場合は、<strong>名前</strong>。</li>
+            <li>必ず<strong>プロバイダー</strong>に設定されています<strong>ブライトコーブSSAI</strong>。</li>
+            <li>の中に<strong>ライブ構成ID</strong>フィールドに貼り付けます<strong>adConfigId</strong>このドキュメントの前のセクションでコピーしたURL。</li>
+            <li>クリック<strong>新しい広告を作成する</strong>。</li>
+            
+        </ol>
+
+        </section>
+
+        <section class="bcls-section">
+            <h2 id="Prerequisites">ブライトコーブ Beacon での権利の設定とスケジューリング</h2>
+            <ol class="bcls-tasklist-restart">
+                <li>上部のナビゲーションで、をクリックします<strong>チャンネル</strong>。
+                    <figure class="bcls-figure">
+                        <img class="bcls-image--no-border" src="/assets/images/using-bcb/ssai-beacon/rigthsandsche.png" alt="" width="" height="" />
+                    </figure>
+                </li>
+                <li>SSAI構成を設定するチャネルを選択します。</li>
+                <li>[ <strong>権限とスケジュール</strong> ] タブをクリックします。</li>
+                <li>の<strong>権利の種類</strong>、 選択する<strong>広告-AVOD</strong>。</li>
+                <li>の<strong>広告の構成</strong>、ドロップダウンから、作成したばかりの広告構成を選択します。</li>
+                <li>クリック<strong>新しいチャネルを作成する</strong>あなたの仕事を保存します。 
+                    <figure class="bcls-figure">
+                        <img class="bcls-image--no-border" src="/assets/images/using-bcb/ssai-beacon/create-button.png" alt="" width="300" height="100" />
+                    </figure>
+                </li>
+            </ol>
+
+            </section>
+
+    </article>

@@ -1,0 +1,85 @@
+---
+title: クラウドプレイアウトにバンパーを追加する
+description: このトピックでは、Cloud PlayoutチャネルのVODビデオとライブイベントにバンパー（社内広告）を追加する方法を学習します。
+parent: Cloud Playout
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  <section class="bcls-section">
+    <h2 id="Introduction">はじめに</h2>
+    <p>チャンネルでサーバーサイド広告（SSAI）を有効にしていない場合でも、バンパーを含めることをお勧めします。これは、社内広告やその他の種類の発表やプロモーションである可能性のあるロール前またはロール後の短い動画です。バンパーを使用して、ライブプログラミングセグメント用のバッファーを作成することもできます。</p>
+    <p>最初のチャネル作成で行う必要のあることは何もありません-オプション<span class="button-blue">バンパーを挿入</span>チャネルが作成された後、自動的に表示されます。これは、ライブストリームまたはSSAIが有効になっているチャネルを含むすべてのチャネルに適用されます</p>
+    <p>同じビデオに複数のバンパーを追加したり、ビデオと同じようにプログラム順にバンパーを並べ替えたりすることができます。ただし、これを行うには注意が必要です。そうしないと、EPGが不正確になる可能性があります。見る<a href="https://apis.support.brightcove.com/cloud-playout-apis/getting-started/overview-epg-api.html#epg_bumpers">EPGとバンパー</a>詳細については。</p>
+    <p>バンパーは<strong>いいえ</strong>に表示されます<a href="https://apis.support.brightcove.com/cloud-playout-apis/references/reference-epg.html">EPG</a>ただし、バンパーの持続時間は、ビデオの前後に追加されます（プレロールかポストロールかによって異なります）。</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Enabling_bumper_content">バンパーコンテンツの有効化</h2>
+    <p>バンパーはアカウント内のどの動画でもかまいませんが、<strong>の一つ</strong>次のタグ：</p>
+    <ul>
+      <li><code translate="no">cp-プレロール-バンパー</code></li>
+      <li><code translate="no">cp-postroll-バンパー</code></li>
+    </ul>
+    <aside class="bcls-aside bcls-aside--warning">潜在的な問題：
+			<ul>
+				<li>これらのタグの両方を同じビデオに追加した場合でも、バンパーとして機能しますが、<a href="https://apis.support.brightcove.com/cloud-playout-apis/getting-started/overview-epg-api.html"> EPG</a>不正確になります。</li>
+				<li>同様に、SSAI対応チャネルの場合、広告プレースホルダーはポストロール広告として扱われます。プレロールバンパーの後に広告プレースホルダーを配置しないでください。これにより、プレロールが効果的に作成されます。<i data-feather="arrow-right"></i>EPGが不正確になるポストロールシーケンス。</li>
+			</ul>
+			</aside>
+  </section>
+  <section class="bcls-section">
+    <h2 id="inserting-bumpers">バンパーの挿入</h2>
+    <ol class="bcls-tasklist-restart">
+      <li>バンパーを挿入する前に、<a href="/cloud-playout/cloud-playout-stream-vod.html#add_videos">チャンネルに動画やライブイベントを追加する</a>と<strong>保存する</strong>変更。</li>
+      <li>
+        1つまたは複数のビデオやライブイベントを選択して、<span class="button-blue">バンパーを挿入</span>。<sup>[1-1]<strong><a href="#note1-1"></a></strong></sup>
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/cloud-playout/select-videos-for-bumper.png" alt="Select Videos for Bumper">
+          <figcaption class="bcls-caption--image">バンパーの動画を選択</figcaption>
+        </figure>
+      </li>
+      <li>
+        の中に<strong>バンパー</strong>ダイアログ選択<strong>プレロール</strong>また<strong>ポストロール</strong>次にクリックします<span class="button-blue">入れる</span>挿入したいバンパービデオの横。<sup>[1-2]<strong><a href="#note1-2"></a></strong></sup>
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/cloud-playout/bumper-dialog.png" alt="Bumper Dialog">
+          <figcaption class="bcls-caption--image">バンパーダイアログ</figcaption>
+        </figure>
+      </li>
+      <li>
+        これで、バンパーがプログラムリストに表示されます。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/cloud-playout/bumper-in-program-list.png" alt="Bumper in Program List">
+          <figcaption class="bcls-caption--image">プログラムリストのバンパー</figcaption>
+        </figure>
+      </li>
+    </ol>
+    <h3>注</h3>
+    <ul style="list-style: none;">
+      <li id="note1-1" style="list-style: none;"><sup>[1-1]<strong></strong></sup> 複数のアイテムを選択すると、同じバンパーがそれぞれに追加されます。アイテムごとに異なるバンパーが必要な場合は、1つずつ追加します。</li>
+      <li id="note1-2" style="list-style: none;"><sup>[1-2]<strong></strong></sup> されているビデオのみを覚えておいてください<a href="#Enabling_bumper_content">バンパーとしてタグ付け</a>リストに表示されます。</li>
+  </ul>
+  </section>
+  <section class="bcls-section">
+    <h2 id="removing_bumpers">バンパーの移動または取り外し</h2>
+    <p>バンパーをドラッグアンドドロップして、プログラムリストの新しい場所に移動します。</p>
+    <p>バンパーを取り外すには、バンパーを選択してクリックします<strong>消去</strong>、をクリックします<strong>消去</strong>再度確認ダイアログで。</p>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/cloud-playout/delete-bumper.png" alt="Delete Bumper">
+      <figcaption class="bcls-caption--image">バンパーを削除する</figcaption>
+    </figure>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Related_topics">関連トピック</h2>
+    <ul>
+      <li><a href="/cloud-playout/cloud-playout-overview.html">概要:クラウドプレイアウト</a></li>
+      <li><a href="/cloud-playout/cloud-playout-stream-vod.html">クラウドプレイアウトチャネルの作成</a></li>
+      <li><a href="/cloud-playout/enabling-server-side-ads.html">クラウドプレイアウトの収益化</a></li>
+      <li><a href="/cloud-playout/using-channel-actions.html">チャネルアクションの使用</a></li>
+      <li><a href="/cloud-playout/viewing-channel-output-and-analytics.html">チャネル出力と分析の表示</a></li>
+      <li><a href="/cloud-playout/generating-channel-embed-code.html">チャネル埋め込みコードの生成</a></li>
+      <li><a href="https://apis.support.brightcove.com/cloud-playout-apis/getting-started/overview-epg-api.html">概要:EPG API</a></li>
+      <li><a href="https://apis.support.brightcove.com/cloud-playout-apis/references/reference-epg.html">EPGAPIリファレンス</a></li>
+      <li><a href="https://apis.support.brightcove.com/cloud-playout-apis/references/reference-channels.html">チャネルAPIリファレンス</a></li>
+    </ul>
+  </section>
+</article>

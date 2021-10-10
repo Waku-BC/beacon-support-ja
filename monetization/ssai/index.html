@@ -1,0 +1,19 @@
+---
+title: SSAI
+description: このセクションには、サーバー側の広告挿入（SSAI）を使用してアプリを収益化することに関連するトピックが含まれています。
+parent: 収益化
+---
+
+
+<article class="bcls-article">
+  <h1>{{ page.title }}</h1>
+  <summary>{{ page.description }}</summary>
+  <section>
+    <h2 id="Topics_in_this_section">のトピック{{ page.title }}</h2>
+    <ul class="bcls-topic-list">
+      {% for item in site.data.navigation %} {% if item.name == page.parent %} {% for entry in item.docs %} {% if entry.name == page.title %} {% for doc in entry.docs %}
+      <li><a href="{{ doc.url }}">{{ doc.name }}</a></li>
+      {% endfor %} {% endif %} {% endfor %} {% endif %} {% endfor %}
+    </ul>
+</section>
+</article>

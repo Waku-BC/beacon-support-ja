@@ -1,0 +1,118 @@
+---
+title: クラウドプレイアウトチャネルへのコンテンツの追加
+description: このトピックでは、VODアイテム、ライブイベント、プレイリストをクラウドプレイアウトチャンネルに追加する方法を学びます。
+parent: Cloud Playout
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  <section class="bcls-section">
+		<h2 id="Introduction">はじめに</h2>
+		<p>Cloud Playoutチャネルの構成方法に応じて、さまざまな種類のコンテンツを追加できます。VODコンテンツとプレイリストはどのチャンネルにも追加できます。さらに、それをサポートするようにチャネルを構成した場合は、ライブイベントを追加できます。次のセクションでは、各種類のコンテンツを追加する手順について説明します。</p>
+		<aside class="bcls-aside bcls-aside--information">あなたもできることに注意してください<a href="/cloud-playout/adding-bumpers-to-vod.html">バンパーを追加する</a>あなたのチャンネルに、そして<a href="/cloud-playout/enabling-server-side-ads.html">サーバーサイド広告</a>、チャネルがそのように構成されている場合。その方法の詳細については、これらのトピックを参照してください。</aside>
+	</section>
+  
+  <section class="bcls-section">
+    <h2 id="add_videos">VODコンテンツの追加</h2>
+    <p>チャンネルを作成した後、またはチャンネルの詳細に移動すると、画面にチャンネル設定が表示されます。</p>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/cloud-playout/cloudplayout-channel-details.png" alt="Channel Settings">
+      <figcaption class="bcls-caption--image">チャンネル設定</figcaption>
+    </figure>
+    <p>詳細は編集できますが、次の主なステップはチャンネルにコンテンツを追加することです。</p>
+    <h3>ビデオの追加（VOD）手順</h3>
+    <ol class="bcls-tasklist-restart" style="--s:1">
+      <li>クリック<span class="button-blue"><i data-feather="plus"></i> ビデオを追加</span>（チャンネルリストページを表示している場合は、チャンネル名をクリックしてチャンネル設定ページを開き、[ <span class="button-blue"><i data-feather="plus"></i> ビデオを追加</span>）。
+      </li>
+      <li>チャンネルに追加する動画の横にあるチェックボックスをクリックします。
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="select videos" src="/assets/images/cloud-playout/playout-select-videos.png" /></figure>
+      </li>
+      <li>クリック<span class="button-blue">ビデオを追加</span>）</li>
+      <li>クリック<span class="button-blue"><i data-feather="save"></i> 保存する</span>。</li>
+      <li>
+        チャネルのプログラムリストが表示されます。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/cloud-playout/cloudplayout-vod-program-list.png" alt="Program List">
+          <figcaption class="bcls-caption--image">プログラム一覧</figcaption>
+        </figure>
+        <p>開始時間と終了時間は、ビデオの長さから自動的に計算されることに注意してください。リスト内のビデオをドラッグアンドドロップして並べ替えることができ、開始/終了時間が自動的に調整されます。</p>
+      </li>
+    </ol>
+	</section>
+
+	<section class="bcls-section">
+		<h2 id="add_playlists">プレイリストを追加する</h2>
+		<p>再生リスト全体をチャンネルにインポートすることもできます。次の条件に注意してください。</p>
+		<ul>
+			<li>EXPLICIT（手動）プレイリストとスマートプレイリストの両方をインポートできます。</li>
+			<li>NS <strong>スナップショット</strong>現在の状態のプレイリストのがインポートされます（つまり、プレイリストへの将来の変更は<strong>いいえ</strong>チャネルコンテンツに反映されます）。</li>
+			<li>一度にインポートできるプレイリストは1つだけです。</li>
+			<li>インポートされたプレイリストにライブイベントが含まれている場合、同じ名前、説明、期間の同じ新しいライブイベントが作成されます。これは、ライブイベントが常にチャネルと1：1の関係を共有するためです。</li>
+			<li>再生リスト内の動画が追加されます<strong>最後まで</strong>現在のチャンネルプログラムの。</li>
+			<li>プレイリストだけでなくVODコンテンツも追加でき、複製は許可されます。</li>
+			<li>総資産制限（100）の検証チェックがあります。インポートが100アセット制限を超える場合、インポートは失敗します。</li>
+			<li>
+				<aside class="bcls-aside bcls-aside--information">注:チャンネルでライブ入力が有効になっていない場合でも、ライブイベントをインポートから除外することを選択することで、ライブイベントを含むプレイリストをインポートできます。</aside>
+			</li>
+			<li>
+				<aside class="bcls-aside bcls-aside--information">注:これがSSAI対応チャネルの場合、ライブイベントは許可されません。ライブイベントをインポートから除外することを選択することにより、ライブイベントを含むプレイリストをインポートすることができます。</aside>
+			</li>
+			<li>
+				<aside class="bcls-aside bcls-aside--information">注:MP4レンディションの対象となるアセットのみが許可されます。警告は、どのアセットがインポートに不適格になるかを示します。確認すると、適格なアセットのみがインポートされます。</aside>
+			</li>
+		</ul>
+		<h3>プレイリストの手順を追加する</h3>
+		<ol class="bcls-tasklist-restart">
+			<li>クリック<span class="button-blue"><i data-feather="plus"></i> プレイリストをインポートする</span>。</li>
+			<li>クリック<span class="blue-button">輸入</span>インポートするプレイリスト用。</li>
+			<li>プレイリストの一部のアイテムをインポートできないことを示すメッセージが表示された場合は、<span class="blue-button">続行</span>サポートされているビデオをインポートする場合。</li>
+      <li>クリック<span class="button-blue"><i data-feather="save"></i> 保存する</span>。</li>
+			<li>
+				インポートが成功した場合は、プログラムリストに表示されます。
+				<figure class="bcls-figure">
+					<img class="bcls-image" src="/assets/images/cloud-playout/program-list-with-playlist-imports.png" alt="Program List with Playlist">
+					<figcaption class="bcls-caption--image">プレイリスト付きの番組リスト</figcaption>
+				</figure>
+			</li>
+		</ol>
+	</section>
+	<section class="bcls-section">
+		<h2 id="Add_Live_events">ライブイベントを追加する</h2>
+		<p>注：これは、チャネルでライブイベントが有効になっている場合にのみ適用されます。</p>
+    <ol class="bcls-tasklist">
+        <li>クリック <img src="/assets/images/cloud-playout/cloudplayout-add-live-event.png" alt="add live event" class="ui-image"></li>
+        <li>
+          [ライブイベントの追加]ダイアログで、<strong>名前</strong>、<strong>デュレーション</strong>、および<strong>説明</strong>ライブイベントの場合：
+          <figure class="bcls-figure">
+            <img class="bcls-image" src="/assets/images/cloud-playout/cloudplayout-add-live-event.png" alt="Add Live Event">
+            <figcaption class="bcls-caption--image">ライブイベントを追加</figcaption>
+          </figure>
+          <p>ライブイベントの最小期間は5分であり、期間は5分間隔でのみインクリメントまたはデクリメントできることに注意してください。必要に応じて、テキストボックスで期間をインラインで編集して、時間の粒度を調整できます。ライブイベントの期間は、現在再生中であってもいつでも変更できます。</p>
+        </li>
+        <li>
+          ライブイベントを追加すると、VODアイテムとともにプログラムリストに表示されます。
+          <figure class="bcls-figure">
+            <img class="bcls-image" src="/assets/images/cloud-playout/cloudplayout-live-event-program-list.png" alt="Program List">
+            <figcaption class="bcls-caption--image">プログラム一覧</figcaption>
+          </figure>
+        </li>
+        <li>ビデオと同じように、ライブイベントをドラッグしてリストを並べ替えることができます。また、使用することができます <img src="/assets/images/cloud-playout/cloudplayout-quick-edit.png" alt="quick edit" class="ui-image"> ライブイベントの期間を変更するボタン。</li>
+    </ol>
+	</section>
+    <p>こちらもご覧ください<a href="/cloud-playout/adding-bumpers-to-vod.html">コンテンツへのバンパーの追加</a> VODまたはライブイベントアイテムにバンパーを追加するため。</p>
+  
+  <section class="bcls-section">
+    <h2 id="Related_topics">関連トピック</h2>
+    <ul>
+      <li><a href="/cloud-playout/cloud-playout-overview.html">概要:クラウドプレイアウト</a></li>
+      <li><a href="/cloud-playout/cloud-playout-stream-vod.html">クラウドプレイアウトチャネルの作成</a></li>
+      <li><a href="/cloud-playout/using-channel-actions.html">チャネルアクションの使用</a></li>
+      <li><a href="/cloud-playout/enabling-server-side-ads.html">クラウドプレイアウトの収益化</a></li>
+      <li><a href="/cloud-playout/generating-channel-embed-code.html">チャネル埋め込みコードの生成</a></li>
+      <li><a href="/cloud-playout/viewing-channel-output-and-analytics.html">チャネル出力と分析の表示</a></li>
+      <li><a href="https://apis.support.brightcove.com/cloud-playout-apis/getting-started/overview-epg-api.html">概要:EPG API</a></li>
+      <li><a href="https://apis.support.brightcove.com/cloud-playout-apis/references/reference-epg.html">EPGAPIリファレンス</a></li>
+      <li><a href="https://apis.support.brightcove.com/cloud-playout-apis/references/reference-channels.html">チャネルAPIリファレンス</a></li>
+    </ul>
+  </section>
+</article>

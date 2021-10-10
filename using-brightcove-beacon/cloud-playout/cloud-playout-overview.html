@@ -1,0 +1,83 @@
+---
+title: '概要：クラウドプレイアウト' 
+description: このトピックでは、クラウドプレイアウトの概要を説明します。これにより、ビデオオンデマンドとライブフィードの組み合わせをライブリニアチャネルとしてコンパイルおよびスケジュールできます。
+parent: Cloud Playout
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  <section class="bcls-section">
+    <h2 id="Introduction">はじめに</h2>
+    <p>Brightcove Cloud Playoutは、VODカタログからのアイテムのスケジュールされたプレイアウトをライブフィードと組み合わせてプログラムし、BrightcoveLiveの信頼性とスケーラビリティを備えたリニアチャネルとしてストリーミングできるようにするVideoCloudStudioモジュールです。</p>
+		<p>次に、Cloud Playoutチャネルに関する情報を作成時に入力することにより、CloudPlayoutチャネルを Beacon チャネルとして使用できます。<a href="/using-brightcove-beacon/creating-a-channel.html"> Beacon チャンネル</a>。Cloud Playoutチャネルを使用する主な利点の1つは、EPGサービスがCloud Playoutに組み込まれているため、サードパーティのEPGプロバイダーを見つけて統合する必要がないことです。</p>
+    <p>Cloud Playoutは、次のようなスケジュールされたプログラミングのチャネルに強力なエンドツーエンドのソリューションを提供します。</p>
+    <ul>
+      <li>24時間年中無休のリニアチャンネル</li>
+      <li>ポップアップ/仮想チャネル</li>
+      <li>シミュレートされたライブイベント</li>
+    </ul>
+    <p>Cloud Playoutは、事前に録画されたコンテンツを活用した放送のようなライブTV体験を通じて、視聴者のエンゲージメントを高め、新しい収益機会を創出するのに役立ちます。既存のVODアセットを使用して、スケジュールされたライブチャネルを作成します。</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Features">特徴</h2>
+    <p>CloudPlayoutの機能は次のとおりです。</p>
+    <ul>
+      <li>Video CloudMediaライブラリからVODアセットをインポートします。</li>
+      <li>VODアセットとスケジュールされたライブフィードを切り替えます。</li>
+      <li>簡単、迅速、かつ信頼性の高い方法で、直前のスケジュール変更にリアルタイムで対応します。</li>
+      <li>サーバーサイド広告挿入（SSAI）を使用してチャンネルコンテンツを収益化します。</li>
+      <li>プログラムをループするようにチャネルを構成します。</li>
+      <li>デバイスごとにプレイアウトを最適化します。</li>
+      <li>ドラッグアンドドロップで、実行状態であっても、いつでもプログラムスケジュールを並べ替えることができます。</li>
+      <!-- <li>Push a channel to your owned and operated properties via Brightcove Live, an Amazon S3 bucket, or a 3rd party destination via RTMP output.</li> -->
+      <li>チャネルのEPG（電子番組ガイド）を取得するためのAPI</li>
+    </ul>
+  </section>
+	<section class="bcls-section">
+		<h2 id="workflow_overview">ワークフローの概要</h2>
+		<p>Cloud Playoutチャネルを作成し、それを Beacon アプリに追加するには、次の2つの部分があります。</p>
+		<ol class="bcls-tasklist-restart">
+			<li>に<strong>ビデオクラウド</strong>、チャネルを作成します。</li>
+			<li>に<strong> Beacon </strong>、CloudPlayoutチャネルをソースとして使用する新しい Beacon チャネルを作成します。</li>
+		</ol>
+		<p>これらのタスクの詳細については、<a href="#Related_topics">関連トピック</a></p>
+	</section>
+  <section class="bcls-section">
+    <h2 id="limitations">制約事項</h2>
+    <p>以下の仮定と制限が適用されます。</p>
+    <ul>
+      <li> 動画は、動的配信プロファイルを使用して取り込みまたは再トランスコードする必要があります。<strong> MP4レンディションが必要です</strong></li>
+      <li>CloudPlayoutでサポートされる最大入力ビットレートと解像度は20MBPS / 1080pです。これは、VODコンテンツとライブ入力の両方に適用されます。</li>
+      <li>Brightcoveは、ビデオ間の正しい移行と電子番組ガイドの精度を確保するために、少なくとも2分間のビデオを使用することをお勧めします。</li>
+      <li>現在、ビデオに追加されたキャプション（テキストトラック）は、クラウドプレイアウトチャネルに表示されません。キャプションのサポートは、将来のリリースで追加される予定です。</li>
+      <li>ライブイベントの最小時間は5分です。</li>
+      <li>Cloud Playoutのすべてのライブイベントは、Video Cloudリモートアセットと1：1の関係を共有します。このリモートアセットを他のチャネルで再利用することはできません。ライブイベントがチャンネルから削除されると、関連するリモートアセットは自動的に削除されます。チャネルが削除されると、関連するリモートアセットも自動的に削除されます。</li>
+      <li>ビデオ<strong>共有</strong>現在、別のアカウントからアカウントに追加することは、CloudPlayoutチャネルに追加できません。</li>
+      <li>ライブイベントが現在再生されているが、アクティブなフィードが利用できない場合、ライブフィードが再開されるか、イベントが終了するまで、スレートコンテンツがループで再生されます。スレートMP4の再生が開始されるまでに約30秒の遅延があります。</li>
+      <!--<li><strong>Input Looper : if the asset URL is duplicated, then input looper rely on order for switching; if the order is changes during the course of the switching , then subsequent N+1 switch it attempt to create would rely on the order. </strong></li>-->
+      <li>Video Cloudアカウントが地理的制限用に構成されている場合、チャネル<strong>出力領域</strong> VideoCloudの地理的制限ポリシーと互換性のあるリージョンで作成する必要があります。</li>
+      <li>最高のエクスペリエンスを得るには、BrightcoveはGoogleChromeブラウザの使用をお勧めします。</li>
+      <li>
+        SSAI対応チャネルの場合、宛先を広告対応RTPライブイベントに設定する必要があります。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/cloud-playout/advanced-options-for-live-job.png" alt="Live Settings for SSAI Channel">
+          <figcaption class="bcls-caption--image">SSAIチャンネルのライブ設定</figcaption>
+        </figure>
+      </li>
+    </ul>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Related_topics">関連トピック</h2>
+    <ul>
+      <li><a href="/cloud-playout/cloud-playout-stream-vod.html">クラウドプレイアウトチャネルの作成</a></li>
+      <li><a href="/cloud-playout/using-channel-actions.html">チャネルアクションの使用</a></li>
+      <li><a href="/cloud-playout/adding-bumpers-to-vod.html">クラウドプレイアウトへのバンパーの追加</a></li>
+      <li><a href="/cloud-playout/enabling-server-side-ads.html">クラウドプレイアウトの収益化</a></li>
+      <li><a href="/cloud-playout/generating-channel-embed-code.html">チャネル埋め込みコードの生成</a></li>
+      <li><a href="/cloud-playout/viewing-channel-output-and-analytics.html">チャネル出力と分析の表示</a></li>
+      <!-- <li><a href="https://apis.support.brightcove.com/cloud-playout-apis/getting-started/overview-epg-api.html">Overview: EPG API</a></li>
+      <li><a href="https://apis.support.brightcove.com/cloud-playout-apis/references/reference-epg.html">EPG API Reference</a></li>
+      <li><a href="https://apis.support.brightcove.com/cloud-playout-apis/references/reference-channels.html">Channel API Reference</a></li> -->
+    </ul>
+  </section>
+</article>

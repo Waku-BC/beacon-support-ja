@@ -1,0 +1,105 @@
+---
+title: 'Googleサブスクリプションの管理パート1'
+description: 「このトピックでは、サービスアカウントを作成して構成する方法を学習します。これは、Brightcove Beacon アプリとGoogleストアの間の通信を確立するためのより大きなプロセスの最初の部分です。」
+parent: "android"
+layout: staging
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+
+  <section class="bcls-section">
+    <h2 id="section-name">はじめに</h2>
+    <p>このドキュメントでは、Google Play Consoleを使用してサービスアカウントを作成し、いくつかの構成タスクを実行する手順を説明します。</p>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Create_a_service_account">サービスアカウントを作成する</h2>
+    <p>次の手順を実行して、サービスアカウントを作成します。</p>
+    <ol class="bcls-tasklist">
+      <li>を参照します<a href="https://play.google.com/console">GooglePlayコンソール</a>。</li>
+      <li>右上隅にあるをクリックします<strong>Playコンソールに移動します</strong>。</li>
+      <li>左側のナビゲーションで、<strong>設定→開発者アカウント→APIアクセス</strong>。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/gpc-first-nav-steps.png" alt="Settings > Developer Account > API access" width="268">
+        </figure>
+      </li>
+      <li>クリック<strong>新しいサービスアカウントを作成する</strong>。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/create-service-account.png" alt="create service account">
+        </figure>
+      </li>
+      <li>表示されるダイアログで、をクリックします<strong>Google Cloud Platform</strong>。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/create-new-service-account-dialog.png" alt="new service account dialog">
+        </figure>
+      </li>
+      <li>リダイレクト先のページで、<strong> +サービスアカウントの作成</strong>。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/iam-admin-redirect.png" alt="service accounts">
+        </figure>
+      </li>
+      <li>開いたダイアログで、<strong>サービスアカウント名</strong>入力 <samp>Androidサブスクリプション</samp> 次にクリックします<strong>作成</strong>。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/create-service-account-1.png" alt="enter service account name">
+        </figure>
+      </li>
+      <li>ステップ2で、ドロップダウンから<strong>役割</strong>することが <samp>オーナー</samp> 次にクリックします<strong>継続する</strong>。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/create-service-account-2.png" alt="choose role">
+        </figure>
+      </li>
+      <li>ステップ3で、をクリックします<strong>終わり</strong>。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/create-service-account-3.png" alt="click done">
+        </figure>
+      </li>
+    </ol>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Configure_the_service_account">サービスアカウントを構成します</h2>
+    <p>次の手順を実行して、サービスアカウントを構成します。</p>
+    <ol class="bcls-tasklist">
+      <li>作成したばかりのサービスアカウントの場合、<strong>行動</strong> 3つの縦のドットをクリックします。次に、をクリックします<strong>キーを管理する</strong>。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/manage-keys.png" alt="manage keys">
+        </figure>
+      </li>
+      <li>の中に<strong>キー</strong>情報、選択<strong>キーの追加→新しいキーの作成</strong>
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/create-new-key.png" alt="create new key">
+        </figure>
+      </li>
+      <li>秘密鍵情報から、<strong>キータイプ</strong>することが <samp>JSON</samp>、次にクリックします<strong>作成</strong>。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/create-json-private-key.png" alt="json private key">
+        </figure>
+      </li>
+      <li>次のメッセージが表示されていることを確認してください。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/private-key-saved.png" alt="private key saved verification">
+        </figure>
+      </li>
+      <li>秘密鍵ファイルをオンボーディングマネージャーに電子メールで送信する必要があります。</li>
+      <li>手順5で開いたタブを閉じて、をクリックします。<strong>完了</strong>サービスアカウント作成プロセスを開始したダイアログから。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/click-done.png" alt="click done">
+        </figure>
+      </li>
+      <li>の中に<strong>サービスアカウント</strong>セクションをクリックします<strong>アクセス許可</strong>新しく作成したサービスアカウントの横。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/click-grant-access.png" alt="grant access">
+        </figure>
+      </li>
+      <li>から<strong>ユーザーを招待する</strong>ページ、<strong>アカウントの権限</strong>セクションをクリックします。<strong>管理者（すべての権限）</strong>チェックボックス。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/gpc-server-server-subscriptions/admin-permissions.png" alt="grant admin permissions">
+        </figure>
+      </li>
+      <li>ページの右下にあるをクリックします<span class="button-blue">ユーザーを招待する</span>。</li>
+      <li>開いたダイアログで、をクリックします<span class="button-blue">招待を送る</span>。</li>
+    </ol>
+  </section>
+
+</article>

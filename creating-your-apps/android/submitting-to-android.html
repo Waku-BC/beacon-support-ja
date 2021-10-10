@@ -1,0 +1,327 @@
+---
+title: 'Androidストアへの新しいアプリの送信'
+description: 'このトピックでは、デバイスアプリをAndroidストアに送信する方法を学習します。'
+parent: 'Android' 
+grandparent: アプリの作成
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  <section class="bcls-section">
+    <aside class="bcls-aside bcls-aside--information">既存のアプリをBrightcoveBeaconアプリに更新する方法についての情報をお探しの場合は、<a href="/creating-your-apps/android/updating-android-apps-to-bcb.html"> AndroidアプリをBrightcove Beacon に更新する</a>資料。</aside>
+    <h2 id="Introduction">はじめに</h2>
+    <p>
+      このドキュメントは、Brightcove  Beacon アプリを Google Play ストアに送信する際に役立ちます。この文書の最初の 3 つのセクション（このセクションは含まれません）では、提出プロセスの完了時に必要な情報/アセットをリストします。
+    </p>
+    <p>
+      これらのリストの後に、提出プロセスのステップバイステップガイダンスがあります。アカウントを作成したら、ダッシュボードに進み、提出情報を入力します。ダッシュボードが次のように表示され、情報を入力する必要がある領域が黄色で強調表示されます。
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/creating-your-apps/android/dashboard.png" alt="dashboard" />
+    </figure>
+    </p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Android_Mobile_&_Android_TV">Androidモバイル &amp; アンドロイドのテレビ</h2>
+    <p>
+      AndroidモバイルとAndroid TVのどちらで提出する場合でも、以下の情報/アセットが必要になります。
+    </p>
+    <ul>
+      <li>
+        店舗概要: <a href="https://developer.android.com/distribute"> https://developer.android.com/distribute </a>
+      </li>
+      <li>
+        開発者プログラムの概要: <a href="https://developers.google.com/"> https://developers.google.com/ </a>
+      </li>
+      <li>
+        広範な「<strong>やること</strong>」リストについて理解してください。<a href="https://developer.android.com/distribute/best-practices/launch/launch-checklist">チェックリストの起動</a>
+      </li>
+      <li>
+        ストアの詳細: <a href="https://play.google.com/apps/publish/signup/"> https://play.google.com/apps/publish/signup/ </a> (Google Play デベロッパープログラム-メンバーシップ、1 回 $25 が必要)
+      </li>
+      <li>承認のための推奨リードタイム:一週間</li>
+      <li>ストアで QA 用のデバイスアプリログインを設定する必要があります</li>
+      <li>
+        お使いのテレビアプリが Google <a href="https://developer.android.com/docs/quality-guidelines/tv-app-quality">のテレビアプリの品質基準を満たしていることを確認してください</a>。
+      </li>
+      <li>
+        アプリの署名に使用する署名キーを作成する必要があります。署名キーを作成するには、次の情報が必要です。 <ul>
+          <li>パスワード</li>
+          <li>姓名</li>
+          <li>組織単位の名前</li>
+          <li>組織名</li>
+          <li>都市名/地方性</li>
+          <li>州名/省</li>
+          <li>このユニットの 2 文字の国コード</li>
+        </ul>
+        注意：モバイルアプリとテレビアプリの署名キーは、複数の APK を使用してストアリスティングを共有する場合は、同じである必要があります。
+      </li>
+    </ul>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Required_information_for_Android_Mobile"> Androidモバイルに必要な情報 </h2>
+    <p>
+      これらは、上記の共同要件に加えて、Android Mobileの特定の要件です。
+    </p>
+    <ul>
+      <li>アプリのタイトル-50文字</li>
+      <li>短い説明-80 文字</li>
+      <li>完全な説明-4000文字</li>
+      <li>
+        注:利用可能な場合、このメタデータはすべて、すべての言語に翻訳する必要があります。
+      </li>
+      <li>アプリ ID-例-com.myco.tvcable</li>
+      <li>パッケージに署名するキーストア</li>
+      <li>アプリケーションの種類</li>
+      <li>Category</li>
+      <li>
+        スクリーンショット（詳しくは Google <a href="https://support.google.com/googleplay/android-developer/answer/1078870">のグラフィックアセット、スクリーンショット、ビデオドキュメントを参照してください</a>）
+        <ul>
+          <li>標準-英語（英国）-ja GB</li>
+          <li>
+            JPEG または 24 ビットの PNG (アルファなし)。最小ページ長:320px。最大ページ長:3840px。
+          </li>
+          <li>
+            Play ストアの [ <strong>開発済みタブレット</strong> ] リストにアプリが表示されるようにするには、7 インチのスクリーンショットと 10 インチのスクリーンショットを少なくとも 1 つアップロードする必要があります。スクリーンショットを以前にアップロードした場合は、下の適切な領域に移動します。
+          </li>
+        </ul>
+      </li>
+      <li>
+        高解像度アイコン
+        <ul>
+          <li>標準-英語（英国）-ja GB</li>
+          <li>512×512</li>
+          <li>32ビットPNG (アルファ付き)</li>
+        </ul>
+      </li>
+      <li>
+        フィーチャーグラフィック
+        <ul>
+          <li>標準-英語（英国）-ja GB</li>
+          <li>1024b×500h</li>
+          <li>JPGまたは24ビットPNG（アルファなし）</li>
+        </ul>
+      </li>
+      <li>
+        ロゴアイコン
+        <ul>
+          <li>192 x192 アプリアイコン (正方形と 1 つのラウンド)</li>
+          <li>ストアで QA 用のアプリログインをセットアップするクライアント</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Required_information_for_Android_TV"> Android TVに必要な情報 </h2>
+    <p>
+      これらは、上記の共同要件に加えて、Android TVの特定の要件です。
+    </p>
+    <ul>
+      <li>生成された署名で作成された APK パッケージ</li>
+      <li>タイトル</li>
+      <li>簡単な説明</li>
+      <li>完全な説明</li>
+      <li>
+        スクリーンショット
+        <ul>
+          <li>JPEG または 24 ビットの PNG (アルファなし)。最大8個までアップロード可能</li>
+          <li>1280x720</li>
+        </ul>
+      </li>
+      <li>
+        ハイレゾアイコン
+        <ul>
+          <li>512×512</li>
+          <li>32ビットPNG (アルファ付き)</li>
+        </ul>
+      </li>
+      <li>
+        バナー
+        <ul>
+          <li>320×180</li>
+          <li>24ビットPNG</li>
+        </ul>
+      </li>
+      <li>
+        ランチャー
+        <ul>
+          <li>256 x256</li>
+          <li>24ビットPNG</li>
+        </ul>
+      </li>
+      <li>
+        フィーチャーグラフィック
+        <ul>
+          <li>1024w x 500h</li>
+          <li>JPGまたは24ビットPNG（アルファなし）</li>
+        </ul>
+      </li>
+      <li>ストアで QA 用のアプリログインをセットアップするクライアント</li>
+    </ul>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Getting_started_in_the_dashboard"> ダッシュボードの開始 </h2>
+    <ol class="bcls-tasklist">
+      <li>
+        <a href="https://play.google.com/apps/publish/signup/">Google Play コンソールのサインアップページに移動し</a>、アカウントを作成します。これには25ドルの手数料を支払うことが含まれます。サインアッププロセスを完了すると、<strong> Google Playコンソールが表示されます</strong>。 <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/welcome.png" alt="create application" />
+        </figure>
+      </li>
+      <li>[ <strong>アプリケーションの作成</strong> ] ボタンをクリックします。</li>
+      <li>
+        <strong>デフォルト言語</strong>とアプリ<strong>タイトル</strong>を提供します。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/language-title.png" alt="language title page" />
+        </figure>
+      </li>
+      <li>
+        [ <strong>作成</strong> ] ボタンをクリックします。<strong>ストア出品セクションに移動します</strong>。
+      </li>
+    </ol>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Complete_Store_listing_information"> 完了 <em>ストアリスト</em> 情報 </h2>
+    <p>
+      <strong>ストアの出品セクションはかなり長いです</strong>。異なるセクションは、異なる手順で表示されます。
+    </p>
+    <ol class="bcls-tasklist-restart">
+      <li>
+        [ <strong>短い説明</strong> ] と [ <strong>完全な説明</strong> ] を入力します。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/store-listing-details.png" alt="store listing details" />
+        </figure>
+      </li>
+      <li>
+        フォームで要求に応じて、グラフィックアセットを指定します。の画像を入力する必要はありません <em>Wear OS</em>。<aside class="bcls-aside bcls-aside--tip">NS <em>TVバナー</em> かつ
+          <em>Daydream360度立体画像</em> ブライトコーブ Beacon にとっては重要ではありません。YouTubeプロモーションビデオは、YouTubeを使用してアプリを宣伝する場合にのみ必要です。</aside>
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/store-listing-graphic-assets.png" alt="store listing graphic assets" />
+        </figure>
+      </li>
+      <li>
+        [ <strong>分類</strong> ] セクションを完了します。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/store-listing-categorization.png" alt="store listing categorization" />
+        </figure>
+      </li>
+      <li>
+        [ <strong>連絡先の詳細</strong> ] セクションに記入します。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/store-listing-contact-details.png" alt="store listing contact details" />
+        </figure>
+      </li>
+      <li><strong>下書きを保存ボタンをクリックします</strong>。</li>
+    </ol>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Complete_App_releases_information"> 完了 <em>アプリのリリース</em> 情報 </h2>
+    <p>
+      この [ <strong>アプリのリリース</strong> ] セクションでは、アプリがライブになる前にテストできるように、<strong>クローズドトラックを作成します</strong>。クローズドトラックでは、アプリをテストするユーザー数を選択できます。
+    </p>
+    <ol class="bcls-tasklist-restart">
+      <li>
+        左側のナビゲーションにある [ <strong>アプリのリリース</strong> ] リンクをクリックします。
+      </li>
+      <li>
+        下の黄色でハイライトされている [ <strong>閉じたトラックを作成</strong> ] リンクをクリックします。<aside class="bcls-aside bcls-aside--tip">テスト後、アプリを公開する準備ができたら、<strong>アプリのリリース</strong>もう一度セクションを選択しますが、<strong>生産トラック</strong>ライブでプッシュするアプリをアップロードします。</aside>
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/app-releases.png" alt="app releases" />
+        </figure>
+      </li>
+      <li>
+        クローズドトラックの名前を入力します。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/app-releases-create-track.png" alt="create track" />
+        </figure>
+      </li>
+      <li>[ <strong>トラックを作成</strong> ] ボタンをクリックします。</li>
+      <li>
+        トラックを作成するには、次のタスクを実行する必要があります。 <ol type="A">
+          <li>APK をアップロードする (Brightcoveから提供されたもの)</li>
+          <li>たとえば、リリース名を入力します <em>2.1</em>。</li>
+          <li>
+            サポートしている言語の数だけリリースノートを提供してください。
+          </li>
+          <li>提供された情報を保存または確認します。</li>
+        </ol>
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/app-releases-apks.png" alt="submit apk" />
+        </figure>
+      </li>
+      <!-- <li>???????????HOW TO DISTRIBUTE???????????????</li> -->
+    </ol>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Complete_Content_rating_information"> 完了 <em>コンテンツの評価</em> 情報 </h2>
+    <p>
+      左側のナビゲーションを使用して、[ <strong>コンテンツの評価</strong> ] セクションに移動します。このセクションでは、アンケートを完了し、回答に基づいて評価がアプリとそのコンテンツに割り当てられます。詳細については、「<a href="https://support.google.com/googleplay/android-developer/answer/188189">アプリとゲームのコンテンツレーティング</a>」ドキュメントを参照してください。
+    </p>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/creating-your-apps/android/content-rating.png" alt="content rating" />
+    </figure>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Complete_App_content_information"> 完了 <em>アプリのコンテンツ</em> 情報 </h2>
+    <p>
+      左側のナビゲーションを使用して [ <strong>アプリコンテンツ</strong> ] セクションに移動します。このセクションでは、次の情報を入力します。 </p>
+    <ul>
+      <li>ご希望のプライバシーポリシー</li>
+      <li>広告がコンテンツに使用される場合</li>
+      <li>アプリに制限された部分がある場合</li>
+      <li>アプリのターゲットオーディエンス</li>
+    </ul>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/creating-your-apps/android/app-content.png" alt="app content" />
+    </figure>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Complete_Pricing_distribution_information"> 完了 <em>価格と配布</em> 情報 </h2>
+    <p>このセクションでは、次の情報を入力します。</p>
+    <ul>
+      <li>アプリが無料かそうでない場合</li>
+      <li>地理的制限</li>
+      <li>アプリが機能する Android デバイス</li>
+      <li>アプリがGoogleによって処理される方法の同意</li>
+    </ul>
+    <p>
+      「<strong>価格と配布</strong>」セクションはかなり長いです。異なるセクションは、異なる手順で表示されます。
+    </p>
+    <ol class="bcls-tasklist-restart">
+      <li>
+        左側のナビゲーションにある [ <strong>価格と配布</strong> ] リンクをクリックします。
+      </li>
+      <li>
+        正しいボタンをクリックして、アプリが無料になるかどうかを判断します。これはアプリをインストールするかしないか無料であることに注意してください。インストールごとの料金ではなく、広告またはサブスクリプションで収益を得る場合は、[ <strong>無料</strong> ] をクリックします。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/pricing-distribution.png" alt="pricing distribution" />
+        </figure>
+      </li>
+      <li>
+        [ <strong>国</strong> ] セクションを、あなたが持っている地理制限またはない地理制限を反映するように設定します。
+      </li>
+      <li>
+        [ <strong>デバイスカテゴリ</strong> ] セクションで何もする必要はありません。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/pd-device-categories.png" alt="device categories" />
+        </figure>
+      </li>
+      <li>
+        [ <strong>ユーザープログラム</strong> ] セクションで何もする必要はありません。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/pd-user-programs.png" alt="user programs" />
+        </figure>
+      </li>
+      <li>
+        [ <strong>同意</strong> ] セクションの各質問の適切な情報を読み、チェックボックスをオンまたはオフにします。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/creating-your-apps/android/pd-consent.png" alt="consent" />
+        </figure>
+      </li>
+    </ol>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Adding_subscriptions">サブスクリプションの追加</h2>
+    <p>
+      Android アプリにサブスクリプションを追加する場合は、「<a href="/creating-your-apps/android/adding-subscriptions-in-android.html"> Android へのサブスクリプションの追加</a>」ドキュメントを参照してください。
+    </p>
+  </section>
+</article>

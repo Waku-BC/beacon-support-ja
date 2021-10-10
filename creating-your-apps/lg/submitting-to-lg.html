@@ -1,0 +1,384 @@
+---
+title: 'LG（webOS）ストアへのアプリの送信'
+description: 'このトピックでは、デバイスアプリをLGストアに送信する方法を学習します。'
+parent: 'LG' 
+grandparent: アプリの作成
+layout: 'staging'
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  <section class="bcls-section">
+    <h2 id="Introduction">はじめに</h2>
+    <p>
+      このドキュメントは、Brightcove Beacon アプリを LG ストアに送信する際に役立ちます。この文書の最初のセクションには、この文書は含まず、提出プロセスの完了時に必要な情報/資産が記載されています。
+    </p>
+    <p>
+      このリストの後に、提出プロセスのステップバイステップガイダンスがあります。アカウントを作成したら、提出する情報の入力に進みます。NS <em>LGセラーラウンジ</em> &gt;
+      <em>アプリ管理</em> セクションは次のように表示され、情報を入力する必要がある領域は黄色で強調表示されます。
+      <figure class="bcls-figure">
+        <img
+          class="bcls-image"
+          src="/assets/images/creating-your-apps/lg/four-tabs.png"
+          alt="seller lounge app management section"
+        />
+      </figure>
+    </p>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Required_information">必要な情報</h2>
+    <p>
+      LGストアへの提出には、以下の情報/アセットが必要です。
+    </p>
+    <h3>役立つ情報</h3>
+    <ul>
+      <li>
+        店舗詳細: <a href="http://seller.lgappstv.com/seller/main/Main.lge"> http://seller.lgappstv.com/seller/main/Main.lge </a>
+      </li>
+      <li>
+        開発者アカウントのセットアップ: <a href="http://webostv.developer.lge.com/develop/app-test/#preparingAccount"> http://webostv.developer.lge.com/develop/app-test/#preparingAccount </a>
+      </li>
+      <li>
+        提出プロセス: <a href="http://webostv.developer.lge.com/distribute/app-submission-process/"> http://webostv.developer.lge.com/distribute/app-submission-process/ </a>
+      </li>
+      <li>承認のための推奨リードタイム:三週間</li>
+    </ul>
+    <h3 id="required_images">必要な資産</h3>
+    <ul>
+      <li>アプリケーション名</li>
+      <li>アプリケーションの説明</li>
+      <li>IPK（Brightcoveが提供）とディープリンク URL</li>
+      <li>
+        ディープリンク URL (テスト中のアプリの場所は、ユーザーの管理下にあるインターネットの場所である必要があります)
+      </li>
+      <li>
+        画像とグラフィックアセット
+        <ul>
+          <li>
+            アプリアイコン
+            <ul>
+              <li>推奨 :400x400 ピクセル以上 (正方形のみ)</li>
+              <li>利用可能なファイル:JPG、GIF、PNG（最大5MB）</li>
+            </ul>
+          </li>
+          <li>
+            アプリタイルの色
+            <ul>
+              <li>単色の背景色を表示するアイコン</li>
+              <li>
+                ロゴにはフラットな背景色を設定する必要があり、お客様は LG WebOS TV のフラットロゴについて、その背景色とまったく同じ 16 進値をBrightcoveに提供する必要があります。
+              </li>
+            </ul>
+          </li>
+          <li>
+            プライマリスクリーンショット
+            <ul>
+              <li>
+                推奨画像サイズ:960x540、1280x720ピクセル（正方形タイプのみ）
+              </li>
+              <li>利用可能なファイル:JPG、GIF、PNG（最大5MB）</li>
+            </ul>
+          </li>
+          <li>
+            二次スクリーンショット
+            <ul>
+              <li>
+                プライマリスクリーンショットと同じガイドラインで、少なくとも 2 つ (最大 5 つ) のセカンダリスクリーンショットをアップロードする必要があります。
+              </li>
+            </ul>
+          </li>
+          <li>
+            ランチャーの背景画像
+            <ul>
+              <li>推奨:1920x1080ピクセル</li>
+              <li>ファイルタイプ:JPG、PNG（最大10MB）</li>
+            </ul>
+            <figure class="bcls-figure">
+              <img
+                class="bcls-image"
+                src="/assets/images/creating-your-apps/lg/background-image.png"
+                alt="background image"
+              />
+            </figure>
+          </li>
+          <li>
+            スプラッシュ画面の背景画像
+            <ul>
+              <li>推奨:1920x1080ピクセル</li>
+              <li>ファイルタイプ:JPG、PNG（最大10MB）</li>
+            </ul>
+            <figure class="bcls-figure">
+              <img
+                class="bcls-image"
+                src="/assets/images/creating-your-apps/lg/splash-screen.png"
+                alt="splash screen"
+              />
+            </figure>
+          </li>
+        </ul>
+      </li>
+      <li>
+        ドキュメンテーション
+        <ul>
+          <li>
+            <strong>自己チェックリストファイル</strong> :これは、アプリをテストするためのテスト項目のリストを含むスプレッドシートです。この項目の詳細については、<a href="#Completing_the_Test_Info_section">このドキュメントの「テスト情報の完了」セクションを参照してください。</a>
+          </li>
+          <li>
+            <strong>UX シナリオファイル</strong> :これは、誰かがアプリを使用する場合に何が起こるべきかを文書化する PowerPoint プレゼンテーションです。この項目の詳細については、<a href="#Completing_the_Test_Info_section">このドキュメントの「テスト情報の完了」セクションを参照してください。</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Getting_started">
+      入門編
+    </h2>
+    <ol class="bcls-tasklist">
+      <li>
+        <a href="https://www.lgaccount.com/join/terms">アカウント作成ページに移動します</a>。ページは次のように表示され、4 つの手順を完了する必要があります。
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image"
+            src="/assets/images/creating-your-apps/lg/create-account.png"
+            alt="create account"
+          />
+        </figure>
+      </li>
+      <li>
+        アカウントの設定が完了したら、<a href="http://seller.lgappstv.com/seller/member/register/memberMain.lge"> SellerLounge サインアップに移動します</a>。ここで別のアカウントを作成する必要があります。
+      </li>
+      <li>
+        2回目のアカウント登録が完了すると、<a href="http://seller.lgappstv.com/seller/main/Main.lge"> SellerLoungeにアクセスしてサインインすることができます</a>。
+      </li>
+      <li>
+        一度 <em>SellerLounge</em>、 クリックしてください<strong>アプリの管理</strong>タブ。
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image"
+            src="/assets/images/creating-your-apps/lg/app-management-tab.png"
+            alt="app management tab"
+          />
+        </figure>
+      </li>
+      <li>
+        アプリの提出プロセスを開始するには、[ <strong> Go </strong> ] ボタンをクリックします。
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image"
+            src="/assets/images/creating-your-apps/lg/seller-lounge-index.png"
+            alt="go button"
+          />
+        </figure>
+      </li>
+      <li>
+        アプリ情報を入力する 4 つのタブ (黄色で強調表示) が表示されていることを確認します。
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image"
+            src="/assets/images/creating-your-apps/lg/four-tabs.png"
+            alt="four tabs"
+          />
+        </figure>
+      </li>
+      <li>
+        左側のナビゲーションで、<strong> LGセラーラウンジガイドダウンロードボタンをクリックします</strong>。これは、アプリの提出フォームに記入するための優れたガイドをダウンロードします。ダウンロードされた PDF は、このドキュメントの後半で参照されます。
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image"
+            src="/assets/images/creating-your-apps/lg/sellerlounge-guide-download.png"
+            alt="seller lounge guide download"
+          />
+        </figure>
+      </li>
+    </ol>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Completing_the_File_Upload_section">
+      完了 <em>ファイルアップロード</em> セクション
+    </h2>
+    <aside class="bcls-aside bcls-aside--tip">実際のWebページに記載されているように、黒い円の白い疑問符をクリックします。
+      <img src="/assets/images/creating-your-apps/lg/question-mark.png" />
+      要求されている情報の詳細を提供します。とても助かります。</aside>
+    <p>
+      [ <strong>ファイルのアップロード</strong> ] セクションでは、Brightcove から LG ストア用に提供された<strong> ipk </strong>ファイルをアップロードします。このプロセスの詳細は次のとおりです。
+    </p>
+    <ol class="bcls-tasklist">
+      <li>
+        <strong>アプリ ID </strong>を入力します。これはアプリの内部名です。この ID は、後で変更することはできません。
+      </li>
+      <li>
+        <strong>サービスプラットフォームの場合は</strong>、<strong> WebOS のラジオボタンをクリックします</strong>。この時点で、フォームが展開され、ファイルに関する情報が表示されます。
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image"
+            src="/assets/images/creating-your-apps/lg/file-upload.png"
+            alt="file upload screen"
+          />
+        </figure>
+      </li>
+      <li>
+        フォームに記入してください。各フィールドの詳細は次のとおりです。
+        <table class="bcls-table">
+          <thead class="bcls-table__head">
+            <tr>
+              <th>フィールド</th>
+              <th>説明/指示</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody class="bcls-table__body">
+            <tr>
+              <td>ファイル</td>
+              <td>
+                [ <strong>ファイルを選択</strong> ] ボタンをクリックし、Brightcoveが提供するファイルをアップロードします。
+              </td>
+            </tr>
+            <tr>
+              <td>[ファイルの種類]</td>
+              <td>ファイルのアップロード時に自動的に入力されます</td>
+            </tr>
+            <tr>
+              <td>グラフィック表示解像度</td>
+              <td><strong>1280,720を選択してください:(FHDデバイス) </strong></td>
+            </tr>
+            <tr>
+              <td>サービスプラットフォーム &amp; SDK Ver.</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>ディープリンク URL</td>
+              <td>
+                まず、ドロップダウンで [ <strong> Default </strong> ] が選択されていることを確認してください。次に、テスト用にアプリケーションをホストできる URL を指定します。
+              </td>
+            </tr>
+            <tr>
+              <td>ファイルタイトル</td>
+              <td>
+                ファイルの名前。sellerLounge にリストされています
+              </td>
+            </tr>
+            <tr>
+              <td>ファイルバージョン</td>
+              <td>割り当てているバージョンを入力してください</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li>[ <strong>ファイルを追加</strong> ] ボタンをクリックします。</li>
+      <li>[ <strong>保存</strong> ] ボタンをクリックします。</li>
+    </ol>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Completing_the_Image_section">
+      完了 <em>画像</em> セクション
+    </h2>
+    <p>
+      このドキュメントの「<a href="#required_images">必須アセット</a>」セクションに記載されている画像をアップロードします。そのセクションの画像名は、フォームの名前と一致します。
+    </p>
+    <p>
+      画像のアップロードが完了したら、<strong>必ず保存ボタンをクリックしてください</strong>。
+    </p>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Completing_the_Service_Info_section">
+      完了 <em>サービス情報。</em> セクション
+    </h2>
+    <p>
+      このセクションを完了するには、先ほどダウンロードした「SellerLounge Guide」49～52ページを参照してください。[ <strong> DIAL </strong> ] フィールドには情報を入力しないことに注意してください。
+    </p>
+    <p>
+      画像のアップロードが完了したら、<strong>必ず保存ボタンをクリックしてください</strong>。
+    </p>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Completing_the_Test_Info_section">
+      完了 <em>テスト情報。</em> セクション
+    </h2>
+    <p>
+      このセクションを完了するには、先にダウンロードした SellerLounge Guide (53-57ページ) を参照してください。次のコンテンツは、混乱を引き起こす可能性があるいくつかのフィールドを明確にします。
+    </p>
+    <ul>
+      <li>
+        <strong>自己チェックリストファイル</strong> :これは、アプリをテストするためのテスト項目のリストを含むスプレッドシートです。各項目について、あなたはそれをパスまたはN/Aのいずれかにマークします。
+        <ul>
+          <li>
+            [ <strong>テンプレート</strong> ] ボタンをクリックして、テンプレートをダウンロードします。
+            <figure class="bcls-figure">
+              <img
+                class="bcls-image"
+                src="/assets/images/creating-your-apps/lg/self-check-list-button.png"
+                alt="self check list button"
+              />
+            </figure>
+          </li>
+          <li>
+            この要件の詳細については、SellerLounge の情報画面を以下に示します。
+            <figure class="bcls-figure">
+              <img
+                class="bcls-image"
+                src="/assets/images/creating-your-apps/lg/self-check-info.png"
+                alt="self check info"
+              />
+            </figure>
+          </li>
+          <li>
+            あなたの情報のために、ここにいくつかのテスト項目の例を挙げてください。
+            <figure class="bcls-figure">
+              <img
+                class="bcls-image"
+                src="/assets/images/creating-your-apps/lg/self-check-list.png"
+                alt=""
+              />
+            </figure>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <strong>UX シナリオファイル</strong> :これは、アプリの予想される動作を文書化する PowerPoint プレゼンテーションです。
+        <ul>
+          <li>
+            [ <strong>テンプレート</strong> ] ボタンをクリックして、テンプレートをダウンロードします。
+            <figure class="bcls-figure">
+              <img
+                class="bcls-image"
+                src="/assets/images/creating-your-apps/lg/scenario-button.png"
+                alt="scenario button"
+              />
+            </figure>
+          </li>
+          <li>
+            この要件の詳細については、SellerLounge の情報画面を以下に示します。
+            <figure class="bcls-figure">
+              <img
+                class="bcls-image"
+                src="/assets/images/creating-your-apps/lg/scenario-info.png"
+                alt="self check info"
+              />
+            </figure>
+          </li>
+          <li>
+            ここでは、予想される動作を文書化する必要がある領域の一覧を示します。
+            <figure class="bcls-figure">
+              <img
+                class="bcls-image"
+                src="/assets/images/creating-your-apps/lg/ux-scenario-file.png"
+                alt="table of contents of behaviors"
+              />
+            </figure>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <p>
+      画像のアップロードが完了したら、<strong>必ず保存ボタンをクリックしてください</strong>。
+    </p>
+  </section>
+</article>

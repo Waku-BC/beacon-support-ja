@@ -1,0 +1,317 @@
+---
+title: 'VODSSAIの実装'
+description: このトピックでは、Brightcove Beacon のビデオオンデマンド（VOD）を使用してサーバー側広告挿入（SSAI）を作成および管理する方法を学習します。
+parent: Brightcove Beacon の使用
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+
+  <section class="bcls-section">
+    <h2 id="overview">概要</h2>
+    <p>サーバーサイド広告は動画ストリームに埋め込まれているため、ブラウザーの広告ブロッカーによってブロックすることはできません。DRM で保護されたコンテンツと非保護コンテンツの両方で動作します。Brightcove Beacon は、SSAIでVODをサポートしています。</p>
+    <p>サーバーサイド広告を追加する手順は次のとおりです。</p>
+    <ol class="bcls-tasklist">
+      <li>Video Cloud Studio <a href="#Creating_an_ad_configuration">で広告設定を作成する</a></li>
+      <li><a href="#Set the custom field values">動画のカスタムフィールド値を設定する</a></li>
+      <li><a href="#Adding_videos_to_a_Playlist">動画を再生リストに追加する</a></li>
+      <li>Brightcove Beacon <a href="#Importing_videos_and_playlists">で動画と再生リストを読み込む</a></li>
+    </ol>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Best_practices">ベストプラクティス</h2>
+    <p>Brightcoveでは、VOD コンテンツにサーバーサイド広告を追加する場合は、次のベストプラクティスに従うことをお勧めします。</p>
+    <ul>
+      <li>Video Cloud で広告設定を作成する</li>
+      <li>Video Cloud のカスタムフィールドを使用して動画に広告設定を割り当てる</li>
+      <li>Brightcove Beacon の動画に広告設定を割り当てることはできますが、Video Cloud でそれを行うことをお勧めします</li>
+      <li>Brightcove Beacon の [ <strong>広告</strong> ] セクションは、ライブイベントやチャンネルにのみ使用してください。</li>
+    </ul>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Creating_an_ad_configuration">広告構成の作成</h2>
+    <p>
+      ここでは、SSAI 広告設定を作成して、Brightcove Beacon VOD アセットに表示される広告を定義します。
+    </p>
+    <ol class="bcls-tasklist-restart">
+      <li>ビデオクラウドスタジオにログインします。</li>
+      <li>
+        ナビゲーションヘッダーで、[ <strong>管理者</strong> ] をクリックし、[ <strong>サーバーサイド広告設定</strong> ] を選択します。すべての広告設定のリストが表示されます。
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/live-ssai/1-studio-ssai-settings.png" />
+        </figure>
+      </li>
+      <li>
+        新しい広告設定を作成するには、[ <strong>広告設定の作成</strong> ] ボタンをクリックします。
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/live-ssai/2-create-ad-configuration.png" />
+        </figure>
+      </li>
+      <li>
+        ドロップダウンから、種類として<strong> VOD </strong>を選択します。
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/vod-ssai/select-vod.png" />
+        </figure>
+      </li>
+      <li>
+        [ <strong>サーバーサイド広告設定] </strong>フォームが表示されていることを確認します。
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/vod-ssai/vod-ad-form.png" />
+        </figure>
+      </li>
+      <li><strong>広告設定に名前を付けます</strong>。</li>
+      <li>
+        <strong>広告サーバーの応答を選択します</strong>。
+        <table class="bcls-table">
+            <thead class="bcls-table__head">
+                <tr>
+                    <th>広告サーバーの応答</th>
+                    <th>詳細</th>
+                </tr>
+            </thead>
+            <tbody class="bcls-table__body">
+                <tr>
+                    <td><strong>広大な3.0 </strong></td>
+                    <td><a href="https://www.iab.com/guidelines/vast/">デジタル動画広告配信テンプレート</a></td>
+                </tr>
+                <tr>
+                    <td><strong>DFP VMAP </strong></td>
+                    <td><a href="https://www.iab.com/guidelines/vmap/">動画複数広告プレイリスト</a></td>
+                </tr>
+                <tr>
+                    <td><strong>DFP (広告ルール) </strong></td>
+                    <td><a href="https://www.google.com/ads/publisher/#?modal_active=none">パブリッシャー向けのDFP/Googleの独自の形式</a></td>
+                </tr>
+                <tr>
+                    <td><strong>スマートXML </strong></td>
+                    <td><a href="https://www.freewheel.com/">FreeWheel独自のフォーマット</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <br/>
+        <aside class="bcls-aside bcls-aside--information">選択する正しい値については、広告運用マネージャーに確認してください。</aside>
+      </li>
+      <li><strong>広告タグ (サーバーの URL) </strong>を入力します。</li>
+      <li>[<strong>保存</strong>]をクリックします。</li>
+      <li>
+        後でVODアセットを設定するときに必要になるので、広告設定の ID をコピーします。
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/vod-ssai/copy-ad-id.png" />
+        </figure>
+      </li>
+    </ol>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Setting_custom_field_values">カスタムフィールドの値の設定</h2>
+
+    <p>このセクションでは、Brightcove Beacon で SSAIを表示するために必要な設定で VOD アセットを設定する方法について説明します。</p>
+    <ol class="bcls-tasklist-restart">
+      <li>
+        Studioで、<strong>メディアモジュールに移動します</strong>。
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/vod-ssai/studio-home-media.png" />
+        </figure>
+      </li>
+      <li>
+        SSAI を追加するビデオをクリックします。
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/vod-ssai/select-your-video.png" />
+        </figure>
+      </li>
+      <li>[ <strong>カスタムフィールド] </strong>セクションまでスクロールします。</li>
+      <li>
+        [ <strong>編集</strong> ] ボタンをクリックします。
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/vod-ssai/custom-fields-edit.png" />
+        </figure>
+      </li>
+      <li>
+        下にスクロールして<strong> Beacon.rights.0.adConfiguration </strong>フィールドを探し、以前に作成した広告設定のIDを貼り付けます。
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/vod-ssai/beacon-ad-id.png" />
+        </figure>
+      </li>
+      <li>
+        下にスクロールし続け、<strong>[beacon.rights.0.type]</strong>フィールドに<strong>「AVOD」</strong>と入力して、このVODをAdvertisingVODとして分類します。
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/vod-ssai/beacon-ad-rights.png" />
+        </figure>
+      </li>
+      <li>
+        [ <strong>カスタムフィールド</strong> ] セクションの下部に移動し、[ <strong>保存</strong> ] ボタンをクリックします。
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" width="200" height="200" src="/assets/images/using-bcb/vod-ssai/save-button.png" />
+        </figure>
+        <aside class="bcls-aside bcls-aside--information">デフォルトでは、最大3つのSSAIIDとタイプ構成を追加できます。<strong>カスタムフィールド</strong>セクション。</aside>
+      </li>
+      <li>
+        トップメニューで、[ <strong>ビデオに戻る</strong> ] をクリックします。
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/vod-ssai/back-to-videos.png" />
+        </figure>
+      </li>
+    </ol>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Adding_videos_to_a_Playlist">プレイリストに動画を追加する</h2>
+
+    <p>このセクションでは、VOD アセットを再生リストに追加します。</p>
+    <ol class="bcls-tasklist-restart">
+      <li>
+        Studioで、<strong>メディアモジュールに戻ります</strong>。
+      </li>
+      <li>
+        動画のチェックボックスをクリックします。
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/vod-ssai/add-to-playlist.png" />
+        </figure>
+      </li>
+      <li>メインメニューから [ <strong>詳細</strong> ] ボタンをクリックします。</li>
+      <li>ドロップダウンメニューから、[ <strong>プレイリストに追加] </strong>を選択します。</li>
+      <li>
+        動画を追加するプレイリストを選択します。
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/vod-ssai/add-button.png" />
+        </figure>
+      </li>
+      <li>[<strong>追加</strong>]ボタンをクリックします。</li>
+      <li>VOD アセットがプレイリストに追加されたら、Brightcove Beacon プラットフォームに移動します。</li>
+    </ol>
+  </section>
+
+
+  <section class="bcls-section">
+    <h2 id="Importing_videos_and_playlists">動画とプレイリストのインポート</h2>
+    <p>Brightcove Beacon では、Video Cloud から動画や再生リストを取り込む/読み込むことができます。</p>
+
+    <ol class="bcls-tasklist-restart">
+      <li>Brightcove Beacon アカウントにログインします。</li>
+      <li>トップメニューで [ツール] ( <strong> Tools </strong> ) を選択します。これはレンチアイコンです。
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/vod-ssai/ingest-videos.jpg" />
+        </figure>
+      </li>
+      <li>左側のナビゲーションで、[ <strong>取り込み</strong> ] を選択します。</li>
+      <li>
+        [ <strong>Brightcoveの動画を更新</strong> ] ボタンまたは [ <strong>Brightcoveのプレイリストを更新</strong> ] ボタンをクリックします。
+      </li>
+      <li>これで、Video Cloud の動画と再生リストが Brightcove Beacon に表示されます。トップメニューで、[ <strong>プレイリスト</strong> ] タブをクリックします。</li>
+      <li>
+        プレイリストを選択すると、そのプレイリストに含まれる動画が表示されます。
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/vod-ssai/select-playlist.png" />
+        </figure>
+      </li>
+      <li>
+        左側のコンテンツウィンドウに、そのプレイリストに関連付けられているすべての VOD アセットが表示されていることを確認します。
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/vod-ssai/beacon-content-section.png" />
+        </figure>
+      </li>
+      <li>Brightcove  Beacon のトップメニューで、[ <strong>ムービー</strong> ] タブをクリックします。</li>
+      <li>
+        VOD アセットをクリックします。
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/vod-ssai/beacon-movies.png" />
+        </figure>
+      </li>
+      <li>
+        [ <strong>権限とスケジュール</strong> ] タブをクリックします。
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/vod-ssai/beacon-vod-settings.png" />
+        </figure>
+      </li>
+      <li>[ <strong>権利タイプ</strong> ] メニューで、[ <strong>広告-AVOD </strong> ] が選択されています。</li>
+      <li>[ <strong>広告の設定</strong> ] メニューには、以前に作成した広告設定 ID が表示されます。</li>
+      <li>
+        アプリですぐに動画を表示するには、キャッシュをクリアする必要があります。トップメニューで [ <strong>ツール</strong> ] (レンチ) ボタンをクリックし、キャッシュをクリアします。
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/live-ssai/18-clear-cache.png" />
+        </figure>
+      </li>
+      <li>左側のナビゲーションで、[ <strong>キャッシュ</strong> ] を選択します。</li>
+      <li>[ <strong>キャッシュパージ</strong> ] ボタンを選択します。</li>
+      <li>
+        Brightcove Beacon アプリケーションを開き、プレイリストが追加された [ <strong>ページ</strong> ] タブをクリックします。（画像上のすべてのイベント名と画像は、例のためだけのものです）。
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/vod-ssai/beacon-app.png" />
+        </figure>
+
+        <aside class="bcls-aside bcls-aside--information">Brightcove Beacon アプリでプレイリストを視覚化するには、最初にプレイリストをBrightcove Beacon ページに追加しておく必要があります。プレイリストをページに追加する方法の詳細については、以下にアクセスしてください。<a href="https://beacon.support.brightcove.com/using-brightcove-beacon/adding-to-page.html" target="_blank">ドキュメンテーション</a>。</aside>
+      </li>
+      <li>サーバーサイド広告で設定した動画をクリックします。</li>
+      <li>
+        [ <strong>再生</strong> ] ボタンをクリックすると、動画が広告で再生されます。
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/vod-ssai/play-beacon-app.png" />
+        </figure>
+      </li> 
+    </ol>
+  </section>
+
+  <!-- <section class="bcls-section">
+    <h2 id="configuring-vod-beacon">Configuring your VOD asset in Brightcove Beacon</h2>
+    <p>In this section you will learn how to configure your VOD with SSAI asset in Brightcove Beacon.</p>
+
+    <ol class="bcls-tasklist-restart">
+      <li>In the Brightcove Beacon top menu, click the <strong>Playlists</strong> tab.</li>
+      <li>
+        Select your playlist to see the videos it contains.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/vod-ssai/select-playlist.png" />
+        </figure>
+      </li>
+      <li>
+        Check to be sure you can see all the VOD assets associated with that playlist in the left table of contents.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/vod-ssai/beacon-content-section.png" />
+        </figure>
+      </li>
+      <li>In the Brightcove Beacon top menu, click in the <strong>Movies</strong> tab.</li>
+      <li>
+        Click on your VOD asset.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/vod-ssai/beacon-movies.png" />
+        </figure>
+      </li>
+      <li>
+        Click the <strong>Rights & Scheduling</strong> tab.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/vod-ssai/beacon-vod-settings.png" />
+        </figure>
+      </li>
+      <li>In the <strong>Rights Type</strong> menu, select <strong>Advertising - AVOD</strong>.</li>
+      <li>In the <strong>Advertisement Configuration</strong> bottom menu, select your previously created Advertisement configuration.</li>
+      <li>Click the <strong>Update Event</strong> button to save your changes.</li>
+      <li>
+        Click on the <strong>Tools</strong> (wrench) button in the upper right of the screen, then clear the cache.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/live-ssai/18-clear-cache.png" />
+        </figure>
+      </li>
+      <li>
+        Open your Brightcove Beacon App and click in the <strong>Page</strong> tab on which your playlist was added. (All the event names and pictures on the image are for example
+        purposes only).
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/vod-ssai/beacon-app.png" />
+        </figure>
+
+        <aside class="bcls-aside bcls-aside--information">
+          To visualize your Playlist in the Brightcove Beacon App, you must have added your playlist to a Brightcove Beacon Page first. To know more about how to add a playlist to
+          a Page please visit the following <a href="https://beacon.support.brightcove.com/using-brightcove-beacon/adding-to-page.html" target="_blank">documentation</a>.
+        </aside>
+      </li>
+      <li>Click your VOD with SSAI asset you configured.</li>
+      <li>
+        Click the <strong>Play</strong> button and you should now be able to see your video play with ads.
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" width="400" height="400" src="/assets/images/using-bcb/vod-ssai/play-beacon-app.png" />
+        </figure>
+      </li>
+    </ol>
+  </section> -->
+</article>

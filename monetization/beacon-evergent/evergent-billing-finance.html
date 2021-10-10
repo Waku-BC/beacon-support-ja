@@ -1,0 +1,244 @@
+---
+title: 'エバージェント：請求と財務' 
+description: このトピックでは、ユーザーの請求および財務記録を管理するためのガイドを提供します。
+parent: Beacon Advanced Monetization
+layout: staging
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  <section class="bcls-section">
+    <h2 id="introduction">はじめに</h2>
+		<p>ユーザーの財務および請求履歴を取得するには、Evergent CRMシステムにログインして、作業するアカウントを見つける必要があります。見る<a href="/monetization/beacon-evergent/evergent-finding-accounts.html">EvergentCRMでのアカウントの検索</a>詳細については。</p>
+		<p>NS <strong>請求と財務</strong>ユーザーアカウント情報のタブは、視聴者の請求と財務の履歴を表示するために使用されます。[請求と財務]タブから、顧客に支払い、調整、および払い戻しを発行できます。</p>
+		<figure class="bcls-figure">
+			<img class="bcls-image" src="/assets/images/beacon-evergent/billing-finance-tab.png" alt="Billing and Finance Tab">
+			<figcaption class="bcls-caption--image">[請求と財務]タブ</figcaption>
+		</figure>
+		<p>プロビジョニングできる機能は次のとおりです。</p>
+		<ul>
+			<li>ランニングバランス</li>
+			<li>請求書</li>
+			<li>支払い</li>
+			<li>調整</li>
+			<li>払い戻し</li>
+		</ul>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Running_Balance">ランニングバランス</h2>
+		<p>ランニングバランスは、最新のレコードを持つ選択された範囲に基づいて、そのユーザーアカウントのすべてのクレジットおよびデビットトランザクションを表示する動的な元帳残高です。</p>
+		<figure class="bcls-figure">
+			<img class="bcls-image" src="/assets/images/beacon-evergent/running-balance.png" alt="Running Balance">
+			<figcaption class="bcls-caption--image">ランニングバランス</figcaption>
+		</figure>
+		<!-- <h3>Make a payment</h3>
+		<p>This module is used to make payment for a user account by an existing payment method and a new  payment method. To make a payment, do the following:</p>
+		<figure class="bcls-figure">
+			<img class="bcls-image" src="/assets/images/beacon-evergent/make-payment.png" alt="Make a Payment">
+			<figcaption class="bcls-caption--image">Make a Payment</figcaption>
+		</figure>
+		<ol class="bcls-tasklist-restart">
+			<li>Click the <strong>Running Balance</strong> hyperlink under the Billing and Finance tab.</li>
+			<li>Click the <strong>Make a Payment</strong> button.</li>
+			<li>Select the payment mode that you want to make a payment.</li>
+			<li>Enter the card number in the <strong>Card Number</strong> field.</li>
+			<li>Enter the type of card in the <strong>Card Type</strong> field.</li>
+			<li>Enter the name of a cardholder in the <strong>Name on Card</strong> field.</li>
+			<li>Enter the card expiry date in the <strong>Expiry (MM/YYYY)</strong> field.</li>
+			<li>Enter the security code in the <strong>Security Code</strong> field.</li>
+			<li>Enter the required amount in the <strong>Amount</strong> field.</li>
+			<li>Click the <strong>Make Payment</strong> button. The payment line-item will be added to Payment History.</li>
+		</ol> -->
+
+		<h3>調整</h3>
+		<p>このモジュールは、顧客アカウントの支払いエントリの支払い修正を提供するトランザクションです。アカウントの支払いを調整するには、次の手順を実行します。</p>
+		<figure class="bcls-figure">
+			<img class="bcls-image" src="/assets/images/beacon-evergent/make-adjustment.png" alt="Make an Adjustment">
+			<figcaption class="bcls-caption--image">調整する</figcaption>
+		</figure>
+		<ol class="bcls-tasklist-restart">
+			<li>クリック<strong>ランニングバランス</strong> [請求と財務]タブの下のハイパーリンク。</li>
+			<li>クリック<strong>調整する</strong>ボタン。</li>
+			<li>を選択<strong>調整タイプ</strong>ドロップダウンリストから。</li>
+			<li>調整したい金額を<strong>量</strong>フィールド。</li>
+			<li>から支払い調整の理由を選択します<strong>理由を選択</strong>ドロップダウンリスト。</li>
+			<li>から請求書を選択します<strong>ギブオンインボイス</strong>調整するドロップダウンリスト。</li>
+			<li>を選択<strong>停止開始日</strong>そして<strong>停止終了日</strong>カレンダーから。</li>
+			<li>にコメントを入力します<strong>コメント</strong>フィールド。</li>
+			<li>クリック<strong>完了</strong>ボタン。調整は、[調整のリスト]セクションに追加されます。</li>
+		</ol>
+		<h3>帳消し</h3>
+		<p>それぞれのアカウントの現在の残高の[償却]ボタンは、アカウントの未払い残高が正の場合、つまり顧客がその金額を支払う必要がある場合にのみ表示されます。償却ボタンをクリックしたとき、顧客が金額を支払った場合、<strong>負の調整額を追加して、ゼロによる残高を作成します</strong>。</p>
+  </section>
+	<section class="bcls-section">
+		<h2 id="Invoices">請求書</h2>
+		<p>請求書セクションには、アカウント用に作成されたすべての一般的な請求書が表示されます。請求書ごとに詳細が表示されます。</p>
+		<figure class="bcls-figure">
+			<img class="bcls-image" src="/assets/images/beacon-evergent/invoices.png" alt="Invoices">
+			<figcaption class="bcls-caption--image">請求書</figcaption>
+		</figure>
+	</section>
+	<section class="bcls-section">
+		<h2 id="Payments">支払い</h2>
+		<p>クレジットカードの詳細、注文した製品ID、支払いの受領日、金額、ステータス、および顧客への支払いの払い戻しのオプションの記録を提供する、既存の顧客の支払い履歴を表示します。</p>
+		<figure class="bcls-figure">
+			<img class="bcls-image" src="/assets/images/beacon-evergent/payments.png" alt="Payments">
+			<figcaption class="bcls-caption--image">支払い</figcaption>
+		</figure>
+		<h3>金額の払い戻し </h3>
+		<p>金額を払い戻すには、次の手順を実行します。</p>
+		<ol class="bcls-tasklist-restart">
+			<li>クリック<strong>支払い</strong>下のハイパーリンク<strong>請求と財務</strong>タブ。</li>
+			<li>[支払い履歴]画面で、[ <strong>払い戻し</strong>のボタン<strong>行動</strong>アカウントの払い戻しを希望する列見出し。</li>
+			<li>
+				ダイアログボックス、<strong> "本気ですか？"</strong>以下のように表示されます。
+				<figure class="bcls-figure">
+					<img class="bcls-image" src="/assets/images/beacon-evergent/confirm-refund.png" alt="Confirm Refund">
+					<figcaption class="bcls-caption--image">払い戻しを確認する</figcaption>
+				</figure>
+			</li>
+			<li>で払い戻しの理由を選択してください<strong>理由を選択</strong>ドロップダウンリスト。</li>
+			<li>支払いの払い戻しに関するコメントを<strong>コメント</strong>箱。</li>
+			<li>クリック<strong>はい、払い戻し</strong>ボタンをクリックして払い戻しを行うか、クリックしてください<strong>戻る</strong>変更を破棄します。</li>
+		</ol>
+	</section>
+	<section class="bcls-section">
+		<h2 id="Adjustments">調整</h2>
+		<p>このモジュールは、顧客アカウントの支払いエントリの支払い修正を提供するトランザクションです。</p>
+		<h3>支払い調整を行う</h3>
+		<p>支払いを調整するには、次の手順を実行します。</p>
+		<ol class="bcls-tasklist-restart">
+			<li>クリック<strong>調整</strong>下のハイパーリンク<strong>請求と財務</strong>タブ。</li>
+			<li>クリック<strong>調整する</strong>支払いを調整するためのボタン。</li>
+			<li>
+				NS <strong>調整</strong>以下のような画面が表示されます。
+				<figure class="bcls-figure">
+					<img class="bcls-image" src="/assets/images/beacon-evergent/adjustments.png" alt="Adjustments">
+					<figcaption class="bcls-caption--image">調整</figcaption>
+				</figure>
+			</li>
+			<li>を選択<strong>調整タイプ</strong>利用可能なドロップダウンリストから。</li>
+			<li>調整したい金額を<strong>量</strong>フィールド。</li>
+			<li>選択する<strong>理由</strong>そして<strong>請求書に記載</strong>利用可能なドロップダウンリストから。</li>
+			<li>選択する<strong>停止開始日</strong>そして<strong>停止終了日</strong>。</li>
+			<li>調整のためのコメントをに入力します<strong>コメント</strong>箱。</li>
+			<li>クリック<strong>完了</strong>調整を提供するか、クリックしてください<strong>戻る</strong>。</li>
+	</ol>
+	</section>
+	<section class="bcls-section">
+		<h2 id="Refunds">払い戻し</h2>
+		<p>払い戻しは、サービスが削除または切断されるたびに計算されます。切断/削除された日付から、請求された期間に応じて金額が返金されます。</p>
+		<h3>払い戻しを追加する</h3>
+		<p>ユーザーアカウントに払い戻しを追加するには、次の手順を実行します。</p>
+		<ol class="bcls-tasklist-restart">
+			<li>クリック<strong>払い戻し</strong>下のハイパーリンク<strong>請求と財務</strong>タブ。</li>
+			<li>
+				[払い戻しの追加]アイコンをクリックします（<i data-feather="plus"></i>）顧客に返金を発行します。
+				<figure class="bcls-figure">
+					<img class="bcls-image" src="/assets/images/beacon-evergent/refunds-screen.png" alt="Refunds">
+					<figcaption class="bcls-caption--image">払い戻し</figcaption>
+				</figure>
+			</li>
+			<li>
+				取引の種類リストの払い戻しの種類は次のとおりです。
+				<ul>
+					<li>請求済み</li>
+					<li>未請求</li>
+					<li>すべての支払い</li>
+					<li>チャージバック</li>
+				</ul>
+			</li>
+		</ol>
+		<h4>請求されたトランザクションの払い戻し</h4>
+		<p>を選択すると<strong>請求済みトランザクションタイプ</strong>から<strong>取引の種類</strong>ドロップダウンリストボックス：</p>
+		<ol class="bcls-tasklist-restart">
+			<li>から請求書のいずれかを選択します<strong>請求書を選択します</strong>ドロップダウンリスト。</li>
+			<li>から製品のいずれかを選択します<strong>注文した製品を選択します</strong>ドロップダウンリストボックス。</li>
+			<li>請求する価格をに入力します<strong>料金請求</strong>フィールド。</li>
+			<li>に税額を入力します<strong>課税対象</strong>フィールド。</li>
+			<li>に払い戻し金額を入力します<strong>返金金額</strong>フィールド。</li>
+			<li>で金額を返金する理由を選択してください<strong>理由コード</strong>落ちる。</li>
+			<li>にコメントを入力します<strong>コメント</strong>箱。</li>
+			<li>クリック<strong>追加</strong>ボタンをクリックしてお客様に払い戻しを適用するか、[ <strong>戻る</strong>キャンセルするボタン。</li>
+		</ol>
+		<h4>未請求の取引の払い戻し</h4>
+		<p>を選択すると<strong>未請求のトランザクションタイプ</strong>から<strong>取引の種類</strong>ドロップダウンリストボックス：</p>
+		<ol class="bcls-tasklist-restart">
+			<li>のいずれかを選択します<strong>製品/パッケージ</strong>から<strong>注文した製品を選択します</strong>ドロップダウンリストボックス。</li>
+			<li>請求する価格をに入力します<strong>料金請求</strong>フィールド。</li>
+			<li>に税額を入力します<strong>課税対象</strong>フィールド。</li>
+			<li>に払い戻し金額を入力します<strong>返金金額</strong>フィールド。</li>
+			<li>デフォルトでは、[調整]チェックボックスが選択されています。これは、発行される払い戻し金額にクレジット調整が追加されることを示します。これにより、現在の残高の表示がゼロとしてクリアされます。</li>
+			<li>で金額を返金する理由を選択してください<strong>理由コード</strong>落ちる。</li>
+			<li>にコメントを入力します<strong>コメント</strong>箱。</li>
+			<li>クリック<strong>追加</strong>ボタンをクリックしてお客様に払い戻しを適用するか、[ <strong>戻る</strong>キャンセルするボタン。</li>
+		</ol>
+		<h4>すべての支払い取引の払い戻し</h4>
+		<p>を選択すると<strong>すべての支払いトランザクションタイプ</strong>から<strong>取引の種類</strong>ドロップダウンリストボックス：</p>
+		<ol class="bcls-tasklist-restart">
+			<li>に税額を入力します<strong>課税対象</strong>フィールド。</li>
+			<li>に払い戻し金額を入力します<strong>返金金額</strong>フィールド。</li>
+			<li>にIDを入力します<strong>調整ID</strong>分野。</li>
+			<li>で金額を返金する理由を選択してください<strong>理由コード</strong>落ちる。</li>
+			<li>にコメントを入力します<strong>コメント</strong>箱。</li>
+			<li>クリック<strong>追加</strong>ボタンをクリックしてお客様に払い戻しを適用するか、[ <strong>戻る</strong>キャンセルするボタン。</li>
+		</ol>
+		<h4>チャージバック取引の払い戻し</h4>
+		<p>を選択すると<strong>チャージバックトランザクションタイプ</strong>から<strong>取引の種類</strong>ドロップダウンリストボックス：</p>
+		<ol class="bcls-tasklist-restart">
+			<li>に税額を入力します<strong>課税対象</strong>フィールド。</li>
+			<li>に払い戻し金額を入力します<strong>返金金額</strong>フィールド。</li>
+			<li>にIDを入力します<strong>調整ID</strong>分野。</li>
+			<li>にIDを入力します<strong>トランザクションID</strong>分野。</li>
+			<li>で金額を返金する理由を選択してください<strong>理由コード</strong>落ちる。</li>
+			<li>にコメントを入力します<strong>コメント</strong>箱。</li>
+			<li>クリック<strong>追加</strong>ボタンをクリックしてお客様に払い戻しを適用するか、[ <strong>戻る</strong>キャンセルするボタン。</li>
+		</ol>
+	</section>
+	<section class="bcls-section">
+		<h2 id="Credits">クレジット</h2>
+		<p>クレジットは、請求書または購入の金額が争われているか間違っている場合に、企業が通常顧客に提供するものです。これは、管理者のエラーが原因であるか、お客様が全額または一部の払い戻しを要求していることが原因である可能性があります。</p>
+		<figure class="bcls-figure">
+			<img class="bcls-image" src="/assets/images/beacon-evergent/credits-module.png" alt="Credits Module">
+			<figcaption class="bcls-caption--image">クレジットモジュール</figcaption>
+		</figure>
+		<h3>ラインアイテムクレジットの追加</h3>
+		<p>広告申込情報のクレジットをユーザーアカウントに追加するには、次の手順を実行します。</p>
+		<ol class="bcls-tasklist-restart">
+			<li>に<strong>クレジット</strong>画面で、[追加]をクリックします（<i data-feather="plus"></i>）アイコンを使用して、新しい広告申込情報のクレジットを追加します。</li>
+			<li>NS <strong>クレジットを追加する</strong>画面が表示されます。</li>
+			<li>クリック<strong>クレジットタイプを選択</strong>ドロップダウンリストを選択し、<strong>ラインアイテムクレジット</strong>。</li>
+			<li>
+				でタイプを選択します<strong>取引の種類</strong>ドロップダウンリスト。
+				<ul>
+					<li>請求済み</li>
+					<li>未請求</li>
+					<li>チャージバック</li>
+				</ul>
+			</li>
+		</ol>
+		<p> Beacon にはチャージバッククレジットのみが適用されます。</p>
+		<h4>チャージバック</h4>
+		<p>チャージバックラインアイテムクレジットの場合は、次の手順を実行します。</p>
+		<figure class="bcls-figure">
+			<img class="bcls-image" src="/assets/images/beacon-evergent/chargeback-line-item-credit.png" alt="Chargeback Line-Item Credit">
+			<figcaption class="bcls-caption--image">チャージバックライン-アイテムクレジット</figcaption>
+		</figure>
+		<ol class="bcls-tasklist-restart">
+			<li>金額を入力してください<strong>返金された金額</strong>フィールド。</li>
+			<li>金額を入力してください<strong>クレジットの金額</strong>フィールド。</li>
+			<li>で理由を選択してください<strong>理由コード</strong>ドロップダウンリスト。</li>
+			<li>コメントをに入力します<strong>コメント</strong>箱。</li>
+			<li>クリック<strong>追加</strong>ボタンをクリックしてサービスクレジットを追加するか、[ <strong>戻る</strong>キャンセルするボタン。</li>
+		</ol>
+	</section>
+	<section class="bcls-section">
+		<h2 id="Related_topics">関連トピック</h2>
+		<ul>
+			<li><a href="/monetization/beacon-evergent/overview-beacon-evergent.html">概要: Beacon の高度な現金化</a></li>
+			<li><a href="/monetization/beacon-evergent/evergent-finding-accounts.html">EvergentCRMでのアカウントの検索</a></li>
+			<li><a href="/monetization/beacon-evergent/evergent-managing-account-details.html">エバージェント：アカウント詳細の管理</a></li>
+			<li><a href="/monetization/beacon-evergent/emailer-coupons.html">エバージェント：メール送信者とクーポン</a></li>
+		</ul>
+	</section>
+</article>

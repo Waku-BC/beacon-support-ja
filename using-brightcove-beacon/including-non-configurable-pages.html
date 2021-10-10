@@ -1,0 +1,173 @@
+---
+title: '構成不可能なページを含む'
+description: 「このトピックでは、構成不可能なページをアプリケーション設計に含める方法を学習します。構成不可能なページの例は次のとおりです。<strong>検索</strong>、<strong>設定</strong>、<strong>登録</strong>、 NS。"
+parent: "Using Brightcove Beacon"
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+
+  <section class="bcls-section">
+    <h2 id="Tools">設定できないページの理解</h2>
+    <p>
+      Brightcove Beacon 内でカスタマイズできないページや、含める必要がある、または含めることができるページがあります。ページを含めるか含めないかを選択します。「<a href="/getting-started/creating-your-app-design-layout-options.html">アプリケーションデザインの作成-レイアウトオプション」のドキュメントで作業したときに、これらのページに対して他のレイアウトよりも特定のレイアウトを選択した可能性があります</a>。たとえば、<strong> [設定] </strong>ページで選択した 3 つのレイアウトを次に示します。
+    </p>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/using-bcb/non-configurable/settings-layouts.png" alt="settings-layouts" />
+    </figure>
+    <p>
+      設定を表示するページ ([ページタイプ] という名前の [ <strong> Page Type </strong> ]) を作成すると<code translate="No">custom-settings</code>、ページに他のコンテンツを追加できないことがわかります。 </p>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/using-bcb/non-configurable/no-blocks.png" alt="no-blocks" />
+    </figure>
+    <p>
+      ページを作成または編集する場合、「<strong>ページタイプ」</strong>の選択項目には次の項目が表示されます。
+    </p>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/using-bcb/non-configurable/page-types.png" alt="page-types" />
+    </figure>
+    <p>
+      次の表に、説明とその使用方法を含む、設定できないページタイプを示します。
+    </p>
+    <table class="bcls-table">
+      <thead class="bcls-table__head">
+        <tr>
+          <th>ページタイプ</th>
+          <th>説明</th>
+          <th style="text-align:center">
+            使用
+            <br />
+            （必須/推奨/オプション）
+          </th>
+        </tr>
+      </thead>
+      <tbody class="bcls-table__body">
+        <tr>
+          <td>カスタムダウンロード</td>
+          <td>サポートされていません</td>
+          <td>該当なし</td>
+        </tr>
+        <tr>
+          <td>カスタム終了</td>
+          <td>アプリを終了する機能を提供します。</td>
+          <td>一部のプラットフォーム（主にスマートテレビ）で必要です。</td>
+        </tr>
+        <tr>
+          <td>カスタムログアウト</td>
+          <td>
+            アプリからログアウトする機能を提供します。ログアウト後、ユーザーはランディングページに残されるか、ユーザーを匿名ユーザーにします。
+          </td>
+          <td>
+            ほとんどのモバイルプラットフォームの場合と同様に、ユーザーが登録されている場合は、必須です。
+          </td>
+        </tr>
+        <tr>
+          <td>カスタム設定</td>
+          <td>設定へのアクセスを提供します。</td>
+          <td>強く推奨</td>
+        </tr>
+        <tr>
+          <td>カスタムサインイン</td>
+          <td>登録ユーザログインを提供</td>
+          <td>
+            登録ユーザーには必須。匿名ブラウジングを許可する場合は不要
+          </td>
+        </tr>
+        <tr>
+          <td>カスタムサインアップ</td>
+          <td>ユーザーが登録する方法を提供します</td>
+          <td>
+            アプリが登録ユーザーを使用する場合に必須。匿名ブラウジングを許可する場合は不要です
+          </td>
+        </tr>
+        <tr>
+          <td>epg-</td>
+          <td>
+            電子番組ガイド (EPG) は、ライブテレビの番組ガイドを表示します
+          </td>
+          <td>アプリがライブチャンネルを使用しているのは必須</td>
+        </tr>
+        <!--         <tr>
+          <td>liveTV-player</td>
+          <td>
+            Plays live video and automatically will change the orientation to landscape.
+          </td>
+          <td>
+            If you do play live TV, it is recommended to use the <strong>liveTV-preview</strong> screen, as that presents a player to the user, then on click/tap will change the orientation to landscape and play the video.
+          </td>
+        </tr>
+ -->
+        <tr>
+          <td>livetv プレビュー</td>
+          <td>
+            大きなページの一部としてプレーヤーでライブビデオを再生し、クリック/タップで横方向にビデオを再生します。
+          </td>
+          <td>
+            <strong>livetv-player以上の使用をお勧めします</strong>
+          </td>
+        </tr>
+        <tr>
+          <td>my_stuff-all</td>
+          <td>
+            ページに 2 つのタブがあり、そのうちの 1 つは [ <strong>最近見た</strong> ]、もう 1 つのタブには [ <strong>お気に入り</strong> ] が表示されます。これは、「<strong>最近視聴した</strong>」と「<strong>お気に入り</strong>」を使用する必要があるというメッセージが表示された空白ページになります。オンボーディング中にリクエストして、<strong>購入した</strong>このページにグループが追加されました。
+          </td>
+          <td>オプション</td>
+        </tr>
+        <tr>
+          <td>stuff-Favourites</td>
+          <td>ユーザーがお気に入りとしてマークした動画が含まれます。</td>
+          <td>推奨</td>
+        </tr>
+        <tr>
+          <td>my_stuff-購入済み</td>
+          <td>視聴者が購入した動画が含まれています。</td>
+          <td>推奨</td>
+        </tr>
+        <tr>
+          <td>my_stuff-rectly_watchedです</td>
+          <td>最後に視聴した20本の動画が含まれています。時系列順に表示されます。</td>
+          <td>推奨</td>
+        </tr>
+        <tr>
+          <td>リダイレクトブランク</td>
+          <td>Webのみ。メニューオプションがクリックされたとき、リダイレクトは新しいタブに発生します。</td>
+          <td>オプション</td>
+        </tr>
+        <tr>
+          <td>リダイレクト自己</td>
+          <td>Webのみ。メニューオプションをクリックした場合、リダイレクトが同じタブに発生します。</td>
+          <td>オプション</td>
+        </tr>
+        <tr>
+          <td>検索-</td>
+          <td>
+            あなたがコンテンツを検索することができます入力フィールドを入力画面を提供し、その後、結果を発表しました。
+          </td>
+          <td>強く推奨</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Adding_a_non-configurable_page_to_your_app"> 設定できないページをアプリに追加する </h2>
+    <p>
+      設定不可能なページをアプリに追加することは、実行する必要がある構成がほとんどないので、かなり簡単です。高いレベルでは、プロセスは次のとおりです。
+    </p>
+    <ol class="bcls-tasklist">
+      <li>Brightcove Beacon で新しいページを作成します。</li>
+      <li>
+        <strong>ナビゲーションの種類ドロップダウンから必要なページを選択し</strong>、基本データを追加します。ブロックやレイアウトを追加することはできません。
+      </li>
+      <li>
+        「<a href="/using-brightcove-beacon/page-settings.html">共通ページ設定設定」ドキュメントに示すように、ページの残りのデータを指定します</a>。
+      </li>
+    </ol>
+    <p>
+      たとえば、アプリに検索ページを追加する場合は、次の場所に新しいページを作成します。<strong>基本データ</strong>選択するフォーム<strong>探す-</strong>のために<strong>ナビゲーションタイプ</strong>、次に残りの基本データを完成させます。そのフォームはここに示されています：
+    </p>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/using-bcb/non-configurable/basic-data-form.png" alt="Select search page" />
+    </figure>
+    <p>それで、あなたの検索ページがあなたのアプリに追加されます。</p>
+  </section>
+</article>

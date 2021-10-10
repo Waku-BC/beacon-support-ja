@@ -1,0 +1,239 @@
+- section:
+  name: ホーム
+  url: /index.html
+- section:
+  name: '入門編'
+  url: '/getting-started/index.html'
+  docs:
+    - name: '学習ガイド'
+      url: '/getting-started/learning-guide-bc-beacon.html'
+    - name: '実装フェーズ'
+      url: '/getting-started/implementation-phases.html'
+    - name: 'アプリケーション設計の考慮事項'
+      url: '/getting-started/app-design-considerations.html'
+    - name: 'アプリの設計-情報アーキテクチャ'
+      url: '/getting-started/creating-your-app-design-info-architecture.html'
+    - name: 'アプリのデザイン-レイアウトオプション'
+      url: '/getting-started/creating-your-app-design-layout-options.html'
+    - name: '設計のベストプラクティス'
+      url: '/getting-started/design-best-practices.html'
+- section:
+  name: Video Cloud との同期
+  url: /syncing-with-video-cloud/index.html
+  docs:
+    - name: Video Cloud カスタム項目の作成
+      url: /syncing-with-video-cloud/vc-custom-fields.html
+    - name: 同期を強制する
+      url: /syncing-with-video-cloud/syncing-video-cloud-catalog.html
+- section:
+  name: Brightcove Beacon の使用
+  url: /using-brightcove-beacon/index.html
+  docs:
+    - name: 映画への予告編の追加
+      url: /using-brightcove-beacon/adding-trailer-movie.html
+    - name: ページへのカルーセルの追加
+      url: /using-brightcove-beacon/adding-to-page.html
+    - name: '概要:クラウドプレイアウトチャネル'
+      url: /using-brightcove-beacon/cloud-playout/cloud-playout-overview.html
+    - name: クラウドプレイアウトチャネルの作成
+      url: /using-brightcove-beacon/cloud-playout/cloud-playout-stream-vod.html
+    - name: クラウドプレイアウトチャネルへのコンテンツの追加
+      url: /using-brightcove-beacon/cloud-playout/cloud-playout-add-content.html
+    - name: 静止画像オーバーレイ
+      url: /using-brightcove-beacon/cloud-playout/static-image-overlays.html
+    - name: チャネルアクションの使用
+      url: /using-brightcove-beacon/cloud-playout/using-channel-actions.html
+    - name: クラウドプレイアウトへのバンパーの追加
+      url: /using-brightcove-beacon/cloud-playout/adding-bumpers-to-vod.html
+    - name: クラウドプレイアウトの収益化
+      url: /using-brightcove-beacon/cloud-playout/enabling-server-side-ads.html
+    - name: ミッドロール広告をチャネルに追加する
+      url: /using-brightcove-beacon/cloud-playout/mid-roll-ad-insertion.html
+    - name: クラウドプレイアウトチャネルの公開
+      url: /using-brightcove-beacon/cloud-playout/publish-channel-beacon.html
+    - name: チャネル出力と分析の表示
+      url: /using-brightcove-beacon/cloud-playout/viewing-channel-output-and-analytics.html
+    - name:  Beacon チャネルの作成
+      url: /using-brightcove-beacon/creating-a-channel.html
+    - name: 電子番組ガイド（EPG）の作成
+      url: /using-brightcove-beacon/electronic-program-guides.html
+    - name: 新しいページの作成
+      url: /using-brightcove-beacon/creating-a-page.html
+    - name: プレイリストを作成する
+      url: /using-brightcove-beacon/creating-a-playlist.html
+    - name: 'シリーズ/シーズン/エピソードの作成'
+      url: /using-brightcove-beacon/series-seasons-episodes.html
+    - name: GoogleAnalyticsの自己構成
+      url: /using-brightcove-beacon/ga-self-configuration.html
+    - name: 設定できないページを含める
+      url: /using-brightcove-beacon/including-non-configurable-pages.html
+    - name: ページの紹介
+      url: /using-brightcove-beacon/introducing-pages.html
+    - name: ライブイベントのストリーミング
+      url: /using-brightcove-beacon/streaming-live-event.html
+    - name: チャネルへのVODのストリーミング
+      url: /using-brightcove-beacon/streaming-vods-to-a-channel.html
+    - name: ツールの使用
+      url: /using-brightcove-beacon/tools.html
+    - name: 分析データの表示
+      url: /using-brightcove-beacon/viewing-analytics-data.html
+- section:
+  name: 収益化
+  url: '/monetization/index.html'
+  docs:
+    - name: 全般的
+      url: '/monetization/general/index.html'
+      docs:
+        - name: ストライプアカウントの作成
+          url: /monetization/general/creating-stripe-account.html
+        - name: サブスクリプションパッケージの作成
+          url: /monetization/general/creating-subscription-package.html
+        - name: プロモーションコードの作成
+          url: /monetization/general/promo-codes.html
+        - name: 現金化のためのカスタムフィールド
+          url: /monetization/general/vc-custom-fields.html
+        - name: AuthVODの実装
+          url: /monetization/general/implementing-authvod.html
+        - name: 現金化オプションを理解する
+          url: /monetization/general/monetization-options.html
+        - name: サブスクリプションパッケージの使用
+          url: /monetization/general/using-subscription-package.html
+    - name: SSAI 
+      url: '/monetization/ssai/index.html'
+      docs:
+        - name: '広告の作成'
+          url: '/monetization/ssai/advertisement.html'
+        - name: 'サーバーサイド広告設定の構成'
+          url: '/monetization/ssai/configuring-server-side-ad-settings.html'
+        - name: 'ライブSSAIの実装'
+          url: '/monetization/ssai/live-ssai.html'
+        - name: VOD SSAIの実装
+          url: '/monetization/ssai/vod-ssai.html'
+        - name: ' Beacon アプリの広告ターゲティング'
+          url: '/monetization/ssai/beacon-apps-ad-targeting.html'
+- section:
+  name: ' Beacon ウェブストア'
+  url: '/beacon-web-store/index.html'
+  docs:
+    - name: '概要:ブライトコーブ Beacon ウェブストア'
+      url: '/beacon-web-store/beacon-webstore-overview.html'
+    - name: ' Beacon ウェブストアとの統合'
+      url: '/beacon-web-store/integration-details.html'
+    - name: ' Beacon ストアWebhookリファレンス'
+      url: '/beacon-web-store/beacon-store-webhook-reference.html'
+- section:
+  name: 'アプリの作成'
+  url: '/creating-your-apps/index.html'
+  docs:
+    - name: '全般的'
+      url: '/creating-your-apps/general/index.html'
+      docs:
+        - name: '共通の必要な情報'
+          url: '/creating-your-apps/general/common-required-info.html'
+        - name: 'デバイスアプリ検証ガイド'
+          url: '/creating-your-apps/general/device-apps-validation-guide.html'
+        - name: 'アプリ内サブスクリプションリソース'
+          url: '/creating-your-apps/general/in-app-subscription-resources.html'
+        - name: 'AppStoreサブスクリプションへのリンク'
+          url: '/creating-your-apps/general/links-subscriptions.html'
+    - name: Android
+      url: '/creating-your-apps/android/index.html'
+      docs:
+        - name: 'Androidストアへの新しいアプリの送信'
+          url: '/creating-your-apps/android/submitting-to-android.html'
+        - name: 'AndroidアプリをBrightcove Beacon に更新する'
+          url: '/creating-your-apps/android/updating-android-apps-to-bcb.html'
+        - name: 'Androidへのサブスクリプションの追加'
+          url: '/creating-your-apps/android/adding-subscriptions-in-android.html'
+        - name: 'AndroidPlayストアでの検索の関連性の向上'
+          url: '/creating-your-apps/android/improving-relevance-android.html'
+        - name: 'Androidテストビルドのインストール'
+          url: '/creating-your-apps/android/installing-android-test-build.html'
+        - name: 'Googleサブスクリプションの管理パート1'
+          url: '/creating-your-apps/android/managing-google-subscriptions-1.html'
+        - name: 'Googleサブスクリプションの管理パート2'
+          url: '/creating-your-apps/android/managing-google-subscriptions-2.html'
+    - name: 'Fire TV'
+      url: '/creating-your-apps/fire-tv/index.html'
+      docs:
+        - name: 'Fire TVテストビルドのインストール'
+          url: '/creating-your-apps/fire-tv/installing-fire-tv-test-build.html'
+        - name: 'Amazonストアへの送信'
+          url: '/creating-your-apps/fire-tv/submitting-to-amazon.html'
+    - name: 'iOS / tvOS'
+      url: '/creating-your-apps/ios-tvos/index.html'
+      docs:
+        - name: 'iOS / tvOSテストビルドのインストール'
+          url: '/creating-your-apps/ios-tvos/installing-ios-test-build.html'
+        - name: 'AppleStoreへの送信'
+          url: '/creating-your-apps/ios-tvos/submitting-to-apple.html'
+    - name: Roku
+      url: '/creating-your-apps/roku/index.html'
+      docs:
+        - name: 'Rokuでのチャネル内製品の構成'
+          url: '/creating-your-apps/roku/configuring-inchannel-products.html'
+        - name: 'Rokuテストビルドのインストール'
+          url: '/creating-your-apps/roku/installing-roku-test-build.html'
+        - name: 'Rokuストアへの送信'
+          url: '/creating-your-apps/roku/submitting-to-roku.html'
+    - name: Samsung
+      url: '/creating-your-apps/samsung/index.html'
+      docs:
+        - name: 'サムスンのパートナーになる'
+          url: '/creating-your-apps/samsung/samsung-partner.html'
+        - name: 'サムスンストアへの送信'
+          url: '/creating-your-apps/samsung/submitting-to-samsung.html'
+- section:
+  name: 参考文献
+  url: /references/index.html
+  docs:
+    - name: ブライトコーブ Beacon アプリのブランディング
+      url: /references/branding-beacon-apps.html
+    - name: 一般的な構成設定
+      url: /references/common-configuration-settings.html
+    - name: '用語集'
+      url: '/references/glossary.html'
+    - name: 'Brightcove Beacon がデータを取得する方法'
+      url: '/references/how-beacon-gets-data.html'
+    - name: '画像とその仕様'
+      url: '/references/image-requirements.html'
+    - name: '既知の問題'
+      url: '/references/known-issues.html'
+    - name: '製品の更新'
+      url: '/references/product-updates.html'
+    - name: 'リモート資産の制限'
+      url: '/references/remote-asset-limitations.html'
+    - name: 'ビデオクラウドで実行されるタスク'
+      url: '/references/beacon-tasks-in-vc.html'
+- section:
+  name: トレーニング
+  url: /training/index.html
+  docs:
+    - name: Video Cloud ビデオ/カスタムフィールドの使用
+      url: /training/training-demand-custom-fields.html
+    - name: アプリケーションレイアウトの設計
+      url: /training/training-demand-design-layout.html
+    - name: プレイリストの作成と使用
+      url: /training/training-demand-playlists.html
+    - name: シリーズ、季節、エピソードの作成
+      url: /training/training-demand-series-seasons-episodes.html
+    - name: VOD サーバーサイド広告の実装
+      url: /training/training-demand-vod-ssai.html
+    - name: PlayストアでAndroidアプリを公開する
+      url: /training/training-demand-publish-android-app.html
+    - name: 分析データの表示
+      url: /training/training-demand-viewing-analytics.html
+    - name: ブライトコーブ Beacon へのライブイベントのストリーミング
+      url: /training/training-demand-streaming-live-bc-beacon.html
+- section:
+  name: 'サポート'
+  url: '/support/index.html'
+  docs:
+    - name: 'Brightcoveのシステムステータスページの表示'
+      url: '/support/viewing-brightcove-system-status-page.html'
+    - name: '営業へのお問い合わせ'
+      url: '/support/contact-sales.html'
+    - name: 'サポートケースを開く'
+      url: '/support/opening-case-with-brightcove-support.html'
+    - name: 'サポートポータルのパスワードをリセットする'
+      url: '/support/reset-support-portal-password.html'

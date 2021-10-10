@@ -1,0 +1,68 @@
+---
+title: ビデオクラウドカタログとの同期の
+description: 「このトピックでは、BrightcoveBeaconがVideoCloudカタログとどのように同期するかを学習します。」
+parent: Video Cloud との同期
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+
+  <aside class="bcls-aside bcls-aside--information language-editable">以前は、BrightcoveBeaconとVideoCloudの間の同期は、スケジュールされたプロセスまたは手動のプロセスでした。このドキュメントでは、現在の自動化されたプロセスについて説明します。カタログ全体のスケジュールされた（1時間ごと、2時間ごとなど）取り込みを待つ代わりに、変更が発生すると更新が段階的に行われるようになりました。この改善により、個々の資産の更新の待ち時間が桁違いに短縮されます。</aside>
+  <section class="bcls-section">
+    <h2 id="Syncing_options">同期オプション</h2>
+    <p>Brightcove Beacon の<strong> [ツール</strong> ] セクションには、Brightcove  Beacon を Video Cloud カタログと同期するための 2 つのオプションがあります。ツールに移動するには、<strong>トップメニューのレンチアイコンをクリックし</strong>、左側のメニューの [ <strong>取り込み</strong> ] オプションをクリックします。</p>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/syncing-with-vc/force-sync.png" alt="force-sync">
+    </figure>
+    <p>ここには、VideoCloudとの同期に関する2つのツールがあります。非対応形式:</p>
+    <ul>
+      <li><strong>Brightcoveの動画を更新する</strong> :これにより、BrightcoveBeaconとVideoCloudカタログ間で行われた自動同期の結果を確認できます。</li>
+      <li><strong>Brightcoveのプレイリストの更新</strong> :Video Cloud カタログにプレイリストを追加した場合、または既存のプレイリストを変更した場合、このボタンにより、新しく追加または更新されたプレイリストが Brightcove Beacon に同期されます。</li>
+    </ul>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/syncing-with-vc/sync-vc-catalog/buttons.png" alt="sync-buttons">
+    </figure>
+    <aside class="bcls-aside bcls-aside--warning">注:再生リストにある動画が同期されていることを確認してください<strong>前</strong>プレイリストの同期。</aside>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Viewing_sync_data">同期データの表示</h2>
+    <p>ビデオ同期プロセスは、ビデオにカタログの変更が加えられたときのVideoCloudからの通知に基づいて行われます。新しいアセット、削除されたアセット、メタデータ、画像の更新などはすべて、BrightcoveBeaconとVideoCloudカタログ間の同期をトリガーします。上の矢印をクリックすると、変更を追跡できます。<strong>ブライトコーブのビデオを更新する</strong>ボタン。</p>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/syncing-with-vc/sync-vc-catalog/arrow-on-button.png" alt="arrow on button">
+    </figure>
+    <p>これを行うと、同期されたビデオを示す次のように表示されます。次の機能（赤い矢印）とフィルタリング（黄色で強調表示され、スクリーンショットの下に詳細が示されています）に注意してください。</p>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/syncing-with-vc/sync-vc-catalog/sync-details.png" alt="sync details">
+    </figure>
+    <h3>フィルタリング</h3>
+    <p>次の方法でフィルタリングできます。</p>
+    <ul>
+      <li>エラー
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/syncing-with-vc/sync-vc-catalog/filter-errors.png" alt="filter errors">
+        </figure>
+      </li>
+      <li>警告
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/syncing-with-vc/sync-vc-catalog/filter-warnings.png" alt="filter warnings">
+        </figure>
+      </li>
+      <li>単一の更新日
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/syncing-with-vc/sync-vc-catalog/filter-date.png" alt="filter date">
+        </figure>
+      </li>
+    </ul>
+    <h3>エラーと警告の詳細</h3>
+    <p>エラーまたは警告の数（赤で囲まれている）の横にある矢印をクリックすると、それぞれのエラーまたは警告（黄色で強調表示されている）の詳細が表示されます。</p>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/syncing-with-vc/sync-vc-catalog/warning-details.png" alt="warning details">
+    </figure>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Clearing_the_cache_after_syncing">同期後にキャッシュをクリアする</h2>
+    <p>ビデオを同期した後、できるだけ早く同期を実行した結果を確認するために、キャッシュをクリアする必要があります。これは、[ <strong>ツール</strong> ] メニューから実行できます。左側のナビゲーションから [ <strong>キャッシュ</strong> ] オプションをクリックし、[ <strong>キャッシュパージ</strong> ] ボタンをクリックします。本番環境ではこれを頻繁に実行すると、スケーラビリティとパフォーマンスに悪影響を及ぼします。詳細については、<a href="/using-brightcove-beacon/tools.html">ツールの使用に関するドキュメントを参照してください</a>。</p>
+  </section>
+</article>

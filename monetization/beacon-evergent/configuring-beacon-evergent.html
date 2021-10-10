@@ -1,0 +1,109 @@
+---
+title: Evergentを使用した Beacon の構成
+description: このトピックでは、BeaconとEvergentを相互に連携するように構成するためのステップバイステップガイドを提供します。
+parent: Beacon Advanced Monetization
+layout: staging
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+	<section class="bcls-section">
+		<h2 id="Introduction">はじめに</h2>
+		<p>BeaconとEvergentが連携するように構成するには、両方のシステムでいくつかのセットアップが必要です。場合によっては、あるシステムから別のシステムに情報をコピーしたり、あるシステムから別のシステムに情報を正確に複製したりする必要があります。両方のシステムを別々のブラウザウィンドウで並べて開くことができる場合は、以下の手順を正常に実行するのが簡単になります。</p>
+	</section>
+  <section class="bcls-section">
+    <h2 id="Beacon_part_1"> Beacon パート1</h2>
+		<p>この部分では、構成済みの Beacon CMS（顧客管理システム）インスタンスが必要になります。</p>
+		<ol class="bcls-tasklist-restart">
+			<li> Beacon CMSで、Evergentを次のように構成します。<strong>店</strong>。</li>
+			<li>に<strong>設定&gt;場所</strong>ストアのページで、サービスを利用できる国を定義します。</li>
+			<li>に<strong>設定&gt;通貨</strong>ストアのページで、各国の通貨を定義します。</li>
+	</ol>
+  </section>
+	<section class="bcls-section">
+		<h2 id="Evergent_part_1">エバージェントパート1</h2>
+		<p>この部分では、Evergent GoポータルでBU（ビジネスユニット）を設定する必要があります。各EvergentBUは、世界の特定の国または地域にマップされます。これら、およびそれらに関連付けられている通貨は、 Beacon CMSに入力したものと一致する必要があります。</p>
+		<ol class="bcls-tasklist-restart">
+			<li>BUの通貨を構成します。</li>
+			<li>BUが配置されている国を構成します</li>
+			<li>
+				BUの支払いゲートウェイと支払い方法を構成します。
+				<ul>
+					<li>クレジットカード、デビットカード</li>
+					<li>Eウォレット</li>
+					<li>アプリ内購入（iOS、Google Play、Amazon Billing、Roku Pay）</li>
+				</ul>
+			</li>
+	</ol>
+	</section>
+	<section class="bcls-section">
+		<h2 id="Beacon_part_2"> Beacon パート2</h2>
+		<p>Evergent BU IDと国のマッピングは、 Beacon の顧客ごとに構成する必要があります。これは、Playbackチームが所有するバックエンドサービスであるMonetization PaymentServiceで行われます。（この構成は、第1四半期の終わりまでにJackie Pagesに移行する予定です21）。これらの構成は、 Beacon に使用されている特定のVideoCloudカスタマーアカウントに関連付ける必要があります。</p>
+	</section>
+	<section class="bcls-section">
+		<h2 id="Beacon_part_3"> Beacon パート4</h2>
+		<p>エバージェント<a href="https://en.wikipedia.org/wiki/Salt_(cryptography)">塩</a>その特定の Beacon の顧客については、Monetization PaymentServiceで構成する必要があります。 </p>
+	</section>
+	<section class="bcls-section">
+		<h2 id="Beacon_part_5"> Beacon パート5</h2>
+		<p>Monetization Payment Serviceは、顧客のBeacon CMSインスタンスに入力する必要がある「Beacon_Monetization_Api」エンドポイント（beacon.monetization.api.brightcove.com）を生成します。これは、Evergentの「PaymentGatewayConfiguration」の下の「設定」ページに入力する必要があります。</p>
+	</section>
+	<section class="bcls-section">
+		<h2 id="Beacon_part_6"> Beacon パート6</h2>
+		<ol class="bcls-tasklist-restart">
+			<li>
+				[ Beacon CMSコマース]タブでSVODプランを作成します。収益化ポリシーを定義します。
+				<ol style="list-style-type: lower-alpha;">
+					<li>請求頻度</li>
+					<li>トライアル期間</li>
+					<li>更新ポリシー</li>
+					<li>
+						プランを表示するストアを選択します。
+						<ul>
+							<li>エバージェント</li>
+							<li>アプリストア（iOS、Google Play、Amazon、Roku）</li>
+						</ul>
+					</li>
+					<li>デバイスと場所を設定します。</li>
+					<li>利用可能日を設定します。</li>
+					<li>
+						AppStoreを構成します。
+						<ol style="list-style-type: lower-roman;">
+							<li>利用可能日を構成します。 </li>
+							<li>デバイスを構成します。</li>
+							<li>価格と通貨を入力します。</li>
+							<li>ストアIDを作成します。このIDをコピーして、アプリストアの商品SKUに貼り付ける必要があります。また、一致するSVODプランについては、EvergentGoに入力する必要があります。</li>
+						</ol>
+					</li>
+				</ol>
+			</li>
+	</ol>
+	</section>
+	<section class="bcls-section">
+		<h2 id="Evergent_part_2">エバージェントパート2</h2>
+		<p>Evergent Goで、一致するSVODプランを作成します。収益化ポリシーが Beacon のCMSに入力されたものと同じに一致することが重要です。また、SVODプランを異なる通貨で販売する場合は、複数のEvergentBUを使用する必要があることに注意してください。各BUのプランは、 Beacon CMSの「エバージェントストア」に入力されたSKUを使用して Beacon にマッピングされます。</p>
+		<figure class="bcls-figure">
+			<img class="bcls-image" src="/assets/images/beacon-evergent/svod-plans.png" alt="Evergent SVOD Setup">
+			<figcaption class="bcls-caption--image">エバージェントSVODセットアップ</figcaption>
+		</figure>
+	</section>
+	<section class="bcls-section">
+		<h2 id="Beacon_part_7"> Beacon パート7</h2>
+		<p>SVODプラン用にBeaconEvergentStoreを構成します。</p>
+		<ol class="bcls-tasklist-restart">
+			<li>可用性を構成します。</li>
+			<li>デバイスを構成します（現在はWebのみ）。</li>
+			<li>価格と通貨を設定します。通貨は、その通貨を使用する特定のBUのプランにマップする必要があります。たとえば、ユーロを使用してEUで販売しているプランがある場合、EvergentIDはEUEvergentBUから取得する必要があります。Evergent IDフィールドは、EvergentSKUを入力する場所です。</li>
+		</ol>
+	</section>
+	<section class="bcls-section">
+		<h2 id="Related_topics">関連トピック</h2>
+		<ul>
+			<li><a href="/monetization/beacon-evergent/overview-beacon-evergent.html">概要: Beacon の高度な現金化</a></li>
+			<li><a href="/monetization/beacon-evergent/evergent-finding-accounts.html">EvergentCRMでのアカウントの検索</a></li>
+			<li><a href="/monetization/beacon-evergent/evergent-managing-account-details.html">エバージェント：アカウント詳細の管理</a></li>
+			<li><a href="/monetization/beacon-evergent/evergent-billing-finance.html">エバージェント：請求と財務</a></li>
+			<li><a href="/monetization/beacon-evergent/emailer-coupons.html">エバージェント：メール送信者とクーポン</a></li>
+		</ul>
+	</section>
+</article>

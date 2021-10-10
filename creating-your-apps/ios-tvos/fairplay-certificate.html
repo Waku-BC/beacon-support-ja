@@ -1,0 +1,144 @@
+---
+title: 'FairPlay証明書の登録'
+description: 'このトピックでは、FairPlayストリーミング（FPS）DRM証明書を作成するためのAppleプロセスについて学習します。'
+parent: 'iOS / tvOS' 
+grandparent: アプリの作成
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  <section class="bcls-section">
+    <h2 id="required-information">概要</h2>
+
+    <p> <a href="https://developer.apple.com/streaming/fps/" target="_blank">FairPlayストリーミング</a>は、HLS（HTTP Live Streaming）プロトコルを使用してストリーミングメディアを安全に配信するためのAppleのDRMソリューションです。 </p>
+    <p>Appleのを使用できるようにするため<strong>FairPlayストリーミング（FPS）</strong> DRM、ユーザーは取得する必要があります<strong>FPS展開パッケージ</strong> Appleから入手し、Brightcoveの担当者に次の情報を提供してください。
+        <ul>
+            <li>FPS証明書ファイル<strong>.derまたは.cer</strong></li>
+            <li>秘密鍵ファイル<strong>.pem</strong></li>
+            <li>秘密鍵のパスワード文字列</li>
+            <li>アプリケーション秘密鍵（ASK）文字列</li>
+
+        </ul>
+
+    </p>
+   
+
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="required-information">ステップ1：Appleデベロッパアカウントにサインアップして、デプロイメントパッケージをリクエストします</h2>
+
+    <ol class="bcls-tasklist">
+        <li>Appleデベロッパアカウントを入力して、FPSデプロイメントパッケージを入手してください。お持ちでない場合。<a href="https://developer.apple.com/support/enrollment/" target="_blank">サインアップ</a>。</li>
+        <li>FairPlay Streaming Webサイトの下部にある[RequestDeployment Package]リンクをクリックして、Appleデベロッパアカウントでログインします。</li>
+    </ol>
+    <p>入力フォームに従って展開パッケージを申請すると、Appleの確認後に、FPSクレデンシャル作成ガイドドキュメントを含むパッケージが発行されます。  </p>
+    <aside class="bcls-aside bcls-aside--information">申請プロセス中に、キーサーバーモジュール（KSM）の実装とテストを完了したかどうかを尋ねられます。お答えください：「私はサードパーティのDRMサービスを使用していますが、会社はすでにキーサーバーモジュールを構築してテストしています」。</aside>
+
+  </section>
+  <section class="bcls-section">
+    <h2 id="required-information">ステップ2：秘密鍵と証明書署名要求（CSR）を作成する </h2>
+    <p>次のステップは秘密鍵を作成することです<strong>privatekey.pem</strong>ファイルと証明書署名要求<strong>certreq.csr</strong>パッケージ内のガイドライン文書を参照してファイルします。 </p>
+    <aside class="bcls-aside bcls-aside--information">OpenSSLは、このプロセスが実行されるPCまたはサーバー環境にインストールする必要があります。</aside>
+
+    <p>次の手順では、CSRファイルを生成するためのOpenSSLメソッドについて説明します。</p>
+
+    <ol class="bcls-tasklist-restart">
+        <li>OpenSSLコマンドラインツールを開きます。</li>
+        <li>を生成します<strong>秘密鍵ファイル：privatekey.pem</strong>次のコマンドを入力して実行します。
+
+            <pre class="line-numbers">
+                <code class="command-line" translate="No">openssl genrsa -aes256 -out privatekey.pem 1024 </code></pre>   
+        </li>
+        <li>秘密鍵のパスワードを入力し、後で使用できるように保存します。<aside class="bcls-aside bcls-aside--information">パスワードは32文字より短くする必要があり、特殊文字は使用できません。</aside>
+        </li>
+        <li>を生成します<strong>証明書署名要求</strong>次のコマンドを入力して実行することにより、ファイルを作成します。<aside class="bcls-aside bcls-aside--information">の内容<strong>-subj</strong>パラメータは、組織の情報に合わせて変更できます。</aside>
+            <pre class="line-numbers">
+<code class="command-line" translate="No">openssl req -new -sha1 -key privatekey.pem -out certreq.csr -subj "/CN=SubjectName/OU=OrganizationalUnit/O=Organization/C=US"</code></pre>
+        </li>
+        <li>入力します<strong>秘密鍵</strong>パスワード。 </li>
+        
+    </ol>
+
+  </section>
+  <section class="bcls-section">
+    <h2 id="required-information">ステップ3：AppleデベロッパポータルでFPS証明書を作成する</h2>
+    <ol class="bcls-tasklist">
+
+    <li>にログインします<strong>Appleデベロッパポータル</strong>をクリックします<strong>証明書、ID、プロファイル</strong>左側のメニュー。
+        <figure class="bcls-figure">
+            <img
+              class="bcls-image--no-border"
+              alt=""
+              width="600"
+              height="1000"
+              src="/assets/images/creating-your-apps/fairplay-reg/left-menu.png"/>
+          </figure>
+    </li>
+    <li>の中に<strong>証明書</strong>字幕をクリックします  
+        <img
+          class="bcls-image--no-border"
+          alt=""
+          width="20"
+          height="20"
+          src="/assets/images/creating-your-apps/fairplay-reg/blue-button.png"/> ボタン。
+
+          <figure class="bcls-figure">
+            <img
+              class="bcls-image--no-border"
+              alt=""
+              width="600"
+              height="600"
+              src="/assets/images/creating-your-apps/fairplay-reg/plus-button.png"/>
+          </figure>
+
+
+    </li>
+    <li>に<strong>新しい証明書を作成する</strong>セクションで、<strong> FairPlayストリーミング証明書</strong>オプション。 
+      <figure class="bcls-figure">
+        <img
+          class="bcls-image--no-border"
+          alt=""
+          width="800"
+          height="600"
+          src="/assets/images/creating-your-apps/fairplay-reg/create-cert.png"/>
+      </figure>
+    </li>
+    <li>[<strong>続行</strong>]をクリックします。</li>
+    <li>クリック<strong>ファイルを選ぶ</strong>。 
+      <figure class="bcls-figure">
+        <img
+          class="bcls-image--no-border"
+          alt=""
+          width="800"
+          height="600"
+          src="/assets/images/creating-your-apps/fairplay-reg/upload-file.png"/>
+      </figure>
+    </li>
+    <li>を選択<strong>certreq.csr</strong> OpenSSLで作成されたファイル。 </li>
+    <li>[<strong>続行</strong>]をクリックします。</li>
+    <li> をコピーします<strong>アプリケーション秘密鍵</strong> Appleから提供され、安全に保管してください。ASKが危険にさらされると、FPSでコンテンツを保護できなくなります。 
+      <figure class="bcls-figure">
+        <img
+          class="bcls-image--no-border"
+          alt=""
+          width="800"
+          height="600"
+          src="/assets/images/creating-your-apps/fairplay-reg/ask-file.png"/>
+      </figure>
+    
+    
+    </li>
+    <li>提供されたスペースにASKを貼り付けます。</li>
+    <li>クリック<strong>継続する</strong></li>
+    <li>クリック<strong>生む</strong>ポップアップが表示されたら、ボタンをクリックして、アプリケーションセキュリティキーを保存したことを確認します。</li>
+    <li>クリック<strong>証明書</strong>左側のメニューで、FairPlayストリーミング証明書をリストに表示します。 </li>
+    <li>証明書をクリックします。</li>
+    <li>クリック<strong>ダウンロード</strong> FPS証明書ファイルを保存するためのボタン：<strong> fairplay.cer</strong>。</li>
+    <li>ダウンロード後<strong>FPS証明書</strong>ファイルについては、Brightcoveアカウントマネージャーに連絡してプロセスを完了してください。</li>
+  
+    </ol>
+
+  </section>
+
+</article>

@@ -1,0 +1,233 @@
+---
+title: 「エバージェント：メール送信者とクーポン'
+description: このトピックは、Evergentでのメール送信者とクーポン生成を管理するためのガイドを提供します。
+parent: Beacon Advanced Monetization 
+grandparent: Monetization
+layout: staging
+---
+ <h1>{{ page.title }}</h1>
+
+<article class="bcls-article">
+	<summary>{{ page.description }}</summary>
+	<section class="bcls-section">
+		<h2 id="Introduction">はじめに</h2>
+		<p>Evergentバックオフィスシステムは、ビジネスの管理に役立つサービスを提供します。このトピックでは、次の2つのサービスについて説明します。</p>
+		<ul>
+			<li>自動メール送信者</li>
+			<li>クーポンマネージャー</li>
+		</ul>
+	</section>
+	<section class="bcls-section">
+		<h2 id="emailer">メール送信者</h2>
+		<p>メール送信者を使用すると、システムで生成されたさまざまなメールのテンプレートとスケジュールを作成できます。次のセクションでは、メール送信者の操作について詳しく説明します。</p>
+	</section>
+	<section class="bcls-section">
+		<h2 id="message_types">メッセージタイプ</h2>
+		<p>Evergentは、次のメッセージタイプをサポートしています。</p>
+		<dl>
+			<dt>スケジューリング</dt>
+			<dd>システム管理者でバッチジョブがスケジュールされると、管理者に電子メールが送信されます。</dd>
+			<dt>クレジットカードの有効期限のリマインダー</dt>
+			<dd>ビジネスレベルで[クレジットカードの有効期限のリマインダー]チェックボックスをオンにすると、クレジットカードの有効期限が近づくと、リマインダーメールが顧客に送信されます（通常、メールはカードの有効期限が切れる1か月前に送信されます）。この場合、システムは電子メールテンプレートメッセージタイプ「クレジットカードの有効期限のリマインダー」を使用します。</dd>
+			<dt>バルクメール</dt>
+			<dd>企業が販促メールをスケジュールし、実行する将来の時間を指定する場合は、一括メールメッセージタイプが使用されます。これらのタイプの一括電子メールは、ビジネスユニットのサブスクライバー、特定のマーケットエリアのサブスクライバー、または特定のサービスに送信できます。</dd>
+			<dt>クレジットカード取引</dt>
+			<dd>クレジットカード決済取引が加入者によって行われる場合、取引の詳細は、この電子メールテンプレートを使用して電子メールで顧客に送信されます。</dd>
+			<dt>イベントメッセージ</dt>
+			<dd>イベントメッセージタイプの電子メールテンプレートは、電子メールテンプレートを定義し、それらをイベントカテゴリにクロスマップするために使用されます。これにより、イベントがアカウントレベルで記録されると、サブスクライバーへの電子メール通知をトリガーできます。</dd>
+			<dt>このために</dt>
+			<dd>アドホックメッセージタイプは、イベントカテゴリマッピングのいずれにもリンクしていない個々のメッセージを送信することです。</dd>
+		</dl>
+	</section>
+	<section class="bcls-section">
+		<h2 id="Emailers">メール送信者</h2>
+		<p>[電子メール]タブは、電子メールテンプレートを追加/編集し、ビジネスユニットの電子メールをスケジュールするために使用されます。</p>
+		<figure class="bcls-figure">
+			<img class="bcls-image" src="/assets/images/beacon-evergent/emailers-tab.png" alt="Emailers Tab">
+			<figcaption class="bcls-caption--image">[メール送信者]タブ</figcaption>
+		</figure>
+		<h3>新しいメール送信者の追加</h3>
+		<p>新しいメール送信者を追加するには、次の手順を実行します。</p>
+		<ol class="bcls-tasklist-restart">
+			<li>に<strong>メール送信者</strong>ビジネスユニットの画面で、[追加]（<i data-feather="plus"></i>）アイコン。</li>
+			<li>
+				の中に<strong>基本的な詳細</strong>セクションに、次のように必要な詳細を入力します。
+				<ol style="list-style-type: lower-latin;">
+					<li>に<strong>題名</strong>フィールドに、電子メールのタイトルを入力します。</li>
+					<li>に<strong>メールの件名</strong>フィールドに、電子メールの件名を入力します。</li>
+					<li>から電子メールメッセージを定義するメッセージタイプを選択します<strong>メッセージタイプ</strong>ドロップダウンリスト。</li>
+					<li>の中に<strong>管理者の電子メール</strong>フィールドに、電子メールの送信元の電子メールIDを入力します。</li>
+					<li>の中に<strong>管理者名</strong>フィールドに、管理者名を入力します。</li>
+					<li>を選択<strong>イベントカテゴリ</strong>提供されたドロップダウンリストから。</li>
+					<li>
+						メールの送信先のメールIDをに入力します<strong>CC</strong>と<strong>BCC</strong>田畑。<aside class="bcls-aside bcls-aside--information">注:各電子メールIDをコンマで区切ることにより、CCフィールドとBCCフィールドに複数の電子メールIDを指定できます。</aside>
+					</li>
+				</ol>
+			</li>
+			<li>選択する<strong>プレーンテキスト</strong>また<strong>HTML</strong>選択した形式でメールを送信します。</li>
+			<li>の中に<strong>メール/ニュースレターメッセージ</strong> [電子メール本文]テキストボックスのセクションに、顧客の電子メールにメッセージを表示するメッセージテンプレートを入力します。</li>
+			<li>クリック<strong>プレビュー</strong>プレーンテキストまたはHTML形式の電子メールメッセージを表示するには、テキストボックス領域の横にあります。</li>
+			<li>
+				[ <strong>作成</strong> ] ボタンをクリックします。
+				<figure class="bcls-figure">
+					<img class="bcls-image" src="/assets/images/beacon-evergent/new-emailer.png" alt="New Emailer">
+					<figcaption class="bcls-caption--image">新しいEmailer</figcaption>
+				</figure>
+			</li>
+		</ol>
+		<h3>メール送信者の更新</h3>
+		<ol class="bcls-tasklist-restart">
+			<li>に移動します<strong>メール送信者</strong>ビジネスユニットの画面。</li>
+			<li>の中に<strong>メールテンプレートのリスト</strong>セクションで、編集するメールテンプレートをクリックします。</li>
+			<li>NS <strong>メール送信者を更新</strong>画面が表示されたら、使用可能なフィールドに必要な変更を加えて、をクリックします<strong>アップデート</strong>。</li>
+		</ol>
+		<aside class="bcls-aside bcls-aside--information">[メール送信者の更新]画面の[メッセージタイプ]フィールドと[イベントカテゴリ]フィールドは変更できないことに注意してください。</aside>
+		<h3>メールをスケジュールする</h3>
+		<p>後で送信するようにメールをスケジュールすることができます。この画面は、指定された時間ベースで、またはDMAまたはサービスに対して毎日大量の電子メールをスケジュールするためのものです。</p>
+		<h4>メールのスケジュール</h4>
+		<ol class="bcls-tasklist-restart">
+			<li>に<strong>メール送信者</strong>画面上、<strong>メールテンプレート</strong>タブで、メッセージタイプのメールを一括メールとしてクリックします。</li>
+			<li>クリック<strong>メールのスケジュール</strong>タブ。スケジュールされたメールのリストが表示されます。</li>
+			<li>
+				メールをスケジュールするには、[追加]（<i data-feather="plus"></i>）アイコンをクリックして、[電子メールのスケジュール]ダイアログを開きます。
+				<figure class="bcls-figure">
+					<img class="bcls-image" src="/assets/images/beacon-evergent/schedule-email.png" alt="Schedule Email">
+					<figcaption class="bcls-caption--image">メールのスケジュール</figcaption>
+				</figure>
+			</li>
+			<li>メールIDをに入力します<strong>メールの送信先</strong>分野。</li>
+			<li>クリック<strong>実行する時間</strong>フィールドでスケジュールの日時を選択します。</li>
+			<li>選択した日時に毎日メールをスケジュールするには、<strong>毎日のスケジュール</strong>チェックボックス。</li>
+		</ol>
+		<h4>スケジュールされたメールを削除する</h4>
+		<ol class="bcls-tasklist-restart">
+			<li>クリック<strong>メールテンプレート</strong>下のタブ<strong>メール送信者</strong>左側のメニューバーのタブ。</li>
+			<li>削除する一括メール（メッセージタイプ）をクリックします。</li>
+			<li>
+				NS <strong>メール送信者を更新</strong>画面が表示されます。
+			</li>
+			<li>
+				クリック<strong>メールのスケジュール</strong>タブ。
+				<figure class="bcls-figure">
+					<img class="bcls-image" src="/assets/images/beacon-evergent/update-emailer.png" alt="Update Emailer">
+					<figcaption class="bcls-caption--image">メール送信者を更新</figcaption>
+				</figure>
+			</li>
+			<li>[削除]をクリックします（<i data-feather="trash-2"></i>）のアイコン<strong>行動</strong>スケジュールされた電子メールをから削除する列<strong>スケジュールされた電子メールのリスト</strong>。</li>
+			<li></li>
+		</ol>
+	</section>
+	<section class="bcls-section">
+		<h2 id="Coupon_generation">クーポン生成</h2>
+		<p>クーポン生成権限は、ユーザーのBUグループ権限に基づいています。この権限を持つログインユーザーは、クーポンを生成および編集できます。</p>
+		<h3>新しいクーポン/バウチャーの追加</h3>
+		<ol class="bcls-tasklist-restart">
+			<li>クリック<strong>クーポン</strong>左のメニューから。</li>
+			<li>に<strong>クーポン</strong>ビジネスユニットの画面で、<strong>追加</strong>（（<i data-feather="plus"></i>）アイコン。NS <strong>クーポン</strong>デフォルトの画面が表示されます。</li>
+			<li>
+				クリック<strong>追加</strong>（（<i data-feather="plus"></i>）クーポンを生成するためのアイコン。
+				<figure class="bcls-figure">
+					<img class="bcls-image" src="/assets/images/beacon-evergent/generate-coupon.png" alt="Generate Coupon">
+					<figcaption class="bcls-caption--image">クーポンを生成する</figcaption>
+				</figure>
+			</li>
+			<li>
+				新しいクーポン/バウチャーの生成画面が次のように表示されます。
+				<figure class="bcls-figure">
+					<img class="bcls-image" src="/assets/images/beacon-evergent/new-coupon-voucher.png" alt="New Coupon/Voucher">
+					<figcaption class="bcls-caption--image">新しいクーポン/バウチャー</figcaption>
+				</figure>
+			</li>
+			<li>
+				次のようにフィールドに情報を入力します。
+				<ol style="list-style-type: lower-alpha;">
+					<li><strong>クーポンプレフィックス</strong>：クーポンのプレフィックス（例：TestC、Hal、CD、Fridayなど）</li>
+					<li><strong>バッチ名</strong>：クーポンのバッチ名（例：テストクーポン、クリスマスなど）</li>
+					<li><strong>小売業者</strong>：クーポンは、（AT＆T、Vodafone、Verizon、Ideaなど）のような小売業者の選択で生成できます。</li>
+					<li><strong>開始日</strong>：ユーザーがクーポンを利用できるようになった日付</li>
+					<li><strong>賞味期限</strong>：ユーザーはクーポンの有効期限を定義できます</li>
+					<li><strong>クーポンリクエスター</strong>：クーポンをリクエストしたリクエスターの名前を示します</li>
+					<li>
+						<strong>ウォレットトップアップとしてクレジット</strong>：
+						<ul>
+							<li>ウォレットチャージのクーポンを生成するには、トグルスイッチをクリックして有効にし、金額を入力します</li>
+							<li>クーポンをバウチャーとして生成するには、トグルスイッチをクリックして無効にします</li>
+						</ul>
+						<figure class="bcls-figure">
+							<img class="bcls-image" src="/assets/images/beacon-evergent/toggle-wallet-top-up.png" alt="Toggle for Wallet Top-Up">
+							<figcaption class="bcls-caption--image">ウォレットの補充を切り替える</figcaption>
+						</figure>
+					</li>
+					<li><strong>割引タイプ</strong>：クーポンタイプを定義します–たとえば、無料、フラット、フラットオフ、パーセンテージ、パーセンテージオフ、および有効期間の延長</li>
+					<li><strong>金額/パーセンテージ</strong>：選択したタイプについて、[金額/パーセンテージ]フィールドが表示されます</li>
+					<li><strong>期間と期間</strong>：適用されるクーポンの期間は、クーポンの期間が意味する期間のそれぞれの選択として、日数または月数にすることができます。</li>
+					<li><strong>クーポンコードとしてプレフィックスを作成する</strong>：このチェックボックスをオンにすると、プレフィックスがクーポンコードとして保存されます</li>
+					<li><strong>クーポン数</strong>：ユーザーは、バッチ用に生成されたクーポンの数を提供できます。「クーポンコードとしてのプレフィックス」の場合、クーポン数は「1」となります。</li>
+					<li><strong>クーポンの優先順位</strong>：ビジネスで生成され、サブスクリプションおよびオファータイプにマップされた優先順位ベースで一般的なクーポン表示を設定するために使用されます</li>
+					<li><strong>クーポンの長さ</strong>：生成するクーポンコードの長さ</li>
+					<li><strong>複数の償還</strong>：このトグルスイッチが選択されている場合、ユーザーはクーポンの最大償還額を定義できます</li>
+					<li><strong>最大償還</strong>：クーポンの償還数を許可します</li>
+					<li><strong>シングルユーザーによる複数の償還</strong>：チェックボックスを使用すると、顧客は自分のアカウントで1つのクーポンをシングルユーザーによる最大償還数と引き換えることができます</li>
+					<li><strong>シングルユーザーによる複数の償還</strong>：チェックボックスを使用すると、顧客は自分のアカウントで1つのクーポンをシングルユーザーによる最大償還数と引き換えることができます</li>
+					<li><strong>大文字と小文字を区別</strong>：大文字でクーポンコードを生成する場合は、チェックボックスをオンにします</li>
+					<li><strong>ギフトです</strong>：チェックボックスを選択すると、クーポンを他の人に渡すことができます</li>
+					<li><strong>継承可能</strong>：チェックボックスが選択されている場合、クーポンは継承可能です</li>
+					<li><strong>すべてのアイテムは必須ですか</strong>：このチェックボックスが選択されている場合、すべての項目が必須です</li>
+					<li><strong>お支払い方法をスキップする</strong>：チェックボックスが選択されている場合、クーポンを適用した後、支払い方法はスキップされます</li>
+					<li><strong>クーポンの説明</strong> :クーポンの説明を入力してください</li>
+					<li><strong>キャンペーン情報</strong>：キャンペーン情報の詳細を入力します</li>
+					<li><strong>成功メッセージ</strong>：ユーザーに表示される成功メッセージを入力します。</li>
+					<li><strong>警告メッセージ</strong>：ユーザーに表示される警告メッセージを入力します</li>
+					<li><strong>対象製品</strong>：ユーザーは番号を選択できます。クーポンへの該当する製品の例（例：製品のフラット30％オフクーポン<strong>ネオン</strong>）</li>
+					<li><strong>該当するパッケージ</strong>：ユーザーは番号を選択できます。クーポンへのアプリケーションパッケージの</li>
+					<li><strong>オファータイプ</strong>：ユーザーはクーポンのオファータイプを選択できます</li>
+					<li><strong>該当する支払いモード</strong>：ユーザーはクーポンに適用可能な支払いモードを選択できます</li>
+				</ol>
+			</li>
+			<li>クリック<strong>クーポンを作成する</strong>クーポンを生成するためのボタン（クーポンの生成時間は、ユーザーが生成するクーポンの数にも依存します）。</li>
+			<li>
+				クーポンが生成されると、<strong>クーポンが正常に生成されました</strong>メッセージが表示されます：
+				<figure class="bcls-figure">
+					<img class="bcls-image" src="/assets/images/beacon-evergent/coupons-generated.png" alt="Coupons Generated">
+					<figcaption class="bcls-caption--image">生成されたクーポン</figcaption>
+				</figure>
+			</li>
+		</ol>
+		<h3>クーポン検索</h3>
+		<p>さまざまなオプションを使用してクーポンを検索します。クーポンを検索するには、次の手順を実行します。</p>
+		<ol class="bcls-tasklist-restart">
+			<li>に<strong>クーポン</strong>画面に、バッチ名、プレフィックス、クーポンコード、ステータス、有効期限の開始日/終了日で検索するフィールド値を入力します。</li>
+			<li>
+				[検索]ボタンをクリックします。クーポンの検索結果は以下のように表示されます。
+				<figure class="bcls-figure">
+					<img class="bcls-image" src="/assets/images/beacon-evergent/coupon-search-results.png" alt="Coupon Search Results">
+					<figcaption class="bcls-caption--image">クーポン検索結果</figcaption>
+				</figure>
+			</li>
+			<li>
+				[高度な検索を有効にする]トグルスイッチをクリックして、高度な検索を有効にします。
+				<figure class="bcls-figure">
+					<img class="bcls-image" src="/assets/images/beacon-evergent/enable-advanced-coupon-search.png" alt="Enable Advanced Coupon Search">
+					<figcaption class="bcls-caption--image">高度なクーポン検索を有効にする</figcaption>
+				</figure>
+			</li>
+			<li>リストにリストされている該当する製品と該当する支払いモードをクーポンバッチで検索できます。クーポンバッチで検索するには、[クーポンバッチ検索]ボタンをクリックします。</li>
+			<li>
+				検索されたクーポンは、以下に示すように、検索結果リストに表示されます。
+				<figure class="bcls-figure">
+					<img class="bcls-image" src="/assets/images/beacon-evergent/coupon-batch-search-results.png" alt="Coupon Batch Search Results">
+					<figcaption class="bcls-caption--image">クーポンバッチ検索結果</figcaption>
+				</figure>
+			</li>
+		</ol>
+	</section>
+	<section class="bcls-section">
+		<h2 id="Related_topics">関連トピック</h2>
+		<ul>
+			<li><a href="/monetization/beacon-evergent/overview-beacon-evergent.html">概要: Beacon の高度な現金化</a></li>
+			<li><a href="/monetization/beacon-evergent/evergent-finding-accounts.html">EvergentCRMでのアカウントの検索</a></li>
+			<li><a href="/monetization/beacon-evergent/evergent-managing-account-details.html">エバージェント：アカウント詳細の管理</a></li>
+			<li><a href="/monetization/beacon-evergent/evergent-billing-finance.html">エバージェント：請求と財務</a></li>
+		</ul>
+	</section>
+</article>

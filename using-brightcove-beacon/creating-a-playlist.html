@@ -1,0 +1,216 @@
+---
+title: プレイリストの作成
+description: 'このトピックでは、BrightcoveBeaconの[プレイリスト]タブを使用してプレイリストを作成する方法を学習します。'
+parent: Brightcove Beacon の使用 
+---
+
+
+<style>
+  .imageWithText { width: auto; vertical-align: text-bottom; height: 1.5em; }
+</style>
+
+<h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  <section class="bcls-section">
+    <h2 id="Overview">概要</h2>
+    <p>
+      再生リストは、BrightcoveBeaconの2つの方法のいずれかで作成されたビデオおよびその他のエンティティのコレクションです。 </p>
+    <ol>
+      <li>
+        VideoCloudライブラリからBrightcove Beacon にインポートされます。この場合、再生リストのアイテムは動画のみになります。
+      </li>
+      <li>
+        BrightcoveBeaconで作成された<strong>プレイリスト</strong>タブ。Brightcove Beaconで再生リストを作成するときは、Video Cloudからインポートしたビデオ（映画/エピソード）を使用できます。さらに、シリーズ、シーズン、チャンネル、ライブイベントを追加することもできます。この方法がこのドキュメントの焦点です。
+      </li>
+    </ol>
+    <aside class="bcls-aside bcls-aside--warning">次の点に注意してください。
+      <ul>
+        <li>Brightcoveは、ビデオのみを含むプレイリストをVideoCloudで作成することをお勧めします。</li>
+        <li>に示されているすべての機能が<strong>プレイリスト</strong>現時点ではタブが使用可能です。このドキュメントでは、どのフォーム項目に入力する必要があるかが明確になっています。</li>
+      </ul>
+    </aside>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Basic_Data">基礎データセクション</h2>
+    <p>Brightcove Beaconでプレイリストを作成するには、次の手順に従います。</p>
+    <ol class="bcls-tasklist">
+      <li>Brightcove Beacon にログインします。</li>
+      <li>上部のナビゲーションで、<strong>プレイリスト</strong>。</li>
+      <li>
+        <p>クリック<strong>新しいプレイリストを追加する</strong>ボタン。</p>
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" src="/assets/images/using-bcb/creating-playlists/playlist-button.png" alt="Playlist button" />
+          <figcaption class="bcls-caption--image">プレイリストボタン</figcaption>
+        </figure>
+      </li>
+      <li>
+        <p>
+          から<strong>基本データ</strong>タブで、プレイリストの名前と表示タイプを定義してから、コンテンツを追加します。このセクションのほとんどの機能は、現時点では使用できないことに注意してください。もちろん、以下の手順では、使用可能なアイテムのみを扱います。
+        </p>
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" src="/assets/images/using-bcb/creating-playlists/not-usable-basic-data.png" alt="Basic Data" />
+          <figcaption class="bcls-caption--image">基礎データ</figcaption>
+        </figure>
+      </li>
+      <li>
+        の中に<strong>名前</strong>フィールドに、プレイリストの内部システム名を追加します。これは、分析に使用される名前でもあります。後の手順で、プレイリストの表示可能なタイトルを追加することに注意してください。<aside class="bcls-aside bcls-aside--tip">Brightcove Beacon vs. VideoCloudで作成されたプレイリストを何らかの方法で指定することをお勧めします。たとえば、アスタリスク（<strong> *</strong>）プレイリストがBrightcove Beaconで作成されるとき、プレイリスト名の前。もちろん、アスタリスクである必要はありませんが、プレイリストを更新するときにブライトコーブ Beacon に移動することがわかっているように、いくつかの表記法を選択してください<strong>プレイリスト</strong>タブまたはVideoCloud Studioを使用して、変更を加えます。</aside>
+      </li>
+      <li>
+        からレイアウトを選択します<strong>すべてのプレイリストレイアウトを表示</strong>。これは、視聴者がクリックしたときに使用されるレイアウトです。<strong>すべて表示</strong>アプリのボタン。ベストプラクティスとして、ある種のグリッドを選択します。
+      </li>
+      <li>
+        プレイリストにコンテンツを追加するプロセスを開始するには、[ <strong>資産</strong>タブ。選択できるアセットタイプが6つあることがわかります。
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" src="/assets/images/using-bcb/creating-playlists/asset-types.png" alt="Basic Data" />
+          <figcaption class="bcls-caption--image">資産タイプ</figcaption>
+        </figure>
+        <aside class="bcls-aside bcls-aside--information">これで、プレイリストオプションが表示されるようになりました。<strong>映画</strong>、<strong>シリーズ</strong>、<strong>季節</strong>、<strong>イベント</strong>と<strong>チャンネル</strong>、Video CloudStudioでは選択できません。これらのタイプはVideoCloud Studioではアクセスできないため、BrightcoveBeaconでプレイリストを作成する必要があります。</aside>
+      </li>
+      <li>
+        目的のアセットを選択するには、最初にアセットタイプをクリックしてから、
+        <img class="imageWithText" src="/assets/images/using-bcb/creating-playlists/plus-action.png" alt="plus button" />
+        実際の資産の横。
+      </li>
+    </ol>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Textual_Data">テキストデータ</h2>
+    <p>
+      ザ・<strong>テキストデータ</strong>セクションでは、プレイリストに表示可能なテキストを追加できます。
+    </p>
+    <ol class="bcls-tasklist-restart">
+      <li>
+        <p>[ <strong>テキストデータ</strong> ] タブを選択します。</p>
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" src="//learning-services-media.brightcove.com/doc-assets/beacon/playlists/textual-data.png" alt="Textual Data" />
+          <figcaption class="bcls-caption--image">テキストデータ</figcaption>
+        </figure>
+      </li>
+      <li>
+        <p>
+          次のフィールドの値を追加します。 </p>
+        <table class="bcls-table">
+          <thead class="bcls-table__head">
+            <tr>
+              <th>フィールド</th>
+              <th>必須</th>
+              <th>注</th>
+            </tr>
+          </thead>
+          <tbody class="bcls-table__body">
+            <tr>
+              <td>タイトル</td>
+              <td>はい</td>
+              <td>プレイリストに表示されるタイトル。</td>
+            </tr>
+            <tr>
+              <td>説明</td>
+              <td>該当しない</td>
+              <td>このフィールドは現在使用されていません。</td>
+            </tr>
+            <tr>
+              <td>サブタイトル</td>
+              <td>該当しない</td>
+              <td>このフィールドは現在使用されていません。</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+    </ol>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Non_Textual_Data">テキスト以外のデータ</h2>
+    <p>
+      ザ・<strong>非テキストデータ</strong>現在、タブは機能していません。
+    </p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Tags">タグ</h2>
+    <p>現時点では、[ <strong>タグ</strong> ] タブは機能しません。</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Rights_and_Scheduling">権利とスケジュール</h2>
+    <p>
+      [ <strong>権利とスケジュール</strong> ] セクションでは、公開ステータスと可用性を設定します。
+    </p>
+    <ol class="bcls-tasklist-restart">
+      <li>
+        <p>[ <strong>権限とスケジュール</strong> ] タブを選択します。</p>
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" src="/assets/images/using-bcb/creating-playlists/rights-and-scheduling.png" alt="Rights & Scheduling" />
+          <figcaption class="bcls-caption--image"> 権利とスケジュール
+          </figcaption>
+        </figure>
+      </li>
+      <li>
+        必ず<strong>状態</strong>に設定されています<strong>公開</strong>あなたのプレイリストのために。
+      </li>
+      <li>
+        「<strong>可用性の詳細</strong>」については、次のガイドを使用して情報を入力します。 <table class="bcls-table">
+          <thead class="bcls-table__head">
+            <tr>
+              <th>フィールド</th>
+              <th>必須</th>
+              <th>注</th>
+            </tr>
+          </thead>
+          <tbody class="bcls-table__body">
+            <tr>
+              <td>権利タイプ</td>
+              <td>はい</td>
+              <td>選択する<strong>自由</strong>。</td>
+            </tr>
+            <tr>
+              <td>開始時刻</td>
+              <td>はい</td>
+              <td>プレイリストの開始時間をスケジュールします。</td>
+            </tr>
+            <tr>
+              <td>終了時刻</td>
+              <td>はい</td>
+              <td>プレイリストの終了時間をスケジュールします。</td>
+            </tr>
+            <tr>
+              <td>最大ストリーム数</td>
+              <td>該当なし</td>
+              <td>現時点では機能しません。</td>
+            </tr>
+            <tr>
+              <td>公開するデバイス</td>
+              <td>はい</td>
+              <td>
+                公開するデバイスを追加します。[ <strong> Select/Select All Devices] を選択して</strong>、使用可能なデバイスのリストを表示します。
+              </td>
+            </tr>
+            <tr>
+              <td>許可された場所</td>
+              <td>はい</td>
+              <td>
+                <p>制限が入力されていない場合は、コンテンツをストリーミングする場所を選択します <em>世界</em>。</p>
+                <aside class="bcls-aside bcls-aside--information">
+                  <p>許可された場所を 1 つ以上指定しないと、アプリから次のメッセージが表示されることがあります。</p>
+                  <figure class="bcls-figure">
+                    <img class="bcls-image" src="/assets/images/using-bcb/series-seasons-episodes/no-content.jpg" alt="No content" />
+                  </figure>
+                </aside>
+              </td>
+            </tr>
+            <tr>
+              <td>拒否された場所</td>
+              <td>いいえ</td>
+              <td>
+                コンテンツをストリーミングしない場所を選択します。
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <br />
+        <aside class="bcls-aside bcls-aside--tip">地理的な場所を追加または編集するには、に移動します<strong>設定</strong>その後<strong>場所</strong>。</aside>
+      </li>
+      <li>
+        必ずクリックしてください<strong>新しいプレイリストを作成する</strong>作業を保存するためのボタン。
+      </li>
+    </ol>
+  </section>
+</article>

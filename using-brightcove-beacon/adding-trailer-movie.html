@@ -1,0 +1,42 @@
+---
+title:  Beacon ムービーの説明に予告編を追加する：このトピックでは、映画の予告編を追加する方法について説明します。
+parent: Brightcove Beacon の使用
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  <section class="bcls-section">
+    <h2 id="Adding_a_trailer">トレーラーの追加</h2>
+    <p> Beacon 映画の予告編を追加するのは簡単です。以下の手順に従ってください。</p>
+    <ol class="bcls-tasklist-restart">
+      <li>予告編ビデオをVideoCloudアカウントにアップロードします。</li>
+      <li>
+        あなたがやる<strong>いいえ</strong>予告編ビデオに特別な Beacon カスタムフィールドを追加する必要があります。必要なのは<strong>ビデオID</strong>：
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/using-bcb/add-trailer-movie/get-trailer-video-id.png" alt="Get Video ID">
+          <figcaption class="bcls-caption--image">ビデオIDを取得する</figcaption>
+        </figure>
+      </li>
+      <li>
+         Beacon 映画に使用されているビデオについては、<a href="/assets/images/syncing-with-vc/vc-custom-fields">次のカスタムフィールドを追加します</a>：
+        <table class="bcls-table">
+          <caption class="bcls-caption--table">トレーラーカスタムフィールド</caption>
+          <thead class="bcls-table__head">
+              <tr>
+                  <th>表示名</th>
+                  <th>内部名</th>
+                  <th>値</th>
+              </tr>
+          </thead>
+          <tbody class="bcls-table__body">
+              <tr>
+                  <td translate="no">beacon.trailer.id</td>
+                  <td translate="no">beacon_trailer_id</td>
+                  <td translate="no">（予告編のビデオID）</td>
+              </tr>
+          </tbody>
+      </table>
+      </li>
+    </ol>
+  </section>
+</article>

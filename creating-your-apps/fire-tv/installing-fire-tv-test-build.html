@@ -1,0 +1,173 @@
+---
+title: 'Fire TVテストビルドのインストール'
+description: 'このトピックでは、Fire TV用のBrightcove Beacon アプリのテストビルドをインストールする方法を学習します。'
+parent: 'Fire TV' 
+grandparent: アプリの作成
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  <section class="bcls-section">
+    <h2 id="Introduction">はじめに</h2>
+    <p>
+      このドキュメントでは、アプリをテストする前にアプリの提出プロセスを実行する必要がないように、テストビルドをインストールする方法について説明します。
+    </p>
+    <aside class="bcls-aside bcls-aside--information">Brightcove Beacon アプリをFire TVデバイスにインストールするには、次のものが必要です。
+      <ul>
+        <li>Fire TVデバイスで開発者モードが有効になります。</li>
+        <li>Androidデバッグブリッジ（adb）がコンピュータにインストールされています。</li>
+      </ul>
+      <p>サブスクリプションやイベント支払いなど、アプリ内部の支払い方法をテストする場合は、<a href="https://beacon.support.brightcove.com/creating-your-apps/fire-tv/installing-fire-tv-test-build.html#install-with-live-service"> Live App Testing のインストール手順に従ってください</a>。</p>
+    </aside>
+
+    <p>プロセスの概要は次のとおりです。</p>
+    <ol>
+      <li>Amazon Fire TV端末でデバッグを有効にします。</li>
+      <li>
+        Androidデバッグブリッジ（adb）からFire TVデバイスに接続します。
+      </li>
+      <li>Brightcove  Beacon アプリをインストールします。</li>
+      <li>Brightcove  Beacon アプリを実行します。</li>
+    </ol>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="enabling-debugging">Amazon Fire TVでのデバッグの有効化</h2>
+    <p>
+      Fire TVデバイスでデバッグを有効にするには、以下の手順に従ってください。
+    </p>
+
+    <ol class="bcls-tasklist">
+      <li>
+        Fire TVのメイン画面で、[ <strong>設定</strong> ] を選択します。
+      </li>
+      <li>
+        [ <strong>デバイス] (または [My Fire TV]) </strong><strong> [&gt; 開発者オプション] </strong>を選択します。
+      </li>
+      <li>[ <strong> ADB デバッグ</strong> ] をオンにします。</li>
+      <li>[ <strong>不明なソースからのアプリ</strong> ] をオンにします。</li>
+    </ol>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="connecting-adb">Androidデバッグブリッジ（adb）経由で接続する</h2>
+    <p>
+      アプリをインストール、テスト、デバッグするには、Android Debug Bridge（adb）を使用してコンピュータを Amazon Fire TV デバイスに接続する必要があります。adbを有効にする方法の詳細については、<a href="https://developer.amazon.com/docs/fire-tv/connecting-adb-to-device.html" target="_blank">Amazon</a>および<a href="https://developer.android.com/studio/command-line/adb.html" target="_blank">Android</a>のドキュメントに従ってください。
+    </p>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="installing-Fire TV">Brightcove Beacon アプリをインストールする</h2>
+    <p>
+      Amazon アプリストアに送信する前に Brightcove Beacon アプリをインストールしてテストするには、Android デバッグブリッジ（adb）を使用する必要があります。
+    </p>
+    <p>
+      独自のアプリをインストールする (Appstore の外) は、アプリをサイドローディングと呼ぶことがあります。
+    </p>
+    <aside class="bcls-aside bcls-aside--information">これらの手順を実行するには、すでに使用している必要があります <em>adb</em> 開発用コンピューターをFire TVデバイスに接続します。</aside>
+    <ol class="bcls-tasklist">
+      <li>ターミナルまたはコマンドラインを開きます。</li>
+      <li>
+        次のコマンドを入力します。ここで、<code translate="No">path-to-apk-file</code>はアプリの APK へのファイルシステムパスです。
+        <pre
+          class="line-numbers"
+        ><code class="“language-bash”">adb インストールパス-APK ファイル</code></pre>
+      </li>
+      <li>
+        インストールが成功した場合、adb は次のようなメッセージで応答します。
+        <pre class="line-numbers"><code class="“language-bash”">764 KB / s（0.277sで217246バイト）pkg：/data/local/tmp/HelloWorld.apk成功</code></pre>
+      </li>
+      <li>
+        デバイスにすでに存在するアプリを再インストールするには、<code translate="No">-r</code>オプションを使用してアプリを再インストールできます。
+        <pre class="line-numbers"><code class="“language-bash”">adb install -rpath-to-apk-file</code></pre>
+      </li>
+    </ol>
+  </section>
+  <section class="bcls-section">
+    <h2 id="running-Fire TV">Brightcoveの Beacon アプリの実行</h2>
+    <p>
+      サイドロードされたアプリは、[ <strong>最近使った項目</strong> ] 行と [ <strong>アプリ</strong> ] セクションの [ <strong>マイライブラリ</strong> ] 行の両方に表示されます。アプリは、[ <strong>設定</strong> ] メニューでも確認できます。
+    </p>
+    <ol class="bcls-tasklist">
+      <li>
+        Amazon Fire TVのメイン画面から、<strong>設定</strong>&gt;<strong>アプリケーション</strong>&gt;<strong>インストール済みアプリケーションの管理</strong>を選択します。
+      </li>
+      <li>Brightcoveの Beacon アプリを選択します。</li>
+      <li>[ <strong>アプリケーションの起動</strong> ] を選択します。</li>
+    </ol>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="install-with-live-service">AmazonライブアプリテストサービスでのFire TVアプリのインストール</h2>
+
+    <p>このセクションでは、Amazon Live アプリテストサービスで Fire TV アプリをインストールしてテストする方法について説明します。</p>
+    <aside class="bcls-aside bcls-aside--information">サブスクリプションやイベント支払いなど、アプリの内部支払い方法をテストする場合は、このインストール手順を使用してください。</aside>
+    <p>端末に Fire TV アプリをインストールするには、Brightcoveからのライブアプリテストの招待メールが必要です。</p>
+    <aside class="bcls-aside bcls-aside--information">ライブアプリテストの招待メールが届かない場合は、こちらに従ってください<a href="https://www.amazon.com/gp/gss/ccp/" target="_blank">リンク</a>ラベルの付いたオプションを選択して、Appstoreのマーケティングコミュニケーションを有効にします<strong>次のカテゴリからマーケティングメールを送ってください</strong>をクリックします<strong>保存する</strong>。
+
+      <p>マーケティングコミュニケーションプリファレンスの設定後、変更は次のメール招待テストと後続のすべての招待テストから始まります。</p></aside>
+    <p>ライブアプリテストに参加するための招待メールを受け取ったら、以下の手順を実行してください。</p>
+    <ol class="bcls-tasklist-restart">
+      <li>招待メールで、テストするマーケットプレイスのリンクをクリックします
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            alt=""
+            width=""
+            height=""
+            src="/assets/images/creating-your-apps/Fire TV-installation/1-install-email.png"
+          />
+        </figure>
+        <p>リンクをクリックすると、指定したマーケットプレイスの Brightcove  Beacon アプリのリテールページが開きます。</p>
+      </li>
+      <li>アプリ小売ページの [ <strong>配信先:</strong> ] ドロップダウンメニューから、Brightcove Beacon アプリケーションをインストールするデバイスを選択します。
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            alt=""
+            width=""
+            height=""
+            src="/assets/images/creating-your-apps/Fire TV-installation/2-app-installation.png"
+          />
+        </figure>
+      </li>
+      <li>テスターの現在のマーケットプレイスで特定のデバイスが使用できない場合、そのデバイスはドロップダウンメニューに表示されません。特定のマーケットプレイスでアプリがターゲットとするデバイスがない場合は、アプリの小売ページにあるドロップダウンメニューが [ <strong>続行</strong> ] ボタンに置き換えられます。
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            alt=""
+            width="200"
+            height="200"
+            src="/assets/images/creating-your-apps/Fire TV-installation/3-continue-button.png"
+          />
+        </figure>
+      </li>
+      <li>指定したデバイスに Brightcove Beacon アプリケーションをインストールします。アプリがターゲットとするAmazonアカウントに関連付けた端末の数だけテストできます。</li>
+      <li>
+        Amazon Fire TVのメイン画面から、<strong>設定</strong>&gt;<strong>アプリケーション</strong>&gt;<strong>インストール済みアプリケーションの管理</strong>を選択します。
+      </li>
+      <li>Brightcoveの Beacon アプリを選択します。</li>
+      <li>[ <strong>アプリケーションの起動</strong> ] を選択します。</li>
+    </ol>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="running-Fire TV">Brightcove Beacon アプリのアンインストール</h2>
+
+    <p>Fire TVデバイスからアプリをアンインストールするには、次の手順に従います。</p>
+    <ol class="bcls-tasklist-restart">
+      <li>
+        Fire TVのメイン画面から、<strong>設定</strong>&gt;<strong>アプリケーション</strong>&gt;<strong>インストール済みアプリケーションの管理</strong>を選択します。
+      </li>
+      <li>Brightcoveの Beacon アプリを選択します。</li>
+      <li><strong>アンインストール</strong>&gt;<strong>アンインストール</strong>を選択します</li>
+    </ol>
+  </section>
+  <section class="bcls-section">
+    <h2 id="additional-resources">その他のリソース</h2>
+<p>詳細については、以下の Amazon ドキュメントを参照してください。 </p>
+<p><a href="https://developer.amazon.com/docs/app-testing/live-app-testing-faq.html" target="_blank">ライブアプリテストに関する Amazon よくある質問</a></p>
+
+
+    </section>
+</article>

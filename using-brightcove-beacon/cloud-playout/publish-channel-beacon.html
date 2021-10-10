@@ -1,0 +1,144 @@
+---
+title: クラウドプレイアウトチャネルの公開
+description: 'このトピックでは、CloudPlayoutチャネルを Beacon アプリの一部にする方法を学習します。'
+parent:
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  <aside class="bcls-aside bcls-aside--information language-editable">このトピックで説明されているアクションの中には、 Beacon で実行されるものと、ビデオクラウドで実行されるものがあります。</aside>
+  <section class="bcls-section">
+    <h2 id="Introduction">はじめに</h2>
+    <p>Cloud Playoutチャネルを作成したら、それを Beacon アプリの一部にするために実行する必要がある3つのステップがあります。これらについては、次のセクションで詳しく説明します。</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Get_information_for_the_Beacon_Channel"> Beacon チャネルの情報を取得する</h2>
+    <p>先に進む前に、 Beacon チャネルとプレイリストの設定に必要な情報を取得する必要があります。</p>
+    <ol class="bcls-tasklist-restart">
+      <li>チャンネルリストのチャンネルをクリックして、チャンネルの詳細ページに移動します。</li>
+      <li>まだ行っていない場合は、をクリックします<span class="button-red-text-border"><i data-feather="play" class="button-icon"></i> 活性化</span>チャネルをアクティブにします。見る<a href="/using-brightcove-beacon/cloud-playout/using-channel-actions.html">チャネルアクションの使用</a>詳細については。</li>
+      <li>チャネルがアクティブ化されたら、メインナビゲーションを使用してビデオクラウドに移動します<strong>メディア</strong>モジュール。</li>
+      <li>
+        CloudPlayoutチャンネルと同じ名前の動画が見つかるはずです。画像のないライブビデオになります：
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/cloud-playout/cloud-playout-video.png" alt="Channel Video">
+          <figcaption class="bcls-caption--image">チャンネルビデオ</figcaption>
+        </figure>
+      </li>
+      <li>ビデオ名をクリックして詳細を開きます。</li>
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/cloud-playout/video-id-and-channel-id.png" alt="Video for Cloud Playout">
+          <figcaption class="bcls-caption--image">クラウドプレイアウトのビデオ</figcaption>
+        </figure>
+      <li>両方を保存します<strong>ビデオID</strong>そしてその<strong>チャネルID</strong>（続く長い英数字の文字列<strong>クラウドプレイアウト：</strong>タグ内）。</li>
+    </ol>
+  </section>
+  <section class="bcls-section">
+    <h2 id="create_beacon_channel"> Beacon チャネルを作成する</h2>
+    <aside class="bcls-aside bcls-aside--information language-editable">このステップは現在、で実行する必要があります<strong> Beacon </strong>。</aside>
+    <p>Brightcove Beaconでチャネルを作成するには、次の手順に従います。</p>
+    <h3>基本データ</h3>
+    <ol class="bcls-tasklist">
+      <li>BeaconClassicにログインします。</li>
+      <li>上部のナビゲーションで、<strong>チャンネル</strong>。</li>
+      <li>クリック<strong>新しいチャンネルを追加する</strong>ボタン。
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" src="/assets/images/channels/creating-channels/1-add-new-channel.png" alt="" width="" height="" />
+        </figure>
+      </li>
+      <li>の中に<strong>基本データ</strong>タブ、定義<strong>名前</strong>あなたのチャンネルのために。
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" src="/assets/images/channels/creating-channels/2-basic-data.png" alt="" />
+        </figure>
+      </li>
+      <li>
+        クラウドプレイアウトチャネルIDを入力します。 <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/cloud-playout/enter-cloud-playout-channel-id.png" alt="Enter Cloud Playout Channel ID">
+          <figcaption class="bcls-caption--image">クラウドプレイアウトチャネルIDを入力します</figcaption>
+        </figure>
+        <p>Cloud PlayoutチャネルIDを見つけるには、を参照してください。<a href="/cloud-playout/cloud-playout-stream-vod.html#Get_information_for_the_Beacon_Channel"> Beacon チャネルの情報を取得する</a>。</p>
+      </li>
+      <li>の中に<strong>コンテンツのレーティング</strong>ドロップダウンメニューで、チャンネルがストリーミングされる国のコンテンツレーティングシステムに基づいて、チャンネルのコンテンツレーティングを選択します。例の画像では、米国向けです<strong>TV-Y</strong>。
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" src="/assets/images/channels/creating-channels/2.2-basic-data-options.png" alt="Channel Data Options" />
+        </figure>
+      </li>
+      <li>の中に<strong>ジャンル詳細</strong>セクションをクリックし、<strong>ジャンル</strong>チャンネルのジャンルを選択するためのドロップダウンメニュー。(例:ホラー、ドラマなど）</li>
+      <li>チャンネルに適したジャンルが見つからない場合は、[]をクリックして追加のジャンルを作成できます。<strong>ジャンルを作成する</strong>ボタン。</li>
+      <aside class="bcls-aside bcls-aside--information">NS <strong>サブジャンル</strong>現在、ドロップダウンメニューは機能していません。</aside>
+    </ol>
+    <h3 id="textual-data">テキストデータ</h3>
+    <p>ザ・<strong>テキストデータ</strong>セクションでは、チャンネルに表示可能なテキストを追加できます。</p>
+    <ol class="bcls-tasklist-restart">
+      <li>[ <strong>テキストデータ</strong> ] タブを選択します。
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" src="/assets/images/channels/creating-channels/3-textual-data.png" alt="" width="" height="" />
+        </figure>
+      </li>
+      <li>の中に<strong>題名</strong>フィールドで、チャンネルのタイトルを定義します。</li>
+      <li>の中に<strong>説明</strong>フィールドに、チャンネルの説明を定義します。</li>
+      <li>の中に<strong>あらすじ</strong>フィールドに、チャンネルの概要を定義します。
+      </li>
+      <aside class="bcls-aside bcls-aside--information">あなたは追加することができます<strong>テキストデータ</strong>チャンネルで使用するすべての異なる言語のセクション。</aside>
+    </ol>
+    <h3>ストリーム</h3>
+    <p>[ストリーム]セクションで、チャンネルのストリーミング情報を設定します</p>
+    <ol class="bcls-tasklist-restart">
+      <li>
+        [ストリーム]セクションで、[ <strong>ブライトコーブ</strong>として<strong>プロバイダー</strong>をクリックします<strong>新しいストリームを追加する</strong>：
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/cloud-playout/publish-add-new-stream.png" alt="Add New Stream">
+          <figcaption class="bcls-caption--image">新しいストリームを追加する</figcaption>
+        </figure>
+      </li>
+      <li>
+        Steams情報を追加します。
+        <ul>
+          <li><strong>ストリーミングビデオID：</strong>チャンネルのライブストリームの動画IDを入力します</li>
+          <li><strong>公開するデバイス：</strong> [すべてのデバイスを選択/選択解除]をクリックして、公開したくないデバイスをすべて削除します</li>
+          <li><strong>ストリームタイプ：</strong>選択する<strong>住む</strong></li>
+          <li><strong>DRMタイプ：</strong>使用しているDRMタイプを選択するか、<strong>開ける</strong></li>
+          <li><strong>ストリーム形式：</strong> HLSを選択します</li>
+        </ul>
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/cloud-playout/publish-stream-settings.png" alt="Streams Settings">
+          <figcaption class="bcls-caption--image">ストリーム設定</figcaption>
+        </figure>
+      </li>
+    </ol>
+    <h3>権利とスケジュール</h3>
+    <ol class="bcls-tasklist-restart">
+      <li>
+        の中に<strong>権利とスケジューリング</strong>セクションに、次の情報を追加します。
+        <ul>
+          <li><strong>状態：</strong> [公開済み]を選択します</li>
+          <li><strong>ダウンロードを許可する：</strong>視聴者にコンテンツのダウンロードを許可するかどうかを選択します（ほとんどの場合、答えはノーになります）</li>
+          <li><strong>権利の種類：</strong>無料またはコンテンツに適したものを選択してください</li>
+          <li><strong>始まる時間：</strong>チャンネルを利用できるようにする時間（過去の日付を選択してすぐに利用できるようにします）</li>
+          <li><strong>終了時間：</strong>チャネルが使用できなくなる時間（無期限に実行したい場合は、将来的に設定できます）</li>
+          <li><strong>最大ストリーム:</strong>何も入力する必要はありません-0のままにしておきます</li>
+          <li><strong>公開するデバイス：</strong> [すべてのデバイスを選択/選択解除]をクリックして、公開したくないデバイスをすべて削除します</li>
+          <li><strong>許可された場所：</strong>入力<strong>世界</strong>または表示を許可する領域</li>
+          <li><strong>拒否された場所：</strong>空白のままにするか、表示が許可されていない領域に入る</li>
+        </ul>
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/cloud-playout/publish-rights-scheduling.png" alt="Rights & Scheduling Settings">
+          <figcaption class="bcls-caption--image">権利とスケジュールの設定</figcaption>
+        </figure>
+      </li>
+    </ol>
+    <h3>チャネルを作成する</h3>
+    <ol class="bcls-tasklist-restart">
+      <li>必要な設定をすべて入力したら、をクリックします<strong>新しいチャネルを作成する</strong></li>
+    </ol>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Add_channel_to_playlist">チャンネルを再生リストに追加する</h2>
+    <p> Beacon ページは<strong>プレイリスト</strong>コンテンツの場合、CloudPlayoutチャンネルをプレイリストに追加する必要があります。再生リストには他の動画を含めることができますが、通常はチャンネルのみが含まれるため、ページのコンテンツで構成されます。見る<a href="/using-brightcove-beacon/creating-a-playlist.html">プレイリストの作成</a>詳細については。</p>
+    
+  </section>
+  <section class="bcls-section">
+    <h2 id="Add_channel_to_page"> Beacon ページにチャンネルを追加する</h2>
+    <p>Cloud Playoutチャンネルを Beacon アプリに配置する最後のステップは、最も簡単なステップです。必要なのは、チャンネルビデオを含むプレイリストをページに追加することだけです。見る<a href="/using-brightcove-beacon/creating-a-page.html">ページの作成</a>詳細については。</p>
+  </section>
+</article>

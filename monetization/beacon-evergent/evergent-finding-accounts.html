@@ -1,0 +1,391 @@
+---
+title: 'EvergentCRMでのアカウントの検索'
+description: このトピックでは、EvergentCRMシステムにログインして既存のアカウントを見つけるためのガイドを提供します。
+parent: Beacon Advanced Monetization 
+grandparent: Monetization
+layout: staging
+---
+ <h1>{{ page.title }}</h1>
+
+<article class="bcls-article">
+	<summary>{{ page.description }}</summary>
+	<section class="bcls-section">
+		<h2 id="Introduction">はじめに</h2>
+		<p>BrightcoveBeaconと統合されたEvergentCRMを使用すると、ビューアアカウント、サブスクリプション、およびトランザクションを管理できます。このガイドでは、CRMの使用について説明します。</p>
+	</section>
+	<section class="bcls-section">
+		<h2 id="Login_to_Account_Management">アカウント管理にログインします</h2>
+		<ol class="bcls-tasklist-restart">
+			<li>Webブラウザを開きます。</li>
+			<li>アドレスバーに、Evergentから提供されたアプリケーションのURLを入力します。</li>
+			<li>有効なメールアドレス/ユーザー名とパスワードを入力してください。</li>
+			<li>
+				クリック<strong>ログイン</code>ボタンをクリックして、エバージェントセッションを開始します。
+				<figure class="bcls-figure">
+					<img class="bcls-image" src="/assets/images/beacon-evergent/evergent-login.png" alt="Evergent Login">
+					<figcaption class="bcls-caption--image">エバージェントログイン</figcaption>
+				</figure>
+			</li>
+			<li>
+				複数のビジネスユニットにアクセスできるユーザーは、使用可能なドロップダウンリストからビジネスユニットを選択して、をクリックする必要があります。<strong>送信</strong>：
+				<figure class="bcls-figure">
+					<img class="bcls-image" src="/assets/images/beacon-evergent/select-business-unit.png" alt="Select Business Unit">
+					<figcaption class="bcls-caption--image">ビジネスユニットを選択</figcaption>
+				</figure>
+			</li>
+			<li>
+				クリック<strong>アカウント管理</strong>アカウント管理アプリケーションに入るダッシュボードのホーム画面の画像ボタン：
+				<figure class="bcls-figure">
+					<img class="bcls-image" src="/assets/images/beacon-evergent/select-account-management.png" alt="Select Account Management">
+					<figcaption class="bcls-caption--image">アカウント管理を選択します</figcaption>
+				</figure>
+			</li>
+			<li>
+				ポップアップモーダルダイアログでは、次のオプションから選択するように求められます。
+				<ul>
+					<li>アカウントを作成する</li>
+					<li>既存のアカウント</li>
+					<li>不完全な注文</li>
+				</ul>
+			</li>
+			<li>選択する<strong>既存のアカウント</strong></li>
+	</ol>
+	</section>
+	<section class="bcls-section">
+		<h2 id="Account_Management">アカウント管理</h2>
+		<p>アカウント管理モジュールは、顧客の詳細、サービス、注文、請求、財務などを維持して、Evergentの現在および潜在的な顧客との関係を構築するために使用されます。</p>
+		<h3>既存のアカウントの管理</h3>
+		<p>[既存のアカウント]セクションに移動したら、作業するアカウントを検索できます。</p>
+		<ol class="bcls-tasklist-restart">
+			<li>
+				に<strong>アカウント検索</strong>画面、で<strong>何でも検索</strong>セクションで、アカウント関連の詳細を入力して、既存のアカウントを検索します<strong>口座の種類</strong>、<strong>事業単位</strong>、または<strong>口座番号</strong>：
+				<figure class="bcls-figure">
+					<img class="bcls-image" src="/assets/images/beacon-evergent/search-for-account.png" alt="Basic Account Search">
+					<figcaption class="bcls-caption--image">基本的なアカウント検索</figcaption>
+				</figure>
+			</li>
+			<li>
+				その他の検索オプションを表示するには、<strong>高度な検索フィールド</strong>トグルスイッチ：
+				<figure class="bcls-figure">
+					<img class="bcls-image" src="/assets/images/beacon-evergent/advanced-search-toggle.png" alt="Advance Search Options">
+					<figcaption class="bcls-caption--image">高度な検索オプション</figcaption>
+				</figure>
+			</li>
+			<li>
+				高度な検索オプションを使用すると、多くの検索フィールドの任意の組み合わせを使用してアカウントを検索できます。
+				<figure class="bcls-figure">
+					<img class="bcls-image" src="/assets/images/beacon-evergent/advanced-search-fields.png" alt="Advanced Search Fields">
+					<figcaption class="bcls-caption--image">高度な検索フィールド</figcaption>
+				</figure>
+				<table class="bcls-table">
+					<caption class="bcls-caption--table">高度な検索フィールド</caption>
+					<thead class="bcls-table__head">
+							<tr>
+									<th>フィールド</th>
+									<th>説明</th>
+							</tr>
+					</thead>
+					<tbody class="bcls-table__body">
+							<tr>
+									<td>BusinessUnitを選択します</td>
+									<td>特定のビジネスユニットの下で顧客を検索する</td>
+							</tr>
+							<tr>
+									<td>口座番号</td>
+									<td>Evergentシステムへの登録が成功したときに生成された顧客の一意のアカウント番号</td>
+							</tr>
+							<tr>
+									<td>CP顧客ID</td>
+									<td>お客様が購入したハードウェアサブスクリプションの一意のシリアル番号。</td>
+							</tr>
+							<tr>
+									<td>登録番号</td>
+									<td>Evergentシステムへの登録が成功したときに生成された顧客の一意の登録番号</td> 
+							</tr>
+							<tr>
+									<td>SPアカウントID</td>
+									<td>プロビジョニングシステム内の顧客の一意のSPアカウントID </td>
+							</tr>
+							<tr>
+									<td>注文ID</td>
+									<td>サブスクリプションの購入が成功したときに顧客用に生成された一意の注文ID。</td>
+							</tr>
+							<tr>
+									<td>請求書番号</td>
+									<td>請求書の配達が成功したときに顧客用に生成された一意の請求書ID</td>
+							</tr>
+							<tr>
+									<td>CTN</td>
+									<td>固有の顧客の電話番号</td>
+							</tr>
+							<tr>
+									<td>外部OrderId</td>
+									<td>外部注文の購入が成功したときに顧客用に生成された一意の外部注文ID</td>
+							</tr>
+							<tr>
+									<td>支払いプロファイルID</td>
+									<td>支払い時に生成される一意の支払いID</td>
+							</tr>
+							<tr>
+									<td>禁止</td>
+									<td>顧客アカウントに関連する一意のBAN</td>
+							</tr>
+							<tr>
+									<td>ユーザー名</td>
+									<td>最新の顧客記録による顧客のログインユーザー名</td>
+							</tr>
+							<tr>
+									<td>姓</td>
+									<td>最新の顧客記録による顧客の名</td>
+							</tr>
+							<tr>
+									<td>姓</td>
+									<td>最新の顧客記録による顧客の姓</td>
+							</tr>
+							<tr>
+									<td>SSN</td>
+									<td>登録時に提供され、お客様の最新の記録に従って提供されるお客様のSSN（社会保障番号）</td>
+							</tr>
+							<tr>
+									<td>代替ユーザー名</td>
+									<td>登録時に提供されたお客様の代替ユーザー名。このフィールドには、保存中に電話番号、電子メール、または英数字のいずれかの値が保持されます</td>
+							</tr>
+							<tr>
+									<td>フルネーム</td>
+									<td>顧客のフルネーム、つまり、最新の顧客レコードに基づく名と姓</td>
+							</tr>
+							<tr>
+									<td>電話番号</td>
+									<td>登録時に提供され、顧客の最新の記録に従って提供された、顧客の自宅、職場、または携帯電話番号のいずれかです。</td>
+							</tr>
+							<tr>
+									<td>Eメールアドレス</td>
+									<td>最新の顧客記録に基づく顧客の登録済みプライマリ電子メールアドレス</td>
+							</tr>
+							<tr>
+									<td>連絡先ID</td>
+									<td>お客様の連絡先ID。プライマリまたはセカンダリの連絡先IDにすることができます。</td>
+							</tr>
+							<tr>
+									<td>CC4Digits</td>
+									<td>後で顧客アカウントに登録または追加される顧客のクレジットカードの下4桁</td>
+							</tr>
+							<tr>
+									<td>有効期限の月と年</td>
+									<td>MMおよびYYYY形式の顧客の登録済みクレジットカードの有効期限月と年</td>
+							</tr>
+							<tr>
+									<td>ギフトカードのPIN</td>
+									<td>ギフトカードのギフトカードPIN</td>
+							</tr>
+					</tbody>
+			</table>
+			</li>
+			<li>
+				検索結果にアカウントが1つしかない場合は、顧客の[アカウントの概要]画面が表示され、360度の顧客情報が表示されます。
+				<figure class="bcls-figure">
+					<img class="bcls-image" src="/assets/images/beacon-evergent/account-details.png" alt="Account Summary">
+					<figcaption class="bcls-caption--image">アカウントの概要</figcaption>
+				</figure>
+				<p>以下は、アカウントのフィールドです。</p>
+				<table class="bcls-table">
+					<caption class="bcls-caption--table">アカウントフィールド</caption>
+					<thead class="bcls-table__head">
+							<tr>
+									<th>フィールド</th>
+									<th>説明</th>
+							</tr>
+							<tr>
+									<th colspan="2">アカウント詳細セクション</th>
+							</tr>
+					</thead>
+					<tbody class="bcls-table__body">
+							<tr>
+									<td>口座番号</td>
+									<td>Evergentシステムへの登録が成功したときに生成された顧客の一意のアカウント番号</td>
+							</tr>
+							<tr>
+									<td>登録番号</td>
+									<td>Evergentシステムへの登録が成功したときに生成された顧客の一意の登録番号</td>
+							</tr>
+							<tr>
+									<td>アカウント認証済み</td>
+									<td>電子メールの確認がサブスクライバーに完了したかどうかを示します</td>
+							</tr>
+							<tr>
+									<td>ペアレンタルコントロール</td>
+									<td>チェックすると、ペアレンタルコントロールが有効になります</td>
+							</tr>
+							<tr>
+									<td>CP顧客ID</td>
+									<td>Evergentシステム内の顧客の一意のCP顧客ID</td>
+							</tr>
+							<tr>
+									<td>SP顧客ID</td>
+									<td>Evergentシステム内の顧客の一意のSP顧客ID</td>
+							</tr>
+							<tr>
+									<td>無料アカウント</td>
+									<td>アカウントが無料かどうかを示します</td>
+							</tr>
+							<tr>
+									<td>苦情モード</td>
+									<td>アカウントが苦情モードであるかどうかを示します</td>
+							</tr>
+							<tr>
+									<td>口座の種類 </td>
+									<td>加入者アカウントタイプを示します</td>
+							</tr>
+							<tr>
+									<td>販売方法</td>
+									<td>顧客を獲得した販売方法を示します</td>
+								</tr>
+								<tr>
+										<td>請求モード</td>
+										<td>請求モードの頻度を示します</td>
+								</tr>
+								<tr>
+										<td>ビルサイクル</td>
+										<td>顧客の請求書の生成日を示します</td>
+								</tr>
+								<tr>
+										<td>請求書の配達タイプ</td>
+										<td>顧客が選択した請求書の配達の種類</td>
+								</tr>
+								<tr>
+										<td>アカウントの役割</td>
+										<td>顧客のアカウントの役割を示します</td>
+								</tr>
+								<tr>
+										<td>涼む</td>
+										<td>これは、[セグメント]タブで定義されたセグメントに従って、顧客が任意のタイプのオファー/プロモーションの対象となるかどうかを示します。</td>
+								</tr>
+								<tr>
+										<td>移行されたカテゴリ</td>
+										<td>ユーザーアカウントが移行されない理由を示します</td>
+								</tr>
+							</tbody>
+							<thead class="bcls-table__head">
+								<tr>
+										<th colspan="2">サービス詳細セクション</th>
+								</tr>
+							</thead>
+							<tbody class="bcls-table__body">
+								<tr>
+									<td>苦情モード</td>
+									<td>アカウントが苦情モードであるかどうかを示します</td>
+							</tr>
+							<tr>
+									<td>口座の種類 </td>
+									<td>加入者アカウントタイプを示します</td>
+							</tr>
+							<tr>
+									<td>販売方法</td>
+									<td>顧客を獲得した販売方法を示します</td>
+								</tr>
+								<tr>
+										<td>請求モード</td>
+										<td>請求モードの頻度を示します</td>
+								</tr>
+								<tr>
+										<td>ビルサイクル</td>
+										<td>顧客の請求書の生成日を示します</td>
+								</tr>
+								<tr>
+										<td>請求書の配達タイプ</td>
+										<td>顧客が選択した請求書の配達の種類</td>
+								</tr>
+							</tbody>
+							<thead class="bcls-table__head">
+								<tr>
+										<th colspan="2">請求および財務セクション</th>
+								</tr>
+							</thead>
+							<tbody class="bcls-table__body">
+								<tr>
+									<td>最終請求額</td>
+									<td>顧客の最終請求額を示します</td>
+							</tr>
+							<tr>
+									<td>経常収支</td>
+									<td>お客様の現在の残高</td>
+							</tr>
+							<tr>
+									<td>次の請求額</td>
+									<td>これは、顧客から徴収される次の請求額を示します</td>
+							</tr>
+							<tr>
+									<td>デバイスのアクティブ化日（10フィートのデバイスがアクティブ化されていない限りRTPの日付）</td>
+									<td>このフィールドは、購入後に顧客に対してデバイスのアクティブ化を実行できる日付を表示するために導入されました</td>
+							</tr>
+							<tr>
+									<td>サービス料金のデバイス</td>
+									<td>これは、分割払いの詳細機能を反映しています。これをクリックすると、ユーザーはアカウント管理モジュールの[注文]タブに移動して、分割払いの詳細を取得します。</td>
+							</tr>
+							<tr>
+									<td>次の請求日</td>
+									<td>これは、顧客の次の請求書生成日を示します</td>
+							</tr>
+							<tr>
+									<td>ウォレットバランス</td>
+									<td>これは、顧客アカウントで利用可能なウォレットの残高を示します</td>
+							</tr>
+							<tr>
+									<td>以来の顧客</td>
+									<td>顧客がいつ買収されたかを示します</td>
+							</tr>
+							<tr>
+									<td>日付までの収益</td>
+									<td>その顧客から現在までに生み出された収益を示します</td>
+							</tr>
+							<tr>
+									<td>お客様からの電話は日付まで</td>
+									<td>お客様からCSRまでの電話番号</td>
+							</tr>
+							<tr>
+									<td>報酬の数</td>
+									<td>顧客に提供された報酬の総数</td>
+							</tr>
+							<tr>
+									<td>総報酬額</td>
+									<td>顧客に提供された報酬総額</td>
+							</tr>
+							<tr>
+									<td>ポイント</td>
+									<td>購入に基づいて顧客が獲得したポイント</td>
+							</tr>
+							<tr>
+									<td>現金化可能なポイント/金額</td>
+									<td>お客様が現金化できるポイントと累積ポイントに対して現金化できる金額</td>
+							</tr>
+						</tbody>
+						<thead class="bcls-table__head">
+							<tr>
+									<th colspan="2">お支払い方法セクション</th>
+							</tr>
+						</thead>
+						<tbody class="bcls-table__body">
+							<tr>
+								<td>セットアップ</td>
+								<td>顧客の自動支払い方法のタイプとカードの詳細をマスクされた形式で表示します。クレジット/デビットカード、オペレーター請求、App Store請求、Googleウォレットなどが可能です。</td>
+						</tr>
+				</tbody>
+			</table>
+			</li>
+			<li>複数のアカウントが見つかった場合、一致する情報を持つアカウントのリストが、チャネルパートナー、アカウント名、電子メール、CP顧客ID、SPアカウントID、ステータス、サービスプラン、最終ログイン日などのそれぞれの顧客情報とともに画面に表示されます。検索条件画面の下のアカウントの。
+				<p>顧客のいずれかをクリックします' 検索結果からアカウントの詳細を表示して、顧客の[アカウントの概要]画面に移動し、360度の顧客情報を表示します。</p>
+				</li>
+		</ol>
+		<p>を参照してください<a href="#Related_topics">未満</a>アカウント情報のさまざまな部分を管理するためのガイド。</p>
+		<aside class="bcls-aside bcls-aside--information">Evergentで変更できる一部のアカウント機能は、代わりに Beacon で処理されることに注意してください。あなたはこれの兆候を見るでしょう、そしてエバージェントのこれらの部分はカバーされません。</aside>
+	</section>
+	<section class="bcls-section">
+		<h2 id="Related_topics">関連トピック</h2>
+		<ul>
+			<li><a href="/monetization/beacon-evergent/overview-beacon-evergent.html">概要: Beacon の高度な現金化</a></li>
+			<li><a href="/monetization/beacon-evergent/evergent-managing-account-details.html">エバージェント：アカウント詳細の管理</a></li>
+			<li><a href="/monetization/beacon-evergent/evergent-billing-finance.html">エバージェント：請求と財務」</a></li>
+			<li><a href="/monetization/beacon-evergent/emailer-coupons.html">エバージェント：メール送信者とクーポン</a></li>
+		</ul>
+	</section>
+</article>

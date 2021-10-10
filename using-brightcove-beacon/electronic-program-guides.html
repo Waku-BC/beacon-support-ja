@@ -1,0 +1,300 @@
+---
+title: 電子番組ガイド（EPG）の説明
+description: このトピックでは、Brightcove Beaconの電子番組ガイド（EPG）を作成する方法を学習します。
+parent: Brightcove Beacon の使用
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  <section class="bcls-section">
+    <h2 id="overview">概要</h2>
+    <p>
+      電子番組ガイド（EPG）には、Brightcove Beacon の各チャンネルで利用できる過去、現在、および今後の放送番組のスケジュール情報が表示されます。
+    </p>
+    <aside class="bcls-aside bcls-aside--information">を使用している場合は注意してください<a href="/using-brightcove-beacon/cloud-playout/cloud-playout-overview.html">クラウドプレイアウトチャネル</a> Beacon チャネルのソースとして、BrightcoveはEPGを自動的に作成します。このトピックの残りの情報は、次の場合にのみ適用されます。<strong>いいえ</strong>クラウドプレイアウトチャネルを使用します。</aside>
+
+    <p>Brightcove Beaconでのチャネルの作成については、次のWebサイトをご覧ください。<a href="https://beacon.support.brightcove.com/using-brightcove-beacon/creating-a-channel.html" target="_blank">チャネルの作成</a>ドキュメンテーション。</p>
+
+    <p>
+      このドキュメントでは、XMLファイルを構造化し、EPGとしてBrightcoveBeaconにアップロードする方法について説明します。
+    </p>
+    <p>プロセスの概要は次のとおりです。</p>
+    <ol>
+      <li>
+        EPGスキーマを満たすチャネル情報を使用してXMLファイルを作成します。
+      </li>
+      <li>Brightcoveが提供するS3バケットにXMLファイルをドロップします。</li>
+      <li>
+        上記の手順が完了すると、ファイルは自動的にBrightcoveBeaconに取り込まれます。情報はに表示されます<strong>チャンネル</strong>Brightcove Beacon のセクション。
+      </li>
+    </ol>
+    <p>
+      このドキュメントの残りの部分では、上記の各手順について詳しく説明します。
+    </p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="information_epg">EPGに必要な情報</h2>
+    <ul>
+      <li>
+        チャネル情報を含むXMLファイル：このファイルは、手動または自動で作成できます。
+      </li>
+      <li>S3バケット<strong>ユーザー名</strong>と<strong>パスワード</strong>資格情報 <em>Brghtcove提供</em>。</li>
+      <li>
+        S3アカウント（バケット名とURLパス） <em>ブライトコーブ提供</em>。EPGファイルの実際の場所。
+      </li>
+    </ul>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="xml_structure">XMLファイル構造</h2>
+    <p>
+      Brightcove BeaconのEPGを生成するには、動画のタイトル、説明、再生時間など、チャンネルのすべてのメタデータ情報を含むXMLファイルを作成してS3バケットにアップロードする必要があります。
+    </p>
+    <p>XML構造の例を次に示します。</p>
+    <pre class="line-numbers">
+<code class="language-xml" translate="No">&lt;RiGHTvEPG xmlns=&quot;http://www.orca.tv/RiGHTv/7.0/EPG&quot; 
+xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; 
+version=&quot;1.0&quot; language=&quot;en&quot; xsi:schemaLocation=&quot;http://www.orca.tv/RiGHTv/7.0/EPG 
+RiGHTvEPG.xsd&quot;&gt;    
+  &lt;ChannelsList&gt;
+    &lt;channel id=&quot;your-channel-id&quot;&gt;
+      &lt;program id=&quot;3394&quot; time=&quot;2020-04-22T01:25:00Z&quot; duration=&quot;PT01H45M&quot; 
+      delete=&quot;false&quot; pvrEnabled=&quot;false&quot; stovEnabled=&quot;false&quot; catchUpEnabled=&quot;false&quot;&gt;
+        &lt;title&gt;Video Title&lt;/title&gt;
+        &lt;description&gt;
+        &lt;![CDATA[
+        Description of your video asset.
+        ]]&gt;
+        &lt;/description&gt;
+      &lt;/program&gt;
+    &lt;/channel&gt;
+  &lt;/ChannelsList&gt;
+&lt;/RiGHTvEPG&gt;</code></pre>
+
+    <p>XMLファイルの先頭には、次のコードを使用できます。</p>
+    <pre class="line-numbers">
+<code class="language-xml" translate="No">&lt;RiGHTvEPG xmlns=&quot;http://www.orca.tv/RiGHTv/7.0/EPG&quot; 
+  xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; 
+  version=&quot;1.0&quot; language=&quot;en&quot; xsi:schemaLocation=&quot;http://www.orca.tv/RiGHTv/7.0/EPG 
+  RiGHTvEPG.xsd&quot;&gt;</code>
+  </pre>
+    <p>
+      NS <em>RiGHTvEPG.xsd</em> ファイルに含まれている <em>XMLスキーマ</em> XMLドキュメントの構造を記述し、ファイルはBrightcoveによってホストされます。XSDファイルスキーマを使用してXMLを検証できます。<a href="https://www.freeformatter.com/xml-validator-xsd.html" target="_blank"> XMLバリデーター</a>。
+    </p>
+
+    <p>検証スキーマRiGHTvEPG.xsdファイル（スキーマをダウンロードするためのリンクはリストの後にあります）：</p>
+    <pre class="line-numbers">
+  <code class="language-xml" translate="No">&lt;xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.orca.tv/RiGHTv/7.0/EPG" xmlns:xs="http://www.w3.org/2001/XMLSchema"&gt;
+    &lt;xs:element name="RiGHTvEPG"&gt;
+      &lt;xs:complexType&gt;
+        &lt;xs:sequence&gt;
+          &lt;xs:element name="ChannelsList"&gt;
+            &lt;xs:complexType&gt;
+              &lt;xs:sequence&gt;
+                &lt;xs:element name="channel"&gt;
+                  &lt;xs:complexType&gt;
+                    &lt;xs:sequence&gt;
+                      &lt;xs:element name="program" maxOccurs="unbounded" minOccurs="1"&gt;
+                        &lt;xs:complexType&gt;
+                          &lt;xs:sequence&gt;
+                            &lt;xs:element name="title"&gt;
+                              &lt;xs:simpleType&gt;
+                                &lt;xs:restriction base="xs:string"&gt;
+                                  &lt;xs:minLength value="1"/&gt;
+                                &lt;/xs:restriction&gt;
+                              &lt;/xs:simpleType&gt;
+                            &lt;/xs:element&gt;
+                            &lt;xs:element type="xs:string" name="description"/&gt;
+                          &lt;/xs:sequence&gt;
+                          &lt;xs:attribute type="xs:int" name="id" use="optional"/&gt;
+                          &lt;xs:attribute type="xs:dateTime" name="time" use="required" /&gt;
+                          &lt;xs:attribute type="xs:duration" name="duration" use="required"/&gt;
+                          &lt;xs:attribute type="xs:string" name="delete" use="optional"/&gt;
+                          &lt;xs:attribute type="xs:string" name="pvrEnabled" use="optional"/&gt;
+                          &lt;xs:attribute type="xs:string" name="stovEnabled" use="optional"/&gt;
+                          &lt;xs:attribute type="xs:string" name="catchUpEnabled" use="optional"/&gt;
+                        &lt;/xs:complexType&gt;
+                      &lt;/xs:element&gt;
+                    &lt;/xs:sequence&gt;
+                    &lt;xs:attribute type="xs:string" name="id" use="required"/&gt;
+                  &lt;/xs:complexType&gt;
+                &lt;/xs:element&gt;
+              &lt;/xs:sequence&gt;
+            &lt;/xs:complexType&gt;
+          &lt;/xs:element&gt;
+        &lt;/xs:sequence&gt;
+        &lt;xs:attribute type="xs:float" name="version"/&gt;
+        &lt;xs:attribute type="xs:string" name="language"/&gt;
+      &lt;/xs:complexType&gt;
+    &lt;/xs:element&gt;
+  &lt;/xs:schema&gt;</code>
+</pre>
+    <p>ここから検証ファイルをダウンロードすることもできます。<a href="/assets/files-to-download/RiGHTvEPG.xsd" download> RiGHTvEPG.xsd </a>
+    </p>
+    <p>重要なXMLタグとメタデータは次のとおりです。</p>
+
+    <table class="bcls-table">
+      <thead class="bcls-table__head">
+        <tr>
+          <th>名前</th>
+          <th>説明</th>
+          <th>例</th>
+        </tr>
+      </thead>
+      <tbody class="bcls-table__body">
+        <tr>
+          <td><strong>チャネルID</strong></td>
+          <td>チャンネルの一意の識別子</td>
+          <td>id =“ channel2”</td>
+        </tr>
+        <tr>
+          <td><strong>プログラムID</strong></td>
+          <td>プログラムビデオアセットの一意の識別子</td>
+          <td>id =“ 3344”</td>
+        </tr>
+        <tr>
+          <td><strong>時間</strong></td>
+          <td>
+            ビデオのスケジュールされた送信時間。時間はUTC形式である必要があり、すべてがコンテンツを表示する各場所の現地時間に変換されます
+          </td>
+          <td>time =“ 2020-04-22T01：25：00Z”</td>
+        </tr>
+        <tr>
+          <td><strong>削除</strong></td>
+          <td>EPGフォーマットには必要です。常にfalseに設定してください</td>
+          <td>delete = "false"</td>
+        </tr>
+        <tr>
+          <td>pvrEnabled<strong></strong></td>
+          <td>EPGフォーマットには必要です。常にfalseに設定してください</td>
+          <td>pvrEnabled = "false"</td>
+        </tr>
+        <tr>
+          <td>stovEnabled<strong></strong></td>
+          <td>EPGフォーマットには必要です。常にfalseに設定してください</td>
+          <td>stovEnabled = "false"</td>
+        </tr>
+        <tr>
+          <td>catchUpEnabled<strong></strong></td>
+          <td>EPGフォーマットには必要です。常にfalseに設定してください</td>
+          <td>catchUpEnabled = "false"</td>
+        </tr>
+        <tr>
+          <td><strong>デュレーション</strong></td>
+          <td>
+            ビデオイベントの期間。期間の形式は、次のように定義されます。<a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank"> ISO8601標準</a>
+          </td>
+          <td>
+            duration =“ PT01H45M”この形式では、（PT）は1時間（H）と45分（M）の期間を表します。
+          </td>
+        </tr>
+        <tr>
+          <td><strong>題名</strong></td>
+          <td>ビデオイベントのタイトル</td>
+          <td>&lt;title&gt;あなたのビデオタイトル&lt;/ title&gt;</td>
+        </tr>
+        <tr>
+          <td><strong>説明</strong></td>
+          <td>ビデオイベントの説明</td>
+          <td>
+            &lt;description&gt; &lt;！[CDATA [ビデオの説明はここにあります]]&gt; &lt;/ description&gt;
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <aside class="bcls-aside bcls-aside--information">
+      <ul>
+        <li>
+          XMLファイルには、選択した期間のプログラミングメタデータが含まれている必要があります。たとえば、ファイルがアップロードされた日の7日前と7日後のスケジュール時間を追加します。
+        </li>
+        <li>
+          情報を置き換えて新しいXMLファイルをS3バケットにアップロードする頻度を定義するのは、すべてのクライアントの責任です。例：毎日、毎週など。
+        </li>
+      </ul>
+    </aside>
+    <p>
+      XMLファイルの準備ができたら、BrightcoveからFTPクライアントまたは自動スクリプトで提供されたS3バケットと認証情報にアップロードできます。
+    </p>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="fetching-xml">Brightcove Beacon でのXMLファイルのフェッチ</h2>
+    <p>
+      XMLをS3バケットにアップロードした後、新しいスケジュールをBrightcove Beaconアプリにすぐに反映させたい場合は、ファイルをフェッチする必要があります。これを行うには、次の手順を実行します。
+    </p>
+    <aside class="bcls-aside bcls-aside--information">これらの手順は、新しいEPGをすぐに取得する場合にのみ実行する必要があることに注意してください。EPGファイルも、設定された取り込みスケジュールになります。</aside>
+
+    <ol class="bcls-tasklist">
+      <li>Brightcove Beacon にログインします。</li>
+      <li>
+        画面の右上にある [ ツール ] (レンチ) ボタンをクリックします。
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/epg/fetch-xml.png" />
+        </figure>
+      </li>
+      <li>を選択<strong>摂取</strong>タブ。</li>
+      <li>クリックしてください<strong>フォルダからXMLを取得する</strong>ボタン。</li>
+      <li>
+        を選択<strong>キャッシュ</strong>左側のメニューからタブ。
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/epg/clear-cache.png" />
+        </figure>
+      </li>
+      <li>
+        をクリックします<strong>キャッシュパージ</strong>キャッシュをクリアするボタン。
+      </li>
+    </ol>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="reviewing-schedule">Brightcove Beacon でのスケジュールの確認</h2>
+    <p>
+      このセクションでは、EPGがBrightcove Beacon チャネルのスケジュールで正しく設定されているかどうかを確認できます。
+    </p>
+
+    <ol class="bcls-tasklist-restart">
+      <li>Brightcove Beaconで、[ <strong>チャンネル</strong>タブ。</li>
+      <li>
+        左側のメニューで、をクリックします<strong>EPG</strong>セクション。
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/epg/1-epg-section.png" />
+        </figure>
+      </li>
+      <li>
+        の中に<strong>スケジュール</strong>セクションには、利用可能なすべてのチャンネルが表示されます。
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/epg/2-available-channels.png" />
+        </figure>
+      </li>
+      <li>
+        矢印の付いた青いボタンをクリックして、選択したチャネルのXMLファイルによって送信されたすべてのスケジュールを表示します。<aside class="bcls-aside bcls-aside--information">すべての日付と時刻はUTC形式で表示されます。</aside>
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/epg/4-schedule-info.png" />
+        </figure>
+      </li>
+      <li>
+        注意してください<strong>始まる時間</strong>そして<strong>終了時間</strong>日付はUTC時間です。
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/epg/5-start-times.png" />
+        </figure>
+      </li>
+      <li>
+        Brightcove Beaconアプリでチャンネル情報を表示するには、メニューで[ <strong>プログラムガイド</strong>タブ。
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/epg/6-program-guide.png" />
+        </figure>
+      </li>
+      <li>ここで、チャンネルのEPGを確認できます。</li>
+      <li>
+        XMLプログラミングスケジュールに空きスペースがある場合、Brightcove Beacon システムはそれらの空きスペースをチャネルスケジュールのラベルで埋めます。
+      </li>
+      <li>
+        別の日のEPGスケジュールを選択するには、メニューでお好みの日を選択します。
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/epg/7-day-preference.png" />
+        </figure>
+      </li>
+    </ol>
+  </section>
+</article>

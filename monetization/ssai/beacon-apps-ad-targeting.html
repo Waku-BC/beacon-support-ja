@@ -1,0 +1,311 @@
+---
+title:  Beacon アプリの広告ターゲティング
+description:  Beacon アプリ広告ターゲティングを使用すると、 Beacon の顧客は、重要なデバイスレベルおよびユーザー固有の情報を顧客の Beacon アプリから広告サーバーまたは広告プロバイダーに送信できます。
+parent: SSAI 
+grandparent: Monetization
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  <section class="bcls-section">
+    <h2 id="introduction">はじめに</h2>
+    <p>クライアント側の情報がアプリからSSAIに渡され、SSAIはこのデータを顧客のVASTタグに含めます。これにより、顧客はこのデータに基づいて広告をターゲティングできます。これの目的は、顧客の広告在庫の価値を高め、それによって彼らのビジネスの広告収入を増やすことです。</p>
+    <p>StudioおよびBeaconCMS内で、このデータを広告サーバーまたは広告プロバイダーに渡す方法を設定できます。</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="key_benefits">メリット</h2>
+    <h3>改善された広告ターゲティング</h3>
+    <ul>
+      <li><strong>ユーザーセッションID：</strong>Brightcoveは、ユーザーがアプリを開くと、各デバイスでセッションIDを生成します。これにより、そのセッションへの広告の頻度を制限し、競合する広告を一緒に配信しないようにし、そのセッションで広告を順番にローテーションすることができます。これらのターゲティング機能は、直接販売広告とプログラマティック広告の両方に必要です。</li>
+      <li><strong>プログラマティック広告のその他のデータ：</strong>モバイルアプリとCTVアプリはCookieをサポートしていません。これは、ウェブ上でのユーザー/デバイスベースの広告ターゲティングの主要な方法です。デバイスIDなどのパラメータを含めることで、この貴重な情報をプログラマティック広告の購入者に渡すことができます。これにより、広告のターゲティング機能が強化され、CPMが向上します。</li>
+    </ul>
+    <h3>広告枠分割のサポート</h3>
+    <p>Amazon、Roku、Samsung（米国）で実行されるアプリの場合、プラットフォームで広告枠/収益を70/30に分割する必要があります。これは、Brightcove Beaconの顧客が広告枠の70％を収益化し、プラットフォームが広告枠の残りの30％を取得することを意味します。この強化された広告ターゲティングを使用すると、すべてのアプリで1つの広告タグを使用して、デバイスパラメータを広告サーバーに渡すことができます。広告サーバー内に、デバイスごとに広告枠を分割するビジネスロジックを実装します。プラットフォームでは、広告枠分割のためにLAT（限定広告ターゲティング）を渡す必要もあります。これは、現在広告サーバーに送信しているパラメーターです。</p>
+    <h3>ユーザープライバシーの改善</h3>
+    <ul>
+      <li>LAT「制限付き広告ターゲティング」- Beacon アプリのユーザーは、ユーザーの行動に基づいて広告ターゲティングをオプトアウトできます。</li>
+      <li>ユーザーは、デバイスに割り当てた一意のデバイスIDをいつでもリセットできます。</li>
+    </ul>
+  </section>
+  <section class="bcls-section">
+    <h2 id="targeting_information">ターゲティング情報</h2>
+    <p>以下の表の情報に基づいて広告をターゲティングできます。</p>
+    <table class="bcls-table">
+      <caption class="bcls-caption--table">ターゲティング情報</caption>
+      <thead class="bcls-table__head">
+        <tr>
+          <th>情報の種類</th>
+          <th>変数名</th>
+          <th>値マクロ</th>
+          <th>値</th>
+        </tr>
+      </thead>
+      <tbody class="bcls-table__body">
+        <tr>
+          <td>プラットフォーム</td>
+          <td><code translate="no">プラットホーム</code></td>
+          <td><strong>プラットホーム</strong></td>
+          <td><code translate="No">iOS</code>, <code translate="No">Android</code>, <code translate="No">Roku</code>, <code translate="No">AppleTV</code>, <code translate="No">Web</code>, <code translate="No">STV</code></td>
+        </tr>
+        <tr>
+          <td>OSバージョン</td>
+          <td>os<code translate="no"></code></td>
+          <td>OS<strong></strong></td>
+          <td>デバイスのOSバージョン（たとえば、<code translate="No">iOS 14</code>）</td>
+        </tr>
+        <tr>
+          <td>デバイスモデル</td>
+          <td><code translate="no">モデル</code></td>
+          <td><strong>モデル</strong></td>
+          <td>デバイスモデル。Webアプリに使用されるブラウザーバージョン</td>
+        </tr>
+        <tr>
+          <td>メーカー</td>
+          <td>mfgr<code translate="no"></code></td>
+          <td>MFGR<strong></strong></td>
+          <td>デバイスメーカー; Webアプリに使用されるブラウザー名</td>
+        </tr>
+        <tr>
+          <td>言語</td>
+          <td>lang<code translate="no"></code></td>
+          <td><strong>ローカル</strong></td>
+          <td>アプリで設定された言語コード（CMSから取得）</td>
+        </tr>
+        <tr>
+          <td>ユーザーセッション</td>
+          <td>sid<code translate="no"></code></td>
+          <td>SID<strong></strong></td>
+          <td>そのアプリが起動するたびに、メモリに保存され、永続化されない一意の整数を作成する必要があります</td>
+        </tr>
+        <tr>
+          <td>一意のデバイスID</td>
+          <td>rdid<code translate="no"></code></td>
+          <td>RDID<strong></strong></td>
+          <td>リセット可能なデバイスID（TIFA = Samsung、rida = Roku、adid = Androidなど）-アプリで制限付きの広告ターゲティングが設定されている場合、IDはすべてゼロである必要があります（ユーザー/デバイスを識別できません）。このアイテムはWebには適用されません。</td>
+        </tr>
+        <tr>
+          <td>ユーザーは追跡を許可していますか</td>
+          <td>is_lat<code translate="no"></code></td>
+          <td>IS_LAT<strong></strong></td>
+          <td>ユーザーがターゲティングを制限することを選択していない場合は0、広告ターゲティングを制限する場合は1。このアイテムはWebには適用されません。</td>
+        </tr>
+        <tr>
+          <td>デバイスタイプ</td>
+          <td>idtype<code translate="no"></code></td>
+          <td>IDTYPE<strong></strong></td>
+          <td>
+            <ul>
+              <li>adid：Android</li>
+              <li>afai：Amazon</li>
+              <li>tvOS:AppleTV（tvOS）</li>
+              <li>idfa：アップルフォン（iOS）</li>
+              <li>リダ：Roku</li>
+              <li>ティファ：Samsung</li>
+              <li>ビダ：Vizio</li>
+              <li>msai：Xbox</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>アプリ識別子</td>
+          <td>app_id<code translate="no"></code></td>
+          <td>APP_ID<strong></strong></td>
+          <td>これはアプリバンドル名である必要があります</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>注</h3>
+    <ul>
+      <li>この機能は、iOS、Apple TV、Android、Roku、Fire TV、Web、およびスマートTVのすべてのプラットフォーム/デバイスで機能します。</li>
+      <li> Beacon アプリの広告ターゲティングは、VODSSAIとLiveSSAIの両方で使用できます。</li>
+    </ul>
+  </section>
+  <!--   <section class="bcls-section">
+    <h2 id="Implementation">Implementation</h2>
+    <p>Below is a list of <strong>value macros</strong> that will be passed to the app, which will then substitute the real values before sending to the ad server. They are <strong>NOT</strong> configurable.</p>
+    <table class="bcls-table">
+      <caption class="bcls-caption--table">Value Macros</caption>
+      <thead class="bcls-table__head">
+        <tr>
+          <th>Macro</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody class="bcls-table__body">
+        <tr>
+          <td translate="no" style="font-weight:bold">PLATFORM</td>
+          <td>The appropriate beacon platform: iOS, AppleTV, Android, Roku, Web, STV</td>
+        </tr>
+        <tr>
+          <td translate="no" style="font-weight:bold">OS</td>
+          <td>full qualified OS (including version) - example iOS 14</td>
+        </tr>
+        <tr>
+          <td translate="no" style="font-weight:bold">MFGR</td>
+          <td>the Manufacturer of the device; (Web - user's browser)</td>
+        </tr>
+        <tr>
+          <td translate="no" style="font-weight:bold">MODEL</td>
+          <td>Device Model; (Web - browser version)</td>
+        </tr>
+        <tr>
+          <td translate="no" style="font-weight:bold">APP_ID</td>
+          <td>Application id (for example bundle ID); Web: app domain</td>
+        </tr>
+        <tr>
+          <td translate="no" style="font-weight:bold">LOCALE</td>
+          <td>ISO 639-1 (2-letter) language code followed by an underscore and a ISO 3166-1 (2-letter) country code (example en_us) - language set in the app</td>
+        </tr>
+        <tr>
+          <td translate="no" style="font-weight:bold">RDID</td>
+          <td>Resettable device ID (<code translate="no">tifa</code>: Samsung, <code translate="no">rida</code>: Roku, <code translate="no">adid</code>: Android, etc. - see <a href="#Device_identifiers">Device identifiers</a> below for more values) - if <strong>limited ad targeting</strong> is set on the App, then the id should be all zeros (meaning not possible to identify the user/device)</td>
+        </tr>
+        <tr>
+          <td translate="no" style="font-weight:bold">IDTYPE</td>
+          <td>Type resettable ID (<code translate="no">tifa</code>: Samsung, <code translate="no">rida</code>: Roku, <code translate="no">adid</code>: Android, etc. - see <a href="#Device_identifiers">Device identifiers</a> below for more values)</td>
+        </tr>
+        <tr>
+          <td translate="no" style="font-weight:bold">IS_LAT</td>
+          <td>Flag that tells if limited ad targeting is selected by user: <code translate="no">0</code> if user has not opted to limit targeting, <code translate="no">1</code> if limiting ad targeting</td>
+        </tr>
+        <tr>
+          <td translate="no" style="font-weight:bold">SID</td>
+          <td>Unique session identifier (reset every time the app starts). Not dependent on user sign in / Sign up. Switching from foreground to background status does not change this ID.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4 id="Device_identifiers">Device identifiers</h4>
+    <ul>
+      <li>adid: Android</li>
+      <li>afai: Amazon</li>
+      <li>tvOS: AppleTV (tvOS)</li>
+      <li>idfa: Apple phones (iOS)</li>
+      <li>rida: Roku</li>
+      <li>tifa: Samsung</li>
+      <li>vida: Vizio</li>
+      <li>msai: Xbox</li>
+    </ul>
+  </section>
+ -->
+  {% raw %}
+  <section class="bcls-section">
+    <h2 id="Implement_the_client_side_params">クライアント側のパラメータを実装する</h2>
+    <p>VODまたはLiveのどちらで広告ターゲティングを使用しているかにかかわらず、両方で使用されるクエリ文字列を作成する必要があります。クエリ文字列を作成するときは、次のガイドラインを使用してください。</p>
+    <ul>
+      <li>クライアント側のパラメータは、広告をリクエストするときに広告サーバーに渡されます。</li>
+      <li>クライアント側のパラメーターは、Playback API（VMAP /マニフェストエントリポイントで提供）で渡すことができます。これらは、SSAIインフラストラクチャで次の形式で利用できるようになります。<code translate="no">{{url.xxx}}</code>ここでマクロ<code>xxx</code>パラメータキーに対応します。</li>
+      <li>広告タグを貼り付けて、<strong>広告ターゲティングパラメータのクエリ文字列を追加する</strong>：
+        <pre class="line-numbers"><code class="language-html" translate="No">variablename1={VALUEMACRO1}&variablename2={VALUEMACRO2}& ...</code></pre>
+      </li>
+      <li>例：
+        <pre class="line-numbers"><code class="language-html" translate="No">plarform={PLATFORM}&os={OS}&appid={APP_ID}&did={RDID}&dt={IDTYPE}&lat={IS_LAT}&sid={SID}</code></pre>
+      </li>
+      <!-- <li></li> -->
+    </ul>
+    <p>以下の実装手順で必要になるため、目的の広告ターゲティングクエリ文字列を作成してください。</p>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="VOD_steps">VODステップ</h2>
+    <h3>ビデオクラウドの手順-VOD</h3>
+    <ol class="bcls-tasklist-restart">
+      <li>Video Cloud Studioで、に移動します<strong>管理者→サーバー側の広告設定</strong>。（詳細については、<a href="/monetization/ssai/vod-ssai.html"> VODSSAIの実装</a>資料。）</li>
+      <li>
+        から<span class="blue-button">広告構成を作成する</span>ドロップダウン、選択<strong>VOD</strong>
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/using-bcb/ad-targeting/create-vod-ad-config.png" alt="Create VOD Ad Config">
+          <figcaption class="bcls-caption--image">VOD広告設定を作成する</figcaption>
+        </figure>
+      </li>
+      <li>広告設定の名前を追加します。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/using-bcb/ad-targeting/ssai-config-vod.png" alt="SSAI Configuration VOD">
+          <figcaption class="bcls-caption--image">SSAI構成VOD</figcaption>
+        </figure>
+      </li>
+      <li>広告レスポンスを選択してください-VMAPまたはVASTをお勧めします。VASTを使用する場合は、動画にキューポイントを追加して、広告区切りを表示する場所を指定する必要があります。</li>
+      <li>広告タグを貼り付けて、<strong>広告ターゲティングパラメータのクエリ文字列を追加する</strong>。</li>
+      <li>[<strong>保存</strong>]をクリックします。</li>
+      <li>表で新しい広告設定を見つけて、広告設定IDをコピーします。 Beacon アドバタイズメント構成には、この値が必要になります。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/using-bcb/ad-targeting/copy-ad-config-id.png" alt="copy ad config ID">
+          <figcaption class="bcls-caption--image">広告設定IDをコピーする</figcaption>
+        </figure>
+      </li>
+    </ol>
+
+    <h3> Beacon の手順-VOD</h3>
+    <ol class="bcls-tasklist">
+      <li>Beacon Classic UIを開き、に移動します<strong>広告</strong>タブ。</li>
+      <li>
+        クリック<span class="button-teal">新しい構成の追加</span>。
+      </li>
+      <li>広告構成に名前を付けます。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/using-bcb/ad-targeting/advertising-config-vod.png" alt="Beacon Ad Configuration">
+          <figcaption class="bcls-caption--image"> Beacon 広告構成VOD</figcaption>
+        </figure>
+      </li>
+      <li>のために<strong>プロバイダー</strong>選択する<strong>ブライトコーブSSAI</strong>。</li>
+      <li>上記のセクションで作成した広告ターゲティングURLを貼り付けます。</li>
+      <li>に貼り付けます<strong>SSAI広告設定ID</strong>上記の手順でにコピー<strong>VOD広告構成ID</strong>。</li>
+      <li>クリック<span class="button-teal">新しい広告を作成する</span>。</li>
+    </ol>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Live_steps">ライブステップ</h2>
+    <h3>ビデオクラウドの手順-ライブ</h3>
+    <ol class="bcls-tasklist-restart">
+      <li>Video Cloud Studioで、に移動します<strong>管理者→サーバー側の広告設定</strong>。（詳細については、<a href="/monetization/ssai/vod-ssai.html"> VODSSAIの実装</a>資料。）</li>
+      <li>
+        から<span class="blue-button">広告構成を作成する</span>ドロップダウン、選択<strong>住む</strong>
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/using-bcb/ad-targeting/create-live-ad-config.png" alt="Create Live Ad Config">
+          <figcaption class="bcls-caption--image">ライブ広告設定を作成する</figcaption>
+        </figure>
+      </li>
+      <li>広告設定の名前を追加します</li>
+      <figure class="bcls-figure">
+        <img class="bcls-image" src="/assets/images/using-bcb/ad-targeting/ssai-config-live.png" alt="SSAI Configuration Live">
+        <figcaption class="bcls-caption--image">SSAI構成ライブ</figcaption>
+      </figure>
+      <li>選択する<strong>広大</strong>あなたの広告の反応</li>
+      <li>
+        広告タグを貼り付けて、<strong>広告ターゲティングパラメータのクエリ文字列を追加する</strong>。
+      </li>
+      <li>[<strong>保存</strong>]をクリックします。</li>
+      <li>表で新しい広告設定を見つけて、広告設定IDをコピーします。 Beacon アドバタイズメント構成には、この値が必要になります。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/using-bcb/ad-targeting/copy-ad-config-id.png" alt="copy ad config ID">
+          <figcaption class="bcls-caption--image">広告設定IDをコピーする</figcaption>
+        </figure>
+      </li>
+    </ol>
+    <h3> Beacon の手順-ライブ</h3>
+    <ol class="bcls-tasklist-restart">
+      <li>
+        Beacon Classic UIを開き、<strong>広告</strong>タブ。
+      </li>
+      <li>
+        クリック<span class="button-teal">新しい構成の追加</span>。
+      </li>
+      <li>広告構成に名前を付けます。</li>
+      <figure class="bcls-figure">
+        <img class="bcls-image" src="/assets/images/using-bcb/ad-targeting/advertising-config-live.png" alt="Beacon Ad Configuration Live">
+        <figcaption class="bcls-caption--image"> Beacon 広告構成ライブ</figcaption>
+      </figure>
+      <li>のために<strong>プロバイダー</strong>選択する<strong>ブライトコーブSSAI</strong></li>
+      <li>上記のセクションで作成した広告ターゲティングURLを貼り付けます。</li>
+      <li>に貼り付けます<strong>SSAI広告設定ID</strong>上記の手順でにコピー<strong>VOD広告構成ID</strong>。</li>
+      <li>クリック<span class="button-teal">新しい広告を作成する</span>。</li>
+    </ol>
+  </section>
+  <!-- <section class="bcls-section">
+    <h2 id="Limitations">Limitations</h2>
+    <ul>
+      <li>There currently isn’t a way to handle Device ID on the web so we are not passing that information to SSAI. We are still defining how we will handle it, and the doc will be updated once Device ID for the web is implemented.</li>
+    </ul>
+  </section> -->
+  {% endraw %}
+</article>

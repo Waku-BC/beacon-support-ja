@@ -1,0 +1,41 @@
+---
+title: チャネル出力と分析のの表示
+description: このトピックでは、実行中のCloudPlayoutチャネルの出力と分析を表示する方法を学習します。
+parent: Cloud Playout
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  <section class="bcls-section">
+    <h2 id="analytics">チャネル出力と分析の表示</h2>
+    <p>チャネルが<strong>ランニング</strong>状態、チャネル出力と分析を表示することが可能です。上のチャンネルをクリックします<strong>チャンネル</strong>チャンネルの詳細を開くページ。</p>
+    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/cloud-playout/cloudplayout-program-analytics.png" /></figure>
+    <aside class="bcls-aside bcls-aside--information">注:プレビュー画像は3秒ごとに更新されます。</aside>
+    <p>クリック<strong>BrightcoveLiveで表示</strong>現在実行中のプログラムでライブモジュールコントロールルームページを開きます。プログラムで現在再生中のビデオは、<strong>今すぐプレイ</strong>バナー。また、<strong>状態</strong>右上の通知、および <img src="/assets/images/cloud-playout/cloudplayout-video-icon.png" alt="Live icon"> ライブフィードが利用可能な場合は緑色になります。それ以外の場合は、ライブイベントが現在再生されている場合は赤、VODコンテンツが再生されている場合は灰色になります。</p>
+    <p>次の分析値が表示されます。</p>
+    <ul>
+      <li><strong>ネットワークイン</strong> -直前の1秒あたりの平均バイト数</li>
+      <li><strong>ネットワーク出力</strong> -直前の1秒あたりの平均バイト数</li>
+      <li><strong>ドロップされたフレーム</strong> -直前にドロップされたフレームの割合</li>
+    </ul>
+    <p>NS <strong>ネットワークイン</strong>分析は、ライブイベントのストリームが失敗したことを検出するのに特に役立ちます（ライブストリームではなく、出力でスレートビデオが再生されていることも確認する必要があります）。
+      <figure class="bcls-figure">
+        <img class="bcls-image" src="/assets/images/cloud-playout/cloudplayout-network-in-analytics.png" alt="Network In Analytics">
+        <figcaption class="bcls-caption--image">アナリティクスのネットワーク</figcaption>
+      </figure>
+    </p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Related_topics">関連トピック</h2>
+    <ul>
+      <li><a href="/cloud-playout/cloud-playout-overview.html">概要:クラウドプレイアウト</a></li>
+      <li><a href="/cloud-playout/cloud-playout-stream-vod.html">クラウドプレイアウトチャネルの作成</a></li>
+      <li><a href="/cloud-playout/using-channel-actions.html">チャネルアクションの使用</a></li>
+      <li><a href="/cloud-playout/enabling-server-side-ads.html">サーバーサイド広告（SSAI）の有効化</a></li>
+      <li><a href="/cloud-playout/generating-channel-embed-code.html">チャネル埋め込みコードの生成</a></li>
+      <li><a href="https://apis.support.brightcove.com/cloud-playout-apis/getting-started/overview-epg-api.html">概要:EPG API</a></li>
+      <li><a href="https://apis.support.brightcove.com/cloud-playout-apis/references/reference-epg.html">EPGAPIリファレンス</a></li>
+      <li><a href="https://apis.support.brightcove.com/cloud-playout-apis/references/reference-channels.html">チャネルAPIリファレンス</a></li>
+    </ul>
+  </section>
+</article>

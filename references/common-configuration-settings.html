@@ -1,0 +1,376 @@
+---
+title: 共通の構成設定
+parent: References
+---
+ <h1>共通の構成設定</h1>
+<summary>
+  このトピックでは、Brightcove Beacon でアプリを作成または変更するときに使用される一般的な設定について説明します。
+</summary>
+
+<article class="bcls-article">
+  <section class="bcls-section">
+    <h2 id="Overview">概要</h2>
+    <p>
+      このトピックは、Brightcove Beacon アプリに関連する共通の設定をまとめたものです。これらの設定は、Brightcove Beacon の特定のタスクの実行に関連する他のドキュメントに記載されています。これには、次のタブセクションが含まれます。
+    </p>
+    <ul>
+      <li>レイアウト</li>
+      <li>ページ</li>
+      <li>チャンネル</li>
+      <li>映画</li>
+      <li>プレイリスト</li>
+      <li>プログラム/シリーズ</li>
+      <li>イベント</li>
+      <li>コマース/パッケージ/ストリーム/高度</li>
+    </ul>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Rights_and_Scheduling">権利とスケジュール</h2>
+    <p>
+      [ <strong>権利とスケジュール</strong> ] セクションでは、アプリの再生権限を定義し、公開スケジュールを設定できます。
+    </p>
+    <p>ページを追加または編集するときの例を次に示します。</p>
+    <figure class="bcls-figure">
+      <img
+        class="bcls-image--no-border"
+        width="850"
+        src="/assets/images/pages/settings/scheduling1.png"
+        alt="Rights & Scheduling"
+      />
+      <figcaption class="bcls-caption--image">
+        権利とスケジュール
+      </figcaption>
+    </figure>
+
+    <p>
+      この表には、[ <strong>権限とスケジュール</strong> ] タブに表示されるフィールドが含まれています。
+    </p>
+    <table class="bcls-table">
+      <thead class="bcls-table__head">
+        <tr>
+          <th>フィールド</th>
+          <th>必須</th>
+          <th>説明</th>
+        </tr>
+      </thead>
+      <tbody class="bcls-table__body">
+        <tr>
+          <td>ステータス</td>
+          <td>はい</td>
+          <td>
+            次のいずれかのタイプを選択します。
+            <ul>
+              <li>
+                公開済み
+              </li>
+              <li>
+                未公開
+              </li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>権利タイプ</td>
+          <td>はい</td>
+          <td>
+            チャンネルが広告をサポートする場合は、次の値から指定します。
+            <ul>
+              <li>
+                無料
+              </li>
+              <li>
+                広告-AVOD (広告ビデオ・オン・デマンド)
+              </li>
+              <li>
+                広告-SVOD (サブスクリプションビデオオンデマンド)
+              </li>
+              <li>
+                継承-これは、今シーズンが属するシリーズから権利が継承されることを意味します。
+              </li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>権利開始日</td>
+          <td>はい</td>
+          <td>
+            アプリの開始日時を設定します。(また、<strong>開始時刻</strong> )
+          </td>
+        </tr>
+        <tr>
+          <td>権利終了日</td>
+          <td>はい</td>
+          <td>
+            アプリの終了日時を設定します。(また、<strong>終了時刻</strong> )
+          </td>
+        </tr>
+        <tr>
+          <td>公開するデバイス</td>
+          <td>はい</td>
+          <td>
+            公開するデバイスを追加します。[ <strong> Select/Unselect All Devices </strong> ] を選択して、使用可能なデバイスのリストを表示します。
+          </td>
+        </tr>
+        <tr>
+          <td>許可された場所</td>
+          <td>はい</td>
+          <td>
+            <p>ユーザーがコンテンツを表示できるようにする地理的場所を選択します。[ <strong>許可された場所</strong> ] ボックスの内側をクリックして、場所の一覧を表示します。制限が入力されていない場合 <em>世界</em>。</p>
+                <aside class="bcls-aside bcls-aside--information">
+                  <p>許可された場所を 1 つ以上指定しないと、アプリから次のメッセージが表示されることがあります。</p>
+                <figure class="bcls-figure">
+                  <img
+                    class="bcls-image"
+                    src="/assets/images/using-bcb/series-seasons-episodes/no-content.jpg"
+                    alt="No content"
+                  />
+                </figure>
+                </aside>
+          </td>
+        </tr>
+        <tr>
+          <td>拒否された場所</td>
+          <td>いいえ</td>
+          <td>
+            ユーザーにコンテンツを表示させたくない地理的場所を選択します。[ <strong>拒否された場所</strong> ] ボックスの内側をクリックして、場所の一覧を表示します。
+          </td>
+        </tr>
+        <tr>
+          <td>最大デバイス数</td>
+          <td>いいえ</td>
+          <td>
+            アカウントのアクティブな接続デバイスの最大数を設定します。整数値です。
+          </td>
+        </tr>
+        <tr>
+          <td>最大ストリーム数</td>
+          <td>いいえ</td>
+          <td>
+            同じアカウントから視聴できるストリームの最大数を設定します。整数値です。
+          </td>
+        </tr>
+        <!-- <tr>
+          <td>Advertisement Configuration</td>
+          <td>Selected value</td>
+          <td>No</td>
+          <td>For server-side ads (SSAI), select an advertising configuration that you have defined in Video Cloud. For details, see the <a href="/using-brightcove-beacon/configuring-server-side-ad-settings.html">Configuring Server-Side Ad Settings</a> document.
+          </td>
+        </tr> -->
+      </tbody>
+    </table>
+    <br />
+    <aside class="bcls-aside bcls-aside--tip">設定例<strong>最大ストリーム</strong>に<code translate="No">4</code>と<strong>最大デバイス</strong>に<code translate="No">6</code>：つまり、4 人がビデオをストリーミング（ストリーム）できますが、6 人接続（デバイス）を持つことができます。
+      <!-- Notes:
+      <ul>
+                <li>
+          To add or edit geographic locations, navigate to
+          <strong>Settings</strong> and then <strong>Locations</strong>.
+        </li>
+      </ul> -->
+    </aside>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Textual_Data">テキストデータ</h2>
+    <p>
+      [ <strong>テキストデータ</strong> ] セクションでは、表示可能なテキストを追加できます。これは、アプリに表示される名前です。
+    </p>
+    <p>ページを追加または編集するときの例を次に示します。</p>
+    <figure class="bcls-figure">
+      <img
+        class="bcls-image--no-border"
+        width="850"
+        src="/assets/images/pages/settings/textual-data.png"
+        alt="Textual Data"
+      />
+      <figcaption class="bcls-caption--image">テキストデータ</figcaption>
+    </figure>
+    <p>
+      このテーブルには、[ <strong>テキストデータ</strong> ] タブに表示されるフィールドが含まれています。
+    </p>
+    <table class="bcls-table">
+      <thead class="bcls-table__head">
+        <tr>
+          <th>フィールド</th>
+          <th>必須</th>
+          <th>注</th>
+        </tr>
+      </thead>
+      <tbody class="bcls-table__body">
+        <tr>
+          <td>タイトル</td>
+          <td>はい</td>
+          <td>
+            アプリに表示されるタイトル。定義した各言語の入力フィールドがあります。
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br />
+    <aside class="bcls-aside bcls-aside--tip">あなたは通常、<strong>基本データ</strong>のタブ<strong>名前</strong>。この名前は内部参照用ですが、<strong>テキストデータ</strong>タブの<strong>題名</strong>ユーザーがアプリに表示するものです。</aside>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Non_Textual_Data">テキスト以外のデータ</h2>
+    <p>
+      [ <strong>非テキストデータ</strong> ] セクションでは、アプリの背景画像とアイコン画像をアップロードできます。
+    </p>
+    <p>ページを追加または編集するときの例を次に示します。</p>
+    <figure class="bcls-figure">
+      <img
+        class="bcls-image--no-border"
+        width="850"
+        src="/assets/images/pages/settings/non-textual-data.png"
+        alt="Non-Textual Data"
+      />
+      <figcaption class="bcls-caption--image">テキスト以外のデータ</figcaption>
+    </figure>
+    <p>
+      このテーブルには、[ <strong>非テキストデータ</strong> ] タブに表示されるフィールドが含まれています。定義した言語ごとに画像をアップロードできます。
+    </p>
+    <table class="bcls-table">
+      <thead class="bcls-table__head">
+        <tr>
+          <th>フィールド</th>
+          <th>必須</th>
+          <th>注</th>
+        </tr>
+      </thead>
+      <tbody class="bcls-table__body">
+        <tr>
+          <td>アイコン</td>
+          <td>はい</td>
+          <td>ページを表す画像を指定します。</td>
+        </tr>
+        <tr>
+          <td>ホバーアイコン</td>
+          <td>はい</td>
+          <td>
+            この画像は、ユーザーがアイコン画像の上に置いたときに表示されます。
+          </td>
+        </tr>
+        <tr>
+          <td>水平背景</td>
+          <td>はい</td>
+          <td>
+            ユーザーデバイスが横長モードのときに表示される背景画像。
+          </td>
+        </tr>
+        <tr>
+          <td>垂直背景</td>
+          <td>はい</td>
+          <td>
+            ユーザーデバイスがポートレートモードのときに表示される背景画像。
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br />
+    <aside class="bcls-aside bcls-aside--information">許可される最大アップロードサイズは500KBです。</aside><aside class="bcls-aside bcls-aside--tip">Brightcove Beacon内での画像のアップロードの詳細については、<a href="/references/image-requirements.html">画像とその仕様</a>資料。</aside>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Tags">タグ</h2>
+    <p>このセクションは、SEOに焦点を当てていますが、現時点では機能しません。</p>
+    <!-- <p>The <strong>Tags</strong> section is where you add information related to search engine optimization (SEO). </p>
+    <ol class="bcls-tasklist__restart">
+      <li>
+        <p>
+          Select the <strong>Tags</strong> tab.
+        </p>
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" width="850" src="/assets/images/pages/settings/tags.png" alt="SEO Data">
+          <figcaption class="bcls-caption--image">SEO Data</figcaption>
+        </figure>
+      </li>
+      <li>
+        <p>
+          Add values for the following fields:
+        </p>
+        <table class="bcls-table">
+          <thead class="bcls-table__head">
+            <tr>
+              <th>Field</th>
+              <th>Required</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody class="bcls-table__body">
+            <tr>
+              <td>Friendly URL</td>
+              <td>Yes</td>
+              <td>This is generated automatically from the title you entered in the <strong>Textual Data</strong> section.</td>
+            </tr>
+            <tr>
+              <td>Tags</td>
+              <td>Yes</td>
+              <td>Select from a list of defined tags created in Video Cloud Studio.</td>
+            </tr>
+            <tr>
+              <td>SEO Title</td>
+              <td>No</td>
+              <td>The title used by search engines</td>
+            </tr>
+            <tr>
+              <td>SEO Description</td>
+              <td>No</td>
+              <td>The description used by search engines</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+    </ol> -->
+  </section>
+
+  <!-- <section class="bcls-section">
+    <h2 id="Basic_Data">Basic Data</h2>
+    <p>The <strong>Basic Data</strong> section allows you to define the content and layout for your page. </p>
+    <table class="bcls-table">
+      <thead class="bcls-table__head">
+        <tr>
+          <th>Field</th>
+          <th>Required</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody class="bcls-table__body">
+        <tr>
+          <td>System Title</td>
+          <td>Yes</td>
+          <td>Internal name for your page</td>
+        </tr>
+        <tr>
+          <td>Order</td>
+          <td>Yes</td>
+          <td>Page order on your site</td>
+        </tr>
+        <tr>
+          <td>Level Type</td>
+          <td>Yes</td>
+          <td>Master or Child</td>
+        </tr>
+        <tr>
+          <td>Page Type</td>
+          <td>Yes</td>
+          <td>screen is a common type to use</td>
+        </tr>
+        <tr>
+          <td>Presentation Type</td>
+          <td>Yes</td>
+          <td>Icontext, Icon, Text</td>
+        </tr>
+        <tr>
+          <td>Screen Layout</td>
+          <td>Yes</td>
+          <td>Specify whether the layout is titled or not</td>
+        </tr>
+        <tr>
+          <td>Is it home?</td>
+          <td>No</td>
+          <td>Select if this is the home page</td>
+        </tr>
+      </tbody>
+    </table>
+  </section> -->
+</article>

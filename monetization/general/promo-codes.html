@@ -1,0 +1,54 @@
+---
+title: 'プロモーションクーポンの作成'
+description: このトピックでは、支払い時に顧客が使用するためのBrightcove Beacon クーポン/バウチャーを作成する方法を学習します。
+parent: Monetization
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}<aside class="bcls-aside bcls-aside--information">ノート：または、Stripeで直接クーポンを作成することもできます。</aside>
+  </summary>
+
+  <section class="bcls-section">
+    <h2 id="overview"> 新しいクーポンを作成する手順</h2>
+    <p>Brightcove Beacon で新しいクーポン/バウチャーを作成するには、次の手順に従います。 </p>
+
+    <ol class="bcls-tasklist-restart">
+      <li>Brightcoveの Beacon  UI で、<strong>コマースタブをクリックします</strong>。
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/promo-codes/1-beacon-ui.png" />
+        </figure>
+      </li>
+      <li>左側のメニューで、[ <strong> Stripe によるクーポン</strong> ] を選択します。</li>
+      <li><strong>新しいバウチャーを追加ボタンをクリックします</strong>。</li>
+      <li>[ <strong> ID </strong> ] フィールドに、ユーザーが使用するコードを入力します。
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/promo-codes/2-id-name.png" />
+        </figure>
+      </li>
+      <li>[ <strong>名前</strong> ] フィールドには、請求書に表示できるわかりやすい名前を使用します。</li>
+      <li>[ <strong>期間</strong> ] フィールドに、クーポンの期間を月単位で入力します。 </li>
+      <li><strong>割引タイプでは</strong>、通貨またはパーセントで割引を指定するオプションがあります。たとえば、割引が 3 か月無料の場合、期間を 3 <strong>か月で繰り返し</strong>、<strong>割引の種類を</strong> 100% に設定します。</li>
+      <li>[ <strong>制限</strong> ] セクションでは、クーポンを使用する償還回数または日付を制限できます。たとえば、8 月末までしかクーポンを使用できない場合や、最初の 100 人だけがクーポンを取得するとします。
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/promo-codes/3-lmitations-packages.png" />
+        </figure>
+      </li>
+      <li>[ <strong>関連するパッケージ/サブスクリプション</strong> ] セクションで、クーポンで使用できるサブスクリプションを指定します。サブスクリプションを選択しない場合、そのサブスクリプションはすべてのパッケージサブスクリプションに適用されます。</li>
+    </ol>
+    <aside class="bcls-aside bcls-aside--information">次の点に注意してください
+      <ul>
+        <li>クーポン/バウチャーが作成されると、登録ユーザーはサブスクリプションを購入する際にクーポン/クーポンを適用できます。
+          <figure class="bcls-figure">
+            <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/promo-codes/4-enter-voucher.png" />
+          </figure>
+        </li>
+        <li>無効なクーポンが入力されると、次のように表示されます。
+          <figure class="bcls-figure">
+            <img class="bcls-image--no-border" alt="" src="/assets/images/using-bcb/promo-codes/5-error.png" />
+          </figure>
+        </li>
+      </ul>
+    </aside>
+  </section>
+
+</article>

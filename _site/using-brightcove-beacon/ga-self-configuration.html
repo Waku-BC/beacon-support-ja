@@ -1,0 +1,1265 @@
+<!doctype html>
+<html lang="en-us">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="「このトピックでは、Brightcoveにこのプロセスを許可できない場合、または許可しない場合に、Brightcove Beacon と連携するようにGoogleAnalyticsを構成する方法を学習します。」">
+  
+  <title>GoogleAnalyticsの自己構成</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/prism.css">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/styles.css">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/landing-page.css">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/tabs.css">
+  <link rel="stylesheet" href="/assets/css/local.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-2728311-17"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];関数gtag（）{dataLayer.push(arguments);} gtag（ 'js'、new Date（））; gtag（ 'config'、 'UA-2728311-17'）;
+</script>
+  <script src="/assets/js/sajari-head.js"></script>
+	<script src="https://unpkg.com/feather-icons"></script>
+</head>
+
+
+<body class="body">
+ <header>
+  <div class="div-header">
+    <a href="/"><img class="product-logo" src="https://support.brightcove.com/site-assets/images/site/product-logos/SVG/COVE004_Brightcove_Beacon_Logo_RGB_K.svg" alt="Brightcove"></a>
+<!-- GTranslate: https://gtranslate.io/ -->
+<select onchange="doGTranslate(this);"><option value="">Select Language</option><option value="en|en" translate="No">English</option><option value="en|zh-TW" translate="No">繁體中文</option><option value="en|fr" translate="No">Français</option><option value="en|de" translate="No">Deutsche</option><option value="en|ja" translate="No">日本語</option><option value="en|ko" translate="No">한국어</option><option value="en|es" translate="No">Español</option></select>
+
+<script translate="no">
+/* <![CDATA[ */
+function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang.toLowerCase() != 'zh-cn' && plang.toLowerCase() != 'zh-tw')plang='en';location.href=location.protocol+'//'+(lang == 'en' ? '' : lang+'.')+location.hostname.replace('www.', '').replace(RegExp('^' + plang + '\\.'), '')+location.pathname+location.search;}
+/* ]]> */
+</script>
+
+
+
+    <span class="secondary-nav"><a href="https://supportportal.brightcove.com/s/login/?"><i data-feather="help-circle"></i> サポート問い合わせ先</a><span style="vertical-align: middle;margin-left:1em;margin-right:1em;">|</span><a href="https://status.brightcove.com/"><i data-feather="cloud"></i> システムステータス</a></span>
+    <br>
+    
+  </div>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb arr-right">
+      
+      <li class="breadcrumb-item first-item"><a href="/">ホーム</a></li>
+        
+      <li class="breadcrumb-item"><a href="/using-brightcove-beacon/">using-brightcove-beacon</a></li>
+      
+      <li class="breadcrumb-item active" aria-current="page">GoogleAnalyticsの自己構成</li>
+    </ol>
+  </nav>
+</header> <div class="container">
+    <div class="row">
+      <div class="col-sm-3 left-side-bar">
+				<select id="site_select" class="bcls-select" style="margin-left: 1rem;">
+					<option value="">Brightcoveのその他のドキュメント</option>
+					 
+							<option value="https://support.brightcove.com">ドキュメンテーションホーム</option>
+						  
+							<option value="">-ビデオクラウド-</option>
+						  
+							<option value="https://studio.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp; Video Cloud Studio</option>
+						  
+							<option value="https://player.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp; Brightcoveプレーヤーの開発</option>
+						  
+							<option value="https://apis.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ビデオクラウドプラットフォームAPI</option>
+						  
+							<option value="https://sdks.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ビデオクラウドデバイスSDK</option>
+						  
+							<option value="https://integrations.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;統合とCMSコネクタ</option>
+						  
+							<option value="https://general.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ビデオクラウドの一般情報</option>
+						  
+							<option value="">-ビデオエッセンシャル-</option>
+						  
+							<option value="https://beacon.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブ Beacon </option>
+						  
+							<option value="https://live.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブライブ</option>
+						  
+							<option value="https://zencoder.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp; Zencoder</option>
+						  
+							<option value="">-ビデオクラウドアドオン-</option>
+						  
+							<option value="https://campaign.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブキャンペーン</option>
+						  
+							<option value="https://engage.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブエンゲージ</option>
+						  
+							<option value="https://gallery.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブギャラリー</option>
+						  
+							<option value="https://studio.support.brightcove.com/social/index.html">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブソーシャル</option>
+						  
+							<option value="https://ssai.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブSSAI</option>
+						 
+				</select>
+        <nav class="sidenav" id="side_nav">
+           
+            <h5><a href="/index.html">ホーム</a></h5>
+              
+              <h5 class="submenu-header"><a href="/getting-started/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;入門編</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/getting-started/learning-guide-bc-beacon.html">学習ガイド</a></li>
+                    
+                    <li><a href="/getting-started/implementation-phases.html">実装フェーズ</a></li>
+                    
+                    <li><a href="/getting-started/app-design-considerations.html">アプリケーション設計の考慮事項</a></li>
+                    
+                    <li><a href="/getting-started/creating-your-app-design-info-architecture.html">アプリの設計-情報アーキテクチャ</a></li>
+                    
+                    <li><a href="/getting-started/creating-your-app-design-layout-options.html">アプリのデザイン-レイアウトオプション</a></li>
+                    
+                    <li><a href="/getting-started/design-best-practices.html">設計のベストプラクティス</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/syncing-with-video-cloud/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;Video Cloud との同期</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/syncing-with-video-cloud/vc-custom-fields.html">Video Cloud カスタム項目の作成</a></li>
+                    
+                    <li><a href="/syncing-with-video-cloud/syncing-video-cloud-catalog.html">同期を強制する</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/using-brightcove-beacon/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;Brightcove Beacon の使用</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/using-brightcove-beacon/adding-trailer-movie.html">映画への予告編の追加</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/adding-to-page.html">ページへのカルーセルの追加</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/cloud-playout/cloud-playout-overview.html">概要:クラウドプレイアウトチャネル</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/cloud-playout/cloud-playout-stream-vod.html">クラウドプレイアウトチャネルの作成</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/cloud-playout/cloud-playout-add-content.html">クラウドプレイアウトチャネルへのコンテンツの追加</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/cloud-playout/static-image-overlays.html">静止画像オーバーレイ</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/cloud-playout/using-channel-actions.html">チャネルアクションの使用</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/cloud-playout/adding-bumpers-to-vod.html">クラウドプレイアウトへのバンパーの追加</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/cloud-playout/enabling-server-side-ads.html">クラウドプレイアウトの収益化</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/cloud-playout/mid-roll-ad-insertion.html">ミッドロール広告をチャネルに追加する</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/cloud-playout/publish-channel-beacon.html">クラウドプレイアウトチャネルの公開</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/cloud-playout/viewing-channel-output-and-analytics.html">チャネル出力と分析の表示</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/creating-a-channel.html">Beacon チャネルの作成</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/electronic-program-guides.html">電子番組ガイド（EPG）の作成</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/creating-a-page.html">新しいページの作成</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/creating-a-playlist.html">プレイリストを作成する</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/series-seasons-episodes.html">シリーズ/シーズン/エピソードの作成</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/ga-self-configuration.html">GoogleAnalyticsの自己構成</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/including-non-configurable-pages.html">設定できないページを含める</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/introducing-pages.html">ページの紹介</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/streaming-live-event.html">ライブイベントのストリーミング</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/streaming-vods-to-a-channel.html">チャネルへのVODのストリーミング</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/tools.html">ツールの使用</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/viewing-analytics-data.html">分析データの表示</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/monetization/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;収益化</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li class="submenu-header">
+                      <a href="/monetization/general/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;全般的</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/monetization/general/creating-stripe-account.html">ストライプアカウントの作成</a></li>
+                            
+                            <li><a href="/monetization/general/creating-subscription-package.html">サブスクリプションパッケージの作成</a></li>
+                            
+                            <li><a href="/monetization/general/promo-codes.html">プロモーションコードの作成</a></li>
+                            
+                            <li><a href="/monetization/general/vc-custom-fields.html">現金化のためのカスタムフィールド</a></li>
+                            
+                            <li><a href="/monetization/general/implementing-authvod.html">AuthVODの実装</a></li>
+                            
+                            <li><a href="/monetization/general/monetization-options.html">現金化オプションを理解する</a></li>
+                            
+                            <li><a href="/monetization/general/using-subscription-package.html">サブスクリプションパッケージの使用</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/monetization/ssai/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;SSAI</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/monetization/ssai/advertisement.html">広告の作成</a></li>
+                            
+                            <li><a href="/monetization/ssai/configuring-server-side-ad-settings.html">サーバーサイド広告設定の構成</a></li>
+                            
+                            <li><a href="/monetization/ssai/live-ssai.html">ライブSSAIの実装</a></li>
+                            
+                            <li><a href="/monetization/ssai/vod-ssai.html">VOD SSAIの実装</a></li>
+                            
+                            <li><a href="/monetization/ssai/beacon-apps-ad-targeting.html"> Beacon アプリの広告ターゲティング</a></li>
+                           
+                      </ul>
+                    </li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/beacon-web-store/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp; Beacon ウェブストア</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/beacon-web-store/beacon-webstore-overview.html">概要:ブライトコーブ Beacon ウェブストア</a></li>
+                    
+                    <li><a href="/beacon-web-store/integration-details.html"> Beacon ウェブストアとの統合</a></li>
+                    
+                    <li><a href="/beacon-web-store/beacon-store-webhook-reference.html"> Beacon ストアWebhookリファレンス</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/creating-your-apps/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;アプリの作成</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li class="submenu-header">
+                      <a href="/creating-your-apps/general/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;全般的</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/creating-your-apps/general/common-required-info.html">共通の必要な情報</a></li>
+                            
+                            <li><a href="/creating-your-apps/general/device-apps-validation-guide.html">デバイスアプリ検証ガイド</a></li>
+                            
+                            <li><a href="/creating-your-apps/general/in-app-subscription-resources.html">アプリ内サブスクリプションリソース</a></li>
+                            
+                            <li><a href="/creating-your-apps/general/links-subscriptions.html">AppStoreサブスクリプションへのリンク</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/creating-your-apps/android/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;Android</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/creating-your-apps/android/submitting-to-android.html">Androidストアへの新しいアプリの送信</a></li>
+                            
+                            <li><a href="/creating-your-apps/android/updating-android-apps-to-bcb.html">AndroidアプリをBrightcove Beacon に更新する</a></li>
+                            
+                            <li><a href="/creating-your-apps/android/adding-subscriptions-in-android.html">Androidへのサブスクリプションの追加</a></li>
+                            
+                            <li><a href="/creating-your-apps/android/improving-relevance-android.html">AndroidPlayストアでの検索の関連性の向上</a></li>
+                            
+                            <li><a href="/creating-your-apps/android/installing-android-test-build.html">Androidテストビルドのインストール</a></li>
+                            
+                            <li><a href="/creating-your-apps/android/managing-google-subscriptions-1.html">Googleサブスクリプションの管理パート1</a></li>
+                            
+                            <li><a href="/creating-your-apps/android/managing-google-subscriptions-2.html">Googleサブスクリプションの管理パート2</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/creating-your-apps/fire-tv/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;Fire TV</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/creating-your-apps/fire-tv/installing-fire-tv-test-build.html">Fire TVテストビルドのインストール</a></li>
+                            
+                            <li><a href="/creating-your-apps/fire-tv/submitting-to-amazon.html">Amazonストアへの送信</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/creating-your-apps/ios-tvos/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;iOS / tvOS</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/creating-your-apps/ios-tvos/installing-ios-test-build.html">iOS / tvOSテストビルドのインストール</a></li>
+                            
+                            <li><a href="/creating-your-apps/ios-tvos/submitting-to-apple.html">AppleStoreへの送信</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/creating-your-apps/roku/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;Roku</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/creating-your-apps/roku/configuring-inchannel-products.html">Rokuでのチャネル内製品の構成</a></li>
+                            
+                            <li><a href="/creating-your-apps/roku/installing-roku-test-build.html">Rokuテストビルドのインストール</a></li>
+                            
+                            <li><a href="/creating-your-apps/roku/submitting-to-roku.html">Rokuストアへの送信</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/creating-your-apps/samsung/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;Samsung</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/creating-your-apps/samsung/samsung-partner.html">サムスンのパートナーになる</a></li>
+                            
+                            <li><a href="/creating-your-apps/samsung/submitting-to-samsung.html">サムスンストアへの送信</a></li>
+                           
+                      </ul>
+                    </li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/references/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;参考文献</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/references/branding-beacon-apps.html">ブライトコーブ Beacon アプリのブランディング</a></li>
+                    
+                    <li><a href="/references/common-configuration-settings.html">一般的な構成設定</a></li>
+                    
+                    <li><a href="/references/glossary.html">用語集</a></li>
+                    
+                    <li><a href="/references/how-beacon-gets-data.html">Brightcove Beacon がデータを取得する方法</a></li>
+                    
+                    <li><a href="/references/image-requirements.html">画像とその仕様</a></li>
+                    
+                    <li><a href="/references/known-issues.html">既知の問題</a></li>
+                    
+                    <li><a href="/references/product-updates.html">製品の更新</a></li>
+                    
+                    <li><a href="/references/remote-asset-limitations.html">リモート資産の制限</a></li>
+                    
+                    <li><a href="/references/beacon-tasks-in-vc.html">ビデオクラウドで実行されるタスク</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/training/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;トレーニング</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/training/training-demand-custom-fields.html">Video Cloud ビデオ/カスタムフィールドの使用</a></li>
+                    
+                    <li><a href="/training/training-demand-design-layout.html">アプリケーションレイアウトの設計</a></li>
+                    
+                    <li><a href="/training/training-demand-playlists.html">プレイリストの作成と使用</a></li>
+                    
+                    <li><a href="/training/training-demand-series-seasons-episodes.html">シリーズ、季節、エピソードの作成</a></li>
+                    
+                    <li><a href="/training/training-demand-vod-ssai.html">VOD サーバーサイド広告の実装</a></li>
+                    
+                    <li><a href="/training/training-demand-publish-android-app.html">PlayストアでAndroidアプリを公開する</a></li>
+                    
+                    <li><a href="/training/training-demand-viewing-analytics.html">分析データの表示</a></li>
+                    
+                    <li><a href="/training/training-demand-streaming-live-bc-beacon.html">ブライトコーブ Beacon へのライブイベントのストリーミング</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/support/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;サポート</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/support/viewing-brightcove-system-status-page.html">Brightcoveのシステムステータスページの表示</a></li>
+                    
+                    <li><a href="/support/contact-sales.html">営業へのお問い合わせ</a></li>
+                    
+                    <li><a href="/support/opening-case-with-brightcove-support.html">サポートケースを開く</a></li>
+                    
+                    <li><a href="/support/reset-support-portal-password.html">サポートポータルのパスワードをリセットする</a></li>
+                   
+              </ul>
+             
+      </nav>
+    </div>
+    <div class="col-lg-7" style="background-color: white;color: #333333;margin-top: -1em;margin-bottom: -1em;padding-bottom:1em;">
+  <!-- bootstrap layout -->
+ <p id="bc_veggie_burger_wrapper" style="display: none;"><img id="bc_veggie_burger" src="/assets/images/feather/menu.svg" alt="Navigation Menu"></p>
+
+<!-- search bar -->
+<div id="nav-search-box" style="margin-top: 1rem;"></div>
+<!-- in-page navigation for narrow screens -->
+<details class="centered-inpage-nav" id="centered_inpage_nav">
+  <summary><h6 class="toc">ページコンテンツ</h6></summary>
+  <nav id="centered_toc"></nav>
+  <ul id="centered_in_page_toc" class="list-none"></ul>
+</details>
+<!-- open in new tab/window -->
+<a id="open_new_tab" href="#" target="_blank" style="display: none;"><img src="/assets/images/feather/external-link.svg" alt="open in new tab" style="margin-top:4em;width: 1.5em;"></a>   <h1>GoogleAnalyticsの自己構成</h1>
+<article class="bcls-article">
+    <summary>「このトピックでは、Brightcoveにこのプロセスを許可できない場合、または許可しない場合に、Brightcove Beacon と連携するようにGoogleAnalyticsを構成する方法を学習します。」</summary>
+
+    <section class="bcls-section">
+        <h2 id="Introduction">はじめに</h2>
+        <p>構成プロセスは、次のタスクで構成されています。</p>
+        <ul>
+            <li>4つのGoogleAnalyticsプロパティを作成します。</li>
+            <li>プロパティごとにカスタムディメンションのセットと1つのカスタムメトリックを作成します。</li>
+            <li>4つのGoogleTagManagerコンテナを作成します。</li>
+            <li>コンテナごとにGoogleタグマネージャを設定します。</li>
+            <li>iOSとAndroidでの分析収集を支援するようにFirebaseを構成します。</li>
+            <li>分析データを表示するためのテンプレートをGoogleDataStudioにインストールします。</li>
+        </ul>
+
+    </section>
+
+    <section class="bcls-section">
+        <h2 id="Required_tools">必要なツール</h2>
+        <p>Brightcoveは、さまざまなツールを使用して、Google Analyticsを使用した分析データの収集、操作、および表示を実装します。これらのツールは次のとおりです。</p>
+        <ul>
+            <li><strong>グーグルアナリティクス</strong> -Google MarketingPlatformブランドの一部としてGoogleが提供するWeb分析プラットフォーム。</li>
+            <li><strong>Googleタグマネージャー</strong> -まず、タグは情報を収集してサードパーティに送信するためにサイトに追加されるコードのスニペットであることを理解してください。タグは、スクロールトラッキング、フォーム送信の監視、調査の実施など、さまざまな理由で使用されます。Google Tag Managerを使用すると、「タグをすばやく管理および更新し、より多くの情報に基づいた意思決定をより迅速に行うことができます。タグマネージャーは、すべてのGoogleおよびサードパーティのタグと統合されており、タグをいつどのように配信するかを完全に制御できます。」</li>
+            <li><strong>Firebase</strong> --Firebaseは、モバイルアプリケーションとウェブアプリケーションを作成するためにGoogleが開発したプラットフォームです。Firebaseには<strong>Firebaseリアルタイムデータベース</strong>、これはクラウドでホストされるデータベースです。</li>
+            <li><strong>Google Data Studio</strong> -Google Data Studioは、「データを有益で読みやすく、共有しやすく、完全にカスタマイズ可能なダッシュボードとレポートに変える無料のツール」です。</li>
+        </ul>
+        <p>次の図は、BrightcoveBeaconの分析を収集する際のこれらのツールの相互作用/フローの詳細を示しています。</p>
+        <figure class="bcls-figure">
+            <img class="bcls-image" src="/assets/images/using-bcb/self-config-ga/tool-diagram.png" alt="">
+        </figure>
+
+    </section>
+
+    <section class="bcls-section">
+        <h2 id="Obtain_the_templates_and_configuration_files">テンプレートと構成ファイルを入手する</h2>
+        <p>BrightcoveBeaconの分析のセットアップを正常に完了するために必要なファイル/ URLは多数あります。ファイル/ URLの詳細は次の箇条書きにあります。これらのファイル/ URLを取得するには、Brightcoveオンボーディングマネージャーに連絡する必要があります。あなたは受け取るでしょう： </p>
+        <ul>
+            <li>モバイル、ウェブ、スマートテレビ用にそれぞれ1つずつ、3つのビルド済みGoogleアナリティクスダッシュボード構成へのURL。</li>
+            <li>Googleタグマネージャーで作成された4つのコンテナーのそれぞれを構成する4つのJSONファイル。</li>
+            <li>モバイル、ウェブ、スマートテレビ用にそれぞれ1つずつ、3つのビルド済みGoogleデータスタジオテンプレートへのURL。</li>
+        </ul>
+        <p>各ファイル/ URLのインストール/使用方法は、このドキュメントの後半の該当するセクションに記載されています。</p>
+        <aside class="bcls-aside bcls-aside--tip">構成プロセスを開始する前に、これらのファイル/ URLを取得する必要があります。</aside>
+    </section>
+
+    <section class="bcls-section">
+        <h2 id="Create_Google_Analytics_properties">GoogleAnalyticsを構成する</h2>
+        <p>ドキュメントのこのセクションでは、次のタスクを含むGoogleAnalyticsを構成します。</p>
+        <ul>
+            <li>4つのGoogleAnalyticsプロパティを作成します。</li>
+            <li>iOSおよびAndroidプロパティのモバイルビューを作成します</li>
+            <li>プロパティごとにカスタムディメンションのセットを作成します。</li>
+            <li>プロパティごとに単一のカスタムメトリックを作成します。</li>
+            <li>Brightcoveが作成した3つのダッシュボード構成をインポートします。1つはモバイル、Web、スマートテレビ用です。</li>
+        </ul>
+        <h3>4つのプロパティを作成します</h3>
+        <p>次の4つのプロパティを作成する必要があります。</p>
+        <ul>
+            <li> Beacon Android</li>
+            <li> Beacon iOS</li>
+            <li> Beacon STV（スマートTV）</li>
+            <li> Beacon ウェブ</li>
+        </ul>
+        <p>次の手順では、<strong> Beacon Android</strong>財産。同じプロセスに従って、他のものを作成する必要があります。</p>
+        <ol class="bcls-tasklist">
+            <li>GoogleAnalyticsアカウントにログインします。</li>
+            <li>クリック<strong>管理者（ギア）</strong>画面の左下にあるアイコン。</li>
+            <li>中央の列の上部にあるをクリックします<strong>プロパティの作成</strong>。</li>
+            <li>の中に<strong>プロパティの設定</strong>、供給<strong>プロパティ名</strong>、最初のプロパティには、 <samp> Beacon Android</samp>。</li>
+            <li>を供給します<strong>タイムゾーンの報告</strong>。</li>
+            <li>を供給します<strong>通貨</strong>。</li>
+            <li>クリック<strong>高度なオプションを表示</strong>リンク。</li>
+            <li>オンにする<strong>UniversalAnalyticsプロパティを作成します。</strong></li>
+            <li>WebサイトのURLを入力します。</li>
+            <li>クリック<strong>UniversalAnalyticsプロパティのみを作成する</strong>ラジオボタン。</li>
+            <li>プロパティ情報が次のように入力されていることを確認してください。
+                <figure class="bcls-figure">
+                    <img class="bcls-image" src="/assets/images/using-bcb/self-config-ga/property1-setup.png" alt="create property">
+                </figure>
+            </li>
+            <li>[<strong>Next</strong>]をクリックします。</li>
+            <li>完了<strong>ビジネス情報</strong>あなたのデータで形成します。</li>
+            <li>[ <strong>作成</strong> ] をクリックします。</li>
+            <li>あなたがあなたの新しい財産について望むどんな詳細も読んでください。</li>
+            <li>次のスクリーンショットで強調表示されている戻る矢印をクリックします。
+                <figure class="bcls-figure">
+                    <img class="bcls-image" src="/assets/images/using-bcb/self-config-ga/property3-back.png" alt="back button">
+                </figure>
+            </li>
+            <li>すぐ下<strong>プロパティの作成</strong>前にクリックした場合は、下矢印をクリックして、プロパティが正しく作成されたことを確認します。
+                <figure class="bcls-figure">
+                    <img class="bcls-image" src="/assets/images/using-bcb/self-config-ga/property-view.png" alt="property selector">
+                </figure>
+            </li>
+            <li>次の手順を実行して、他の3つの必須プロパティを作成します。
+                <ol>
+                    <li> Beacon iOS</li>
+                    <li> Beacon STV</li>
+                    <li> Beacon WEB</li>
+                </ol>
+            </li>
+        </ol>
+        <h3>iOSおよびAndroid用のモバイルビューを作成する</h3>
+        <p>モバイルプラットフォーム、iOSおよびAndroidの場合、これらの各プロパティでモバイルビューを作成する必要があります。モバイルアプリがない場合は、このセクションの手順を完了する必要はありません。</p>
+        <ol class="bcls-tasklist-restart">
+            <li>ドロップダウン（スクリーンショットで黄色で強調表示されている）をクリックして、すべてのGoogle Analyticsアカウント、プロパティ、およびビューを表示します。
+                <figure class="bcls-figure">
+                    <img class="bcls-image" src="/assets/images/using-bcb/self-config-ga/choose-property.png" alt="choose property">
+                </figure>
+            </li>
+            <li>3 つのパネルのドロップダウンから、次の項目を選択します。
+                <ul type="a">
+                    <li>Brightcoveの Beacon アカウント</li>
+                    <li>NS <strong> Beacon Android</strong>財産</li>
+                    <li>NS <strong>すべてのWebサイトデータ</strong>見る</li>
+                </ul>
+                <figure class="bcls-figure">
+                    <img class="bcls-image" src="/assets/images/using-bcb/self-config-ga/choose-property-3-column.png" alt="Select property">
+                </figure>
+            </li>
+            <li>クリック<strong>管理者（ギア）</strong>画面の左下にあるアイコン。</li>
+            <li>3番目の列の上部にあるをクリックします<strong>ビューの作成</strong>。
+                <figure class="bcls-figure">
+                    <img class="bcls-image" src="/assets/images/using-bcb/self-config-ga/ga-create-view.png" alt="create view">
+                </figure>
+            </li>
+            <li>次の手順からを入力します。
+                <ol>
+                    <li>クリック<strong>モバイルアプリ</strong>追跡するデータのタイプのボタン。</li>
+                    <li>ビューに名前を付けます。論理名は次のようになります <samp>すべてのモバイルデータ</samp>。</li>
+                    <li>クリック<strong>ビューの作成</strong>。</li>
+                </ol>
+                <figure class="bcls-figure">
+                    <img class="bcls-image" src="/assets/images/using-bcb/self-config-ga/ga-mobile-view-form.png" alt="create view form">
+                </figure>
+            </li>
+            <li>ビューを新しく作成したモバイルビューに変更します。
+                <figure class="bcls-figure">
+                    <img class="bcls-image" src="/assets/images/using-bcb/self-config-ga/ga-change-view.png" alt="change view">
+                </figure>
+            </li>
+            <li>ドキュメントのこのセクションと同じ手順に従って、iOSプロパティのモバイルビューを作成します。</li>
+        </ol>
+        <p>アカウントを操作するときは、アカウント/プロパティを選択するとき/モバイルプロパティを表示するときに、<strong>すべてのモバイルデータ</strong>ビューとWebおよびSTVアカウントはデフォルトを使用します<strong>すべてのWebサイトデータ</strong>、ここに示すように：</p>
+        <figure class="bcls-figure">
+            <img class="bcls-image" src="/assets/images/using-bcb/self-config-ga/account-property-view.png" alt="account property view">
+        </figure>
+        <p>iOSとAndroidのビューには <em>すべてのWebサイトデータ</em> ビューは、プロパティの作成時にデフォルトで作成されるため、</p>
+
+        <h3>カスタムの指標とディメンションを作成する</h3>
+        <p>次に、プロパティごとに、カスタムディメンションのセットと1つのカスタムメトリックを作成する必要があります。</p>
+        <p>このセクションは、次のように構成されます。</p>
+        <ul>
+            <li>単一のカスタムディメンションを作成する方法の手順が示されます。</li>
+            <li>単一のカスタムメトリックを作成する方法の手順が示されます。</li>
+            <li>表に、プロパティに必要な寸法を示します<strong> Beacon Android</strong>そして<strong> Beacon iOS</strong>。</li>
+            <li>表に、プロパティに必要な寸法を示します<strong> Beacon STV</strong>そして<strong> Beacon WEB</strong>。</li>
+            <li>表には、次のような単一の指標が表示されます。<strong> 4つすべて</strong>プロパティが持っている必要があります。</li>
+        </ul>
+        <p>次に、4つのプロパティそれぞれのディメンションと指標を作成する必要があります。</p>
+        <h4>カスタムディメンションの作成</h4>
+        <ol class="bcls-tasklist-restart">
+            <li>カスタムディメンションを作成するアカウント/プロパティ/ビューセレクターからプロパティの1つを選択します。
+                <figure class="bcls-figure">
+                    <img class="bcls-image" src="/assets/images/using-bcb/self-config-ga/account-property-view-selelctor.png" alt="choose property">
+                </figure>
+            </li>
+            <li>クリック<strong>管理者（ギア）</strong>画面の左下にあるアイコン。</li>
+            <li>真ん中の列の下部近く、下<strong>カスタム定義</strong>、 クリック<strong>カスタム寸法</strong>
+                <figure class="bcls-figure">
+                    <img class="bcls-image" src="/assets/images/using-bcb/self-config-ga/click-custom-demensions.png" alt="click custom dimensions">
+                </figure>
+            </li>
+            <li>クリック<strong>新しいカスタム寸法</strong>。</li>
+            <li>のために<strong>名前</strong>入力 <samp>エピソード番号</samp>。</li>
+            <li>から<strong>範囲</strong>ドロップダウン、選択 <samp>ヒット</samp>。</li>
+            <li>寸法を残す<strong>アクティブ</strong>。</li>
+            <li>[ <strong>作成</strong> ] をクリックします。</li>
+            <li>サンプルコード画面で、をクリックします<strong>完了</strong>。</li>
+            <li>次に示すように、新しく作成したディメンションがリストに表示されます。
+                <figure class="bcls-figure">
+                    <img class="bcls-image" src="/assets/images/using-bcb/self-config-ga/dimension-list.png" alt="list dimensions">
+                </figure>
+                <aside class="bcls-aside bcls-aside--warning">重要なのは<strong>索引</strong>以下の表に示すように、ディメンション名と一致します。これを行うには、表に示されている順序で寸法を作成するだけです。</aside>
+            </li>
+            <li>別のディメンションを作成するには、<strong>新しいカスタム寸法</strong>。</li>
+        </ol>
+        <h4>カスタムメトリックの作成</h4>
+        <ol class="bcls-tasklist-restart">
+            <li>カスタムメトリックを作成するアカウント/プロパティ/ビューセレクターからプロパティの1つを選択します。
+                <figure class="bcls-figure">
+                    <img class="bcls-image" src="/assets/images/using-bcb/self-config-ga/account-property-view-selelctor.png" alt="choose property">
+                </figure>
+            </li>
+            <li>クリック<strong>管理者（ギア）</strong>画面の左下にあるアイコン。</li>
+            <li>真ん中の列の下部近く、下<strong>カスタム定義</strong>、 クリック<strong>カスタムメトリック</strong></li>
+            <li>クリック<strong>新しいカスタムメトリック</strong>。</li>
+            <li>のために<strong>名前</strong>入力 <samp>視聴時間</samp>。</li>
+            <li>から<strong>範囲</strong>ドロップダウン、選択 <samp>ヒット</samp>。</li>
+            <li>のために<strong>書式設定タイプ</strong>、 選択する <samp>時間</samp>。</li>
+            <li>寸法を残す<strong>アクティブ</strong>。</li>
+            <li>[ <strong>作成</strong> ] をクリックします。</li>
+            <li>サンプルコード画面で、をクリックします<strong>完了</strong>。</li>
+            <li>新しく作成したメトリックがリストに表示されます。</li>
+        </ol>
+        <aside class="bcls-aside bcls-aside--information">これは、4つのプロパティのそれぞれに対して作成する必要がある唯一のカスタムメトリックです。</aside>
+        <h4>AndroidとiOSのディメンションと指標</h4>
+        <p>次の表は、BeaconAndroidおよびBeaconiOSプロパティに追加する必要があるカスタムディメンションを示しています。</p>
+        <aside class="bcls-aside bcls-aside--warning">重要なのは<strong>索引</strong>以下の表に示すように、ディメンション名と一致します。これを行うには、表に示されている順序で寸法を作成するだけです。</aside>
+        <table class="bcls-table">
+            <thead class="bcls-table__head">
+                <tr>
+                    <th>カスタムディメンション名</th>
+                    <th>インデックス</th>
+                    <th>スコープ</th>
+                </tr>
+            </thead>
+            <tbody class="bcls-table__body">
+                <tr>
+                    <td>エピソード番号</td>
+                    <td>1</td>
+                    <td>ヒット</td>
+                </tr>
+                <tr>
+                    <td>ジャンル</td>
+                    <td>2</td>
+                    <td>ヒット</td>
+                </tr>
+                <tr>
+                    <td>製作年</td>
+                    <td>3</td>
+                    <td>ヒット</td>
+                </tr>
+                <tr>
+                    <td>原産国</td>
+                    <td>4</td>
+                    <td>ヒット</td>
+                </tr>
+                <tr>
+                    <td>アセットID</td>
+                    <td>5</td>
+                    <td>ヒット</td>
+                </tr>
+                <tr>
+                    <td>ログイン状態</td>
+                    <td>6</td>
+                    <td>セッション</td>
+                </tr>
+                <tr>
+                    <td>言語</td>
+                    <td>7</td>
+                    <td>セッション</td>
+                </tr>
+                <tr>
+                    <td>ユーザータイプ</td>
+                    <td>8</td>
+                    <td>セッション</td>
+                </tr>
+                <tr>
+                    <td>コンテンツプロバイダー</td>
+                    <td>9</td>
+                    <td>ヒット</td>
+                </tr>
+                <tr>
+                    <td>シリーズタイトル</td>
+                    <td>10</td>
+                    <td>ヒット</td>
+                </tr>
+                <tr>
+                    <td>エピソードタイトル</td>
+                    <td>11</td>
+                    <td>ヒット</td>
+                </tr>
+                <tr>
+                    <td>シーズン数</td>
+                    <td>12</td>
+                    <td>ヒット</td>
+                </tr>
+                <tr>
+                    <td>タイムスタンプ</td>
+                    <td>13</td>
+                    <td>ヒット</td>
+                </tr>
+                <tr>
+                    <td>ストリーミング時間</td>
+                    <td>14</td>
+                    <td>ヒット</td>
+                </tr>
+                <tr>
+                    <td>アカウントトークン</td>
+                    <td>15</td>
+                    <td>ユーザー</td>
+                </tr>
+                <tr>
+                    <td>プロファイルトークン</td>
+                    <td>16</td>
+                    <td>ユーザー</td>
+                </tr>
+            </tbody>
+        </table>
+        <h4>STVとWEBのディメンションと指標</h4>
+        <p>次の表は、BeaconSTVおよびBeaconWebプロパティに追加する必要のあるカスタムディメンションを示しています。</p>
+        <aside class="bcls-aside bcls-aside--warning">重要なのは<strong>索引</strong>以下の表に示すように、ディメンション名と一致します。これを行うには、表に示されている順序で寸法を作成するだけです。</aside>
+        <table class="bcls-table">
+            <thead class="bcls-table__head">
+                <tr>
+                    <th>カスタムディメンション名</th>
+                    <th>インデックス</th>
+                    <th>スコープ</th>
+                </tr>
+            </thead>
+            <tbody class="bcls-table__body">
+                <tr>
+                    <td>ユーザーID</td>
+                    <td>1</td>
+                    <td>ユーザー</td>
+                </tr>
+                <tr>
+                    <td>プラットフォーム</td>
+                    <td>2</td>
+                    <td>セッション</td>
+                </tr>
+                <tr>
+                    <td>アカウントトークン</td>
+                    <td>3</td>
+                    <td>ユーザー</td>
+                </tr>
+                <tr>
+                    <td>アプリバージョン</td>
+                    <td>4</td>
+                    <td>セッション</td>
+                </tr>
+                <tr>
+                    <td>エピソード番号</td>
+                    <td>5</td>
+                    <td>ヒット</td>
+                </tr>
+                <tr>
+                    <td>シーズン数</td>
+                    <td>6</td>
+                    <td>ヒット</td>
+                </tr>
+                <tr>
+                    <td>エピソードタイトル</td>
+                    <td>7</td>
+                    <td>ヒット</td>
+                </tr>
+                <tr>
+                    <td>プログラム</td>
+                    <td>8</td>
+                    <td>ヒット</td>
+                </tr>
+                <tr>
+                    <td>デバイスモデル</td>
+                    <td>9</td>
+                    <td>セッション</td>
+                </tr>
+                <tr>
+                    <td>ジャンル</td>
+                    <td>10</td>
+                    <td>ヒット</td>
+                </tr>
+                <tr>
+                    <td>製作年</td>
+                    <td>11</td>
+                    <td>ヒット</td>
+                </tr>
+                <tr>
+                    <td>原産国</td>
+                    <td>12</td>
+                    <td>ヒット</td>
+                </tr>
+                <tr>
+                    <td>キーワード</td>
+                    <td>13</td>
+                    <td>ヒット</td>
+                </tr>
+                <tr>
+                    <td>OSバージョン</td>
+                    <td>14</td>
+                    <td>セッション</td>
+                </tr>
+                <tr>
+                    <td>OS言語</td>
+                    <td>15</td>
+                    <td>セッション</td>
+                </tr>
+                <tr>
+                    <td>口座番号</td>
+                    <td>16</td>
+                    <td>セッション</td>
+                </tr>
+                <tr>
+                    <td>言語</td>
+                    <td>17</td>
+                    <td>セッション</td>
+                </tr>
+                <tr>
+                    <td>ユーザータイプ</td>
+                    <td>18</td>
+                    <td>セッション</td>
+                </tr>
+                <tr>
+                    <td>コンテンツタイプ</td>
+                    <td>19</td>
+                    <td>ヒット</td>
+                </tr>
+                <tr>
+                    <td>コンテンツプロバイダー</td>
+                    <td>20</td>
+                    <td>ヒット</td>
+                </tr>
+            </tbody>
+        </table>
+        <h4>カスタムメトリック</h4>
+        <p>次の表は、4つのプロパティすべてに追加する必要がある単一のカスタムメトリックを示しています。</p>
+        <table class="bcls-table">
+            <thead class="bcls-table__head">
+                <tr>
+                    <th>カスタムメトリック名</th>
+                    <th>インデックス</th>
+                    <th>スコープ</th>
+                    <th>書式設定タイプ</th>
+                </tr>
+            </thead>
+            <tbody class="bcls-table__body">
+                <tr>
+                    <td>視聴時間</td>
+                    <td>1</td>
+                    <td>ヒット</td>
+                    <td>書式設定タイプ</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>ダッシュボード構成のインポート</h3>
+        <p>の中に<a href="#Obtain_the_templates_and_configuration_files">テンプレートと構成ファイルを入手する</a>このドキュメントの前半のセクションで、オンボーディングマネージャーにファイル/ URLをリクエストしました。3つのURLは次のとおりです。</p>
+        <ul>
+            <li>モバイル：https：//analytics.google.com/analytics/web/template？uid = QTJbSdv3Sk6gvpa4Go_CRQ</li>
+            <li>ウェブ：https：//analytics.google.com/analytics/web/template？uid = pIoBH8hYRSO3JZL4WbFTlA</li>
+            <li>スマートテレビ：https：//analytics.google.com/analytics/web/template？uid = eZhlzo76QtSn5BNi-rXJyQ</li>
+        </ul>
+        <p>構成を使用するには、次の手順を実行します。</p>
+        <ol class="bcls-tasklist-restart">
+            <li>構成、モバイル、Web、またはスマートTVの使用法に注意してから、URLをクリックしてください。</li>
+            <li>新しいブラウザタブで、次の情報が表示されていることを確認してください。
+                <figure class="bcls-figure">
+                    <img class="bcls-image" src="/assets/images/using-bcb/self-config-ga/ga-dashboard-config-import.png" alt="import configuration">
+                </figure>
+            </li>
+            <li>から<strong>ビューを選択します</strong>ドロップダウンして、一致するプロパティ、モバイル（iOSおよびAndroid）、Webまたはスマートテレビを選択します。</li>
+            <li>必要に応じて、構成の名前を変更します。</li>
+            <li>[ <strong>作成</strong> ] をクリックします。</li>
+            <li>構成が開いていることを確認してください。例を以下に示します。
+                <figure class="bcls-figure">
+                    <img class="bcls-image" src="/assets/images/using-bcb/self-config-ga/ga-example-imported-configuration.png" alt="example configuration">
+                </figure>
+            </li>
+        </ol>
+    </section>
+    <section class="bcls-section">
+        <h2 id="Configuring_Google_Tag_Manager">Googleタグマネージャーの設定</h2>
+        <p>ドキュメントのこのセクションでは、次のタスクを実行します。</p>
+        <ul>
+            <li>以前に作成したプロパティごとに1つずつ、合計4つのコンテナを作成します。</li>
+            <li>電子メールで送信された構成JSONファイルをインポートします。<a href="#Obtain_the_templates_and_configuration_files">テンプレートと構成ファイルを入手する</a>上記のセクション。</li>
+            <li>GoogleAnalyticsアカウントからコピーしたトラッキングIDを各コンテナに入力します' <strong>追跡コード</strong>変数。</li>
+            <li>コンテナを公開します。</li>
+        </ul>
+        <h3>コンテナを作成する</h3>
+        <ol class="bcls-tasklist-restart">
+            <li>
+                Googleのドキュメントを確認して<a href="https://support.google.com/tagmanager/answer/6103696?hl=en">タグマネージャーを設定してインストールする</a>。
+            </li>
+            <li>
+                <p>
+                    に<a href="https://tagmanager.google.com/#/home">タグマネージャー</a>、アカウントを作成するか、既存のアカウントを使用します。新しいアカウントを作成するには、<strong>アカウントを作成する</strong>ボタン。
+                </p>
+                <p>
+                    デフォルトでは、新しいアカウント用に新しいコンテナが作成されます。各アカウント内に追加のコンテナーを作成します。
+                </p>
+                <figure class="bcls-figure">
+                    <img class="bcls-image" alt="Create account" src="/assets/images/using-bcb/self-config-ga/tm-click-to-create.png" />
+                </figure>
+            </li>
+            <li>
+                <p>新しいアカウントページの値を入力します。</p>
+                <ul>
+                    <li><strong>アカウント名</strong>：あなたの会社名、またはおそらく <samp> Beacon </samp>。</li>
+                    <li><strong>国</strong>：あなたの会社の母国。</li>
+                    <li><strong>コンテナ名</strong>： <samp> Beacon WEB</samp> プロパティごとにコンテナを作成します。</li>
+                    <li><strong>ターゲットプラットフォーム</strong>：Web</li>
+                </ul>
+            <li>コンテナ情報が次のように入力されていることを確認してください。</li>
+            <figure class="bcls-figure">
+                <img class="bcls-image" alt="New account information" src="/assets/images/using-bcb/self-config-ga/tm-add-new-account.png" />
+            </figure>
+            </li>
+            <li>[ <strong>作成</strong> ] をクリックします。</li>
+            <li>クリック<strong>OK</strong>開いたダイアログを閉じます。</li>
+            <li>から<strong>ワークスペース</strong>、 クリック<strong>管理者</strong>。
+                <figure class="bcls-figure">
+                    <img class="bcls-image" src="/assets/images/using-bcb/self-config-ga/tm-workspace-click-admin.png" alt="click admin">
+                </figure>
+            </li>
+            <li>プラス記号をクリックして、別のコンテナを追加します。
+                <figure class="bcls-figure">
+                    <img class="bcls-image" src="/assets/images/using-bcb/self-config-ga/tm-plus-to-add-container.png" alt="plus to add container">
+                </figure>
+            </li>
+            <li>フォームに記入してクリックします<strong>作成する</strong>を作成するには<strong>iOS</strong>容器。
+                <figure class="bcls-figure">
+                    <img class="bcls-image" src="/assets/images/using-bcb/self-config-ga/tm-create-ios.png" alt="create iOS container">
+                </figure>
+            </li>
+            <li>次の4つのコンテナが正しいもので作成されていることを確認してください<strong>ターゲットプラットフォーム</strong>。
+                <table class="bcls-table">
+                    <thead class="bcls-table__head">
+                        <tr>
+                            <th>コンテナ名</th>
+                            <th>ターゲットプラットフォーム</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bcls-table__body">
+                        <tr>
+                            <td> Beacon Android</td>
+                            <td>Android</td>
+                        </tr>
+                        <tr>
+                            <td> Beacon iOS</td>
+                            <td>iOS</td>
+                        </tr>
+                        <tr>
+                            <td> Beacon STV</td>
+                            <td>Web</td>
+                        </tr>
+                        <tr>
+                            <td> Beacon WEB</td>
+                            <td>Web</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </li>
+            <li>から<strong>ワークスペース</strong>、ページ上部のアカウントドロップダウンを使用して、すべてのコンテナが作成されていることを確認します。
+                <figure class="bcls-figure">
+                    <img class="bcls-image" src="/assets/images/using-bcb/self-config-ga/tm-all-containers-created.png" alt="all containers list">
+                </figure>
+            </li>
+            <li>この時点で、このドロップダウンのスクリーンショットを撮ることが重要です。Brightcove Beaconのエンジニアは、このデータを必要としています。このデータは、コンテナ名であり、関連しています。<strong> GTM</strong> ID。このファイルは、ダウンロードされた他のファイルと一緒にオンボーディングマネージャーに送信されます。<a href="#Publish_each_container">各コンテナを公開する</a>このドキュメントの後半にあるセクション。スクリーンショットが明確で読みやすいことを確認してください。
+                <figure class="bcls-figure">
+                    <img class="bcls-image" src="/assets/images/using-bcb/self-config-ga/tm-containers-with-ids.png" alt="containers with IDs">
+                </figure>
+            </li>
+        </ol>
+        <h3>構成ファイルのインポート</h3>
+        <p>コンテナの構成ファイルをインポートするには、次の手順を実行します。</p>
+        <ol class="bcls-tasklist-restart">
+            <li>から<strong>ワークスペース</strong>、 クリック<strong>管理者</strong>。</li>
+            <li>現在構成しているコンテナーを確認してから、<strong>インポートコンテナ</strong>。
+                <figure class="bcls-figure">
+                    <img class="bcls-image" src="/assets/images/using-bcb/self-config-ga/tm-check-container.png" alt="import container">
+                </figure>
+            </li>
+            <li>クリック<strong>コンテナファイルを選択しました</strong>、このコンテナに適したJSONファイルを選択します。</li>
+            <li>にとって<strong>ワークスペースを選択</strong>、 クリック<strong>既存</strong>、次に開いたダイアログから選択します<strong>デフォルトのワークスペース</strong>。</li>
+            <li>にとって<strong>インポートオプションを選択します</strong>、 クリック<strong>上書きする</strong>ラジオボタン。</li>
+            <li>タグ、トリガー、変数、テンプレートに関する情報が表示されていることを確認してください。
+                <figure class="bcls-figure">
+                    <img class="bcls-image" src="/assets/images/using-bcb/self-config-ga/tm-import-info.png" alt="import information">
+                </figure>
+            </li>
+            <li>クリック<strong>確認</strong>、そしてあなたはに戻されます<strong>ワークスペース。</strong>。</li>
+            <li>の中に<strong>ワークスペース</strong>、 クリック<strong>タグ</strong>、<strong>トリガー</strong>そして<strong>変数</strong>インポートが成功したことを確認します。
+                <figure class="bcls-figure">
+                    <img class="bcls-image" src="/assets/images/using-bcb/self-config-ga/tm-check-ttv.png" alt="check import">
+                </figure>
+            </li>
+            <li>次に、コンテナごとに正しいJSONファイルをインポートする必要があります。</li>
+        </ol>
+        <h3>トラッキングIDを入力してください</h3>
+        <p>次に、Google Analyticsから各プロパティのトラッキングIDをコピーし、対応するコンテナに貼り付けます。</p>
+        <ol class="bcls-tasklist-restart">
+            <li>Googleアナリティクスにログインします。</li>
+            <li>ページ上部のアカウント/プロパティセレクターを使用して、<strong> Beacon Android</strong>財産。
+                <figure class="bcls-figure">
+                    <img class="bcls-image" src="/assets/images/using-bcb/self-config-ga/tm-ga-choose-property.png" alt="select android">
+                </figure>
+            </li>
+            <li>クリック<strong>管理者</strong>。</li>
+            <li>から<strong>財産</strong>列の最初のクリック<strong>追跡情報</strong>その後<strong>トラッキングコード。</strong>
+                <figure class="bcls-figure">
+                    <img class="bcls-image" src="/assets/images/using-bcb/self-config-ga/tm-ga-tracking-info-code.png" alt="click tracking code">
+                </figure>
+            </li>
+            <li>をコピーします<strong>トラッキングID</strong>。
+                <figure class=" bcls-figure">
+                    <img class="bcls-image" src="/assets/images/using-bcb/self-config-ga/tm-ga-copy-tracking-id.png" alt="copy tracking ID">
+                </figure>
+            </li>
+            <li>Googleタグマネージャーに戻ります。</li>
+            <li>編集していることを確認してください<strong> Beacon Android</strong>容器。</li>
+            <li>クリック<strong>変数</strong>左側のナビゲーションから。</li>
+            <li>クリック<strong>トラッキングコード</strong>変数。</li>
+            <li>コピーしたトラッキングIDをGoogleAnalyticsからに貼り付けます<strong>価値</strong>フォームフィールド。
+                <figure class="bcls-figure">
+                    <img class="bcls-image" src="/assets/images/using-bcb/self-config-ga/tm-paste-id-in-tracking-variable.png" alt="paste id">
+                </figure>
+            </li>
+            <li>対応するトラッキングIDをに貼り付ける必要があります<strong>トラッキングコード</strong>各コンテナの変数。</li>
+        </ol>
+
+        <h3 id="Publish_each_container">各コンテナを公開する</h3>
+        <aside class="bcls-aside bcls-aside--tip">これらの手順の後半で、コンテナを公開します。iOSおよびAndroidの場合、構成ファイルをダウンロードし、アプリ開発チームにそれらのファイルをそれぞれのアプリに追加させる必要があります。</aside>
+        <p>Google Tag Mangerで行う必要のある最後のステップは、公開するために各コンテナを送信することです。次の手順は、そのプロセスをガイドします。</p>
+        <ol class="bcls-tasklist-restart">
+            <li>ワークスペースに戻ります。</li>
+            <li>入っているコンテナに注意してください。</li>
+            <li>UIの右上にあるをクリックします<strong>参加する</strong>。</li>
+            <li>必ず<strong>バージョンの公開と作成</strong>ボタンが選択されています。</li>
+            <li>必要に応じて、バージョン名とバージョンの説明を追加します。</li>
+            <li>[<strong>公開</strong>]をクリックします。</li>
+            <li>バージョン名と説明を提供しなかった場合は、再度尋ねられます。それらが必要ないと確信している場合はスキップしてください。</li>
+            <li>コンテナに関して返される情報が正しいことを確認してください。</li>
+            <li><strong>iOSおよびAndroidコンテナの場合</strong>：クリック<strong>ダウンロード</strong> UIの右上にあり、関連するファイルをダウンロードします。このファイルは、オンボーディングマネージャーに送信する必要があります。
+                <figure class="bcls-figure">
+                    <img class="bcls-image" src="/assets/images/using-bcb/self-config-ga/tm-download-button.png" alt="download button">
+                </figure>
+            </li>
+            <li><strong>iOSおよびAndroidコンテナの場合</strong>：オンボーディングマネージャーに連絡し、これらのダウンロードしたファイルを、コンテナーのスクリーンショットと対応するIDとともに彼女/彼に送信します。ファイルは対応するアプリに追加されます。</li>
+            <li>すべてのコンテナが公開されていることを確認してください。</li>
+        </ol>
+        <aside class="bcls-aside bcls-aside--warning">繰り返しになりますが、この時点で、ダウンロードしたファイルを、各コンテナ名と関連するスクリーンショットとともに送信する必要があります。<strong> GTM</strong> ID、オンボーディングマネージャーへ。これらのファイルは、Brightcove Beaconのエンジニアリングスタッフにルーティングされ、アプリを構成します。</aside>
+    </section>
+    <section class="bcls-section">
+        <h2 id="section-name">Firebaseを設定する</h2>
+        <aside class="bcls-aside bcls-aside--tip">このセクションの手順は、AndroidアプリやiOSアプリを使用している場合にのみ必要です。また、Google Firebaseに完全に慣れていない場合は、2分半の紹介ビデオを利用できます。<a href="https://firebase.google.com/"> Firebaseのホームページ</a>。</aside>
+        <p></p>
+        <ol class="bcls-tasklist-restart">
+            <li>を参照します<a href="https://console.firebase.google.com/?pli=1">Firebase入門ページ</a>。</li>
+            <li>クリック<strong>プロジェクトを作成する</strong>。</li>
+            <li>プロジェクト名を入力します。</li>
+            <li>利用規約に同意してクリック<strong>継続する</strong>。</li>
+            <li>プロジェクトでGoogleAnalyticsを有効にするデフォルトを受け入れ、[ <strong>継続する</strong>。</li>
+            <li>GoogleAnalyticsアカウントを選択または提供します。</li>
+            <li>クリック<strong>プロジェクトを作成する</strong>。</li>
+            <li>あなたがに戻っていることを確認してください<strong>プロジェクトの概要</strong>ページ。iOSとAndroidのアプリ作成ボタンにも注意してください（赤い矢印はそれらの位置を示しています）。
+                <figure class="bcls-figure">
+                    <img class="bcls-image" src="/assets/images/using-bcb/self-config-ga/fb-project-overview.png" alt="project overview">
+                </figure>
+            </li>
+            <li>iOSアプリを使用している場合は、[iOSアプリ]ボタンをクリックし、5つの手順を実行してiOSアプリにFirebaseを追加します。手順を完了するには、iOS開発者が支援する必要があります。次のGoogleドキュメントには、手順の詳細が記載されています。
+                <ul>
+                    <li><a href="https://firebase.google.com/docs/ios/setup">iOSプロジェクトにFirebaseを追加する</a>。</li>
+                </ul>
+                <figure class="bcls-figure">
+                    <img class="bcls-image" src="/assets/images/using-bcb/self-config-ga/fb-add-ios-app.png" alt="add iOS">
+                </figure>
+            </li>
+            <li>Androidアプリを使用している場合は、[Androidアプリ]ボタンをクリックし、4つの手順を実行してAndroidアプリにFirebaseを追加します。手順を完了するには、Android開発者が支援する必要があります。次のGoogleドキュメントには、手順の詳細が記載されています。
+                <ul>
+                    <li><a href="https://firebase.google.com/docs/android/setup">AndroidプロジェクトにFirebaseを追加する</a>。</li>
+                </ul>
+                <figure class="bcls-figure">
+                    <img class="bcls-image" src="/assets/images/using-bcb/self-config-ga/fb-add-android-app.png" alt="add android">
+                </figure>
+            </li>
+        </ol>
+        <p>このドキュメントの最後の2つのセクションで詳しく説明されているように、Goggle Tag ManagerファイルとFirebaseファイルを追加すると、Firebase自体のイベントを確認できるようになります。さらに、ヒットはGoogleAnalyticsに送信されます。ここでは、Google Tag Managerが仲介者として機能し、Firebaseにプッシュされたデータに基づいてその情報をGoogleAnalyticsに送信していることに注意してください。</p>
+        <figure class="bcls-figure">
+            <img class="bcls-image" src="/assets/images/using-bcb/self-config-ga/fb-test-install.png" alt="firebase results">
+        </figure>
+    </section>
+    <section class="bcls-section">
+        <h2 id="Install_templates_into_Google_Data_Studio">テンプレートをGoogleDataStudioにインストールします</h2>
+        <p>Brightcoveは、ウェブ、モバイル、スマートテレビ用に1つずつ、Google DataStudioのビルド済みレポートテンプレートを提供しています。の中に<a href="#Obtain_the_templates_and_configuration_files">テンプレートと構成ファイルを入手する</a>このドキュメントの前半のセクションで、オンボーディングマネージャーにファイル/ URLをリクエストしました。3つのURLは次のとおりです。</p>
+        <ul>
+            <li>WEB：https：//datastudio.google.com/reporting/43b8362b-785a-487d-b681-39dde640f029</li>
+            <li>モバイル：https：//datastudio.google.com/reporting/2ca9572d-e50e-4931-858a-e67dc99f62f9</li>
+            <li>STV：https：//datastudio.google.com/reporting/bfa8fad2-b4f6-4bfc-aee2-33742bf600a5</li>
+        </ul>
+        <p>テンプレートを使用するには、次のタスクを実行します。</p>
+        <ol class="bcls-tasklist-restart">
+            <li>レポート、モバイル、Web、またはスマートテレビの使用法に注意して、URLをクリックしてください。</li>
+            <li>新しいブラウザタブで、次の情報が表示されていることを確認してください。
+                <figure class="bcls-figure">
+                    <img class="bcls-image" src="/assets/images/using-bcb/self-config-ga/ga-dashboard-config-import.png" alt="import configuration">
+                </figure>
+            </li>
+            <li>から<strong>ビューを選択します</strong>ドロップダウンして、一致するプロパティ、モバイル（iOSおよびAndroid）、Webまたはスマートテレビを選択します。</li>
+            <li>必要に応じて、構成の名前を変更します。</li>
+            <li>[ <strong>作成</strong> ] をクリックします。</li>
+            <li>インポートされた構成が開きます。データを調べて、有効と思われることを確認します。例を以下に示します。
+                <figure class="bcls-figure">
+                    <img class="bcls-image" src="/assets/images/using-bcb/self-config-ga/ds-sample-report.png" alt="example report">
+                </figure>
+            </li>
+        </ol>
+        <p>それでおしまい！BrightcoveBeacon用にGoogleAnalyticsを設定しました。おめでとうございます。</p>
+    </section>
+</article> <!-- complete bootstrap layout -->
+    </div>
+    <div class="col-sm-2 right-side-bar">
+      
+      <nav class="right-side-nav" id="right_side_nav">
+        <h6 class="toc">ページコンテンツ</h6>
+        <ul id="in_page_nav" class="list-none"></ul>
+      </nav>
+      
+    </div>
+  </div>
+</div>
+
+<hr>
+<div class="last-updated">
+  ページの最終更新日09 Oct 2021
+</div>
+
+
+ <footer class="bcls-footer" role="contentinfo">
+  <div class="row">
+    <div class="region region-footer-top-center col-md-12">
+      <nav role="navigation" aria-labelledby="block-brightcovesupport-menu" id="block-brightcovesupport" class="footer-menu">
+        <img src="https://support.brightcove.com/site-assets/images/site/SVG/COVE004_Brightcove_Logo_093020_RGB_KO.svg" class="bc-footer-logo" alt="Brightcove">
+
+        <h2>Brightcoveサポート</h2>
+
+        <ul class="menu">
+          <li>
+            <a href="https://status.brightcove.com">システムステータス</a>
+          </li>
+          <li>
+            <a href="https://supportportal.brightcove.com/s/login/?">サポートへのお問い合わせ</a>
+          </li>
+          <li>
+            <a href="https://support.brightcove.com/">ドキュメンテーション</a>
+          </li>
+        </ul>
+
+      </nav>
+      <nav role="navigation" aria-labelledby="block-training-menu" id="block-training" class="footer-menu">
+
+        <h2>トレーニング</h2>
+
+        <ul class="menu">
+          <li>
+            <a href="https://studio.support.brightcove.com/training/online-training-courses.html">オンラインコース</a>
+          </li>
+          <li>
+            <a href="https://studio.support.brightcove.com/training/register-training.html">コースに登録する</a>
+          </li>
+          <li>
+            <a href="https://university.brightcove.com/">Brightcove University</a>
+          </li>
+        </ul>
+
+      </nav>
+      <nav role="navigation" aria-labelledby="block-brightcove-menu" class="footer-menu">
+
+        <h2>Brightcove</h2>
+
+        <ul class="menu">
+          <li>
+            <a href="https://www.brightcove.com">Brightcove.com</a>
+          </li>
+          <li>
+            <a href="https://supportportal.brightcove.com/s/login/?">お問合せ</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="row">
+    <div class="region region-footer-bottom-center col-md-12">
+      <div class="bcls-copyright footer-menu">
+        <table>
+          <tr>
+            <td>
+              <div id="bc_copyright" class="field field--name-field-copyright-year field--type-string field--label-hidden field--item" style="float: left;"> Brightcove Inc. All rights reserved.</div>
+            </td>
+            <td><a href="https://www.brightcove.com/en/legal/privacy">プライバシー</a> | <a href="https://www.brightcove.com/en/terms-and-conditions">利用規約</a></td>
+            <td>
+              <div class="gf-links-cols footer-menu">
+                <div class="gf-social"><a href="https://www.linkedin.com/company/16439" title="LinkedIn" newtab="newtab" class="gf-social-linkedin" style="margin-right: 1rem;"><i data-feather="linkedin" style="color:#8E9093;height: 1.25rem;"></i></a><a href="https://twitter.com/brightcove" title="Twitter" newtab="newtab" class="gf-social-twitter" style="margin-right: 1rem;"><i data-feather="twitter" style="color:#8E9093;height: 1.25rem;"></i></a><a href="https://www.facebook.com/Brightcove" title="Facebook" newtab="newtab" class="gf-social-facebook"><i data-feather="facebook" style="color:#8E9093;height: 1.25rem;"></i></a>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script translate="no">
+      
+  var searchBox = sajari.init({
+    mode: "search-box",
+    project: "1588255093746585379", // Set this to your project.
+    collection: "brightcove-documenation", // Set this to your collection.
+    instantPipeline: "autocomplete", // Pipeline used as you type
+    inputPlaceholder: "Search", // Input element placeholder
+    maxSuggestions: 5, // Maximum number of suggestions to show
+    attachSearchBox: document.getElementById("nav-search-box") // DOM element to attach to
+  });
+  
+    searchBox("sub", "pipeline.search-sent", function (_, query) {
+      window.location = "/search.html?q=" + encodeURIComponent(query.q);
+    });
+  
+
+</script>   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/https-fix.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/setDate.js"></script>
+  
+  <script src="https://support.brightcove.com/site-assets/js/site/prism.js"></script>
+  
+  <script src="https://support.brightcove.com/site-assets/js/site/site.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/learning-paths/learning-paths.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/tabs.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/toc.js"></script>
+  <script src="/assets/js/sites_nav.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/bcls-utils.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/local-link-fix.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/sajari-reindex.js"></script>
+  <script src="/assets/js/feedback.js"></script>
+  
+  <script src="/assets/js/sajari-search-foot.js"></script>
+  
+	<script translate="no">
+		feather.replace()
+	</script>
+  <!-- <script src="/assets/js/sajari-index.js"></script> -->
+  <style translate="no">
+    a.sj-paginator__page-number.sj-paginator__page-number--current.css-so0ov7 {
+      background-color: lightblue;
+    }
+    div.sj-tabs__tab {
+      margin-top: 3rem;
+      margin-left: .3rem;
+      border-top-left-radius: .4rem;
+      border-top-right-radius: .4rem;
+      background-color:#e8e8e8;
+    }
+
+    div.sj-tabs__tab.sj-tabs__tab--selected {
+      border-bottom-color: crimson;
+      background-color: #f8f8f8;
+    }
+
+    p.sj-results__result__description.css-p9jvyt {
+      font-size: 1rem;
+    }
+
+    .sj-result__text.css-31l7gp h3 {
+      color: navy;
+      font-size: 1.4rem;
+    }
+    </style>
+
+</body>
+
+</html> 

@@ -1,0 +1,791 @@
+<!doctype html>
+<html lang="en-us">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="このトピックは、Evergentでのメール送信者とクーポン生成を管理するためのガイドを提供します。">
+  
+  <title>「エバージェント：メール送信者とクーポン'</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/prism.css">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/styles.css">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/landing-page.css">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/tabs.css">
+  <link rel="stylesheet" href="/assets/css/local.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-2728311-17"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];関数gtag（）{dataLayer.push(arguments);} gtag（ 'js'、new Date（））; gtag（ 'config'、 'UA-2728311-17'）;
+</script>
+  <script src="/assets/js/sajari-head.js"></script>
+	<script src="https://unpkg.com/feather-icons"></script>
+</head>
+
+
+<body class="body">
+ <header>
+  <div class="div-header">
+    <a href="/"><img class="product-logo" src="https://support.brightcove.com/site-assets/images/site/product-logos/SVG/COVE004_Brightcove_Beacon_Logo_RGB_K.svg" alt="Brightcove"></a>
+<!-- GTranslate: https://gtranslate.io/ -->
+<select onchange="doGTranslate(this);"><option value="">Select Language</option><option value="en|en" translate="No">English</option><option value="en|zh-TW" translate="No">繁體中文</option><option value="en|fr" translate="No">Français</option><option value="en|de" translate="No">Deutsche</option><option value="en|ja" translate="No">日本語</option><option value="en|ko" translate="No">한국어</option><option value="en|es" translate="No">Español</option></select>
+
+<script translate="no">
+/* <![CDATA[ */
+function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang.toLowerCase() != 'zh-cn' && plang.toLowerCase() != 'zh-tw')plang='en';location.href=location.protocol+'//'+(lang == 'en' ? '' : lang+'.')+location.hostname.replace('www.', '').replace(RegExp('^' + plang + '\\.'), '')+location.pathname+location.search;}
+/* ]]> */
+</script>
+
+
+
+    <span class="secondary-nav"><a href="https://supportportal.brightcove.com/s/login/?"><i data-feather="help-circle"></i> サポート問い合わせ先</a><span style="vertical-align: middle;margin-left:1em;margin-right:1em;">|</span><a href="https://status.brightcove.com/"><i data-feather="cloud"></i> システムステータス</a></span>
+    <br>
+    
+  </div>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb arr-right">
+      
+      <li class="breadcrumb-item first-item"><a href="/">ホーム</a></li>
+        
+      <li class="breadcrumb-item"><a href="/monetization/beacon-evergent/">Beacon Advanced Monetization</a></li>
+      
+      <li class="breadcrumb-item active" aria-current="page">「エバージェント：メール送信者とクーポン'</li>
+    </ol>
+  </nav>
+</header> <div class="container">
+    <div class="row">
+      <div class="col-sm-3 left-side-bar">
+				<select id="site_select" class="bcls-select" style="margin-left: 1rem;">
+					<option value="">Brightcoveのその他のドキュメント</option>
+					 
+							<option value="https://support.brightcove.com">ドキュメンテーションホーム</option>
+						  
+							<option value="">-ビデオクラウド-</option>
+						  
+							<option value="https://studio.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp; Video Cloud Studio</option>
+						  
+							<option value="https://player.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp; Brightcoveプレーヤーの開発</option>
+						  
+							<option value="https://apis.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ビデオクラウドプラットフォームAPI</option>
+						  
+							<option value="https://sdks.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ビデオクラウドデバイスSDK</option>
+						  
+							<option value="https://integrations.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;統合とCMSコネクタ</option>
+						  
+							<option value="https://general.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ビデオクラウドの一般情報</option>
+						  
+							<option value="">-ビデオエッセンシャル-</option>
+						  
+							<option value="https://beacon.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブ Beacon </option>
+						  
+							<option value="https://live.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブライブ</option>
+						  
+							<option value="https://zencoder.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp; Zencoder</option>
+						  
+							<option value="">-ビデオクラウドアドオン-</option>
+						  
+							<option value="https://campaign.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブキャンペーン</option>
+						  
+							<option value="https://engage.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブエンゲージ</option>
+						  
+							<option value="https://gallery.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブギャラリー</option>
+						  
+							<option value="https://studio.support.brightcove.com/social/index.html">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブソーシャル</option>
+						  
+							<option value="https://ssai.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブSSAI</option>
+						 
+				</select>
+        <nav class="sidenav" id="side_nav">
+           
+            <h5><a href="/index.html">ホーム</a></h5>
+              
+              <h5 class="submenu-header"><a href="/getting-started/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;入門編</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/getting-started/learning-guide-bc-beacon.html">学習ガイド</a></li>
+                    
+                    <li><a href="/getting-started/implementation-phases.html">実装フェーズ</a></li>
+                    
+                    <li><a href="/getting-started/app-design-considerations.html">アプリケーション設計の考慮事項</a></li>
+                    
+                    <li><a href="/getting-started/creating-your-app-design-info-architecture.html">アプリの設計-情報アーキテクチャ</a></li>
+                    
+                    <li><a href="/getting-started/creating-your-app-design-layout-options.html">アプリのデザイン-レイアウトオプション</a></li>
+                    
+                    <li><a href="/getting-started/design-best-practices.html">設計のベストプラクティス</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/syncing-with-video-cloud/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;Video Cloud との同期</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/syncing-with-video-cloud/vc-custom-fields.html">Video Cloud カスタム項目の作成</a></li>
+                    
+                    <li><a href="/syncing-with-video-cloud/syncing-video-cloud-catalog.html">同期を強制する</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/using-brightcove-beacon/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;Brightcove Beacon の使用</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/using-brightcove-beacon/adding-trailer-movie.html">映画への予告編の追加</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/adding-to-page.html">ページへのカルーセルの追加</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/cloud-playout/cloud-playout-overview.html">概要:クラウドプレイアウトチャネル</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/cloud-playout/cloud-playout-stream-vod.html">クラウドプレイアウトチャネルの作成</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/cloud-playout/cloud-playout-add-content.html">クラウドプレイアウトチャネルへのコンテンツの追加</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/cloud-playout/static-image-overlays.html">静止画像オーバーレイ</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/cloud-playout/using-channel-actions.html">チャネルアクションの使用</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/cloud-playout/adding-bumpers-to-vod.html">クラウドプレイアウトへのバンパーの追加</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/cloud-playout/enabling-server-side-ads.html">クラウドプレイアウトの収益化</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/cloud-playout/mid-roll-ad-insertion.html">ミッドロール広告をチャネルに追加する</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/cloud-playout/publish-channel-beacon.html">クラウドプレイアウトチャネルの公開</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/cloud-playout/viewing-channel-output-and-analytics.html">チャネル出力と分析の表示</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/creating-a-channel.html">Beacon チャネルの作成</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/electronic-program-guides.html">電子番組ガイド（EPG）の作成</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/creating-a-page.html">新しいページの作成</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/creating-a-playlist.html">プレイリストを作成する</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/series-seasons-episodes.html">シリーズ/シーズン/エピソードの作成</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/ga-self-configuration.html">GoogleAnalyticsの自己構成</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/including-non-configurable-pages.html">設定できないページを含める</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/introducing-pages.html">ページの紹介</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/streaming-live-event.html">ライブイベントのストリーミング</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/streaming-vods-to-a-channel.html">チャネルへのVODのストリーミング</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/tools.html">ツールの使用</a></li>
+                    
+                    <li><a href="/using-brightcove-beacon/viewing-analytics-data.html">分析データの表示</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/monetization/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;収益化</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li class="submenu-header">
+                      <a href="/monetization/general/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;全般的</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/monetization/general/creating-stripe-account.html">ストライプアカウントの作成</a></li>
+                            
+                            <li><a href="/monetization/general/creating-subscription-package.html">サブスクリプションパッケージの作成</a></li>
+                            
+                            <li><a href="/monetization/general/promo-codes.html">プロモーションコードの作成</a></li>
+                            
+                            <li><a href="/monetization/general/vc-custom-fields.html">現金化のためのカスタムフィールド</a></li>
+                            
+                            <li><a href="/monetization/general/implementing-authvod.html">AuthVODの実装</a></li>
+                            
+                            <li><a href="/monetization/general/monetization-options.html">現金化オプションを理解する</a></li>
+                            
+                            <li><a href="/monetization/general/using-subscription-package.html">サブスクリプションパッケージの使用</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/monetization/ssai/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;SSAI</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/monetization/ssai/advertisement.html">広告の作成</a></li>
+                            
+                            <li><a href="/monetization/ssai/configuring-server-side-ad-settings.html">サーバーサイド広告設定の構成</a></li>
+                            
+                            <li><a href="/monetization/ssai/live-ssai.html">ライブSSAIの実装</a></li>
+                            
+                            <li><a href="/monetization/ssai/vod-ssai.html">VOD SSAIの実装</a></li>
+                            
+                            <li><a href="/monetization/ssai/beacon-apps-ad-targeting.html"> Beacon アプリの広告ターゲティング</a></li>
+                           
+                      </ul>
+                    </li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/beacon-web-store/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp; Beacon ウェブストア</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/beacon-web-store/beacon-webstore-overview.html">概要:ブライトコーブ Beacon ウェブストア</a></li>
+                    
+                    <li><a href="/beacon-web-store/integration-details.html"> Beacon ウェブストアとの統合</a></li>
+                    
+                    <li><a href="/beacon-web-store/beacon-store-webhook-reference.html"> Beacon ストアWebhookリファレンス</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/creating-your-apps/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;アプリの作成</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li class="submenu-header">
+                      <a href="/creating-your-apps/general/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;全般的</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/creating-your-apps/general/common-required-info.html">共通の必要な情報</a></li>
+                            
+                            <li><a href="/creating-your-apps/general/device-apps-validation-guide.html">デバイスアプリ検証ガイド</a></li>
+                            
+                            <li><a href="/creating-your-apps/general/in-app-subscription-resources.html">アプリ内サブスクリプションリソース</a></li>
+                            
+                            <li><a href="/creating-your-apps/general/links-subscriptions.html">AppStoreサブスクリプションへのリンク</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/creating-your-apps/android/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;Android</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/creating-your-apps/android/submitting-to-android.html">Androidストアへの新しいアプリの送信</a></li>
+                            
+                            <li><a href="/creating-your-apps/android/updating-android-apps-to-bcb.html">AndroidアプリをBrightcove Beacon に更新する</a></li>
+                            
+                            <li><a href="/creating-your-apps/android/adding-subscriptions-in-android.html">Androidへのサブスクリプションの追加</a></li>
+                            
+                            <li><a href="/creating-your-apps/android/improving-relevance-android.html">AndroidPlayストアでの検索の関連性の向上</a></li>
+                            
+                            <li><a href="/creating-your-apps/android/installing-android-test-build.html">Androidテストビルドのインストール</a></li>
+                            
+                            <li><a href="/creating-your-apps/android/managing-google-subscriptions-1.html">Googleサブスクリプションの管理パート1</a></li>
+                            
+                            <li><a href="/creating-your-apps/android/managing-google-subscriptions-2.html">Googleサブスクリプションの管理パート2</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/creating-your-apps/fire-tv/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;Fire TV</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/creating-your-apps/fire-tv/installing-fire-tv-test-build.html">Fire TVテストビルドのインストール</a></li>
+                            
+                            <li><a href="/creating-your-apps/fire-tv/submitting-to-amazon.html">Amazonストアへの送信</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/creating-your-apps/ios-tvos/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;iOS / tvOS</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/creating-your-apps/ios-tvos/installing-ios-test-build.html">iOS / tvOSテストビルドのインストール</a></li>
+                            
+                            <li><a href="/creating-your-apps/ios-tvos/submitting-to-apple.html">AppleStoreへの送信</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/creating-your-apps/roku/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;Roku</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/creating-your-apps/roku/configuring-inchannel-products.html">Rokuでのチャネル内製品の構成</a></li>
+                            
+                            <li><a href="/creating-your-apps/roku/installing-roku-test-build.html">Rokuテストビルドのインストール</a></li>
+                            
+                            <li><a href="/creating-your-apps/roku/submitting-to-roku.html">Rokuストアへの送信</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/creating-your-apps/samsung/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;Samsung</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/creating-your-apps/samsung/samsung-partner.html">サムスンのパートナーになる</a></li>
+                            
+                            <li><a href="/creating-your-apps/samsung/submitting-to-samsung.html">サムスンストアへの送信</a></li>
+                           
+                      </ul>
+                    </li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/references/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;参考文献</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/references/branding-beacon-apps.html">ブライトコーブ Beacon アプリのブランディング</a></li>
+                    
+                    <li><a href="/references/common-configuration-settings.html">一般的な構成設定</a></li>
+                    
+                    <li><a href="/references/glossary.html">用語集</a></li>
+                    
+                    <li><a href="/references/how-beacon-gets-data.html">Brightcove Beacon がデータを取得する方法</a></li>
+                    
+                    <li><a href="/references/image-requirements.html">画像とその仕様</a></li>
+                    
+                    <li><a href="/references/known-issues.html">既知の問題</a></li>
+                    
+                    <li><a href="/references/product-updates.html">製品の更新</a></li>
+                    
+                    <li><a href="/references/remote-asset-limitations.html">リモート資産の制限</a></li>
+                    
+                    <li><a href="/references/beacon-tasks-in-vc.html">ビデオクラウドで実行されるタスク</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/training/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;トレーニング</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/training/training-demand-custom-fields.html">Video Cloud ビデオ/カスタムフィールドの使用</a></li>
+                    
+                    <li><a href="/training/training-demand-design-layout.html">アプリケーションレイアウトの設計</a></li>
+                    
+                    <li><a href="/training/training-demand-playlists.html">プレイリストの作成と使用</a></li>
+                    
+                    <li><a href="/training/training-demand-series-seasons-episodes.html">シリーズ、季節、エピソードの作成</a></li>
+                    
+                    <li><a href="/training/training-demand-vod-ssai.html">VOD サーバーサイド広告の実装</a></li>
+                    
+                    <li><a href="/training/training-demand-publish-android-app.html">PlayストアでAndroidアプリを公開する</a></li>
+                    
+                    <li><a href="/training/training-demand-viewing-analytics.html">分析データの表示</a></li>
+                    
+                    <li><a href="/training/training-demand-streaming-live-bc-beacon.html">ブライトコーブ Beacon へのライブイベントのストリーミング</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/support/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;サポート</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/support/viewing-brightcove-system-status-page.html">Brightcoveのシステムステータスページの表示</a></li>
+                    
+                    <li><a href="/support/contact-sales.html">営業へのお問い合わせ</a></li>
+                    
+                    <li><a href="/support/opening-case-with-brightcove-support.html">サポートケースを開く</a></li>
+                    
+                    <li><a href="/support/reset-support-portal-password.html">サポートポータルのパスワードをリセットする</a></li>
+                   
+              </ul>
+             
+      </nav>
+    </div>
+    <div class="col-lg-7" style="background-color: white;color: #333333;margin-top: -1em;margin-bottom: -1em;padding-bottom:1em;">
+  <!-- bootstrap layout -->
+ <p id="bc_veggie_burger_wrapper" style="display: none;"><img id="bc_veggie_burger" src="/assets/images/feather/menu.svg" alt="Navigation Menu"></p>
+
+<!-- search bar -->
+<div id="nav-search-box" style="margin-top: 1rem;"></div>
+<!-- in-page navigation for narrow screens -->
+<details class="centered-inpage-nav" id="centered_inpage_nav">
+  <summary><h6 class="toc">ページコンテンツ</h6></summary>
+  <nav id="centered_toc"></nav>
+  <ul id="centered_in_page_toc" class="list-none"></ul>
+</details>
+<!-- open in new tab/window -->
+<a id="open_new_tab" href="#" target="_blank" style="display: none;"><img src="/assets/images/feather/external-link.svg" alt="open in new tab" style="margin-top:4em;width: 1.5em;"></a>   <h1>「エバージェント：メール送信者とクーポン'</h1>
+
+<article class="bcls-article">
+	<summary>このトピックは、Evergentでのメール送信者とクーポン生成を管理するためのガイドを提供します。</summary>
+	<section class="bcls-section">
+		<h2 id="Introduction">はじめに</h2>
+		<p>Evergentバックオフィスシステムは、ビジネスの管理に役立つサービスを提供します。このトピックでは、次の2つのサービスについて説明します。</p>
+		<ul>
+			<li>自動メール送信者</li>
+			<li>クーポンマネージャー</li>
+		</ul>
+	</section>
+	<section class="bcls-section">
+		<h2 id="emailer">メール送信者</h2>
+		<p>メール送信者を使用すると、システムで生成されたさまざまなメールのテンプレートとスケジュールを作成できます。次のセクションでは、メール送信者の操作について詳しく説明します。</p>
+	</section>
+	<section class="bcls-section">
+		<h2 id="message_types">メッセージタイプ</h2>
+		<p>Evergentは、次のメッセージタイプをサポートしています。</p>
+		<dl>
+			<dt>スケジューリング</dt>
+			<dd>システム管理者でバッチジョブがスケジュールされると、管理者に電子メールが送信されます。</dd>
+			<dt>クレジットカードの有効期限のリマインダー</dt>
+			<dd>ビジネスレベルで[クレジットカードの有効期限のリマインダー]チェックボックスをオンにすると、クレジットカードの有効期限が近づくと、リマインダーメールが顧客に送信されます（通常、メールはカードの有効期限が切れる1か月前に送信されます）。この場合、システムは電子メールテンプレートメッセージタイプ「クレジットカードの有効期限のリマインダー」を使用します。</dd>
+			<dt>バルクメール</dt>
+			<dd>企業が販促メールをスケジュールし、実行する将来の時間を指定する場合は、一括メールメッセージタイプが使用されます。これらのタイプの一括電子メールは、ビジネスユニットのサブスクライバー、特定のマーケットエリアのサブスクライバー、または特定のサービスに送信できます。</dd>
+			<dt>クレジットカード取引</dt>
+			<dd>クレジットカード決済取引が加入者によって行われる場合、取引の詳細は、この電子メールテンプレートを使用して電子メールで顧客に送信されます。</dd>
+			<dt>イベントメッセージ</dt>
+			<dd>イベントメッセージタイプの電子メールテンプレートは、電子メールテンプレートを定義し、それらをイベントカテゴリにクロスマップするために使用されます。これにより、イベントがアカウントレベルで記録されると、サブスクライバーへの電子メール通知をトリガーできます。</dd>
+			<dt>このために</dt>
+			<dd>アドホックメッセージタイプは、イベントカテゴリマッピングのいずれにもリンクしていない個々のメッセージを送信することです。</dd>
+		</dl>
+	</section>
+	<section class="bcls-section">
+		<h2 id="Emailers">メール送信者</h2>
+		<p>[電子メール]タブは、電子メールテンプレートを追加/編集し、ビジネスユニットの電子メールをスケジュールするために使用されます。</p>
+		<figure class="bcls-figure">
+			<img class="bcls-image" src="/assets/images/beacon-evergent/emailers-tab.png" alt="Emailers Tab">
+			<figcaption class="bcls-caption--image">[メール送信者]タブ</figcaption>
+		</figure>
+		<h3>新しいメール送信者の追加</h3>
+		<p>新しいメール送信者を追加するには、次の手順を実行します。</p>
+		<ol class="bcls-tasklist-restart">
+			<li>に<strong>メール送信者</strong>ビジネスユニットの画面で、[追加]（<i data-feather="plus"></i>）アイコン。</li>
+			<li>
+				の中に<strong>基本的な詳細</strong>セクションに、次のように必要な詳細を入力します。
+				<ol style="list-style-type: lower-latin;">
+					<li>に<strong>題名</strong>フィールドに、電子メールのタイトルを入力します。</li>
+					<li>に<strong>メールの件名</strong>フィールドに、電子メールの件名を入力します。</li>
+					<li>から電子メールメッセージを定義するメッセージタイプを選択します<strong>メッセージタイプ</strong>ドロップダウンリスト。</li>
+					<li>の中に<strong>管理者の電子メール</strong>フィールドに、電子メールの送信元の電子メールIDを入力します。</li>
+					<li>の中に<strong>管理者名</strong>フィールドに、管理者名を入力します。</li>
+					<li>を選択<strong>イベントカテゴリ</strong>提供されたドロップダウンリストから。</li>
+					<li>
+						メールの送信先のメールIDをに入力します<strong>CC</strong>と<strong>BCC</strong>田畑。<aside class="bcls-aside bcls-aside--information">注:各電子メールIDをコンマで区切ることにより、CCフィールドとBCCフィールドに複数の電子メールIDを指定できます。</aside>
+					</li>
+				</ol>
+			</li>
+			<li>選択する<strong>プレーンテキスト</strong>また<strong>HTML</strong>選択した形式でメールを送信します。</li>
+			<li>の中に<strong>メール/ニュースレターメッセージ</strong> [電子メール本文]テキストボックスのセクションに、顧客の電子メールにメッセージを表示するメッセージテンプレートを入力します。</li>
+			<li>クリック<strong>プレビュー</strong>プレーンテキストまたはHTML形式の電子メールメッセージを表示するには、テキストボックス領域の横にあります。</li>
+			<li>
+				[ <strong>作成</strong> ] ボタンをクリックします。
+				<figure class="bcls-figure">
+					<img class="bcls-image" src="/assets/images/beacon-evergent/new-emailer.png" alt="New Emailer">
+					<figcaption class="bcls-caption--image">新しいEmailer</figcaption>
+				</figure>
+			</li>
+		</ol>
+		<h3>メール送信者の更新</h3>
+		<ol class="bcls-tasklist-restart">
+			<li>に移動します<strong>メール送信者</strong>ビジネスユニットの画面。</li>
+			<li>の中に<strong>メールテンプレートのリスト</strong>セクションで、編集するメールテンプレートをクリックします。</li>
+			<li>NS <strong>メール送信者を更新</strong>画面が表示されたら、使用可能なフィールドに必要な変更を加えて、をクリックします<strong>アップデート</strong>。</li>
+		</ol>
+		<aside class="bcls-aside bcls-aside--information">[メール送信者の更新]画面の[メッセージタイプ]フィールドと[イベントカテゴリ]フィールドは変更できないことに注意してください。</aside>
+		<h3>メールをスケジュールする</h3>
+		<p>後で送信するようにメールをスケジュールすることができます。この画面は、指定された時間ベースで、またはDMAまたはサービスに対して毎日大量の電子メールをスケジュールするためのものです。</p>
+		<h4>メールのスケジュール</h4>
+		<ol class="bcls-tasklist-restart">
+			<li>に<strong>メール送信者</strong>画面上、<strong>メールテンプレート</strong>タブで、メッセージタイプのメールを一括メールとしてクリックします。</li>
+			<li>クリック<strong>メールのスケジュール</strong>タブ。スケジュールされたメールのリストが表示されます。</li>
+			<li>
+				メールをスケジュールするには、[追加]（<i data-feather="plus"></i>）アイコンをクリックして、[電子メールのスケジュール]ダイアログを開きます。
+				<figure class="bcls-figure">
+					<img class="bcls-image" src="/assets/images/beacon-evergent/schedule-email.png" alt="Schedule Email">
+					<figcaption class="bcls-caption--image">メールのスケジュール</figcaption>
+				</figure>
+			</li>
+			<li>メールIDをに入力します<strong>メールの送信先</strong>分野。</li>
+			<li>クリック<strong>実行する時間</strong>フィールドでスケジュールの日時を選択します。</li>
+			<li>選択した日時に毎日メールをスケジュールするには、<strong>毎日のスケジュール</strong>チェックボックス。</li>
+		</ol>
+		<h4>スケジュールされたメールを削除する</h4>
+		<ol class="bcls-tasklist-restart">
+			<li>クリック<strong>メールテンプレート</strong>下のタブ<strong>メール送信者</strong>左側のメニューバーのタブ。</li>
+			<li>削除する一括メール（メッセージタイプ）をクリックします。</li>
+			<li>
+				NS <strong>メール送信者を更新</strong>画面が表示されます。
+			</li>
+			<li>
+				クリック<strong>メールのスケジュール</strong>タブ。
+				<figure class="bcls-figure">
+					<img class="bcls-image" src="/assets/images/beacon-evergent/update-emailer.png" alt="Update Emailer">
+					<figcaption class="bcls-caption--image">メール送信者を更新</figcaption>
+				</figure>
+			</li>
+			<li>[削除]をクリックします（<i data-feather="trash-2"></i>）のアイコン<strong>行動</strong>スケジュールされた電子メールをから削除する列<strong>スケジュールされた電子メールのリスト</strong>。</li>
+			<li></li>
+		</ol>
+	</section>
+	<section class="bcls-section">
+		<h2 id="Coupon_generation">クーポン生成</h2>
+		<p>クーポン生成権限は、ユーザーのBUグループ権限に基づいています。この権限を持つログインユーザーは、クーポンを生成および編集できます。</p>
+		<h3>新しいクーポン/バウチャーの追加</h3>
+		<ol class="bcls-tasklist-restart">
+			<li>クリック<strong>クーポン</strong>左のメニューから。</li>
+			<li>に<strong>クーポン</strong>ビジネスユニットの画面で、<strong>追加</strong>（（<i data-feather="plus"></i>）アイコン。NS <strong>クーポン</strong>デフォルトの画面が表示されます。</li>
+			<li>
+				クリック<strong>追加</strong>（（<i data-feather="plus"></i>）クーポンを生成するためのアイコン。
+				<figure class="bcls-figure">
+					<img class="bcls-image" src="/assets/images/beacon-evergent/generate-coupon.png" alt="Generate Coupon">
+					<figcaption class="bcls-caption--image">クーポンを生成する</figcaption>
+				</figure>
+			</li>
+			<li>
+				新しいクーポン/バウチャーの生成画面が次のように表示されます。
+				<figure class="bcls-figure">
+					<img class="bcls-image" src="/assets/images/beacon-evergent/new-coupon-voucher.png" alt="New Coupon/Voucher">
+					<figcaption class="bcls-caption--image">新しいクーポン/バウチャー</figcaption>
+				</figure>
+			</li>
+			<li>
+				次のようにフィールドに情報を入力します。
+				<ol style="list-style-type: lower-alpha;">
+					<li><strong>クーポンプレフィックス</strong>：クーポンのプレフィックス（例：TestC、Hal、CD、Fridayなど）</li>
+					<li><strong>バッチ名</strong>：クーポンのバッチ名（例：テストクーポン、クリスマスなど）</li>
+					<li><strong>小売業者</strong>：クーポンは、（AT＆T、Vodafone、Verizon、Ideaなど）のような小売業者の選択で生成できます。</li>
+					<li><strong>開始日</strong>：ユーザーがクーポンを利用できるようになった日付</li>
+					<li><strong>賞味期限</strong>：ユーザーはクーポンの有効期限を定義できます</li>
+					<li><strong>クーポンリクエスター</strong>：クーポンをリクエストしたリクエスターの名前を示します</li>
+					<li>
+						<strong>ウォレットトップアップとしてクレジット</strong>：
+						<ul>
+							<li>ウォレットチャージのクーポンを生成するには、トグルスイッチをクリックして有効にし、金額を入力します</li>
+							<li>クーポンをバウチャーとして生成するには、トグルスイッチをクリックして無効にします</li>
+						</ul>
+						<figure class="bcls-figure">
+							<img class="bcls-image" src="/assets/images/beacon-evergent/toggle-wallet-top-up.png" alt="Toggle for Wallet Top-Up">
+							<figcaption class="bcls-caption--image">ウォレットの補充を切り替える</figcaption>
+						</figure>
+					</li>
+					<li><strong>割引タイプ</strong>：クーポンタイプを定義します–たとえば、無料、フラット、フラットオフ、パーセンテージ、パーセンテージオフ、および有効期間の延長</li>
+					<li><strong>金額/パーセンテージ</strong>：選択したタイプについて、[金額/パーセンテージ]フィールドが表示されます</li>
+					<li><strong>期間と期間</strong>：適用されるクーポンの期間は、クーポンの期間が意味する期間のそれぞれの選択として、日数または月数にすることができます。</li>
+					<li><strong>クーポンコードとしてプレフィックスを作成する</strong>：このチェックボックスをオンにすると、プレフィックスがクーポンコードとして保存されます</li>
+					<li><strong>クーポン数</strong>：ユーザーは、バッチ用に生成されたクーポンの数を提供できます。「クーポンコードとしてのプレフィックス」の場合、クーポン数は「1」となります。</li>
+					<li><strong>クーポンの優先順位</strong>：ビジネスで生成され、サブスクリプションおよびオファータイプにマップされた優先順位ベースで一般的なクーポン表示を設定するために使用されます</li>
+					<li><strong>クーポンの長さ</strong>：生成するクーポンコードの長さ</li>
+					<li><strong>複数の償還</strong>：このトグルスイッチが選択されている場合、ユーザーはクーポンの最大償還額を定義できます</li>
+					<li><strong>最大償還</strong>：クーポンの償還数を許可します</li>
+					<li><strong>シングルユーザーによる複数の償還</strong>：チェックボックスを使用すると、顧客は自分のアカウントで1つのクーポンをシングルユーザーによる最大償還数と引き換えることができます</li>
+					<li><strong>シングルユーザーによる複数の償還</strong>：チェックボックスを使用すると、顧客は自分のアカウントで1つのクーポンをシングルユーザーによる最大償還数と引き換えることができます</li>
+					<li><strong>大文字と小文字を区別</strong>：大文字でクーポンコードを生成する場合は、チェックボックスをオンにします</li>
+					<li><strong>ギフトです</strong>：チェックボックスを選択すると、クーポンを他の人に渡すことができます</li>
+					<li><strong>継承可能</strong>：チェックボックスが選択されている場合、クーポンは継承可能です</li>
+					<li><strong>すべてのアイテムは必須ですか</strong>：このチェックボックスが選択されている場合、すべての項目が必須です</li>
+					<li><strong>お支払い方法をスキップする</strong>：チェックボックスが選択されている場合、クーポンを適用した後、支払い方法はスキップされます</li>
+					<li><strong>クーポンの説明</strong> :クーポンの説明を入力してください</li>
+					<li><strong>キャンペーン情報</strong>：キャンペーン情報の詳細を入力します</li>
+					<li><strong>成功メッセージ</strong>：ユーザーに表示される成功メッセージを入力します。</li>
+					<li><strong>警告メッセージ</strong>：ユーザーに表示される警告メッセージを入力します</li>
+					<li><strong>対象製品</strong>：ユーザーは番号を選択できます。クーポンへの該当する製品の例（例：製品のフラット30％オフクーポン<strong>ネオン</strong>）</li>
+					<li><strong>該当するパッケージ</strong>：ユーザーは番号を選択できます。クーポンへのアプリケーションパッケージの</li>
+					<li><strong>オファータイプ</strong>：ユーザーはクーポンのオファータイプを選択できます</li>
+					<li><strong>該当する支払いモード</strong>：ユーザーはクーポンに適用可能な支払いモードを選択できます</li>
+				</ol>
+			</li>
+			<li>クリック<strong>クーポンを作成する</strong>クーポンを生成するためのボタン（クーポンの生成時間は、ユーザーが生成するクーポンの数にも依存します）。</li>
+			<li>
+				クーポンが生成されると、<strong>クーポンが正常に生成されました</strong>メッセージが表示されます：
+				<figure class="bcls-figure">
+					<img class="bcls-image" src="/assets/images/beacon-evergent/coupons-generated.png" alt="Coupons Generated">
+					<figcaption class="bcls-caption--image">生成されたクーポン</figcaption>
+				</figure>
+			</li>
+		</ol>
+		<h3>クーポン検索</h3>
+		<p>さまざまなオプションを使用してクーポンを検索します。クーポンを検索するには、次の手順を実行します。</p>
+		<ol class="bcls-tasklist-restart">
+			<li>に<strong>クーポン</strong>画面に、バッチ名、プレフィックス、クーポンコード、ステータス、有効期限の開始日/終了日で検索するフィールド値を入力します。</li>
+			<li>
+				[検索]ボタンをクリックします。クーポンの検索結果は以下のように表示されます。
+				<figure class="bcls-figure">
+					<img class="bcls-image" src="/assets/images/beacon-evergent/coupon-search-results.png" alt="Coupon Search Results">
+					<figcaption class="bcls-caption--image">クーポン検索結果</figcaption>
+				</figure>
+			</li>
+			<li>
+				[高度な検索を有効にする]トグルスイッチをクリックして、高度な検索を有効にします。
+				<figure class="bcls-figure">
+					<img class="bcls-image" src="/assets/images/beacon-evergent/enable-advanced-coupon-search.png" alt="Enable Advanced Coupon Search">
+					<figcaption class="bcls-caption--image">高度なクーポン検索を有効にする</figcaption>
+				</figure>
+			</li>
+			<li>リストにリストされている該当する製品と該当する支払いモードをクーポンバッチで検索できます。クーポンバッチで検索するには、[クーポンバッチ検索]ボタンをクリックします。</li>
+			<li>
+				検索されたクーポンは、以下に示すように、検索結果リストに表示されます。
+				<figure class="bcls-figure">
+					<img class="bcls-image" src="/assets/images/beacon-evergent/coupon-batch-search-results.png" alt="Coupon Batch Search Results">
+					<figcaption class="bcls-caption--image">クーポンバッチ検索結果</figcaption>
+				</figure>
+			</li>
+		</ol>
+	</section>
+	<section class="bcls-section">
+		<h2 id="Related_topics">関連トピック</h2>
+		<ul>
+			<li><a href="/monetization/beacon-evergent/overview-beacon-evergent.html">概要: Beacon の高度な現金化</a></li>
+			<li><a href="/monetization/beacon-evergent/evergent-finding-accounts.html">EvergentCRMでのアカウントの検索</a></li>
+			<li><a href="/monetization/beacon-evergent/evergent-managing-account-details.html">エバージェント：アカウント詳細の管理</a></li>
+			<li><a href="/monetization/beacon-evergent/evergent-billing-finance.html">エバージェント：請求と財務</a></li>
+		</ul>
+	</section>
+</article> <!-- complete bootstrap layout -->
+    </div>
+    <div class="col-sm-2 right-side-bar">
+      
+      <nav class="right-side-nav" id="right_side_nav">
+        <h6 class="toc">ページコンテンツ</h6>
+        <ul id="in_page_nav" class="list-none"></ul>
+      </nav>
+      
+    </div>
+  </div>
+</div>
+
+<hr>
+<div class="last-updated">
+  ページの最終更新日09 Oct 2021
+</div>
+
+
+ <footer class="bcls-footer" role="contentinfo">
+  <div class="row">
+    <div class="region region-footer-top-center col-md-12">
+      <nav role="navigation" aria-labelledby="block-brightcovesupport-menu" id="block-brightcovesupport" class="footer-menu">
+        <img src="https://support.brightcove.com/site-assets/images/site/SVG/COVE004_Brightcove_Logo_093020_RGB_KO.svg" class="bc-footer-logo" alt="Brightcove">
+
+        <h2>Brightcoveサポート</h2>
+
+        <ul class="menu">
+          <li>
+            <a href="https://status.brightcove.com">システムステータス</a>
+          </li>
+          <li>
+            <a href="https://supportportal.brightcove.com/s/login/?">サポートへのお問い合わせ</a>
+          </li>
+          <li>
+            <a href="https://support.brightcove.com/">ドキュメンテーション</a>
+          </li>
+        </ul>
+
+      </nav>
+      <nav role="navigation" aria-labelledby="block-training-menu" id="block-training" class="footer-menu">
+
+        <h2>トレーニング</h2>
+
+        <ul class="menu">
+          <li>
+            <a href="https://studio.support.brightcove.com/training/online-training-courses.html">オンラインコース</a>
+          </li>
+          <li>
+            <a href="https://studio.support.brightcove.com/training/register-training.html">コースに登録する</a>
+          </li>
+          <li>
+            <a href="https://university.brightcove.com/">Brightcove University</a>
+          </li>
+        </ul>
+
+      </nav>
+      <nav role="navigation" aria-labelledby="block-brightcove-menu" class="footer-menu">
+
+        <h2>Brightcove</h2>
+
+        <ul class="menu">
+          <li>
+            <a href="https://www.brightcove.com">Brightcove.com</a>
+          </li>
+          <li>
+            <a href="https://supportportal.brightcove.com/s/login/?">お問合せ</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="row">
+    <div class="region region-footer-bottom-center col-md-12">
+      <div class="bcls-copyright footer-menu">
+        <table>
+          <tr>
+            <td>
+              <div id="bc_copyright" class="field field--name-field-copyright-year field--type-string field--label-hidden field--item" style="float: left;"> Brightcove Inc. All rights reserved.</div>
+            </td>
+            <td><a href="https://www.brightcove.com/en/legal/privacy">プライバシー</a> | <a href="https://www.brightcove.com/en/terms-and-conditions">利用規約</a></td>
+            <td>
+              <div class="gf-links-cols footer-menu">
+                <div class="gf-social"><a href="https://www.linkedin.com/company/16439" title="LinkedIn" newtab="newtab" class="gf-social-linkedin" style="margin-right: 1rem;"><i data-feather="linkedin" style="color:#8E9093;height: 1.25rem;"></i></a><a href="https://twitter.com/brightcove" title="Twitter" newtab="newtab" class="gf-social-twitter" style="margin-right: 1rem;"><i data-feather="twitter" style="color:#8E9093;height: 1.25rem;"></i></a><a href="https://www.facebook.com/Brightcove" title="Facebook" newtab="newtab" class="gf-social-facebook"><i data-feather="facebook" style="color:#8E9093;height: 1.25rem;"></i></a>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script translate="no">
+      
+  var searchBox = sajari.init({
+    mode: "search-box",
+    project: "1588255093746585379", // Set this to your project.
+    collection: "brightcove-documenation", // Set this to your collection.
+    instantPipeline: "autocomplete", // Pipeline used as you type
+    inputPlaceholder: "Search", // Input element placeholder
+    maxSuggestions: 5, // Maximum number of suggestions to show
+    attachSearchBox: document.getElementById("nav-search-box") // DOM element to attach to
+  });
+  
+    searchBox("sub", "pipeline.search-sent", function (_, query) {
+      window.location = "/search.html?q=" + encodeURIComponent(query.q);
+    });
+  
+
+</script>   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/https-fix.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/setDate.js"></script>
+  
+  <script src="https://support.brightcove.com/site-assets/js/site/prism.js"></script>
+  
+  <script src="https://support.brightcove.com/site-assets/js/site/site.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/learning-paths/learning-paths.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/tabs.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/toc.js"></script>
+  <script src="/assets/js/sites_nav.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/bcls-utils.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/local-link-fix.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/sajari-reindex.js"></script>
+  <script src="/assets/js/feedback.js"></script>
+  
+  <script src="/assets/js/sajari-search-foot.js"></script>
+  
+	<script translate="no">
+		feather.replace()
+	</script>
+  <!-- <script src="/assets/js/sajari-index.js"></script> -->
+  <style translate="no">
+    a.sj-paginator__page-number.sj-paginator__page-number--current.css-so0ov7 {
+      background-color: lightblue;
+    }
+    div.sj-tabs__tab {
+      margin-top: 3rem;
+      margin-left: .3rem;
+      border-top-left-radius: .4rem;
+      border-top-right-radius: .4rem;
+      background-color:#e8e8e8;
+    }
+
+    div.sj-tabs__tab.sj-tabs__tab--selected {
+      border-bottom-color: crimson;
+      background-color: #f8f8f8;
+    }
+
+    p.sj-results__result__description.css-p9jvyt {
+      font-size: 1rem;
+    }
+
+    .sj-result__text.css-31l7gp h3 {
+      color: navy;
+      font-size: 1.4rem;
+    }
+    </style>
+
+</body>
+
+</html> 

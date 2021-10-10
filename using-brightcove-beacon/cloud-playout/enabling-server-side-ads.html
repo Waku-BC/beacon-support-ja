@@ -1,0 +1,90 @@
+---
+title: クラウドプレイアウトの収益化
+description: このトピックでは、VODビデオとライブイベントのコレクションをライブリニアチャンネルとしてストリーミングする方法を学習します。
+parent: Cloud Playout
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+	<section class="bcls-section">
+		<h2 id="introduction">はじめに</h2>
+		<p>クラウドプレイアウトチャネルを収益化する1つの方法は、広告を使用することです。広告を配信する最も信頼できる方法は、サーバー側の広告挿入（SSAI）を使用することです。</p>
+		<aside class="bcls-aside bcls-aside--information">アカウントにSSAI機能を追加することに興味がある場合は、アカウントマネージャーに連絡してください。</aside>
+		<p>このトピックでは、クラウドプレイアウトチャネルでSSAIを有効にし、プレロールおよびポストロールの広告挿入を設定する方法について説明します。ミッドロール広告の挿入は異なる働きをするので、それはでカバーされています<a href="/cloud-playout/mid-roll-ad-insertion.html">ミッドロール広告をチャネルに追加する</a>。プレロール、ポストロール、ミッドロールの広告はすべて、VODコンテンツのチャンネルに挿入できます。</p>
+    <aside class="bcls-aside bcls-aside--information">SSAI対応チャネルの場合、宛先を広告対応RTPライブイベントに設定する必要があります。
+        <figure class="bcls-figure">
+          <img class="bcls-image" src="/assets/images/cloud-playout/advanced-options-for-live-job.png" alt="Live Settings for SSAI Channel">
+          <figcaption class="bcls-caption--image">SSAIチャンネルのライブ設定</figcaption>
+        </figure>
+    </aside>
+	</section>
+  <section class="bcls-section">
+    <h2 id="requirements">要件</h2>
+    <p>Cloud Playoutでサーバー側の広告挿入（SSAI）を使用するには、次のものが必要です。</p>
+    <ul>
+      <li>アカウントは、BrightcoveLiveおよびLivewithSSAIに対して有効になっている必要があります。</li>
+      <li>ブライトコーブライブおよび/またはS3をチャネルの宛先として使用する必要があります。</li>
+    </ul>
+  </section>
+  <section class="bcls-section">
+    <h2 id="ads">サーバーサイド広告の有効化</h2>
+    <p>チャネルを作成するときに、SSAIを有効にするオプションがあります。これにより、Brightcoveのサーバー側広告挿入テクノロジーを使用してサーバー側広告が表示されます。有効にすることもできます </p>
+		<figure class="bcls-figure">
+			<img class="bcls-image" src="/assets/images/cloud-playout/new-channel-with-ssai.png" alt="Enable SSAI">
+			<figcaption class="bcls-caption--image">SSAI を有効にする</figcaption>
+		</figure>
+    <aside class="bcls-aside bcls-aside--information">注意: 
+      <ul>
+        <li>広告挿入を使用する場合、チャネルはBrightcoveライブイベントにのみ出力できます。</li>
+        <li>広告の挿入を有効にすると、チャンネルでライブ入力が使用されない場合があります。</li>
+      </ul>
+      </aside>
+    <h3>広告タグと塗りつぶしスレートの設定</h3>
+    <p>アカウント管理の一環として、広告タグと塗りつぶしスレートが構成されていることを確認してください。広告タグの設定については、を参照してください。<a href="/admin/configuring-server-side-ad-settings.html">サーバー側の広告設定の構成</a>。フィルスレートは、ライブストリームの広告ブレークにギャップがある場合に提供できるコンテンツです。フィルスレートの作成については、を参照してください。<a href="https://live.support.brightcove.com/admin/managing-live-settings.html">ライブ設定の管理</a>。</p>
+    <p>
+      <aside class="bcls-aside bcls-aside--information">注:Cloud Playoutは、の一部として構成されたデフォルトの広告スレートを使用します<a href="https://live.support.brightcove.com/admin/managing-live-settings.html">ライブ設定</a>。</aside>
+    </p>
+    <h3>プレースホルダー広告休憩動画の作成</h3>
+    <p>どの動画を「プレースホルダー」動画として使用するかを指定する必要があります。「プレースホルダー」動画がプログラムリストに挿入され、広告を配信する必要があることと、広告の長さが示されます。Brightcove Liveでサーバー側の広告挿入を使用すると、「プレースホルダー」ビデオが広告コンテンツに置き換えられるため、これを行う必要があります。広告の「プレースホルダー」動画を挿入しない場合、実際の動画の一部が広告コンテンツに置き換えられます。広告の継続時間が返された広告よりも短い場合、SSAIは広告のスレートを表示します。広告の継続時間が返された広告よりも長い場合、広告が表示され、その後に広告スレートが表示されます。 </p>
+    <p>必要な広告休憩時間（2分、4分など）に等しいビデオ長のビデオソースファイルを作成/アップロードする必要がある場合があります。これらのビデオの内容は、実際にはプログラムの一部として再生されないため、重要ではありません。 </p>
+    <p>ビデオを「プレースホルダー」ビデオとしてマークするには、Mediaモジュールを使用してこれらのビデオのビデオプロパティを編集し、タグを付けます<code translate="No">cp-ad-holder</code>。
+      <figure class="bcls-figure"><img class="bcls-image--no-border" alt="report switcher" src="/assets/images/cloud-playout/playout-ad-tag-video.png" /></figure>
+    </p>
+    <h3>チャネルのサーバー側広告の有効化</h3>
+    <p>チャネルを作成するときは、<strong>広告の挿入</strong>オプション<strong>オン</strong>。</p>
+    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="report switcher" src="/assets/images/cloud-playout/playout-ad-insertion-option.png" /></figure>
+    <aside class="bcls-aside bcls-aside--information">注:既存のチャネルの場合、広告挿入設定は変更できません。</aside>
+    <h3>プログラムへの広告プレースホルダーの挿入</h3>
+    <p>広告を表示するプログラムリストに広告プレースホルダーを挿入する必要があります。次の手順に従って、広告プレースホルダーを挿入します。</p>
+    <ol class="bcls-tasklist-restart" style="--s:1">
+      <li>チャンネル名をクリックして編集します。</li>
+      <li>プログラムリストで、ビデオの横にあるチェックボックスをクリックします<strong>後</strong>広告を再生したいもの。</li>
+      <li>クリック<strong>広告を挿入</strong>を選択します<strong>広告期間</strong>。広告期間のリストは、すべての広告休憩の「プレースホルダー」動画の長さに基づいて生成されます（タグ付き）<code translate="No">cp-ad-holder</code>）。
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="report switcher" src="/assets/images/cloud-playout/playout-insert-ads-button.png" /></figure>
+      </li>
+      <li>クリック<strong>OK</strong>。選択した長さの「プレースホルダー」ビデオは、選択したビデオの後にプログラムに挿入されます。
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="report switcher" src="/assets/images/cloud-playout/playout-ad-break-inserted.png" /></figure>
+        <aside class="bcls-aside bcls-aside--information">注:「プレースホルダー」として挿入されるビデオ<strong>しない</strong>プログラムの一部として再生されます。この動画は、広告リクエストが行われる場所と広告の長さを示すためにのみ使用されます。</aside>
+      </li>
+      <li>クリック<strong>保存する</strong>プログラムへの変更を保存します。</li>
+    </ol>
+    <h3>広告構成の選択</h3>
+    <p>プログラムの再生が開始されたら、をクリックします<strong>BrightcoveLiveで表示</strong>ライブモジュールでチャンネルを表示します。プレーヤーの下のドロップダウンを使用して、使用する広告構成を選択できます。</p>
+    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="report switcher" src="/assets/images/cloud-playout/playout-live-select-ad-config.png" /></figure>
+    <figure class="bcls-figure"></figure>
+    <p>サーバー側の広告挿入の詳細については、<a href="https://ssai.support.brightcove.com/getting-started/video-cloud-ssai-overview.html">ビデオクラウドSSAIの概要</a>トピック。</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Related_topics">関連トピック</h2>
+    <ul>
+      <li><a href="/cloud-playout/cloud-playout-overview.html">概要:クラウドプレイアウト</a></li>
+      <li><a href="/cloud-playout/cloud-playout-stream-vod.html">クラウドプレイアウトチャネルの作成</a></li>
+      <li><a href="/cloud-playout/using-channel-actions.html">チャネルアクションの使用</a></li>
+      <li><a href="/cloud-playout/viewing-channel-output-and-analytics.html">チャネル出力と分析の表示</a></li>
+      <li><a href="/cloud-playout/generating-channel-embed-code.html">チャネル埋め込みコードの生成</a></li>
+      <li><a href="https://apis.support.brightcove.com/cloud-playout-apis/getting-started/overview-epg-api.html">概要:EPG API</a></li>
+      <li><a href="https://apis.support.brightcove.com/cloud-playout-apis/references/reference-epg.html">EPGAPIリファレンス</a></li>
+      <li><a href="https://apis.support.brightcove.com/cloud-playout-apis/references/reference-channels.html">チャネルAPIリファレンス</a></li>
+    </ul>
+  </section>
+</article>

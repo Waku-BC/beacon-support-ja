@@ -1,0 +1,867 @@
+---
+title: 'Rokuストアへのアプリの送信'
+description: 'このトピックでは、デバイスアプリをRokuストアに送信する方法を学習します。'
+parent: 'Roku' 
+grandparent: アプリの作成
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+
+  <section class="bcls-section">
+    <h2 id="Introduction">はじめに</h2>
+    <p>
+      Brightcove Beacon では、生成されたデバイスアプリを受け取り、Roku チャンネルストアに追加することができます。
+    </p>
+    <ul>
+      <li>
+        店舗詳細: <a href="https://developer.roku.com/overview"> https://developer.roku.com/overview </a>
+      </li>
+      <li>
+        開発者アカウントのセットアップ: <a href="https://my.roku.com/signup"> https://my.roku.com/signup </a>
+      </li>
+      <li>
+        ロク検索の実装: <a href="https://developer.roku.com/en-gb/docs/developer-program/discovery/search/implementing-search.md"> https://developer.roku.com/en-gb/docs/developer-program/discovery/search/implementing-search.md </a>
+      </li>
+      <li>承認のための推奨リードタイム:三週間</li>
+    </ul>
+    <aside class="bcls-aside bcls-aside--warning">チャンネルがすべてのデバイスで検索可能になるまで、公開後最大48時間かかる場合があることに注意してください。Rokuサイトから：<a href="https://partnersuccess.roku.com/hc/en-us/articles/360007222714" target="_blank">チャンネルが公開されたばかりですが、検索で見つからないのはなぜですか？</a></aside>
+    <h3>Rokuに必要な情報:</h3>
+    <ul>
+      <li>
+        ポスターとスクリーンショットの要件
+        <ul>
+          <li>チャンネルポスター (540x405)</li>
+          <li>1920x1080までのスクリーンショット</li>
+        </ul>
+      </li>
+      <li>開発者Eメール</li>
+      <li>詳細については推奨 URL</li>
+      <li>管理連絡先 (氏名、電話番号、電子メール)</li>
+      <li>技術連絡先 (氏名、電話番号、電子メール)</li>
+      <li>ストアで QA 用のアプリログインをセットアップするクライアント</li>
+    </ul>
+    <!-- <figure class="bcls-figure">
+        <img class="bcls-image--no-border" width="350" src="//beacon.support.brightcove.com/assets/images/pages/home-example.png" alt="Home with carousels">
+        <figcaption class="bcls-caption--image">Home with carousels</figcaption>
+      </figure> -->
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Getting_started">入門編</h2>
+    <p>Roku の開発者ページにアクセスするには、次の手順を実行します。</p>
+
+    <ol class="bcls-tasklist-restart">
+      <li>
+        <p>
+          ブラウザで、<a href="https://my.roku.com/index"> Roku サインインページに移動します</a>。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            src="/assets/images/creating-your-apps/roku/roku-login.png"
+            alt="Roku sign in"
+          />
+          <figcaption class="bcls-caption--image">ロクサインイン</figcaption>
+        </figure>
+      </li>
+      <li>
+        <p>
+          アカウントでサインインするか、新しいアカウントを作成します。
+        </p>
+      </li>
+    </ol>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Adding_a_channel">チャンネルの追加</h2>
+    <p>チャンネルを追加する方法について説明します。</p>
+
+    <ol class="bcls-tasklist-restart">
+      <li>上部のナビゲーションで、プロファイルアイコンをクリックします。</li>
+      <li> <p>ドロップダウンメニューで、<strong>開発者オプションをクリックします</strong>。  </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            src="/assets/images/creating-your-apps/roku/profile-developer-option.png"
+            alt="Developer options"
+            width="400"
+            height="600"
+          />
+          <figcaption class="bcls-caption--image">開発者オプション</figcaption>
+        </figure>
+      </li>
+      <li>
+        <p>
+          上部のナビゲーションから、[ <strong>ダッシュボード</strong> ] リンクを選択します。
+        </p>
+      </li>
+      <li>
+        <p>
+          ダッシュボードから、チャンネルを管理できます。[ <strong>チャンネルを追加</strong> ] ボタンを選択します。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            src="/assets/images/creating-your-apps/roku/add-channel-button.png"
+            alt="Manage Channels"
+          />
+          <figcaption class="bcls-caption--image">チャンネルの管理</figcaption>
+        </figure>
+      </li>
+      <li>
+        <p>
+          <strong>Developer SDK </strong>オプションを選択すると、パブリックチャネルまたは非認定チャネルのオプションが表示されます。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            src="/assets/images/creating-your-apps/roku/developer-sdk-channel.png"
+            alt="Developer SDK Channel"
+          />
+          <figcaption class="bcls-caption--image">
+            開発者 SDK チャンネル
+          </figcaption>
+        </figure>
+      </li>
+      <li>
+        <p>
+          チャンネルをストアに移動する場合は、[ <strong>公開</strong> ] を選択します。テストチャネルを作成する場合は、[ <strong>非認定</strong> ] を選択します。
+        </p>
+        <aside class="bcls-aside bcls-aside--warning">チャネル名は両方で一意である必要があります<strong>公衆</strong>と<strong>認定されていません</strong>チャネル。</aside>
+        <p>
+          次のことを推奨します。
+        </p>
+        <ul>
+          <li>
+            <strong>公開チャンネル名</strong> (例<strong>: 送信先</strong> ) を作成します。
+          </li>
+          <li>
+            <p>
+              を作成します<strong>認定されていません</strong>接尾辞が<strong>QA</strong>。したがって、この場合、<strong>それは宛先 QA </strong>という名前になります。
+            </p>
+          </li>
+        </ul>
+        <p>
+          まず、パブリックチャンネルを作成しています。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            src="/assets/images/creating-your-apps/roku/channel-public.png"
+            alt="Public channel"
+          />
+          <figcaption class="bcls-caption--image">パブリックチャンネル</figcaption>
+        </figure>
+      </li>
+      <li>
+        <p>
+          次に、テストチャンネルを作成しています。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            src="/assets/images/creating-your-apps/roku/channel-qa.png"
+            alt="Testing channel"
+          />
+          <figcaption class="bcls-caption--image">チャンネルをテスト中</figcaption>
+        </figure>
+      </li>
+    </ol>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Channel_properties">チャンネルのプロパティ</h2>
+    <p>プロパティは各チャンネルに関連付けられます。</p>
+
+    <ol class="bcls-tasklist-restart">
+      <li>
+        <p>
+          開発者ダッシュボードに戻り、[ <strong>マイチャンネルの管理</strong> ] リンクを選択します。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            src="/assets/images/creating-your-apps/roku/manage-properties.png"
+            alt="Manage Properties"
+          />
+          <figcaption class="bcls-caption--image">プロパティを管理する</figcaption>
+        </figure>
+      </li>
+      <li>
+        <p>
+          チャンネルの [ <strong>プレビューと更新</strong> ] ボタンを選択します。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            src="/assets/images/creating-your-apps/roku/update-properties.png"
+            alt="Update Properties"
+          />
+          <figcaption class="bcls-caption--image">プロパティの更新</figcaption>
+        </figure>
+      </li>
+      <li>
+        <p>
+          [ <strong>プレビューと公開</strong> ] ドロップダウンメニューを展開し、[ <strong>プロパティ</strong> ] を選択します。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            width="75%"
+            src="/assets/images/creating-your-apps/roku/properties/properties-dropdown.png"
+            alt="Properties dropdown menu"
+          />
+          <figcaption class="bcls-caption--image">
+            [プロパティ] ドロップダウンメニュー
+          </figcaption>
+        </figure>
+      </li>
+      <li>
+        <p>
+          チャンネルのプロパティのリストが表示されます。左側には、チャンネルが表示されるチャンネルストアの国の一覧が表示されます。テストの場合は、すべての国を選択できます。ライブチャンネルで、チャンネルを表示する国を選択します。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            width="75%"
+            src="/assets/images/creating-your-apps/roku/properties/countries.png"
+            alt="Channel Store countries"
+          />
+          <figcaption class="bcls-caption--image">
+            チャンネルストアの国
+          </figcaption>
+        </figure>
+      </li>
+      <li>
+        <p>
+          アクセシビリティ機能とコンプライアンスについては、[ <strong>はい</strong> ] を選択します。Brightcove Beacon アプリはすべて、これらの要件を満たしています。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            width="75%"
+            src="/assets/images/creating-your-apps/roku/properties/accessibility.png"
+            alt="Accessibility"
+          />
+          <figcaption class="bcls-caption--image">アクセシビリティ</figcaption>
+        </figure>
+      </li>
+      <li>
+        <p>
+          コンテンツに基づいて、適切なコンテンツレーティングを選択します。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            width="75%"
+            src="/assets/images/creating-your-apps/roku/properties/content-rating.png"
+            alt="Content rating"
+          />
+          <figcaption class="bcls-caption--image">コンテンツの評価</figcaption>
+        </figure>
+      </li>
+      <li>
+        <p>
+          チャンネル機能にアクセスするためにカスタマーアカウントが必要かどうかを選択します。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            width="75%"
+            src="/assets/images/creating-your-apps/roku/properties/customer-account.png"
+            alt="Customer account"
+          />
+          <figcaption class="bcls-caption--image">カスタマーアカウント</figcaption>
+        </figure>
+      </li>
+      <li>
+        <p>
+          アプリ全体に関連付けられているプライバシーポリシーの URL を入力します。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            width="75%"
+            src="/assets/images/creating-your-apps/roku/properties/privacy-policy.png"
+            alt="Privacy policy"
+          />
+          <figcaption class="bcls-caption--image">個人情報保護方針</figcaption>
+        </figure>
+      </li>
+      <li>
+        <p>
+          バニティアクセスコードは Roku によって自動的に生成されます。この値は残しておくことができます。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            width="75%"
+            src="/assets/images/creating-your-apps/roku/properties/vanity-code.png"
+            alt="Vanity code"
+          />
+          <figcaption class="bcls-caption--image">虚栄心符号</figcaption>
+        </figure>
+      </li>
+      <li>
+        <p>
+          サポートしたい言語を選択します。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            width="75%"
+            src="/assets/images/creating-your-apps/roku/properties/langugages.png"
+            alt="Languages"
+          />
+          <figcaption class="bcls-caption--image">言語</figcaption>
+        </figure>
+      </li>
+      <li>
+        <p>
+          [ <strong>必須機能</strong> ] で、まず、<strong>チャンネルに最も適した分類を選択します</strong>。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            width="75%"
+            src="/assets/images/creating-your-apps/roku/properties/classification.png"
+            alt="Classification"
+          />
+          <figcaption class="bcls-caption--image">分類</figcaption>
+        </figure>
+      </li>
+      <li>
+        <p>
+          次に、アプリにインターネット接続が必要かどうかを指定します。チャンネルのプロパティの更新が完了したら、[ <strong>保存</strong> ] ボタンを選択します。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            width="75%"
+            src="/assets/images/creating-your-apps/roku/properties/internet.png"
+            alt="Internet connection"
+          />
+          <figcaption class="bcls-caption--image">
+            インターネット接続
+          </figcaption>
+        </figure>
+      </li>
+    </ol>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Channel_store_info">チャンネルストア情報</h2>
+    <p>ここでは、チャンネルの説明とアイコンを追加します。</p>
+
+    <ol class="bcls-tasklist-restart">
+      <li>
+        <p>
+          [プレビューと公開] ページに戻り、[ <strong>プレビューと公開</strong> ] ドロップダウンメニューを展開し、[ <strong>チャンネルストア情報</strong> ] を選択します。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            width="75%"
+            src="/assets/images/creating-your-apps/roku/store-info/dropdown-menu.png"
+            alt="Channel Store Info dropdown menu"
+          />
+          <figcaption class="bcls-caption--image">
+            チャンネルストア情報のドロップダウンメニュー
+          </figcaption>
+        </figure>
+      </li>
+      <li>
+        <p>
+          [チャネルストア情報] で、次のフィールド値を入力します。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            src="/assets/images/creating-your-apps/roku/store-info/store-info-screen.png"
+            alt="Channel Store Info"
+          />
+          <figcaption class="bcls-caption--image">
+            チャンネルストア情報
+          </figcaption>
+        </figure>
+        <ul>
+          <li>
+            <strong>チャンネル名</strong> -チャンネル名が既に入力されているはずです。
+          </li>
+          <li>
+            <strong>説明</strong> -チャンネルについての詳細な説明を追加します。この説明は、チャンネルストアの説明に表示されます。（300文字）
+          </li>
+          <li>
+            <strong>ウェブの説明</strong> -米国のウェブベースのマーケティングチャンネルの説明を入力します。これはデバイスには表示されません。(1500文字)
+          </li>
+          <li>
+            <strong>チャンネルポスター</strong> -Rokuチャンネルストアに表示されるポスター画像を追加します。（540×405 JPEGまたはPNG）
+          </li>
+          <li>
+            <strong>説明カテゴリ</strong> -チャンネルを表示するカテゴリを選択します。(例:スポーツ、ドラマ、コメディなど）
+          </li>
+          <li>
+            <strong>国内地域</strong> -チャンネルが母国または国内とみなされる国を選択します。チャンネルは、国内地域に関連付けられているチャンネルストアを除き、チャンネルを含むすべての地域のチャンネルストアの「国際」カテゴリに表示されます。
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          チャンネルストア情報の追加が完了したら、[ <strong>保存</strong> ] ボタンを選択します。
+        </p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Verify_your_account_and_link_a_device">アカウントを確認し、デバイスをリンクします</h2>
+    <p>Rokuチャネルの設定が完了したら、開発者アカウントを確認することが重要です。</p>
+    <ol class="bcls-tasklist-restart">
+      <li>
+        <p>
+          に戻る<strong>チャネルの管理</strong>画面を選択し、<strong>プレビューと更新</strong>ボタン。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            src="/assets/images/creating-your-apps/roku/update-properties.png"
+            alt="Update Properties"
+          />
+          <figcaption class="bcls-caption--image">プロパティの更新</figcaption>
+        </figure>
+        </li>
+        <li>
+            <p>展開<strong>プレビューと公開</strong>選択します<strong>パッケージのアップロード</strong>。</p>
+            <figure class="bcls-figure">
+                <img class="bcls-image--no-border" src="/assets/images/creating-your-apps/roku/setup/package-upload-option.png" alt="Package Upload" />
+                <figcaption class="bcls-caption--image">パッケージのアップロード</figcaption>
+            </figure>
+        </li>
+        <li>
+          <p>選択する<strong>確認メールを送信</strong>ボタン。</p>
+          <aside class="bcls-aside bcls-aside--information">チャネル設定の開始時に、開発者の権利に使用される組織の電子メールアドレスを使用していることを確認してください。</aside>
+          <figure class="bcls-figure">
+              <img class="bcls-image--no-border" src="/assets/images/creating-your-apps/roku/setup/email-verification.png" alt="Email verification" />
+              <figcaption class="bcls-caption--image">メールによる確認</figcaption>
+          </figure>
+        </li>
+        <li>
+            <p>
+              開発者の電子メールアカウントを確認すると、デバイスをリンクして支払い方法を追加するように求められます。すでにこれを行っている場合は、次のセクションにスキップできます。
+            </p>
+            <figure class="bcls-figure">
+              <img class="bcls-image--no-border" src="/assets/images/creating-your-apps/roku/setup/package-upload1.png" alt="Package information" />
+              <figcaption class="bcls-caption--image">パッケージ情報</figcaption>
+          </figure>
+        </li>
+        <li>
+          <p>Rokuデバイスをリンクするときは、デバイスに確認手順と同じ登録済みメールアドレスがあることを確認してください。最良の結果を得るには、Rokuデバイスをリセットすることをお勧めします。</p>
+          <p>Rokuデバイスをリセットするには：</p>
+          <ol>
+            <li>選択する<strong>設定</strong>。</li>
+            <li>選択する<strong>システム</strong>。</li>
+            <li>選択する<strong>高度なシステム設定</strong>。</li>
+            <li>選択する<strong>工場出荷時のリセット</strong>。</li>
+          </ol>
+          <p>ここに役立つリンクがあります：</p>
+          <ul>
+            <li><a href="https://my.roku.com/link">RokuTVをリンクする</a></li>
+            <li><a href="https://www.youtube.com/watch?v=qoZCipuRsfM">Roku Express / Express +の設定方法</a></li>
+          </ul>
+        </li>
+        <li>
+          <p>
+            完了すると、次の画面が表示されます。
+          </p>
+          <figure class="bcls-figure">
+            <img class="bcls-image--no-border" src="/assets/images/creating-your-apps/roku/setup/package-upload2.png" alt="Package information complete" />
+            <figcaption class="bcls-caption--image">パッケージ情報が完了しました</figcaption>
+          </figure>
+        </li>
+    </ol>
+</section>
+
+<section class="bcls-section">
+  <h2 id="Add_channel_with_a_code">コードでチャネルを追加する</h2>
+  <p>バニティコードを使用して、アプリチャネルをRokuデバイスに追加できます。</p>
+  <ol class="bcls-tasklist-restart">
+      <li>
+        <p>プロファイルのドロップダウンメニューを展開して、<strong>マイアカウント</strong>。</p>
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" src="/assets/images/creating-your-apps/roku/setup/my-account.png" alt="My account" />
+          <figcaption class="bcls-caption--image">マイアカウント</figcaption>
+      </figure>  
+      </li>
+      <li>
+        <p>を選択<strong>コードでチャネルを追加する</strong>リンク。</p>
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" src="/assets/images/creating-your-apps/roku/setup/add-channel-with-code.png" alt="Add channel with a code" />
+          <figcaption class="bcls-caption--image">コードでチャネルを追加する</figcaption>
+      </figure>  
+      </li>
+      <li>
+        <p>の中に<strong>チャネルを追加</strong>ダイアログで、次の手順を実行します。</p>
+        <ol>
+          <li>入力します<strong>チャネルアクセスコード</strong>私たちがあなたに提供するもの。</li>
+          <li>を確認してください<strong>私はロボットではありません</strong>箱。</li>
+          <li>選択する<strong>チャネルを追加</strong>。</li>
+        </ol>
+        <figure class="bcls-figure">
+          <img class="bcls-image--no-border" src="/assets/images/creating-your-apps/roku/setup/add-channel.png" alt="Add channel" />
+          <figcaption class="bcls-caption--image">チャネルを追加</figcaption>
+        </figure>  
+      </li>
+      <li>
+        <p>チャンネルがRokuアカウントに追加されたら、次の手順に従ってRokuTVでアプリを確認します。</p>
+        <ol>
+          <li>選択する<strong>設定</strong>。</li>
+          <li>選択する<strong>システム</strong>。</li>
+          <li>選択する<strong>システムアップデート</strong>。</li>
+        </ol> 
+        <p>これで、レビューのためにアプリが表示されます。</p>
+      </li>
+  </ol>
+</section>
+
+  <section class="bcls-section">
+    <h2 id="Monetization">収益化</h2>
+    <p>ここでは、チャンネルに関する収益化情報を追加します。</p>
+
+    <ol class="bcls-tasklist-restart">
+      <li>
+        <p>
+          [プレビューと公開] ページに戻り、[ <strong>プレビューと公開</strong> ] ドロップダウンメニューを展開し、[ <strong>収益化</strong> ] を選択します。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            width="75%"
+            src="/assets/images/creating-your-apps/roku/monetization/monetization-option.png"
+            alt="Monetization dropdown menu"
+          />
+          <figcaption class="bcls-caption--image">
+            収益化のドロップダウンメニュー
+          </figcaption>
+        </figure>
+      </li>
+      <li>
+        <p>
+          チャンネルに追加を含めるか、サブスクリプションモデルをサポートするかを指定します。</p>
+          <aside class="bcls-aside bcls-aside--information">Brightcove SSAIを使用している場合でも、Roku'sに登録する必要があることに注意してください。<strong>パートナーペイアウトプログラム</strong>。広告の再生中にAdsコールバックを行うことはRokuストアの要件です。</aside>
+        
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            src="/assets/images/creating-your-apps/roku/monetization/monetization-page.png"
+            alt="Monetization"
+          />
+          <figcaption class="bcls-caption--image">収益化</figcaption>
+        </figure>
+        <p>
+          サブスクリプションチャンネルの場合は、次の情報が含まれます。
+        </p>
+        <ul>
+          <li>
+            <strong>購入タイプ</strong> -チャネルに対するユーザーの請求方法。（一回、毎月、毎年など）
+          </li>
+          <li>
+            <strong>価格帯</strong> -ドロップダウンメニューから値を選択します。EU チャネルストアの国の購入価格には VAT が含まれています。収益は税引前（正味価格）に基づきます。
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          収益受け取り情報の追加が完了したら、[ <strong>保存</strong> ] ボタンを選択します。
+        </p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Screenshots">スクリーンショット</h2>
+    <p>ここでチャンネルにスクリーンショットを追加できます。</p>
+
+    <ol class="bcls-tasklist-restart">
+      <li>
+        <p>
+          [プレビューと公開] ページに戻り、[ <strong>プレビューと公開</strong> ] ドロップダウンメニューを展開し、[ <strong>スクリーンショット</strong> ] を選択します。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            width="75%"
+            src="/assets/images/creating-your-apps/roku/screenshots/screenshots-menu.png"
+            alt="Screenshots dropdown menu"
+          />
+          <figcaption class="bcls-caption--image">
+            スクリーンショットのドロップダウンメニュー
+          </figcaption>
+        </figure>
+      </li>
+      <li>
+        <p>
+          チャンネルストアに表示されるスクリーンショットを追加します。
+        </p>
+        <p>
+          スクリーンショットは最大 6 枚まで追加できます。それぞれが 1920 x 1080 の JPEG または PNG ファイルである必要があります。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            src="/assets/images/creating-your-apps/roku/screenshots/screenshots-page.png"
+            alt="Screenshots"
+          />
+          <figcaption class="bcls-caption--image">スクリーンショット</figcaption>
+        </figure>
+      </li>
+      <li>
+        <p>
+          スクリーンショットの追加が完了したら、[ <strong>保存</strong> ] ボタンを選択します。
+        </p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Support_information">サポート情報</h2>
+    <p>チャンネルのサポートに役立つ連絡先情報を提供します。</p>
+
+    <ol class="bcls-tasklist-restart">
+      <li>
+        <p>
+          [プレビューと発行] ページに戻り、[ <strong>プレビューと発行</strong> ] ドロップダウンメニューを展開し、[ <strong>サポート情報</strong> ] を選択します。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            width="75%"
+            src="/assets/images/creating-your-apps/roku/support-info/support-menu.png"
+            alt="Support Information dropdown menu"
+          />
+          <figcaption class="bcls-caption--image">
+            サポート情報のドロップダウンメニュー
+          </figcaption>
+        </figure>
+      </li>
+      <li>
+        <p>
+          [サポート情報] で、次のフィールド値を入力します。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            src="/assets/images/creating-your-apps/roku/support-info/support-page.png"
+            alt="Support information"
+          />
+          <figcaption class="bcls-caption--image">
+            サポート情報
+          </figcaption>
+        </figure>
+        <ul>
+          <li>
+            <strong>開発者用メール</strong> -開発者のメールアドレスを入力します。正しくない場合は、連絡先情報を更新してください。
+          </li>
+          <li>
+            [ <strong>優先 URL </strong> ]-チャンネルの URL を指定します。これは、Rokuのウェブサイトやニュースレターがチャンネルにリンクするために使用されることがあります。
+          </li>
+          <li>
+            <strong>エンドユーザサポート連絡先</strong> -Web ページ、電子メールアドレス、電話番号、またはそれらの複数を入力します。Roku は、チャンネルについてカスタマーサービスに連絡した場合に、これを使用します。（300文字）これは必須です。
+          </li>
+          <li>
+            <p>
+              <strong>テストアカウントとディープリンクパラメータ</strong> -ディープリンクとして開きたいアセットをBrightcoveに伝え、ディープリンクのパラメータを更新します。アカウント共有を設定したくない場合は、Brightcove からパラメータが提供されます。
+            </p>
+            <p>
+              また、3 つのテストアカウントの資格情報も提供します。これらのアカウントは、カスタマーサポート、デモ、QA に使用されます。（1500 文字）異なるサブスクリプションのアカウントをお持ちの場合は、チャンネルストアがすべてのアカウントにアクセスできるように、ここにリストする必要があります。
+            </p>
+          </li>
+          <li>
+            <strong>管理連絡先</strong> -アプリの管理連絡先情報を入力します。
+          </li>
+          <li>
+            <strong>技術連絡先</strong> -アプリの技術連絡先情報を入力します。
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          サポート情報の追加が完了したら、[ <strong>保存</strong> ] ボタンを選択します。
+        </p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Package_upload">パッケージのアップロード</h2>
+    <p>パッケージをチャンネルにアップロードします。</p>
+
+    <ol class="bcls-tasklist-restart">
+      <li>
+        <p>
+          [プレビューと公開] ページに戻り、[ <strong>プレビューと公開</strong> ] ドロップダウンメニューを展開し、[ <strong>パッケージアップロード</strong> ] を選択します。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            width="75%"
+            src="/assets/images/creating-your-apps/roku/package/package-menu.png"
+            alt="Package Upload dropdown menu"
+          />
+          <figcaption class="bcls-caption--image">
+            パッケージのアップロードドロップダウンメニュー
+          </figcaption>
+        </figure>
+      </li>
+      <li>
+        <p>
+          まず、メールアドレスを確認する必要があります。その後、アップロードできるようになります。
+        </p>
+      </li>
+      <li>
+        <p>
+          「パッケージのアップロード」で、次のフィールド値を入力します。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            src="/assets/images/creating-your-apps/roku/package/package-page.png"
+            alt="Package Upload"
+          />
+          <figcaption class="bcls-caption--image">パッケージのアップロード</figcaption>
+        </figure>
+        <ul>
+          <li>
+            <strong>チャンネルバージョン</strong> -バージョン 1.0 から、アプリのバージョンを指定します。
+          </li>
+          <li>
+            <strong>最小ファームウェア</strong> -Roku ファームウェアのバージョンを選択します。パッケージは、最低限のファームウェアバージョン以上をサポートするデバイスでのみ実行されます。推奨される最新の安定版ビルドバージョンは Roku v9.2 bl です。
+          </li>
+          <li>
+            <strong>パッケージファイル</strong> -パッケージファイルは、お客様またはBrightcoveがアップロードできます。このファイルの名前は、次のようになります。Beacon_1.0.6138.pkg。
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          パッケージのアップロード情報の追加が完了したら、[ <strong>保存</strong> ] ボタンを選択します。
+        </p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Static_analysis">静的解析</h2>
+    <p>チャンネルに関する分析レポートを作成します。</p>
+
+    <ol class="bcls-tasklist-restart">
+      <li>
+        <p>
+          [プレビューとパブリッシュ] ページに戻り、[ <strong>プレビューとパブリッシュ</strong> ] ドロップダウンメニューを展開し、[ <strong>静解析</strong> ] を選択します。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            width="75%"
+            src="/assets/images/creating-your-apps/roku/static-analysis/static-analysis-menu.png"
+            alt="Static Analysis dropdown menu"
+          />
+          <figcaption class="bcls-caption--image">
+            静解析ドロップダウンメニュー
+          </figcaption>
+        </figure>
+      </li>
+      <li>
+        <p>
+          前のセクションでパッケージをアップロードすると、パッケージの構造または構文のエラーが分析されます。テーブルには、エラーと警告が表示されます。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            src="/assets/images/creating-your-apps/roku/static-analysis/static-analysis-page.png"
+            alt="Static Analysis"
+          />
+          <figcaption class="bcls-caption--image">静的解析</figcaption>
+        </figure>
+      </li>
+    </ol>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Preview_and_publish">プレビューと公開</h2>
+    <p>
+      チャンネルに関連するフォームをすべて入力すると、<strong> [プレビューと公開</strong> ] 画面が表示されます。
+    </p>
+
+    <ol class="bcls-tasklist-restart">
+      <li>
+        <p>
+          [プレビューと公開] ページに戻り、[ <strong>プレビューと発行</strong> ] ドロップダウンメニューを展開し、[ <strong>プレビューと発行</strong> ] を選択します。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            width="75%"
+            src="/assets/images/creating-your-apps/roku/publish/publish-menu.png"
+            alt="Preview and Publish dropdown menu"
+          />
+          <figcaption class="bcls-caption--image">
+            プレビューと公開ドロップダウンメニュー
+          </figcaption>
+        </figure>
+      </li>
+      <li>
+        <p>
+          このページでは、チャンネルの概要プレビューが表示されます。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            src="/assets/images/creating-your-apps/roku/publish/publish-page.png"
+            alt="Preview and Publish"
+          />
+          <figcaption class="bcls-caption--image">
+            プレビューおよび公開
+          </figcaption>
+        </figure>
+      </li>
+      <li>
+        <p>
+          準備ができたら、[ <strong>送信</strong> ] ボタンを選択してチャンネルを公開します。
+        </p>
+      </li>
+      <li>
+        <p>
+          アプリは Roku ストアによってチェックされ、問題がないかどうかが確認されます。何らかの理由でチャンネルが拒否された場合、[ <strong>サポート情報</strong> ] <strong>画面で設定した開発者メールにメールが送信されます</strong>。拒否理由を確認し、Brightcoveサポートチケットを作成して問題を解決してください。
+        </p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Updating_your_channel">チャンネルを更新する</h2>
+    <p>既存のアプリを更新する場合は、次の手順に従います。</p>
+
+    <ol class="bcls-tasklist-restart">
+      <li>
+        <p>
+          新しい Roku パッケージを作成します。
+        </p>
+        <p>
+          新しいパッケージに一意の ID とパスワードを指定します。このパッケージのキーと共に、新しいパッケージを Brightcove に提供します。ストアに新しい荷物を提出するには、新しい情報が必要です。
+        </p>
+        <p>
+          チャンネル名を変更する場合は、チャンネルストア内で一意である必要があります。
+        </p>
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            width="75%"
+            src="/assets/images/creating-your-apps/roku/updating-channel/manage-channels.png"
+            alt="Manage Channels"
+          />
+          <figcaption class="bcls-caption--image">チャンネルの管理</figcaption>
+        </figure>
+      </li>
+    </ol>
+  </section>
+</article>

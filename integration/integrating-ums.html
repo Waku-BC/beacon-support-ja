@@ -1,0 +1,91 @@
+---
+title: ユーザー管理システムと Beacon の統合
+description: このトピックでは、外部ユーザー管理システム（UMS）を、ユーザー認証にOIDCを使用してBrightcove Beaconと統合し、Beacon WebhookAPIを使用してBeaconにユーザー資格を通知する方法について説明します。
+parent: Integration 
+published: false
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  <section class="bcls-section">
+    <h2 id="Introduction">はじめに</h2>
+		<p>Beaconで手動で複製および保守するのではなく、Brightcove Beaconと統合したいユーザー管理システム（Webストアまたはその他の目的）がすでにある場合があります。これは、Open ID Connect（OIDC）を使用して可能です。</p>
+  </section>
+	<section class="bcls-section">
+		<h2 id="features_of_oidc_external_authentication">OIDC外部認証の機能</h2>
+		<ul>
+			<li>既存のサードパーティデータベースを使用して、 Beacon ユーザーを認証できます。</li>  
+			<li> Beacon ユーザーは、 Beacon アプリを介してパスワードを登録、認証、および変更できます。</li>
+			<li> Beacon アプリはアプリ購入をサポートします。</li> 
+			<li>既存のアプリケーションと Beacon アプリは同じ認証データベースを共有します。</li>
+			<li>新規ユーザーはサードパーティシステムに登録できます。</li>
+			<li>デバイスペアリングワークフロー（2番目のデバイス、TVアプリを認証するためのコードを画面に入力します）。</li>
+			<li>ソーシャルログイン-OIDCプロバイダーによってサポートされている場合。</li>
+			<li> Beacon ストリームの同時実行制限がサポートされています。</li>
+			<li>OIDCプロバイダーは、ユーザー名とパスワード以外の追加の認証方法（多要素、パスワードなし、デバイスペアリング、Googleアカウントペアリング）を提供する場合があります。</li>
+		</ul>
+	</section>
+	<section class="bcls-section">
+		<h2 id="limitations">外部認証の制限</h2>
+		<ul>
+			<li>お客様がスマートテレビと接続されたテレビを必要とする場合、OIDCシステムはデバイスフローをサポートする必要があります（<a href="https://tools.ietf.org/html/rfc8628"> https://tools.ietf.org/html/rfc8628</a>）TVアプリの認証用。</li>
+			<li>パスワードのリセット- Beacon 管理コンソールではサポートされていません。視聴者はアプリを介してPSWを更新できます。</li>
+			<li> Beacon デバイス管理なし（したがって、アカウント内のデバイス数の制限と管理は、サードパーティ認証ではサポートされていません）</li>
+		</ul>
+	</section>
+
+<section class="bcls-section">
+	<h2 id="Authorizing_data_retrieval">データ検索の承認</h2>
+	<p>データ取得の承認は、Brightcove Beaconで、認証とユーザーの資格の2つの方法で行われます。</p>
+	<h3>認証</h3>
+	<p>Brightcoveは、認証に次のOAuth2.0フローを利用します。</p>
+	<h4>PKCEを使用した認証コード：<strong> iOS</strong>、<strong>アンドロイド</strong>そして<strong>ウェブ</strong></h4>
+	<!-- <figure class="bcls-figure">
+			<img class="bcls-image" src="/assets/images/references/how-beacon-gets-data/authorization-wth-PKCE.png" alt="">
+	</figure> -->
+	<h4>のデバイスフロー（OAuth 2.0拡張機能）<strong>スマートテレビ</strong>そして<strong>スマートテレビ</strong>
+	</h4>
+	<!-- <figure class="bcls-figure">
+			<img class="bcls-image" src="/assets/images/references/how-beacon-gets-data/device-flow-oauth2.png" alt="">
+	</figure> -->
+	<p>BrightcoveBeaconで使用できるようにする必要があるトークンは3つあります。</p>
+	<ul>
+			<li><strong>アクセストークン</strong>：ユーザーが認証でき、Brightcove Beacon へのアクセスを許可する必要があることを検証します。アクセストークンは次の場所にある必要があります<strong>JWT形式</strong>と含める<code translate="no">iss</code>と<code translate="no">サブ</code>請求。</li>
+			<li><strong>トークンの更新</strong>：ユーザーに代わって新しいアクセストークンを自動的に取得するメカニズムを提供することにより、アクセストークンの有効期限が切れた後も、ユーザーがログインしたままになることを許可します（ユーザーがアクセスを許可されている場合）。これはテレビでは特に重要です。</li>
+			<li><strong>IDトークン</strong>：Brightcoveがユーザーに関する情報を取得する方法を標準化します。</li>
+	</ul>
+	<p>次の付与タイプをサポートする必要があります。</p>
+	<ul>
+			<li><code translate="no">authentication_code</code></li>
+			<li>refresh_token<code translate="no"></code></li>
+			<li><code translate="no">urn：ietf：params：oauth：grant-type：device_code</code></li>
+	</ul>
+	<p>次の認証プロバイダーエンドポイントは、Brightcove Beacon で構成する必要があります。適切に構成するには、これらをBrightcoveに提供する必要があります。場合<a href="https://swagger.io/docs/specification/authentication/openid-connect-discovery/">OpenIDコネクトディスカバリー</a>ブライトコーブはこれらを発見できます。</p>
+	<ul>
+			<li>アクセストークン</li>
+			<li>トークンの更新</li>
+			<li>ユーザー情報</li>
+			<li>トークンを取り消す</li>
+			<li>承認する</li>
+			<li>ペアリングコード</li>
+			<li>JWKS（<a href="https://auth0.com/docs/tokens/json-web-tokens/json-web-key-sets"> JSONWebキーセット</a>）</li>
+			<li>ログアウト</li>
+			<li><a href="https://swagger.io/docs/specification/authentication/openid-connect-discovery/">OpenIDコネクトディスカバリー</a>（/.well-known/openid-configuration）。これは、システムの構成に使用されます。</li>
+			<li>オプション（ただし推奨）：カスタマイズされたリクエスト<code translate="no">aud</code>（オーディエンス）クライアントアプリ別。これは、追加の検証に使用されます。</li>
+	</ul>
+	<p>アプリケーションごとに、Brightcoveはあなたから取得する必要があります<code translate="no">クライアントID</code>アプリで設定するには、プラットフォームごとに1つをお勧めします。ブライトコーブはまた提供します<code translate="no">redirect_uri（s）</code> Webおよびモバイルアプリケーションに使用されます（該当する場合）。</p>
+
+	<h3>資格</h3>
+	<p>Brightcove Beaconにユーザーの資格について通知するために、BrightcoveBeaconは次のAPIを提供します。</p>
+	<pre class="line-numbers"><code class="language-html">https://beacon.brightcove.com/ <span class="bcls-input">{instance}</span> / webhook / beacon</code></pre>
+	<p>APIキーはBrightcoveによって提供されます。</p>
+	<p>APIを介して交換されるデータのペイロードはJSON形式であり、次のように表示されます。</p>
+	<pre class="line-numbers"><code class="language-json">[ { "package_name": "string", // Commerce package for SVOD or SKU for TVOD purchases - required "external_user_id": "string", // User identifier (username or email depending on configuration of users)- required "transaction_id": "string", // Unique transaction id for purchase - required for subscriptions (this will be used in renewal) "start_date": "string", // Start date for entitlements "end_date": "string", // End date for entitlements (applicable if a rent or a subscription) "trial_end_date": "string", // End date for a trial if applicable "effective_cancelation_date": "string", // Date by when cancellation is effective (for example, end of current subscription period) "notification_type": "new", // One of: new, renew, cancellation, buy or rent - required “payment_gateway”: “beaconstore” // One of: “beaconstore” } ]</code></pre>
+	<p>外部認証システムを使用する場合、<code translate="no"> external_user_id</code>アクセストークンのサブジェクト値に対応します。次の点にも注意してください。</p>
+	<ul>
+			<li>APIキーはで送信する必要があります<code translate="no">ヘッダ</code>の中に<code translate="no">auth-token</code>鍵。</li>
+			<li>複数のレコードを同時に送信することが可能です。</li>
+			<li>JSONペイロードの項目のいずれかにエラーがある場合、ペイロード全体が拒否されます。</li>
+	</ul>
+</section>
+</article>

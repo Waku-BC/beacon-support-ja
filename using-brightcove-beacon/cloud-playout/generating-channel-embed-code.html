@@ -1,0 +1,45 @@
+---
+title: チャネル埋め込みコードの生成
+description: このトピックでは、埋め込みコードを取得して、Brightcoveプレーヤーでクラウドプレイアウトチャネルを再生する方法を学習します。埋め込みコードは、任意のWebページに配置できます。
+parent: Cloud Playout
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  <section class="bcls-section">
+    <h2 id="publish">CloudPlayoutチャネルの埋め込みコードを生成する</h2>
+    <p>Cloud Playoutチャネルの埋め込みコードを生成するには、Liveモジュールを使用します。Liveモジュールの使用の詳細については、を参照してください。<a href="https://live.support.brightcove.com/live-module/creating-and-managing-live-events-using-live-module.html">ライブモジュールを使用したライブイベントの作成と管理</a>。</p>
+    <p>次の 2 種類の埋め込みコードを使用できます。</p>
+    <ul>
+      <li><strong>標準</strong> -iframe埋め込みコード。ほとんど場合に推奨されます。このタイプは、プレーヤーを &lt; iframe &gt; タグ内に配置します。</li>
+      <li><strong>詳細</strong> -ページ内埋め込みコード。プレーヤーは、iframeではなく、HTMLページに直接存在することを許可します。これによって、開発者はプレーヤーおよび関連するプロパティやイベントにアクセスしやすくなります。</li>
+    </ul>
+    <p>また、公開されたプレーヤーへの URL を取得する機能もあります。これは、ブラウザーでイベントを表示する場合に便利です。</p>
+    <p>ライブイベントの埋め込みコードを生成するには、次の手順に従います。</p>
+    <ol class="bcls-tasklist-restart" style="--s:1">
+      <li>ライブモジュールを開きます。</li>
+      <li>チャンネルがストリーミングされるライブイベントを見つけます。通常、イベントは次の場所にあります。<strong>待機する</strong>タブと名前を持っている<strong>チャネル</strong>チャネルの作成時にストリーミングする特定のイベントを選択した場合を除きます。</li>
+      <li>イベント名をクリックして、<strong>制御室</strong>ページ。</li>
+      <li>左側のナビゲーションで [ <strong> &gt; プレーヤー設定の公開と埋め込み</strong> ] をクリックします。<aside class="bcls-aside bcls-aside--information">注:チャネルがサーバーサイド広告（SSAI）を有効にするように構成されている場合、BrightcovePlayerバージョン6.18.3以降<strong>しなければならない</strong>利用される。ドロップダウンリストには、バージョン6.18.3以降のプレーヤーのみが表示されます。</aside>
+      </li>
+      <li><strong>プレーヤーの URL </strong>をクリックして、ブラウザーでイベントをプレビューするか、使用する適切な埋め込みコードをコピーします。
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/cloud-playout/playout-embed-code.png" /></figure>
+      </li>
+    </ol>
+    <p>プログラムがで作成された場合<strong>広告の挿入</strong>オプションをに設定<strong>オン</strong>、公開オプションには、<strong>広告設定を選択</strong>使用する広告構成を選択できるドロップダウン。</p>
+    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="report switcher" src="/assets/images/cloud-playout/playout-embed-code-ads.png" /></figure>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Related_topics">関連トピック</h2>
+    <ul>
+      <li><a href="/cloud-playout/cloud-playout-overview.html">概要:クラウドプレイアウト</a></li>
+      <li><a href="/cloud-playout/cloud-playout-stream-vod.html">クラウドプレイアウトチャネルの作成</a></li>
+      <li><a href="/cloud-playout/using-channel-actions.html">チャネルアクションの使用</a></li>
+      <li><a href="/cloud-playout/enabling-server-side-ads.html">クラウドプレイアウトの収益化</a></li>
+      <li><a href="/cloud-playout/viewing-channel-output-and-analytics.html">チャネル出力と分析の表示</a></li>
+      <li><a href="https://apis.support.brightcove.com/cloud-playout-apis/getting-started/overview-epg-api.html">概要:EPG API</a></li>
+      <li><a href="https://apis.support.brightcove.com/cloud-playout-apis/references/reference-epg.html">EPGAPIリファレンス</a></li>
+      <li><a href="https://apis.support.brightcove.com/cloud-playout-apis/references/reference-channels.html">チャネルAPIリファレンス</a></li>
+    </ul>
+  </section>
+</article>

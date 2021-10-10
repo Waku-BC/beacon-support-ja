@@ -1,0 +1,665 @@
+---
+title: ビデオクラウドカスタムフィールドの作成
+parent: Video Cloud との同期 
+---
+
+
+<article class="bcls-article">
+  <h1>Video Cloud カスタム項目の作成</h1>
+  <summary>
+    このトピックでは、Brightcove  Beacon への同期に必要な Video Cloud カスタム項目について説明します。
+  </summary>
+  <section class="bcls-section">
+    <h2 id="Introduction">はじめに</h2>
+    <p>
+      Video Cloud から Brightcove Beacon にインポートされる動画には、Brightcove Beacon で適切に使用するために、強化されたメタデータのセットが定義されている必要があります。このドキュメントでは、Studioで新しいカスタムフィールドを作成する方法について説明します。さらに、Brightcove Beacon に必要なフィールドも定義されています。
+    </p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Creating_custom_fields">カスタムフィールドを作成する</h2>
+    <p>カスタムフィールドを作成するには、次の手順に従います。</p>
+    <ol class="bcls-tasklist">
+      <li>ビデオクラウドスタジオにログインします。</li>
+      <li>
+        ナビゲーションヘッダーで、[ <strong>管理</strong> ]、[ <strong>ビデオフィールド</strong> ] の順にクリックします。管理者メニューにアクセスするには、アカウント管理者である必要があります。
+      </li>
+      <li>
+        次のスクリーンショットに示すように、[Video Fields] ページには、カスタムフィールドとすべての標準のビデオメタデータフィールドが表示されます。 <figure class="bcls-figure"> <img class="bcls-image" src="https://img.brightcove.com/node1050-custom-fields-overview1.png" alt="" /> </figure>
+      </li>
+      <li>
+        [ <strong>ユーザー設定フィールドの追加</strong> ] をクリックします。
+        <figure class="bcls-figure"> <img class="bcls-image" src="https://img.brightcove.com/node1050-new-custom-field1.png" alt="" /> </figure>
+      </li>
+      <li>
+        <p>
+          [ <strong>表示名] </strong>を入力します。これは、アップロードモジュールとメディアモジュールのフィールドのラベルとして表示されます。<strong>表示名に基づいて、フィールドの内部名が自動的に作成されます</strong>。
+        </p>
+        <aside class="bcls-aside bcls-aside--information">ノート：Brightcove Beacon へのインポートを成功させるために使用する表示名はすべて、このドキュメントの後半で指定されています。</aside>
+      </li>
+      <li>
+        フィールドの [ <strong>タイプ</strong> ] を選択します。
+        <ul>
+          <li>
+            <strong>テキスト</strong> -ユーザーは、1024文字までのシングルバイト文字（または全角512文字）までフィールドに入力できます。
+          </li>
+          <li>
+            <strong>リスト</strong> -ユーザーは値のリストから選択します。リストには最大150個の値を格納でき、リストの各値の長さは最大100文字です。
+          </li>
+        </ul>
+      </li>
+      <li>
+        「<strong>摘要</strong>」を入力します。説明フィールドは、Studioのインターフェイスにヒントとして表示されます。
+      </li>
+      <li>
+        カスタムフィールドが必要な場合は、[ <strong>このフィールドを必須にする] </strong>をオンにします。
+      </li>
+      <li>
+        <p>
+          フィールドタイプが [ <strong>リスト</strong> ] の場合は、次のスクリーンショットに示すように、<strong>カンマ区切りの値リストを入力し、[リストに追加</strong> ] をクリックします。
+        </p>
+        <aside class="bcls-aside bcls-aside--information">ノート：
+          <ol>
+            <li>
+              値には引用符を含めることはできません (例:動物、鳥、魚）。
+            </li>
+            <li>
+              値にはカンマを含めることはできません。すべてのカンマは、異なる値の区切り文字として扱われます。
+            </li>
+          </ol>
+        </aside>
+        <figure class="bcls-figure"> <img class="bcls-image" src="https://img.brightcove.com/node1050-new-custom-field-added1.png" alt="" /> </figure>
+      </li>
+      <li>
+        [ <strong>フィールドの保存</strong> ] をクリックして、変更を保存します。[ <strong>保存して別の項目を追加</strong> ] をクリックしてフィールドを保存し、別のフィールドの作成を開始します。
+      </li>
+    </ol>
+    <p>
+      &nbsp;作成したカスタムフィールドはすぐに使用でき、Media &nbsp;モジュールに表示されます。
+    </p>
+    <p>
+      最大 10 個のカスタムフィールドを作成できます。10 個を超えるフィールドが必要な場合は、[ <strong>さらにフィールドが必要ですか？] をクリックします。</strong>リンクをクリックして、ブライトコーブのカスタマーサポートにお問い合わせください。パブリッシャーのカスタムフィールドは 50 個に制限されています。
+    </p>
+    <h3 id="edit">リスト値の編集</h3>
+    <p>
+      リスト型のユーザー設定フィールドには、追加の値を追加できます。カスタムフィールド名のリンクをクリックし、値を追加して、[ <strong>リストに追加] </strong>をクリックします。完了したら、[ <strong>フィールドの保存</strong> ] をクリックします。
+    </p>
+    <h3 id="delete">リスト値の削除</h3>
+    <p>
+      リストタイプのカスタムフィールドから既存の値を削除できます。カスタムフィールド名のリンクをクリックし、削除アイコンをクリックします（<img alt="" src="https://img.brightcove.com/node1050-delete-icon.png" />）値に関連付けてからクリックします<strong>フィールドを保存</strong>。
+    </p>
+    <p>
+      リスト値を削除すると、その値が以前に割り当てられていた動画はすべてその値を保持します。ただし、削除された値を持つビデオを編集すると、値はクリアされ、新しい値を選択する必要があります。
+    </p>
+    <h3 id="remove">アカウントからのカスタムフィールドの削除</h3>
+    <p>
+      アカウントからカスタム項目を削除するには、<a href="https://supportportal.brightcove.com/s/login/"> Brightcove サポートにお問い合わせください</a>。Brightcove サポートでカスタム項目を削除した場合、値が存在していた動画では変更日が変更されます。
+    </p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Using_list_values_for_Brightcove_Beacon_metadata"> Brightcoveの Beacon メタデータのリスト値の使用 </h2>
+    <p>
+      次の表に、作成する必要のあるカスタムフィールドの数を示します。上記のように、カスタムフィールドを作成するときは、データタイプを [ <strong>テキスト</strong> ] または [ <strong>リスト] のいずれかに選択します</strong>。すべての<strong>タイプ</strong>は<strong>テキスト</strong>であることに注意してください。動画コンテンツキュレーターがテキストを入力するのではなく、リストから選択できると、動画コンテンツのキュレーターの負担が軽減されます。また、値を入力するのではなく、リストから選択できる場合は、データ入力の一貫性を保つことが常に役立ちます。したがって、ビジネスケースによっては<strong> List </strong>が機能することが分かった、リストを使用できます。
+    </p>
+    <p>
+      もちろん、選択はあなたのものですが、いくつかのカスタムフィールドでは、<strong>データ型にはListが適しています</strong>。たとえば、リストについては、とりわけ、次の点を考慮する必要があります。 </p>
+    <ul>
+      <li>beacon.genre</li>
+      <li>beacon.agerating</li>
+      <li>Beacon.viewersCore</li>
+      <li>beacon.rights.&lt; &gt;カウンタ.type</li>
+    </ul>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Standard_fields">標準フィールド</h2>
+    <p>
+      次の表に、標準の Video Cloud フィールドを示します。このフィールドは、デフォルトで存在し、メタデータが関連付けられている動画を適切にインポートするために Brightcove Beacon によって使用されます。
+    </p>
+    <p>上記の手順6から文字制限についての簡単なリマインダーは次のとおりです。</p>
+    <ul>
+      <li>
+        テキスト：1024文字までのシングルバイト文字（または全角文字 512 文字）を含めることができます。
+      </li>
+      <li>
+        リスト:指定できる値は 150 個以下で、リスト内の各値は 100 文字以下です。
+      </li>
+    </ul>
+    <aside class="bcls-aside bcls-aside--warning">ノート：Studio UI <strong>で要求されるイメージとは異なるイメージを指定するため、images.poster.src </strong><strong>および images.thumbnail.src </strong>の定義に十分注意してください。ここに示す UI を使用して画像を追加します。ただし、UI ではなく、表のガイドラインに従います。 <figure class="bcls-figure"> <img class="bcls-image" src="/assets/images/syncing-with-vc/vc-custom-fields/editing-images.png" alt="" /> </figure>
+    </aside>
+    <table class="bcls-table">
+      <thead class="bcls-table__head">
+        <tr>
+          <th>ビデオクラウドフィールド</th>
+          <th>説明</th>
+          <th>
+            どこで/どのように<br />
+            人口
+          </th>
+          <th>必須</th>
+        </tr>
+      </thead>
+      <tbody class="bcls-table__body">
+        <tr>
+          <td>duration</td>
+          <td>
+            Brightcove Beacon によって使用され、詳細画面に視聴率と再生時間が表示されます。
+          </td>
+          <td>Video クラウドによる自動入力</td>
+          <td>はい</td>
+        </tr>
+        <tr>
+          <td>images.poster.src</td>
+          <td>
+            風景画像 (16:9):
+            <table>
+              <tr>
+                <td>最小構成</td>
+                <td>幅:1000px</td>
+                <td>高さ:563px</td>
+              </tr>
+              <tr>
+                <td>[最大]</td>
+                <td>幅:4000px</td>
+                <td>高さ:2250px</td>
+              </tr>
+            </table>
+          </td>
+          <td>
+            編集する<strong>画像→ポスター</strong>ビデオのプロパティのセクションを開き、ローカルに保存された画像の場所を参照します。
+          </td>
+          <td>はい</td>
+        </tr>
+        <tr>
+          <td>images.thumbnail.src</td>
+          <td>
+            ポスター画像 (2:3)
+            <table>
+              <tr>
+                <td>最小構成</td>
+                <td>幅:1000px</td>
+                <td>高さ:1500px</td>
+              </tr>
+              <tr>
+                <td>[最大]</td>
+                <td>幅:2000px</td>
+                <td>高さ:3000px</td>
+              </tr>
+            </table>
+          </td>
+          <td>
+            編集する<strong>画像→サムネイル</strong>ビデオのプロパティのセクションを開き、ローカルに保存された画像の場所を参照します。
+          </td>
+          <td>はい</td>
+        </tr>
+        <tr>
+          <td>images.WideBanner.src</td>
+          <td>
+            <strong>近日公開</strong> -その間にデフォルトは<code translate="No">images.poster.src</code>
+          </td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>images.portritPoster.src</td>
+          <td>
+            <strong>近日公開</strong> -その間にデフォルトは<code translate="No">images.poster.src</code>
+          </td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td> name</td>
+          <td>Brightcove Beacon がアセットのタイトルとして使用します</td>
+          <td>
+            編集する<strong>ビデオ情報</strong>ビデオのプロパティのセクションを入力し、 <em>名前</em> </td>
+          <td>はい</td>
+        </tr>
+        <tr>
+          <td>タグ</td>
+          <td>
+            アプリケーションには表示されませんが、プレイリストを作成するために Brightcove Beacon によって使用されます
+          </td>
+          <td>
+            編集する<strong>ビデオ情報</strong>ビデオのプロパティのセクションと入力します <em>タグ</em> </td>
+          <td>いいえ</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Custom_field_names">カスタムフィールド名</h2>
+    <p>
+      このドキュメントの次の 3 つのセクションでは、特定の実装ユースケースに基づいて作成する必要があるカスタムフィールドについて説明します。各カスタムフィールドには、[ <strong>表示名] </strong>と [ <strong>内部名</strong> ] の両方があります。<strong>表示名</strong>オプションにもっと意味のある名前があると感じた場合は、それを使用できますが、<strong>内部名</strong><code translate="No">MUST</code>は完全に一致します。
+    </p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="General_custom_fields">全般、カスタムフィールド</h2>
+    <p>
+      次の表は、実装に基づいて作成する必要があるカスタム Video Cloud 項目を示しています。作成するフィールドは、[ <strong>このフィールドを必須にする] チェックボックスをオンにする必要がないことに注意してください</strong>。
+    </p>
+    <table class="bcls-table">
+      <thead class="bcls-table__head">
+        <tr>
+          <th>表示名</th>
+          <th>
+            内部名
+          </th>
+          <th>タイプ</th>
+          <th>注意/例</th>
+        </tr>
+      </thead>
+      <tbody class="bcls-table__body">
+        <tr>
+          <td>beacon.genre</td>
+          <td>beacon_genre</td>
+          <td>テキスト</td>
+          <td>
+            *アセットのジャンル<br> *詳細ページに表示され、さまざまな画面でアセットを整理するために使用されます。この値が設定されていない場合は、<strong>ジャンルなし</strong>ユーザーインターフェイスに表示されます<br> *この値を設定しないと、に影響があります<strong>関連性のあるコンテンツ</strong>機能性<br> * 例：ブライトコーブ Beacon で定義されているジャンルの1つ、例： <em>アクション</em> または <em>アドベンチャー</em> 映画用 </td>
+        </tr>
+        <tr>
+          <td> Beacon 。<br />生産年</td>
+          <td>
+             Beacon _<br />
+            生産年
+          </td>
+          <td>
+            テキスト
+          </td>
+          <td>
+            *資産の生産年-詳細ページに表示されます<br> * 4桁の整数
+          </td>
+        </tr>
+        <tr>
+          <td>
+             Beacon キャスト。<br />
+            監督
+          </td>
+          <td>
+             Beacon キャスト_<br />
+            監督
+          </td>
+          <td>テキスト</td>
+          <td>*取締役の名前のコンマ区切りリスト<br> * 例：ディレクターの名前、例： <em>ジェーン・スミス、サンティアゴ・アルマダ</em> </td>
+        </tr>
+        <tr>
+          <td>beacon.cast.singer</td>
+          <td>cast_singer</td>
+          <td>テキスト</td>
+          <td>
+            *歌手の名前のコンマ区切りリスト<br> * 例：歌手の名前、例： <em>ジェーン・スミス、サンティアゴ・アルマダ</em> </td>
+        </tr>
+        <tr>
+          <td>beacon.cast.actor</td>
+          <td>cast_actor</td>
+          <td>テキスト</td>
+          <td>
+            *俳優の名前のコンマ区切りリスト<br> * 例：俳優の名前、例： <em>ジェーン・スミス、サンティアゴ・アルマダ</em> </td>
+        </tr>
+        <tr>
+          <td>
+             Beacon キャスト。<br />
+            作曲
+          </td>
+          <td>
+             Beacon キャスト_<br />
+            作曲
+          </td>
+          <td>テキスト</td>
+          <td>
+            *作曲家の名前のコンマ区切りリスト<br> * 例：作曲家の名前、例： <em>ジェーン・スミス、サンティアゴ・アルマダ</em> </td>
+        </tr>
+        <tr>
+          <td>
+             Beacon キャスト。<br />
+            songWriter
+          </td>
+          <td>
+             Beacon キャスト_<br />
+            ソングライター
+          </td>
+          <td>テキスト</td>
+          <td>
+            *ソングライターの名前のコンマ区切りリスト<br> * 例：ソングライターの名前、例： <em>ジェーン・スミス、サンティアゴ・アルマダ</em> </td>
+        </tr>
+        <tr>
+          <td>beacon.cast.writer</td>
+          <td>cast_writer</td>
+          <td>テキスト</td>
+          <td>
+            *作家の名前のコンマ区切りリスト<br> * 例：作家の名前、例： <em>ジェーン・スミス、サンティアゴ・アルマダ</em> </td>
+        </tr>
+        <tr>
+          <td>beacon.agerating</td>
+          <td>beacon_agerating</td>
+          <td>テキスト</td>
+          <td>
+            *アセットの年齢レーティングを提供します<br> *このフィールドの値は次の形式である必要があります<strong>key = value</strong>カンマで区切られたペア。キーは国コードです（<strong>我ら</strong>）および値は、BrightcoveBeaconでサポートされている国コードに適した年齢レーティングです。<br> *この値が設定されていない場合、BrightcoveBeaconで設定されているデフォルトの国の年齢レーティングシステムの最も許容度の高いレーティングが使用されます<br> *例：key = value、key = value、例： <em>us = TV-Y、us = TV-M</em>) </td>
+        </tr>
+        <tr>
+          <td>
+             Beacon 。<br />
+            簡単な説明
+          </td>
+          <td>
+             Beacon _<br />
+            簡単な説明
+          </td>
+          <td>テキスト</td>
+          <td>
+            * BrightcoveBeaconに合わせた簡単な説明を提供できます<br> *この値が設定されていない場合は、ビデオの簡単な説明フィールドに設定されたテキストが使用されます<br> *このフィールドを空白のままにすると、<strong>簡単な説明</strong> Video CloudStudioのビデオに入力されます<strong>ビデオ情報</strong>、Studioの値が取り込まれます。<strong>スタジオの短い説明は</strong> 250 文字に制限されていますが、このカスタムフィールドには 1024 文字まで入力できます。
+          </td>
+        </tr>
+        <tr>
+          <td>
+             Beacon 。<br />
+            長い説明
+          </td>
+          <td>
+             Beacon _<br />
+            長い説明
+          </td>
+          <td>テキスト</td>
+          <td>
+            * BrightcoveBeaconに合わせた長い説明を提供できます<br> *この値が設定されていない場合は、動画の詳細説明フィールドに設定されたテキストが使用されます<br> *このフィールドを空白のままにすると、<strong>長い説明</strong> Video CloudStudioのビデオに入力されます<strong>ビデオ情報</strong>、Studioの値が取り込まれます。<strong>スタジオの長さは</strong> 5000 文字ですが、このカスタムフィールドには 1024 文字しか指定できません。
+          </td>
+        </tr>
+        <tr>
+          <td>
+             Beacon 。<br />
+            ViewerScore
+          </td>
+          <td>
+             Beacon _<br />
+            ビューアスコア
+          </td>
+          <td>テキスト</td>
+          <td>
+            *視聴者スコアは、ユーザーがコンテンツを評価した場合はユーザーの評価を示し、そうでない場合はすべてのユーザーによるそのコンテンツの平均評価を示します。<br> *可能な値は0〜100の整数です </td>
+        </tr>
+        <tr>
+          <td>beacon.trailer.id</td>
+          <td>beacon_trailer_id</td>
+          <td>テキスト</td>
+          <td>
+            *このフィールドが設定されているアセットの予告編として使用されるビデオクラウド内の別のビデオアセットを指します<br> *ポイントされているアセットは映画またはエピソードとして破棄されます<br> * 例：Video CloudビデオID、例： <em>6140603191001</em> </td>
+        </tr>
+        <tr>
+          <td>beacon.ingest</td>
+          <td>beacon_ingest</td>
+          <td>テキスト</td>
+          <td>
+            *このフィールドが存在しない場合、デフォルトで取り込みになります<br> *特定のアセットをBrightcoveBeaconと同期させたくない場合は、これを次のように設定する必要があります。<strong>番号</strong> </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Rights_Management_fields">アクセス権管理のフィールド</h2>
+    <p>
+      アセットの収益化とアクセス制限をサポートするには、カスタムフィールドのセットを使用する必要があります。アクセス権管理構成のインスタンスを複数持つことができるため、推奨される方法は、複数のカスタムフィールドのセットを作成することです。各インスタンスの名前では、カウンタを使用してそれらを区別します。最初のインスタンスは 0 へのカウンタを使用する必要があります。以下は、実際にカウンタ値を使用しているこれらのグループ化されたフィールドの例です。
+    <figure class="bcls-figure"> <img class="bcls-image" src="/assets/images/syncing-with-vc/vc-custom-fields/rights-management.png" alt=""> </figure>
+    たとえば、動画で使用する広告を定義するセットと、新年のように休日のスペシャルを定義するためのセットが必要な場合があります。
+    </p>
+    <p>
+      具体的な例は、これらのフィールドの使用を明確にするのに役立ちます。次のスクリーンショットは、Video Cloud の動画で使用するサーバーサイド広告挿入（SSAI）の設定を示しています。
+    <figure class="bcls-figure"> <img class="bcls-image" src="/assets/images/syncing-with-vc/vc-custom-fields/rights-mamagement-example-avod.png" alt=""> </figure>
+    この例では、次のことを学べます。 </p>
+    <ul>
+      <li>グループ内のすべてのアクセス権管理フィールドに値を割り当てる必要がありません。この場合、 <em>beacon.rights.&lt; &gt;カウンター.adConfiguration</em> かつ <em>beacon.rights.&lt; &gt;カウンタ.type</em> 使用されています。</li>
+      <li>Studio で作成された SSAI設定 ID は、Brightcove Beacon のカスタムフィールドで使用できます。</li>
+      <li>アクセス権管理フィールドのセットに対するカウンタ値は 0 (黄色で強調表示) から開始できます。</li>
+      <li>このスクリーンショットには直接見えませんが、事実ですが、Video Cloud SSAI の設定は Brightcove Beacon に取り込まれるということです。</li>
+    </ul>
+    <p>作成するフィールドは、[ <strong>このフィールドを必須にする] チェックボックスをオンにする必要がないことに注意してください</strong>。</p>
+    <p>
+      次の表は、実装に基づいて作成する必要があるカスタム Video Cloud 項目を示しています。
+    </p>
+    <table class="bcls-table">
+      <thead class="bcls-table__head">
+        <tr>
+          <th>表示名</th>
+          <th>内部名</th>
+          <th>タイプ</th>
+          <th>注意/例</th>
+        </tr>
+      </thead>
+      <tbody class="bcls-table__body">
+        <tr>
+          <td>beacon.rights.&lt; &gt;カウンタ.type</td>
+          <td> Beacon 権利_ <br />&lt;counter&gt; _type</td>
+          <td>テキスト</td>
+          <td>
+            *資産の現金化のタイプかどうかを識別します<br> *値には、次のいずれかを使用します。 <ul>
+              <li>自由</li>
+              <li> AVOD</li>
+              <li> SVOD</li>
+              <li>継承</li>
+            </ul>
+            * デフォルト値:<strong>自由</strong><br> * NS <strong>継承</strong>値はにのみ適用されます <em>エピソード</em> 資産 </td>
+        </tr>
+        <tr>
+          <td>
+             Beacon 。権利。<br />
+            &lt;カウンター&gt;。<br />
+            開始日
+          </td>
+          <td>
+             Beacon 権利_ <br />
+            &lt;カウンター&gt; _<br />
+            開始日
+          </td>
+          <td>テキスト</td>
+          <td>
+            *この特定のセットのアクセス制限と現金化オプションの下で資産を公開する必要がある日付<br> * フォーマット：日付yyyy-mm-ddhh：mm：ss<br> * デフォルト値:設定されていない場合、デフォルトでビデオの可用性開始日 </td>
+        </tr>
+        <tr>
+          <td>beacon.rights.&lt; &gt;カウンター.endDate</td>
+          <td>
+             Beacon 権利_ <br />
+            &lt;counter&gt; _enddate
+          </td>
+          <td>テキスト</td>
+          <td>
+            *この特定のセットのアクセス制限および現金化オプションの下で資産が公開されなくなる日付<br> * フォーマット：日付yyyy-mm-ddhh：mm：ss<br> * デフォルト値:設定されていない場合、デフォルトでビデオの可用性の終了日が設定されます </td>
+        </tr>
+        <tr>
+          <td>beacon.rights.&lt; &gt;カウンター.devices</td>
+          <td>
+             Beacon 権利_ <br />
+            &lt;counter&gt; _devices
+          </td>
+          <td>テキスト</td>
+          <td>
+            *この特定のセットのアクセス制限と現金化オプションの下でアセットが公開される必要があるBrightcove Beacon でサポートされているデバイスのコンマ区切りリスト<br> *カンマ区切りのリスト： <ul>
+              <li>iOS</li>
+              <li>Android</li>
+              <li>Web</li>
+              <li>Roku</li>
+              <li>STV</li>
+              <li>Fire TV</li>
+              <!-- <li>LGTV</li> -->
+              <li>Samsung</li>
+              <li>アップルトV</li>
+              <li>androidtv</li>
+              <!-- <li>panasonic</li> -->
+            </ul>
+            * デフォルト値:設定されていない場合、デフォルトでBrightcove Beacon でサポートされているすべてのデバイスになります </td>
+        </tr>
+        <tr>
+          <td>
+             Beacon 。権利。<br />
+            &lt;カウンター&gt;。<br />
+            locationPermit
+          </td>
+          <td>
+             Beacon 権利_ <br />
+            &lt;カウンター&gt; _<br />
+            場所許可
+          </td>
+          <td>テキスト</td>
+          <td>
+            *この特定のセットのアクセス制限と現金化オプションの下でアセットが公開される必要があるBrightcove Beacon で定義された場所のコンマ区切りリスト<br> * デフォルト値:設定されていない場合、デフォルトでBrightcove Beacon でサポートされているすべての場所になります </td>
+        </tr>
+        <tr>
+          <td>
+             Beacon .rights。&lt;カウンター&gt;。<br /> 場所拒否
+          </td>
+          <td>
+             Beacon 権利_ <br />
+            &lt;カウンター&gt; _<br />
+            locationdeny
+          </td>
+          <td>テキスト</td>
+          <td>
+            *この特定のセットのアクセス制限と現金化オプションの下でアセットが公開されるべきではないBrightcove Beacon で定義された場所のコンマ区切りリスト<br> *デフォルト値なし
+          </td>
+        </tr>
+        <tr>
+          <td>
+             Beacon 。権利。<br />
+            &lt;カウンター&gt;。<br />
+            パッケージ名
+          </td>
+          <td>
+             Beacon 権利_ <br />
+            &lt;カウンター&gt; _<br />
+            パッケージ名
+          </td>
+          <td>テキスト</td>
+          <td>
+            *このフィールドの値は、<strong> Beacon .rights。&lt;counter&gt; .type</strong>フィールド値はに設定されます<strong>SVOD</strong><br> * Brightcove Beaconで定義されている、パッケージ名のコンマ区切りリスト<br> *例： <em>プレミアムスポーツ、アクション映画、アースデイ映画</em><br> *デフォルト値なし
+          </td>
+        </tr>
+        <tr>
+          <td>
+             Beacon 。権利。<br />
+            &lt;カウンター&gt;。<br />
+            adConfiguration
+          </td>
+          <td>
+             Beacon 権利_ <br />
+            &lt;カウンター&gt; _<br />
+            adconfiguration
+          </td>
+          <td>テキスト</td>
+          <td>
+            *このフィールドの値は、<strong> Beacon .rights。&lt;counter&gt; .type</strong>フィールド値はに設定されます<strong>AVOD</strong><br> * BrightcoveBeaconの広告構成の識別子<br> *デフォルト値なし
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Episode_fields">エピソードフィールド</h2>
+    <p>
+      シリーズのエピソードである動画については、以下を完了する必要があります。次の図は、シリーズとその季節とエピソードの関係を示しています。
+    </p>
+    <figure class="bcls-figure"> <img class="bcls-image" src="/assets/images/syncing-with-vc/vc-custom-fields/beacon-series-season-episode.png" alt="" /> </figure>
+    <p>
+      図に基づくと、シリーズの6つのビデオに必要なフィールドは次のとおりです。
+    </p>
+    <ul>
+      <li>
+        ビデオ1
+        <ul>
+          <li>beacon.episode.serieName:オレゴン・コーストの冒険</li>
+          <li>beacon.episode.seasonNumber:1</li>
+          <li>beacon.episode.number:1</li>
+        </ul>
+      </li>
+      <li>
+        ビデオ2
+        <ul>
+          <li>beacon.episode.serieName:オレゴン・コーストの冒険</li>
+          <li>beacon.episode.seasonNumber:1</li>
+          <li>beacon.episode.number:2</li>
+        </ul>
+      </li>
+      <li>
+        ビデオ3
+        <ul>
+          <li>beacon.episode.serieName:オレゴン・コーストの冒険</li>
+          <li>beacon.episode.seasonNumber:1</li>
+          <li>beacon.episode.number:3</li>
+        </ul>
+      </li>
+      <li>
+        ビデオ4
+        <ul>
+          <li>beacon.episode.serieName:オレゴン・コーストの冒険</li>
+          <li>beacon.episode.seasonNumber:2</li>
+          <li>beacon.episode.number:1</li>
+        </ul>
+      </li>
+      <li>
+        ビデオ5
+        <ul>
+          <li>beacon.episode.serieName:オレゴン・コーストの冒険</li>
+          <li>beacon.episode.seasonNumber:2</li>
+          <li>beacon.episode.number:2</li>
+        </ul>
+      </li>
+      <li>
+        ビデオ6
+        <ul>
+          <li>beacon.episode.serieName:オレゴン・コーストの冒険</li>
+          <li>beacon.episode.seasonNumber:2</li>
+          <li>beacon.episode.number:3</li>
+        </ul>
+      </li>
+    </ul>
+    <p>これは、エピソードフィールドの使用の実際の実装です。この場合、カスタムフィールドは、関連付けられた値（黄色で強調表示された値）とともに表示されます。</p>
+    <figure class="bcls-figure"> <img class="bcls-image" src="/assets/images/syncing-with-vc/vc-custom-fields/episode-example.png" alt=""> </figure>
+    <table class="bcls-table">
+      <thead class="bcls-table__head">
+        <tr>
+          <th>表示名</th>
+          <th>
+            内部名
+          </th>
+          <td>タイプ</td>
+          <th>注意/例</th>
+        </tr>
+      </thead>
+      <tbody class="bcls-table__body">
+        <tr>
+          <td>
+             Beacon .episode。 <br />
+            serieName
+          </td>
+          <td>
+             Beacon _エピソード_ <br />
+            seriename
+          </td>
+          <td>テキスト</td>
+          <td>
+            *これがエピソードアセットの場合は、このフィールドの値を入力する必要があります。それ以外の場合は、値は必要ありません。<br> *値は、エピソードが属するBrightcove Beacon のシリーズ識別子を指します（シリーズはBrightcove Beacon で直接作成する必要があります）<br> * 例：シリーズ名、 <em>オレゴン・コーストの冒険</em> </td>
+        </tr>
+        <tr>
+          <td>
+             Beacon .episode。 <br />
+            シーズン番号
+          </td>
+          <td>
+             Beacon _エピソード_ <br />
+            シーズン番号
+          </td>
+          <td>テスト</td>
+          <td>
+            *これがエピソードアセットの場合は、このフィールドの値を入力する必要があります。それ以外の場合は、値は必要ありません。<br> *エピソードが属するBrightcoveBeaconのシリーズ番号を識別します（シーズンはBrightcove Beaconで直接作成する必要があります）<br> * フォーマット：ビデオが属するシーズン番号を参照する整数 </td>
+        </tr>
+        <tr>
+          <td>
+             Beacon .episode。 <br />
+            番号
+          </td>
+          <td>
+             Beacon _エピソード_ <br />
+            番号
+          </td>
+          <td>テキスト</td>
+          <td>*これがエピソードアセットの場合は、このフィールドの値を入力する必要があります。それ以外の場合は、値は必要ありません。<br> *シーズン内のエピソード番号を識別します<br> * フォーマット：ビデオのエピソード番号を参照する整数 </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</article>

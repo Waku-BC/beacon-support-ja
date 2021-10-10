@@ -1,0 +1,205 @@
+---
+title: 'Androidテストビルドのインストール'
+description: 'このトピックでは、Androidデバイス用のBrightcove Beacon アプリのテストビルドをインストールする方法を学習します。'
+parent: 'android'
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  <section class="bcls-section">
+    <h2 id="Introduction">はじめに</h2>
+
+    <p>
+      このドキュメントでは、アプリをテストする前にアプリの提出プロセスを実行する必要がないように、テストビルドをインストールする方法について説明します。
+    </p>
+
+    <aside class="bcls-aside bcls-aside--information">Brightcove Beacon アプリをAndroidデバイスにインストールするには、次のものが必要です。
+      <ul>
+        <li>
+          <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">開発者モードはAndroidデバイスで有効になっています</a>。
+        </li>
+        <li>Androidデバッグブリッジ（adb）がコンピュータにインストールされています。</li>
+      </ul>
+    </aside>
+
+    <p>プロセスの概要は次のとおりです。</p>
+    <ol>
+      <li>
+        Android モバイルデバイスで、メールでアプリの招待を開きます。
+      </li>
+      <li>招待を受け入れ、Firebase アプリテスターをダウンロードします。</li>
+      <li>Brightcoveの Beacon アプリケーションをインストールします。</li>
+      <li>Android モバイルデバイスで Brightcove  Beacon アプリを実行します。</li>
+    </ol>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="installing-android-mobile">Android モバイルアプリをインストールする</h2>
+    <p>Androidモバイルアプリをインストールするには、以下の手順に従ってください。</p>
+    <ol class="bcls-tasklist">
+      <li>
+        Android デバイスでは、メールで招待状を開きます。
+      </li>
+      <li>
+        プロンプトが表示されたら、Google でサインインし、招待を受け入れてアプリをテストします。
+      </li>
+      <li>
+        招待を承諾すると、Firebase アプリテスターをインストールするためのアクセス権が与えられます。
+      </li>
+      <li>Firebaseアプリテスターをダウンロードしてください。</li>
+      <li>
+        Firebase アプリテスターで、Brightcove  Beacon アプリを選択し、[ <strong>ダウンロード</strong> ] をタップします。
+      </li>
+      <li>
+        Brightcove  Beacon アプリは、デバイスのホーム画面に自動的に追加されます。
+      </li>
+      <li>Brightcove Beacon アプリケーションを起動します。</li>
+    </ol>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="installing-android-tv">Android TVアプリをインストールする</h2>
+    <p>
+      アプリをインストール、テスト、デバッグするには、Android Debug Bridge（adb）を使用してコンピュータを Android TV デバイスに接続する必要があります。adbを有効にする方法の詳細については、<a href="https://developer.android.com/studio/command-line/adb.html" target="_blank"> Androidのドキュメントを参照してください</a>。
+    </p>
+    <p>Android TVアプリをインストールするには、以下の手順に従ってください。</p>
+    <ol class="bcls-tasklist-restart">
+      <li>
+        Android TV デバイスで<a href="https://developer.android.com/studio/debug/dev-options" target="_blank"> [開発者オプション] </a>を有効にします。
+      </li>
+      <li>
+        [ <strong>デバイス] (または Android TV) [&gt; 開発者オプション] </strong>を選択します。
+      </li>
+      <li>[ <strong> ADB デバッグ</strong> ] をオンにします。</li>
+      <li>[ <strong>不明なソースからのアプリ</strong> ] をオンにします。</li>
+      <li>
+        <a href="https://developer.android.com/studio/command-line/adb.html#wireless" target="_blank">Androidデバッグブリッジ（adb）</a>を使用して、コンピュータをWi-Fi経由でデバイスに接続します。
+      </li>
+      <li>ターミナルまたはコマンドラインを開きます。</li>
+      <li>
+        次のコマンドを入力します。ここで、<code translate="No">path-to-apk-file</code>はアプリの APK へのファイルシステムパスです。
+        <pre
+          class="line-numbers"
+        ><code class="“language-bash”">adb インストールパス-APK ファイル</code></pre>
+      </li>
+      <li>
+        インストールが成功した場合、adb は次のようなメッセージで応答します。
+        <pre
+          class="line-numbers"
+        ><code class="“language-bash”">764 KB / s（0.277sで217246バイト）pkg：/data/local/tmp/HelloWorld.apk成功</code></pre>
+      </li>
+      <li>
+        デバイスにすでに存在するアプリを再インストールするには、<code translate="No">-r</code>オプションを使用してアプリを再インストールできます。
+        <pre
+          class="line-numbers"
+        ><code class="“language-bash”">adb インストール-rパスからapkファイルへのパス</code></pre>
+      </li>
+      <li>
+        Android アプリが端末のホーム画面に自動的に追加されます。
+      </li>
+      <li>Brightcove Beacon アプリケーションを起動します。</li>
+    </ol>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="istalling-androidtv-invitation">招待によるAndroid TVアプリのインストール</h2>
+    <p>Android TV アプリをデバイスにインストールするには、Brightcoveからの招待メールが必要です。</p>
+    <aside class="bcls-aside bcls-aside--information">このプロセスでは、Googleアカウントを使用してサインインする必要があります<a href="https://play.google.com/store" target="_blank">プレイストア</a>ウェブサイトとAndroidTVデバイス。どちらも同じGoogleアカウントを使用します。</aside>
+    <p>招待メールを受信したら、以下の手順を実行してください。</p>
+    <ol class="bcls-tasklist-restart">
+      <li>Brightcoveから、Play ストアの URL を記載したメールがBrightcove Beacon テストアプリに送信されます。</li>
+      <li>メールアカウントから、URL をクリックするか、ブラウザーにコピーして貼り付けます。</li>
+      <li>[アプリ] ページが表示されます。<strong>Google Playのリンクでダウンロードをクリックします</strong>。
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            alt=""
+            width=""
+            height=""
+            src="/assets/images/creating-your-apps/android-test-build/1-url-path.png"
+          />
+        </figure>
+      </li>
+      <li>Playストアで、[ <strong>インストール</strong> ] ボタンをクリックします。
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            alt=""
+            width=""
+            height=""
+            src="/assets/images/creating-your-apps/android-test-build/2-app-download.png"
+          />
+        </figure>
+      </li>
+      <li>ポップアップウィンドウが表示されたら、[ <strong>デバイスの選択</strong> ] オプションをクリックします。
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            alt=""
+            width="400"
+            height="600"
+            src="/assets/images/creating-your-apps/android-test-build/3-intall1.png"
+          />
+        </figure>
+      </li>
+      <li>Google アカウントに接続されているすべての Android 搭載端末のリストが表示されます。Brightcove Beacon アプリをインストールする Android TV デバイスを選択します。
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            alt=""
+            width="400"
+            height="600"
+            src="/assets/images/creating-your-apps/android-test-build/4-install2.png"
+          />
+        </figure>
+      </li>
+      <li>デバイスを選択したら、[ <strong>インストール</strong> ] ボタンをクリックします。 
+        <figure class="bcls-figure">
+          <img
+            class="bcls-image--no-border"
+            alt=""
+            width="400"
+            height="600"
+            src="/assets/images/creating-your-apps/android-test-build/5-install3.png"
+          />
+        </figure>   
+      </li>
+      <li>Google アカウントからパスワードの入力が求められます。入力し、[ <strong>次へ</strong> ] ボタンをクリックします。Brightcove  Beacon アプリが Android TV デバイスにインストールされることを示すメッセージが表示されます。
+        </li>
+      <li>Android TVデバイスに移動します。 </li>
+      <aside class="bcls-aside bcls-aside--information">Googleは、Brightcove Beacon アプリを同期してAndroidTVデバイスにインストールするのに最大30分かかる場合があります。</aside>
+      <li>Brightcoveの Beacon アプリは、Android TV デバイスのホーム画面に自動的に追加されます。</li>
+      <li>Brightcove Beacon アプリケーションを起動します。</li>
+    </ol>
+
+    <h2 id="troubleshooting">Android TVアプリのトラブルシューティング</h2>
+    <p>Play ストア Web サイトにインストールしてから 30 分経っても、お使いの Android TV デバイスに Brightcove  Beacon アプリが表示されない場合は、次の手順に従います。</p>
+    <ol class="bcls-tasklist-restart">
+      <li>Android TVデバイスを再起動します。</li>
+      <li>端末を再起動した後、[ <strong>設定</strong> ] [&gt; <strong>アカウントとログイン</strong> ] [&gt; Googleプロフィールを選択] [ <strong>今すぐ同期 &gt; </strong> ] をクリックします。</li>
+      <li>これらの手順の後、Brightcove  Beacon アプリが Android TV デバイスのホーム画面に自動的に追加されます。</li>
+      <li>Brightcove Beacon アプリケーションを起動します。</li>
+
+    </ol>
+
+
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="unistalling-android">Brightcove Beacon アプリのアンインストール</h2>
+
+    <p>Android TV デバイスからアプリをアンインストールするには、次の手順に従います。</p>
+    <ol class="bcls-tasklist-restart">
+      <li>
+        端末のホーム画面で、[ <strong>設定</strong> ] [&gt; <strong>アプリと通知</strong> ] [&gt; <strong>すべてのアプリを表示</strong> ] の順に選択します。
+      </li>
+      <li>Brightcoveの Beacon アプリを選択します。</li>
+      <li><strong>アンインストール</strong>&gt;<strong>アンインストール</strong>を選択します</li>
+      
+    </ol>
+  </section>
+
+
+
+
+</article>
