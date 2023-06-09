@@ -11,49 +11,48 @@ parent: 入門編
 
   <h1>アプリケーション設計の考慮事項</h1>
   <summary>
-    このトピックでは、アプリのベンダーの制限と、<strong>ヘルプページなどのアプリコンテンツに関するガイダンスについて説明します</strong>。
+    このトピックでは、アプリのベンダーの制限および<strong>ヘルプ</strong>ページなどのアプリコンテンツに関するガイダンスについて学びます。
   </summary>
 
   <section class="bcls-section">
     <h2 id="Introduction">はじめに</h2>
     <p>
-      この文書の最初のセクションでは、一部のベンダーがアプリに課す制限について説明します。ベンダーは、次の制限のリストとともにリストされています。
+      このドキュメントの最初のセクションでは、いくつかのベンダーがアプリに課す制限について説明します。ベンダーと制限事項のリストは次のとおりです。
     </p>
     <p>
-      ドキュメントの残りの部分には、アプリケーションに含めるために考慮すべきコンテンツに関するセクションが含まれています。たとえば、<strong>ヘルプページはどのようなものですか</strong>、どのようなテキストを含めるべきですか。
+      ドキュメントの残りの部分には、アプリケーションに含めるために考慮すべきコンテンツに関するセクションが含まれています。たとえば、<strong>ヘルプ</strong>ページはどのようなものか、どのようなテキストを含めるべきかなどです。
     </p>
   </section>
 
   <section class="bcls-section">
     <h2 id="Vendor_design_restrictions">ベンダーの設計制限</h2>
     <p>
-      多くのベンダーには、変更できない設計上の制限があります。これらの問題に注意することが重要です。そのため、許可されていない機能、または機能の変更を要求する時間を費やすことはありません。
+      多くのベンダーには、変更できない設計上の制約があります。これらの問題を認識しておくことで、許可されていない機能または機能変更のリクストに時間を費やすことがないようにするために重要です。
     </p>
 
     <h3>iOS</h3>
     <ul>
       <li>
-        <strong>tabbed_block </strong>および<strong> dropdown-block ブロックタイプが正しく機能するためには</strong>、それらのブロックがページ上の唯一のブロックである必要があります。
+        <strong>tabbed_block </strong>および<strong> dropdown-block</strong> のブロックタイプが正しく機能するためには、それらのブロックがページ上の唯一のブロックである必要があります。
       </li>
     </ul>
     <h3>Apple TV</h3>
     <ul>
-      <li>アプリが開いたとき、メインメニューは常に開きます。</li>
+      <li>アプリを開くと、常にメインメニューが表示されます。</li>
     </ul>
   </section>
 
   <section class="bcls-section">
     <h2 id="Help_pages">ヘルプページ</h2>
     <p>
-      <strong>ヘルプページについては</strong>、少なくともお客様に連絡する方法を提供したいと考えます。次に、2 つの例を示します。
+      <strong>ヘルプ</strong>ページでは、少なくともお客様に連絡する方法を提供したい場合がほとんどだと思います。次に、2 つの例を示します。
     </p>
     <pre>
-    ヘルプが必要な場合は、次のいずれかの方法でご連絡ください。www.acmeone.tvでチャット公式ファンページからFacebookMessenger：www.facebook.com/Acmeone Instagram公式Instagramプロファイルから直接：www.instagram.com/acmeone公式Twitterプロファイルから直接メッセージ：www.twitter.com/Acmeone Email ：worker@acmeone.tv Whatsapp：+55（55）55555-5555</pre
-        >
+    お困りの際は、以下のいずれかの方法でご連絡ください: www.acmeone.tvでチャット公式ファンページからFacebookメッセンジャー：www.facebook.com/Acmeone Instagram公式アカウントから：www.instagram.com/acmeoneTwitter公式アカウントから直接メッセージ：www.twitter.com/Acmeone Email ：worker@acmeone.tv Whatsapp：+55（55）55555-5555</pre>
 
-    <p>かつ</p>
+    <p>または</p>
     <pre>
-Acmeone は、ユーザーがインターネット上でライブテレビ、映画、シリーズを見ることができるビデオストリーミングプラットフォームです。ユーザーは、Acmeone プラットフォームにアクセスするために、Acmeone アプリケーションをダウンロードする必要があります。Acmeone アプリケーションがダウンロードされると、Acmeone ランディングページで、ユーザーは登録、ログイン、または Acmeone を探索できるようになります。ユーザーが登録またはログインを完了する（または探索モードで Acmeone に入る）と、ユーザーは Acmeone ホームページに移動します。Acmeoneのホームページにはメインメニューが表示され、ユーザーは次のことができるようになります。*ライブTVを見る*オンデマンド映画を見るAcmeoneを使用すると、ユーザーはお気に入りを保存したり、コンテンツを評価したり、検索したりできます。Acmeone設定セクションでは、ユーザーはアカウントの確認、パスワードの変更、ログアウト、ペアレンタルコントロールの設定、スペイン語と英語への/からの言語の変更を行うことができます。大切な Acmeone ユーザーになってくれてありがとう。その他のヘルプとサポートについては、以下の連絡先情報を使用してお問い合わせください。電話:1-555-555-5555電子メール：acmeonesupport@acmeone.com
+Acmeone は、インターネット上で生放送のテレビ、映画、シリーズを視聴できるビデオストリーミングプラットフォームです。ユーザーは、Acmeone プラットフォームにアクセスするために、Acmeone アプリケーションをダウンロードする必要があります。Acmeone アプリケーションをダウンロードすると、Acmeone ランディングページで、ユーザーは登録、ログイン、または Acmeone を探索できるようになります。ユーザーが登録またはログインを完了すると（または探索モードで Acmeone に入ると）、ユーザーは Acmeone ホームページに移動します。Acmeoneのホームページでは、メインメニューが表示され、ユーザーは次のことができるようになります: *ライブTVの視聴*オンデマンド映画の視聴 また、Acmeoneでは、お気に入りの保存、コンテンツの評価、検索が可能です。Acmeoneの設定セクションでは、ユーザーはアカウントの確認、パスワードの変更、ログアウト、ペアレンタルコントロールの設定、スペイン語と英語への言語変更を行うことができます。Acmeone ユーザーであることに感謝いたします。その他のヘルプとサポートについては、以下の連絡先からお問い合わせください。電話:1-555-555-5555Eメール：acmeonesupport@acmeone.com
 
     </pre>
   </section>
@@ -61,17 +60,15 @@ Acmeone は、ユーザーがインターネット上でライブテレビ、映
   <section class="bcls-section">
     <h2 id="Password_recovery">パスワード再設定メール</h2>
     <p>
-      パスワード回復用メールの語文を設定する必要があります。実際のメールのベースとなる2つの例を次に示します。
+      パスワード再設定メールの文言を設定する必要があります。実際のメールのベースとなる2つの例を次に示します。
     </p>
     <pre>
-リカバリトークン：## RECOVER_CODE ##ご不便をおかけした場合は、MY_COMPANYサポートまでご連絡ください。メール:[my-company@myco.com |mailto: my-company@myco.com]</pre
-        >
-    <p>かつ</p>
+リカバリトークン：## RECOVER_CODE ##不都合が生じた場合は、MY_COMPANYのサポートまでご連絡ください。メール:[my-company@myco.com |mailto: my-company@myco.com]</pre>
+    <p>または</p>
     <pre>
-リカバリトークン：## RECOVER_CODE ##ご不便をおかけした場合は、MY_COMPANYサポート（[http://ww.myco.com/contact/contact-technical-help]）にご連絡いただくか、テクニカルサポート部門（800）334-までお電話ください。 0453。</pre
-        >
+リカバリトークン：## RECOVER_CODE ##不都合が生じた場合は、MY_COMPANYサポート（[http://ww.myco.com/contact/contact-technical-help]）までご連絡いただくか、テクニカルサポート部門（800）334-0453 までお電話ください。。</pre>
     <p>
-      <code translate="No">##RECOVER_CODE##</code>はプレースホルダであり、Brightcove Beacon によって生成された実際のコードに置き換えられます。
+     なお<code translate="No">##RECOVER_CODE##</code>はプレースホルダであり、Brightcove Beacon によって生成された実際のコードに置き換えられます。
     </p>
   </section>
 </article>
